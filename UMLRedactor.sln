@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMLRedactor", "UMLRedactor\UMLRedactor.csproj", "{EAC6C0F9-77B4-4399-AED8-376D78D5EB9D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAC6C0F9-77B4-4399-AED8-376D78D5EB9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAC6C0F9-77B4-4399-AED8-376D78D5EB9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAC6C0F9-77B4-4399-AED8-376D78D5EB9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAC6C0F9-77B4-4399-AED8-376D78D5EB9D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

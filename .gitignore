@@ -1,0 +1,7 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+/UMLREDACTOR.sln.DotSettings.user
+/.idea/.idea.UMLRedactor/.idea/dictionaries/MADMAXIMUUS.xml
