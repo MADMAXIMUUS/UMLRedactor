@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UMLRedactor"
         mc:Ignorable="d"
+        Loaded="MainWindow_Loaded"
         Title="Редактор" Height="600" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
@@ -14,14 +15,14 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
             <MenuItem Width="40" Height="20" Header="File" />
             <MenuItem Width="40" Height="20" Header="About" />
         </Menu>
-        <TreeView x:Name="TreeView" Grid.Row="1" Grid.Column="0" Width="200">
+        <TreeView x:Name="TreeView" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Width="200">
             <TextBlock>Диаграмма</TextBlock>
         </TreeView>
         <DataGrid Grid.Row="2" Grid.Column="0" Width="200">
@@ -30,15 +31,16 @@
                 <DataGridTextColumn Header="Значение" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid Grid.RowSpan="2" Grid.Row="1" Grid.Column="1" Width="200">
+        <DataGrid Grid.Row="1" Grid.Column="0" Width="200">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="Элементы" Width="100" />
                 <DataGridCheckBoxColumn Header="" Width="100" />
             </DataGrid.Columns>
         </DataGrid>
-        <ScrollViewer Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" HorizontalScrollBarVisibility="Auto"
+        <ScrollViewer Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" HorizontalScrollBarVisibility="Auto"
                       VerticalScrollBarVisibility="Auto" AllowDrop="True">
-            <Canvas x:Name="Canvas" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Auto"
+            <Canvas x:Name="Canvas" ScrollViewer.CanContentScroll="True"
+                    ScrollViewer.HorizontalScrollBarVisibility="Auto"
                     ScrollViewer.VerticalScrollBarVisibility="Auto" Width="2000" Height="2000" />
         </ScrollViewer>
     </Grid>
