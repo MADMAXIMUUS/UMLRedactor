@@ -8,9 +8,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3de5b1ee-0cb0-4ba4-83f8-d2361bf6955d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/Icons/UMLRedactor_icon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/Icons/UMLRedactor_icon_new.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Elements/ClassElement.xaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Elements/ClassElement.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Icons/UMLRedactor_icon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Icons/UMLRedactor_icon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Icons/UMLRedactor_icon_new.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/MainWindow.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,12 +27,15 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/82C99ED2-E582-4054-AAD8-D9D4D6755403/6e/42c5f190/UIElement.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/98F1E9A3-4402-4C92-9A13-82BED9598294/4c/641273c4/RowDefinition.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/UMLRedactor/pictures.resx" />
-      <option value="$PROJECT_DIR$/UMLRedactor/MainWindow.xaml" />
       <option value="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" />
+      <option value="$PROJECT_DIR$/UMLRedactor/MainWindow.xaml" />
+      <option value="$PROJECT_DIR$/UMLRedactor/Elements/ClassElement.xaml" />
+      <option value="$PROJECT_DIR$/UMLRedactor/Elements/ClassElement.xaml.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1zBsLkDv0he9hC0Gfqjqy6gazRz" />
@@ -74,14 +81,24 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7663b88a-d008-4cb4-aca8-e95bf8696c37" name="Changes" comment="" />
+      <changelist id="3de5b1ee-0cb0-4ba4-83f8-d2361bf6955d" name="Default Changelist" comment="" />
       <created>1633632765149</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1633632765149</updated>
       <workItem from="1633632786527" duration="1377000" />
       <workItem from="1633801019318" duration="1488000" />
+      <workItem from="1634029957298" duration="103000" />
+      <workItem from="1634030295013" duration="4439000" />
     </task>
+    <task id="LOCAL-00001" summary="Добавлена иконка">
+      <created>1633812452088</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1633812452088</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,5 +121,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Добавлена иконка" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлена иконка" />
   </component>
 </project>

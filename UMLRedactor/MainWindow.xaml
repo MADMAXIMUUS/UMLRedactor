@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UMLRedactor"
+        xmlns:uc="clr-namespace:UMLRedactor.Elements"
         mc:Ignorable="d"
         Loaded="MainWindow_Loaded"
         Title="Редактор" Height="600" Width="1000">
@@ -49,7 +50,9 @@
                       VerticalScrollBarVisibility="Auto" AllowDrop="True">
             <Canvas x:Name="Canvas" ScrollViewer.CanContentScroll="True"
                     ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                    ScrollViewer.VerticalScrollBarVisibility="Auto" Width="2000" Height="2000" />
+                    ScrollViewer.VerticalScrollBarVisibility="Auto" Width="2000" Height="2000" >
+                <uc:ClassElement Width="200"/>
+            </Canvas>
         </ScrollViewer>
     </Grid>
 </Window>
