@@ -5,22 +5,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:UMLRedactor.Elements"
              mc:Ignorable="d"
+             MouseLeftButtonDown="ClassElement_MouseLeftButtonDown" MouseLeftButtonUp="ClassElement_MouseLeftButtonUp"
+             MouseMove="ClassElement_MouseMove"
+             Padding="5"
              d:DesignHeight="250" d:DesignWidth="250">
     <Grid>
-        <Grid Margin="0,0,0,15" Name="MainGrid">
+        <Grid Margin="0,5,0,15" Name="MainGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <TextBox Name="Title" Grid.Row="0" VerticalContentAlignment="Center"
-                     HorizontalContentAlignment="Center"
+                     HorizontalContentAlignment="Center" Padding="10,0"
                      FontSize="16" Height="30" BorderThickness="0,0,0,2" BorderBrush="Black">
                 Classname
             </TextBox>
-            <TextBox Name="Line1" Grid.Row="1" VerticalContentAlignment="Center"
-                     FontSize="16" Height="30" BorderThickness="0,0,0,2" BorderBrush="Black"/>
-            <Button BorderThickness="0" Height="30" Name="AddButton" Grid.Row="2" Content="Add line" FontSize="16" Click="Button_OnClick" />
+            <TextBox Name="Line1" Grid.Row="1" VerticalContentAlignment="Center" Padding="5,0"
+                     FontSize="16" Height="30" BorderThickness="0,0,0,2" BorderBrush="Black" />
+            <Button BorderThickness="0" Height="30" Name="AddButton" Grid.Row="2" Content="Add line" FontSize="16"
+                    Click="Button_OnClick" />
         </Grid>
         <Border BorderThickness="1" BorderBrush="Black" CornerRadius="15" Padding="2" />
     </Grid>
