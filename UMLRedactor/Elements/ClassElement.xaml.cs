@@ -27,10 +27,11 @@ namespace UMLRedactor.Elements
             {
                 VerticalContentAlignment = VerticalAlignment.Center,
                 FontSize = 16,
-                Height = 30,
+                MinHeight = 30,
+                TextWrapping = TextWrapping.Wrap,
                 BorderThickness = new Thickness(0, 0, 0, 2),
                 BorderBrush = Brushes.Black,
-                Padding = new Thickness(5, 0, 5, 0)
+                Padding = new Thickness(5, 2, 5, 2)
             };
             Grid.SetRow(tb, MainGrid.RowDefinitions.Count - 2);
             Grid.SetRow(AddButton, MainGrid.RowDefinitions.Count - 1);
@@ -55,7 +56,7 @@ namespace UMLRedactor.Elements
 
                 _translateTransform.X += _currentPoint.X - _anchorPoint.X;
                 _translateTransform.Y += (_currentPoint.Y - _anchorPoint.Y);
-                if (_currentPoint.X < Application.Current.MainWindow.RenderSize.Width &&
+                if (_currentPoint.X < Application.Current.MainWindow?.RenderSize.Width &&
                     _currentPoint.Y < Application.Current.MainWindow.RenderSize.Height
                     && _currentPoint.X > 0 && _currentPoint.Y > 0)
                 {

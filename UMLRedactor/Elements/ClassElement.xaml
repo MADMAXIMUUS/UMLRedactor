@@ -17,12 +17,14 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <TextBox Name="Title" Grid.Row="0" VerticalContentAlignment="Center"
-                     HorizontalContentAlignment="Center" Padding="10,0"
-                     FontSize="16" Height="30" BorderThickness="0,0,0,2" BorderBrush="Black">
+                     HorizontalContentAlignment="Center" Padding="10,2"
+                     MinHeight="30"
+                     TextWrapping="Wrap"
+                     FontSize="16" BorderThickness="0,0,0,2" BorderBrush="Black">
                 Classname
             </TextBox>
-            <TextBox Name="Line1" Grid.Row="1" VerticalContentAlignment="Center" Padding="5,0"
-                     FontSize="16" Height="30" BorderThickness="0,0,0,2" BorderBrush="Black" />
+            <TextBox Name="Line1" Grid.Row="1" VerticalContentAlignment="Center" Padding="5,2"
+                     FontSize="16" MinHeight="30" TextWrapping="Wrap" BorderThickness="0,0,0,2" BorderBrush="Black" />
             <Button BorderThickness="0" Height="30" Name="AddButton" Grid.Row="2" Content="Add line" FontSize="16"
                     Click="Button_OnClick" />
         </Grid>
