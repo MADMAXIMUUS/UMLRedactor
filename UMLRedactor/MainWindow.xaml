@@ -49,8 +49,10 @@
         </DataGrid>
         <ScrollViewer Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" HorizontalScrollBarVisibility="Auto"
                       VerticalScrollBarVisibility="Auto" AllowDrop="True">
-            <Canvas x:Name="Canvas" ScrollViewer.CanContentScroll="True"
+            <Canvas x:Name="DrawCanvas" ScrollViewer.CanContentScroll="True"
                     ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                    MouseMove="DrawCanvas_OnMouseMove"
+                    MouseUp="DrawCanvas_OnMouseUp"
                     ScrollViewer.VerticalScrollBarVisibility="Auto" Width="2000" Height="2000">
                 <uc:ClassElement Width="200" Canvas.Left="20" Canvas.Top="20" />
             </Canvas>
