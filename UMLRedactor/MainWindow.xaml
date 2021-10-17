@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:UMLRedactor"
         xmlns:uc="clr-namespace:UMLRedactor.Elements"
         mc:Ignorable="d"
-        Loaded="MainWindow_Loaded"
         AllowDrop="True"
         Title="Редактор" Height="600" Width="1000">
     <Grid>

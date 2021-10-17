@@ -1,38 +1,35 @@
-﻿using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using UMLRedactor.Additions;
 
 namespace UMLRedactor.Elements
 {
-    public partial class ClassElement : UserControl
+    public partial class ClassElement
     {
-        private readonly List<TextBox> _tbs = new List<TextBox>();
+        //private readonly List<TextBox> _tbs = new List<TextBox>();
         private int _edgeType;
-
-        enum EdgeTypes
-        {
-            TopLeft = 1,
-            TopRight = 2,
-            BottomLeft = 3,
-            BottomRight = 4
-        }
-
+        
         public ClassElement()
         {
             InitializeComponent();
-            _tbs.Add(Line1);
+            //_tbs.Add(Line1);
         }
 
         private void Button_OnClick(object sender, RoutedEventArgs e)
         {
-            MainGrid.RowDefinitions.Add(new RowDefinition());
+            RowDefinition rw = new RowDefinition
+            {
+                Height = GridLength.Auto
+            };
+            MainGrid.RowDefinitions.Add(rw);
             TextBox tb = new TextBox()
             {
                 VerticalContentAlignment = VerticalAlignment.Center,
                 FontSize = 16,
-                Height = 30,
+                MinHeight = 30,
+                TextWrapping = TextWrapping.Wrap,
                 BorderThickness = new Thickness(0, 0, 0, 2),
                 BorderBrush = Brushes.Black,
                 Padding = new Thickness(5, 0, 5, 0)
@@ -40,22 +37,22 @@ namespace UMLRedactor.Elements
             Grid.SetRow(tb, MainGrid.RowDefinitions.Count - 2);
             Grid.SetRow(AddButton, MainGrid.RowDefinitions.Count - 1);
             MainGrid.Children.Add(tb);
-            _tbs.Add(tb);
+            //_tbs.Add(tb);
         }
         
         private void Mt_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Point offset = e.GetPosition(Mt);
-            double offsetX = offset.X;
-            double offsetY = offset.Y;
-            if (Parent is Canvas canvasMain && canvasMain.Parent is MainWindow main)
+            Point offset = e.GetPosition(this);
+            Canvas canvas = Parent as Canvas;
+            ScrollViewer sv = canvas?.Parent as ScrollViewer;
+            Grid grid = sv?.Parent as Grid;
+            if (grid?.Parent is MainWindow main)
             {
                 main.IsSizing = true;
-                main.SizingEdgeType = 0;
+                main.SizingEdge = (int)Enums.EdgeTypes.MiddleTop;
                 main.SizingPanel = this;
-                main.SizingEdge = sender as Border;
-                main.SizingOffsetX = offsetX;
-                main.SizingOffsetY = offsetY;
+                main.SizingOffsetX = offset.X;
+                main.SizingOffsetY = offset.Y;
             }
         }
 
@@ -66,7 +63,6 @@ namespace UMLRedactor.Elements
             Lb.Visibility = Visibility.Visible;
             Rb.Visibility = Visibility.Visible;
             Mt.Visibility = Visibility.Visible;
-            Mb.Visibility = Visibility.Visible;
         }
 
         private void ClassElement_OnLostFocus(object sender, RoutedEventArgs e)
@@ -76,7 +72,6 @@ namespace UMLRedactor.Elements
             Lb.Visibility = Visibility.Hidden;
             Rb.Visibility = Visibility.Hidden;
             Mt.Visibility = Visibility.Hidden;
-            Mb.Visibility = Visibility.Hidden;
         }
 
         private void Lt_OnMouseEnter(object sender, MouseEventArgs e)
@@ -111,43 +106,39 @@ namespace UMLRedactor.Elements
 
         private void Lt_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            _edgeType = (int)EdgeTypes.TopLeft;
-            set_Sizing(sender, e);
+            _edgeType = (int)Enums.EdgeTypes.LeftTop;
+            Setting_Resizing();
         }
 
         private void Rt_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            _edgeType = (int)EdgeTypes.TopRight;
-            set_Sizing(sender, e);
+            _edgeType = (int)Enums.EdgeTypes.RightTop;
+            Setting_Resizing();
         }
 
         private void Lb_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            _edgeType = (int)EdgeTypes.BottomLeft;
-            set_Sizing(sender, e);
+            _edgeType = (int)Enums.EdgeTypes.LeftBottom;
+            Setting_Resizing();
         }
 
         private void Rb_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            _edgeType = (int)EdgeTypes.BottomRight;
-            set_Sizing(sender, e);
+            _edgeType = (int)Enums.EdgeTypes.RightBottom;
+            Setting_Resizing();
         }
 
-        private void set_Sizing(object sender, MouseButtonEventArgs e)
+        private void Setting_Resizing()
         {
-            Canvas canvasMain = Parent as Canvas;
-            if (canvasMain?.Parent is MainWindow main)
+            Canvas canvas = Parent as Canvas;
+            ScrollViewer sv = canvas?.Parent as ScrollViewer;
+            Grid grid = sv?.Parent as Grid;
+            if (grid?.Parent is MainWindow main)
             {
                 main.IsSizing = true;
-                main.SizingEdgeType = _edgeType;
+                main.SizingEdge = _edgeType;
                 main.SizingPanel = this;
-                main.SizingEdge = sender as Border;
             }
-        }
-
-        private void Mt_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            
         }
     }
 }

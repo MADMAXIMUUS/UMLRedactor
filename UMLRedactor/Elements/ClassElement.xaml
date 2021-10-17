@@ -40,18 +40,20 @@
                     Click="Button_OnClick" />
         </Grid>
         <Border Grid.Column="1" Grid.Row="1" BorderThickness="1" BorderBrush="Black" CornerRadius="15" />
-        <Rectangle Name="Lt" Margin="5" Grid.Row="0" Grid.Column="0" Width="5" Height="5" Fill="Black"
-                   Visibility="Hidden" MouseEnter="Lt_OnMouseEnter" MouseLeave="OnMouseLeave" MouseLeftButtonDown="Lt_OnMouseLeftButtonDown" />
-        <Rectangle Name="Rt" Margin="5" Grid.Row="0" Grid.Column="2" Width="5" Height="5" Fill="Black"
-                   Visibility="Hidden" MouseEnter="Rt_OnMouseEnter" MouseLeave="OnMouseLeave" MouseLeftButtonDown="Rt_OnMouseLeftButtonDown"/>
-        <Rectangle Name="Lb" Margin="5" Grid.Row="2" Grid.Column="0" Width="5" Height="5" Fill="Black"
-                   Visibility="Hidden" MouseEnter="Lb_OnMouseEnter" MouseLeave="OnMouseLeave" MouseLeftButtonDown="Lb_OnMouseLeftButtonDown" />
-        <Rectangle Name="Rb" Margin="5" Grid.Row="2" Grid.Column="2" Width="5" Height="5" Fill="Black"
-                   Visibility="Hidden" MouseEnter="Rb_OnMouseEnter" MouseLeave="OnMouseLeave" />
-        <Rectangle Name="Mt" Margin="5" Grid.Row="0" Grid.Column="1" Width="5" Height="5" Fill="Black"
-                   Visibility="Hidden" MouseEnter="Mt_OnMouseEnter" MouseLeave="OnMouseLeave"
-                   MouseLeftButtonDown="Mt_OnMouseLeftButtonDown" MouseLeftButtonUp="Mt_OnMouseLeftButtonUp" />
-        <Rectangle Name="Mb" Margin="5" Grid.Row="2" Grid.Column="1" Width="5" Height="5" Fill="Black"
-                   Visibility="Hidden" MouseLeave="OnMouseLeave" />
+        <Border Name="Lt" Margin="5" Grid.Row="0" Grid.Column="0" Width="5" Height="5" Background="Black"
+                Visibility="Hidden" MouseEnter="Lt_OnMouseEnter" MouseLeave="OnMouseLeave"
+                MouseLeftButtonDown="Lt_OnMouseLeftButtonDown" />
+        <Border Name="Rt" Margin="5" Grid.Row="0" Grid.Column="2" Width="5" Height="5" Background="Black"
+                Visibility="Hidden" MouseEnter="Rt_OnMouseEnter" MouseLeave="OnMouseLeave"
+                MouseLeftButtonDown="Rt_OnMouseLeftButtonDown" />
+        <Border Name="Lb" Margin="5" Grid.Row="2" Grid.Column="0" Width="5" Height="5" Background="Black"
+                Visibility="Hidden" MouseEnter="Lb_OnMouseEnter" MouseLeave="OnMouseLeave"
+                MouseLeftButtonDown="Lb_OnMouseLeftButtonDown" />
+        <Border Name="Rb" Margin="5" Grid.Row="2" Grid.Column="2" Width="5" Height="5" Background="Black"
+                Visibility="Hidden" MouseEnter="Rb_OnMouseEnter" MouseLeave="OnMouseLeave"
+                MouseLeftButtonDown="Rb_OnMouseLeftButtonDown" />
+        <Border Name="Mt" Margin="5" Grid.Row="0" Grid.Column="1" Width="5" Height="5" Background="Black"
+                Visibility="Hidden" MouseEnter="Mt_OnMouseEnter" MouseLeave="OnMouseLeave"
+                MouseLeftButtonDown="Mt_OnMouseLeftButtonDown" />
     </Grid>
 </UserControl>

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using UMLRedactor.Elements;
+using UMLRedactor.Additions;
 
 namespace UMLRedactor
 {
@@ -12,33 +11,20 @@ namespace UMLRedactor
     public partial class MainWindow
     {
         public bool IsSizing;
-        public int SizingEdgeType;
+        public int SizingEdge;
         public double SizingOffsetX;
         public double SizingOffsetY;
         public UserControl SizingPanel;
-
-        public Border SizingEdge;
-
-        enum EdgeTypes
-        {
-            TopMove = 0,
-            TopLeft = 1,
-            TopRight = 2,
-            BottomLeft = 3,
-            BottomRight = 4
-        }
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e) { }
-
-        private void set_Sizing(object sender, MouseEventArgs e)
+        private void ResizeAndTranslate(MouseEventArgs e)
         {
-            if (IsSizing == false) return;
-            if (SizingEdgeType < 0) return;
+            if (!IsSizing) return;
+            if (SizingEdge < 0) return;
             if (SizingPanel == null) return;
             if (e.LeftButton != MouseButtonState.Pressed)
             {
@@ -46,48 +32,51 @@ namespace UMLRedactor
             }
             else
             {
-                Point mousePoint = e.GetPosition(this);
-                double mouseX = mousePoint.X;
-                double mouseY = mousePoint.Y;
-                Point position = TranslatePoint(new Point(0, 0), SizingPanel);
-                double posX = -position.X;
-                double posY = -position.Y;
-                double diffX = (posX - mouseX);
-                double diffY = (posY - mouseY);
-                if (SizingEdgeType == (int)EdgeTypes.TopMove)
+                Point cursorPosition = e.GetPosition(DrawCanvas);
+                Point position = new Point(Canvas.GetLeft(SizingPanel), Canvas.GetTop(SizingPanel));
+                double diffX = (position.X - cursorPosition.X);
+                double diffY = (position.Y - cursorPosition.Y);
+
+                if (SizingEdge == (int)Enums.EdgeTypes.MiddleTop)
                 {
-                    double newLeft = mouseX - SizingOffsetX;
-                    double newTop = mouseY - SizingOffsetY;
+                    double newLeft = cursorPosition.X - SizingOffsetX;
+                    double newTop = cursorPosition.Y - SizingOffsetY;
                     if (newLeft > 0) Canvas.SetLeft(SizingPanel, newLeft);
                     if (newTop > 0) Canvas.SetTop(SizingPanel, newTop);
                 }
                 else
                 {
-                    if ((SizingEdgeType == (int)EdgeTypes.TopLeft) || (SizingEdgeType == (int)EdgeTypes.BottomLeft))
+                    if ((SizingEdge == (int)Enums.EdgeTypes.LeftTop) ||
+                        (SizingEdge == (int)Enums.EdgeTypes.LeftBottom))
                     {
-                        double new_Left = mouseX;
-                        double newWidth = (SizingPanel.ActualWidth) + diffX;
-                        if (new_Left > 0) Canvas.SetLeft(SizingPanel, new_Left);
+                        double newLeft = cursorPosition.X;
+                        double newWidth = SizingPanel.Width + diffX;
+
+                        if (newLeft > 0) Canvas.SetLeft(SizingPanel, newLeft);
                         if (newWidth > 0) SizingPanel.Width = newWidth;
                     }
 
-                    if ((SizingEdgeType == (int)EdgeTypes.TopLeft) || (SizingEdgeType == (int)EdgeTypes.TopRight))
+                    if ((SizingEdge == (int)Enums.EdgeTypes.LeftTop) ||
+                        (SizingEdge == (int)Enums.EdgeTypes.RightTop))
                     {
-                        double new_Top = mouseY;
-                        double newHeight = (SizingPanel.ActualHeight) + diffY;
-                        if (new_Top > 0) Canvas.SetTop(SizingPanel, new_Top);
+                        double newTop = cursorPosition.Y;
+                        double newHeight = SizingPanel.Height + diffY;
+
+                        if (newTop > 0) Canvas.SetTop(SizingPanel, newTop);
                         if (newHeight > 0) SizingPanel.Height = newHeight;
                     }
 
-                    if ((SizingEdgeType == (int)EdgeTypes.TopRight) || (SizingEdgeType == (int)EdgeTypes.BottomRight))
+                    if ((SizingEdge == (int)Enums.EdgeTypes.RightTop) ||
+                        (SizingEdge == (int)Enums.EdgeTypes.RightBottom))
                     {
-                        double newWidth = mouseX - posX;
+                        double newWidth = cursorPosition.X + position.X;
                         if (newWidth > 0) SizingPanel.Width = newWidth;
                     }
 
-                    if ((SizingEdgeType == (int)EdgeTypes.BottomLeft) || (SizingEdgeType == (int)EdgeTypes.BottomRight))
+                    if ((SizingEdge == (int)Enums.EdgeTypes.LeftBottom) ||
+                        (SizingEdge == (int)Enums.EdgeTypes.RightBottom))
                     {
-                        double newHeight = mouseY - posY;
+                        double newHeight = cursorPosition.Y + position.Y;
                         if (newHeight > 0) SizingPanel.Height = newHeight;
                     }
                 }
@@ -96,7 +85,7 @@ namespace UMLRedactor
 
         private void DrawCanvas_OnMouseMove(object sender, MouseEventArgs e)
         {
-            if (IsSizing) set_Sizing(sender, e);
+            if (IsSizing) ResizeAndTranslate(e);
         }
 
         private void DrawCanvas_OnMouseUp(object sender, MouseButtonEventArgs e)
@@ -104,11 +93,10 @@ namespace UMLRedactor
             if (IsSizing)
             {
                 IsSizing = false;
-                SizingEdgeType = -1;
+                SizingEdge = -1;
                 SizingOffsetX = 0;
                 SizingOffsetY = 0;
                 SizingPanel = null;
-                SizingEdge = null;
             }
         }
     }
