@@ -10,6 +10,7 @@ namespace UMLRedactor.Elements
     {
         //private readonly List<TextBox> _tbs = new List<TextBox>();
         private int _edgeType;
+        public Enums.ElementTypes Type = Enums.ElementTypes.ElementClass;
 
         public ClassElement()
         {
@@ -143,11 +144,6 @@ namespace UMLRedactor.Elements
                 main.BorderEdge = _edgeType;
                 main.SizingPanel = this;
             }
-        }
-
-        private void MainGrid_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Focus();
         }
     }
 }

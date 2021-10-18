@@ -93,5 +93,10 @@ namespace UMLRedactor
                 SizingPanel = null;
             }
         }
+
+        private void ChooseElementButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

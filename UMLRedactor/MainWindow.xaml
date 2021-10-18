@@ -40,12 +40,23 @@
                 <DataGridTextColumn Header="Значение" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid Grid.Row="1" Grid.Column="0" Width="200">
-            <DataGrid.Columns>
-                <DataGridCheckBoxColumn Header="Элементы" Width="100" />
-                <DataGridCheckBoxColumn Header="" Width="100" />
-            </DataGrid.Columns>
-        </DataGrid>
+        <Border Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="1" />
+        <Grid Grid.Row="1" Grid.Column="0" Width="200">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="100" />
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" Grid.Column="0" Text="Элементы" FontSize="14" Grid.ColumnSpan="2"
+                     BorderThickness="0,0,0,1" BorderBrush="Black" Margin="1,1,1,0" />
+        </Grid>
         <ScrollViewer Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" HorizontalScrollBarVisibility="Auto"
                       VerticalScrollBarVisibility="Auto" AllowDrop="True">
             <Canvas x:Name="DrawCanvas" ScrollViewer.CanContentScroll="True"

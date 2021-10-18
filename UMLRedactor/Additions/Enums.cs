@@ -10,5 +10,10 @@
             LeftBottom = 3,
             RightBottom = 4
         }
+
+        public enum ElementTypes
+        {
+            ElementClass = 0
+        }
     }
 }
