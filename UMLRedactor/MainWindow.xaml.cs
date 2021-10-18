@@ -11,7 +11,7 @@ namespace UMLRedactor
     public partial class MainWindow
     {
         public bool IsSizing;
-        public int SizingEdge;
+        public int BorderEdge;
         public double SizingOffsetX;
         public double SizingOffsetY;
         public UserControl SizingPanel;
@@ -24,8 +24,9 @@ namespace UMLRedactor
         private void ResizeAndTranslate(MouseEventArgs e)
         {
             if (!IsSizing) return;
-            if (SizingEdge < 0) return;
+            if (BorderEdge < 0) return;
             if (SizingPanel == null) return;
+
             if (e.LeftButton != MouseButtonState.Pressed)
             {
                 IsSizing = false;
@@ -34,10 +35,9 @@ namespace UMLRedactor
             {
                 Point cursorPosition = e.GetPosition(DrawCanvas);
                 Point position = new Point(Canvas.GetLeft(SizingPanel), Canvas.GetTop(SizingPanel));
-                double diffX = (position.X - cursorPosition.X);
-                double diffY = (position.Y - cursorPosition.Y);
-
-                if (SizingEdge == (int)Enums.EdgeTypes.MiddleTop)
+                double diffX = position.X - cursorPosition.X;
+                double diffY = position.Y - cursorPosition.Y;
+                if (BorderEdge == (int)Enums.EdgeTypes.MiddleTop)
                 {
                     double newLeft = cursorPosition.X - SizingOffsetX;
                     double newTop = cursorPosition.Y - SizingOffsetY;
@@ -46,38 +46,32 @@ namespace UMLRedactor
                 }
                 else
                 {
-                    if ((SizingEdge == (int)Enums.EdgeTypes.LeftTop) ||
-                        (SizingEdge == (int)Enums.EdgeTypes.LeftBottom))
+                    if (BorderEdge == (int)Enums.EdgeTypes.LeftTop || BorderEdge == (int)Enums.EdgeTypes.LeftBottom)
                     {
                         double newLeft = cursorPosition.X;
                         double newWidth = SizingPanel.Width + diffX;
-
-                        if (newLeft > 0) Canvas.SetLeft(SizingPanel, newLeft);
-                        if (newWidth > 0) SizingPanel.Width = newWidth;
+                        if (newLeft > 0 && newWidth > SizingPanel.MinWidth) Canvas.SetLeft(SizingPanel, newLeft);
+                        if (newWidth > SizingPanel.MinWidth) SizingPanel.Width = newWidth;
                     }
 
-                    if ((SizingEdge == (int)Enums.EdgeTypes.LeftTop) ||
-                        (SizingEdge == (int)Enums.EdgeTypes.RightTop))
+                    if (BorderEdge == (int)Enums.EdgeTypes.LeftTop || BorderEdge == (int)Enums.EdgeTypes.RightTop)
                     {
                         double newTop = cursorPosition.Y;
                         double newHeight = SizingPanel.Height + diffY;
-
-                        if (newTop > 0) Canvas.SetTop(SizingPanel, newTop);
-                        if (newHeight > 0) SizingPanel.Height = newHeight;
+                        if (newTop > 0 && newHeight > SizingPanel.MinHeight) Canvas.SetTop(SizingPanel, newTop);
+                        if (newHeight > SizingPanel.MinHeight) SizingPanel.Height = newHeight;
                     }
 
-                    if ((SizingEdge == (int)Enums.EdgeTypes.RightTop) ||
-                        (SizingEdge == (int)Enums.EdgeTypes.RightBottom))
+                    if (BorderEdge == (int)Enums.EdgeTypes.RightTop || BorderEdge == (int)Enums.EdgeTypes.RightBottom)
                     {
                         double newWidth = cursorPosition.X + position.X;
-                        if (newWidth > 0) SizingPanel.Width = newWidth;
+                        if (newWidth > SizingPanel.MinWidth) SizingPanel.Width = newWidth;
                     }
 
-                    if ((SizingEdge == (int)Enums.EdgeTypes.LeftBottom) ||
-                        (SizingEdge == (int)Enums.EdgeTypes.RightBottom))
+                    if (BorderEdge == (int)Enums.EdgeTypes.LeftBottom || BorderEdge == (int)Enums.EdgeTypes.RightBottom)
                     {
                         double newHeight = cursorPosition.Y + position.Y;
-                        if (newHeight > 0) SizingPanel.Height = newHeight;
+                        if (newHeight > SizingPanel.MinHeight) SizingPanel.Height = newHeight;
                     }
                 }
             }
@@ -93,7 +87,7 @@ namespace UMLRedactor
             if (IsSizing)
             {
                 IsSizing = false;
-                SizingEdge = -1;
+                BorderEdge = -1;
                 SizingOffsetX = 0;
                 SizingOffsetY = 0;
                 SizingPanel = null;

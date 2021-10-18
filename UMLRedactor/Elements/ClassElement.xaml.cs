@@ -10,10 +10,12 @@ namespace UMLRedactor.Elements
     {
         //private readonly List<TextBox> _tbs = new List<TextBox>();
         private int _edgeType;
-        
+
         public ClassElement()
         {
             InitializeComponent();
+            MinWidth = 200;
+            MinHeight = 150;
             //_tbs.Add(Line1);
         }
 
@@ -32,14 +34,16 @@ namespace UMLRedactor.Elements
                 TextWrapping = TextWrapping.Wrap,
                 BorderThickness = new Thickness(0, 0, 0, 2),
                 BorderBrush = Brushes.Black,
+                Margin = new Thickness(1, 0, 1, 0),
                 Padding = new Thickness(5, 0, 5, 0)
             };
             Grid.SetRow(tb, MainGrid.RowDefinitions.Count - 2);
             Grid.SetRow(AddButton, MainGrid.RowDefinitions.Count - 1);
+            MinHeight += 30;
             MainGrid.Children.Add(tb);
             //_tbs.Add(tb);
         }
-        
+
         private void Mt_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Point offset = e.GetPosition(this);
@@ -49,7 +53,7 @@ namespace UMLRedactor.Elements
             if (grid?.Parent is MainWindow main)
             {
                 main.IsSizing = true;
-                main.SizingEdge = (int)Enums.EdgeTypes.MiddleTop;
+                main.BorderEdge = (int)Enums.EdgeTypes.MiddleTop;
                 main.SizingPanel = this;
                 main.SizingOffsetX = offset.X;
                 main.SizingOffsetY = offset.Y;
@@ -136,9 +140,14 @@ namespace UMLRedactor.Elements
             if (grid?.Parent is MainWindow main)
             {
                 main.IsSizing = true;
-                main.SizingEdge = _edgeType;
+                main.BorderEdge = _edgeType;
                 main.SizingPanel = this;
             }
+        }
+
+        private void MainGrid_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Focus();
         }
     }
 }

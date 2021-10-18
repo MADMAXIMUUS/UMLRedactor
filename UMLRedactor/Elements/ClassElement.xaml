@@ -21,7 +21,10 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1" Grid.Row="1" Margin="0,5,0,15" Name="MainGrid">
+        <Border Grid.Column="1" Grid.Row="1" BorderThickness="1" BorderBrush="Black" CornerRadius="15" Background="White"
+                MouseLeftButtonDown="MainGrid_OnMouseLeftButtonDown" />
+        <Grid Grid.Column="1" Grid.Row="1" Margin="0,5,0,15" Name="MainGrid"
+              MouseLeftButtonDown="MainGrid_OnMouseLeftButtonDown">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -31,15 +34,18 @@
                      HorizontalContentAlignment="Center" Padding="10,2"
                      MinHeight="30"
                      TextWrapping="Wrap"
+                     Background="Transparent"
+                     Margin="1,0"
                      FontSize="16" BorderThickness="0,0,0,2" BorderBrush="Black">
                 Classname
             </TextBox>
             <TextBox Name="Line1" Grid.Row="1" VerticalContentAlignment="Center" Padding="5,2"
+                     Margin="1,0"
+                     Background="Transparent"
                      FontSize="16" MinHeight="30" TextWrapping="Wrap" BorderThickness="0,0,0,2" BorderBrush="Black" />
-            <Button BorderThickness="0" Height="30" Name="AddButton" Grid.Row="2" Content="Add line" FontSize="16"
+            <Button BorderThickness="0" Height="30" Name="AddButton" Grid.Row="2" Content="Add line" FontSize="16" Margin="1,0"
                     Click="Button_OnClick" />
         </Grid>
-        <Border Grid.Column="1" Grid.Row="1" BorderThickness="1" BorderBrush="Black" CornerRadius="15" />
         <Border Name="Lt" Margin="5" Grid.Row="0" Grid.Column="0" Width="5" Height="5" Background="Black"
                 Visibility="Hidden" MouseEnter="Lt_OnMouseEnter" MouseLeave="OnMouseLeave"
                 MouseLeftButtonDown="Lt_OnMouseLeftButtonDown" />
@@ -52,7 +58,7 @@
         <Border Name="Rb" Margin="5" Grid.Row="2" Grid.Column="2" Width="5" Height="5" Background="Black"
                 Visibility="Hidden" MouseEnter="Rb_OnMouseEnter" MouseLeave="OnMouseLeave"
                 MouseLeftButtonDown="Rb_OnMouseLeftButtonDown" />
-        <Border Name="Mt" Margin="5" Grid.Row="0" Grid.Column="1" Width="5" Height="5" Background="Black"
+        <Border Name="Mt" Margin="5" Grid.Row="0" Grid.Column="1" Width="20" Height="5" Background="Black"
                 Visibility="Hidden" MouseEnter="Mt_OnMouseEnter" MouseLeave="OnMouseLeave"
                 MouseLeftButtonDown="Mt_OnMouseLeftButtonDown" />
     </Grid>
