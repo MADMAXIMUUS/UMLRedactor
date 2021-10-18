@@ -88,7 +88,7 @@
         <None Include="App.config" />
     </ItemGroup>
     <ItemGroup>
-      <Content Include="Icons\UMLRedactor_icon.ico" />
+      <Resource Include="Icons\UMLRedactor_icon.ico" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
