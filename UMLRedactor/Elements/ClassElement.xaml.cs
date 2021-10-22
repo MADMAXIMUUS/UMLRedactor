@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using UMLRedactor.Additions;
+using UMLRedactor.View;
 
 namespace UMLRedactor.Elements
 {
@@ -22,10 +23,7 @@ namespace UMLRedactor.Elements
 
         private void Button_OnClick(object sender, RoutedEventArgs e)
         {
-            RowDefinition rw = new RowDefinition
-            {
-                Height = GridLength.Auto
-            };
+            RowDefinition rw = new RowDefinition { Height = GridLength.Auto };
             MainGrid.RowDefinitions.Add(rw);
             TextBox tb = new TextBox()
             {
@@ -55,7 +53,7 @@ namespace UMLRedactor.Elements
             {
                 main.IsSizing = true;
                 main.BorderEdge = (int)Enums.EdgeTypes.MiddleTop;
-                main.SizingPanel = this;
+                main.SelectedElement = this;
                 main.SizingOffsetX = offset.X;
                 main.SizingOffsetY = offset.Y;
             }
@@ -142,7 +140,7 @@ namespace UMLRedactor.Elements
             {
                 main.IsSizing = true;
                 main.BorderEdge = _edgeType;
-                main.SizingPanel = this;
+                main.SelectedElement = this;
             }
         }
     }
