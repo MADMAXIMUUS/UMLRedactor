@@ -7,17 +7,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3de5b1ee-0cb0-4ba4-83f8-d2361bf6955d" name="Default Changelist" comment="Добавлено перемещение и изменение размеров элемента">
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/Icons/Class_element_icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/shelf/Uncommitted_changes_before_Update_at_12_10_2021_22_05_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/shelf/Uncommitted_changes_before_Update_at_12_10_2021_22_05__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/shelf/Uncommitted_changes_before_Update_at_18_10_2021_23_03__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/shelf/Uncommitted_changes_before_Update_at_18_10_2021_23_03__Default_Changelist_.xml" afterDir="false" />
+    <list default="true" id="3de5b1ee-0cb0-4ba4-83f8-d2361bf6955d" name="Default Changelist" comment="Подготовка к MVVM">
+      <change afterPath="$PROJECT_DIR$/UMLRedactor.sln.DotSettings" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Models/DomModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Models/DomNode.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Properties/Annotations.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/shelf/Uncommitted_changes_before_Update_at_16_10_2021_18_29_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/shelf/Uncommitted_changes_before_Update_at_16_10_2021_18_29__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/shelf/Uncommitted_changes_before_Update_at_17_10_2021_11_26_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/shelf/Uncommitted_changes_before_Update_at_17_10_2021_11_26__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/shelf/Uncommitted_changes_before_Update_at_18_10_2021_23_03_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/shelf/Uncommitted_changes_before_Update_at_18_10_2021_23_03__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Elements/ClassElement.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Elements/ClassElement.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/App.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/App.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +39,12 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9b25e913d31d4b8b83ebde8a2012e613286680/a0/b92468c0/XmlDocument.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ba49a34043c4db0b03b2de95259ddd828088/dc/cfd7ee3b/XDocument.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9b25e913d31d4b8b83ebde8a2012e613286680/b0/e1b6d861/XmlNode.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ba49a34043c4db0b03b2de95259ddd828088/97/56f458ea/XElement.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -65,7 +76,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="ssh.settings" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys_rider" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -114,7 +125,15 @@
       <workItem from="1634823049753" duration="105000" />
       <workItem from="1634824309939" duration="220000" />
       <workItem from="1634824583534" duration="39000" />
-      <workItem from="1634915729760" duration="2782000" />
+      <workItem from="1634915729760" duration="3644000" />
+      <workItem from="1635098281793" duration="744000" />
+      <workItem from="1635104066391" duration="27000" />
+      <workItem from="1635104217975" duration="1581000" />
+      <workItem from="1635346536864" duration="9688000" />
+      <workItem from="1635433909933" duration="233000" />
+      <workItem from="1635501878851" duration="4054000" />
+      <workItem from="1635595293483" duration="1025000" />
+      <workItem from="1635600983619" duration="6536000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена иконка">
       <created>1633812452088</created>
@@ -144,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634482569470</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Подготовка к MVVM">
+      <created>1634918604305</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1634918604305</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,6 +197,7 @@
     <MESSAGE value="Обновлена иконка и добавлен новый элемент для тестов" />
     <MESSAGE value="Добавлена возможность перемещения объекта" />
     <MESSAGE value="Добавлено перемещение и изменение размеров элемента" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлено перемещение и изменение размеров элемента" />
+    <MESSAGE value="Подготовка к MVVM" />
+    <option name="LAST_COMMIT_MESSAGE" value="Подготовка к MVVM" />
   </component>
 </project>

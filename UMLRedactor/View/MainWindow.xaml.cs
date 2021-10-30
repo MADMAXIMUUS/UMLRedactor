@@ -97,19 +97,7 @@ namespace UMLRedactor.View
 
         private void ChooseElementButton_OnChecked(object sender, RoutedEventArgs e)
         {
-            switch ((sender as ToggleButton)?.Name)
-            {
-                case "ChooseClassElementButton":
-                {
-                    ChooseOtherElementButton.IsChecked = false;
-                    break;
-                }
-                case "ChooseOtherElementButton":
-                {
-                    ChooseClassElementButton.IsChecked = false;
-                    break;
-                }
-            }
+            
         }
     }
 }
