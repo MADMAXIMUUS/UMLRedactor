@@ -27,13 +27,17 @@
                 <MenuItem Header="Save as.." />
                 <MenuItem Header="Export as PNG" />
             </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Undo"/>
+                <MenuItem Header="Redo"/>
+            </MenuItem>
             <MenuItem Header="About" />
         </Menu>
-        <TreeView x:Name="TreeView" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" Width="200" BorderThickness="1,0,0,1"
+        <TreeView x:Name="TreeView" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" Width="200" BorderThickness="1,0,0,0"
                   BorderBrush="Black">
             <TextBlock>Диаграмма</TextBlock>
         </TreeView>
-        <DataGrid Grid.Row="3" Grid.Column="0" Width="222" BorderThickness="0,1,1,1" BorderBrush="Black">
+        <DataGrid Grid.Row="3" Grid.Column="0" Width="222" BorderThickness="0,1,1,0" BorderBrush="Black">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Свойства" Width="*" />
                 <DataGridTextColumn Header="Значения" Width="*" />
