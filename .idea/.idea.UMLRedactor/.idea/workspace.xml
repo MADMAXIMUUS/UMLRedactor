@@ -8,15 +8,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3de5b1ee-0cb0-4ba4-83f8-d2361bf6955d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/IElement.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Lines/ILine.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Lines/NoteLink.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Additions/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Additions/Enums.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Elements/ClassElement.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ClassElement.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Elements/ClassElement.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ClassElement.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ClassElement.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ClassElement.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/IElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/IElement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Lines/ILine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Lines/ILine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Lines/NoteLink.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Lines/NoteLink.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +71,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="ReSpellerSettingsId" />
+    <property name="settings.editor.selected.configurable" value="CodeLensConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -138,6 +136,8 @@
       <workItem from="1636185846898" duration="5517000" />
       <workItem from="1636640752894" duration="3437000" />
       <workItem from="1636790533060" duration="6699000" />
+      <workItem from="1636811244253" duration="2000" />
+      <workItem from="1636822555784" duration="5409000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена иконка">
       <created>1633812452088</created>

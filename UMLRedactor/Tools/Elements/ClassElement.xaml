@@ -41,9 +41,6 @@
                      Margin="1,0"
                      Background="Transparent"
                      FontSize="16" MinHeight="30" TextWrapping="Wrap" BorderThickness="0,0,0,2" BorderBrush="Black" />
-            <Button BorderThickness="0" Height="30" Name="AddButton" Grid.Row="2" Content="Add line" FontSize="16"
-                    Margin="1,0"
-                    Click="Button_OnClick" />
         </Grid>
         <Border Name="Lt" Margin="5" Grid.Row="0" Grid.Column="0" Width="5" Height="5" Background="Black"
                 Visibility="Hidden" MouseEnter="Lt_OnMouseEnter" MouseLeave="OnMouseLeave"

@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using UMLRedactor.Additions;
+using UMLRedactor.Tools.Elements;
 
 namespace UMLRedactor.View
 {

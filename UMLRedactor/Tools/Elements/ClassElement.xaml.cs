@@ -12,6 +12,7 @@ namespace UMLRedactor.Tools.Elements
         //private readonly List<TextBox> _tbs = new List<TextBox>();
         private int _edgeType;
 
+        public int LocalId { get; set; }
         public Enums.ElementTypes Type { get; set; }
 
         public ClassElement()
@@ -39,7 +40,7 @@ namespace UMLRedactor.Tools.Elements
                 Padding = new Thickness(5, 0, 5, 0)
             };
             Grid.SetRow(tb, MainGrid.RowDefinitions.Count - 2);
-            Grid.SetRow(AddButton, MainGrid.RowDefinitions.Count - 1);
+            /*Grid.SetRow(AddButton, MainGrid.RowDefinitions.Count - 1);*/
             MinHeight += 30;
             MainGrid.Children.Add(tb);
             //_tbs.Add(tb);
