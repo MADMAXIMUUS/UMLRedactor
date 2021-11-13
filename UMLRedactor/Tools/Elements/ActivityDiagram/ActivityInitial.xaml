@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="UMLRedactor.Tools.Elements.ActivityDiagram.ActivityInitial"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:UMLRedactor.Tools.Elements.ActivityDiagram"
+             mc:Ignorable="d"
+             GotFocus="ActivityInitial_OnGotFocus"
+             LostFocus="ActivityInitial_OnLostFocus"
+             Background="Transparent"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1" Grid.Row="1" Margin="5" Name="MainGrid">
+                <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Ellipse Grid.Row="0" Fill="Black" Height="25" Width="25" HorizontalAlignment="Center"/>
+                <TextBox Name="Line1" Grid.Row="1" VerticalContentAlignment="Center" Padding="5,2"
+                         HorizontalContentAlignment="Center"
+                         Margin="1,0"
+                         Background="Transparent"
+                         Width="Auto"
+                         FontSize="16" MinHeight="30" TextWrapping="Wrap" BorderThickness="0">
+                    Activity Initial
+                </TextBox>
+        </Grid>
+        <Border Name="Lt" Margin="5" Grid.Row="0" Grid.Column="0" Width="5" Height="5" Background="Black"
+                Visibility="Hidden" MouseEnter="Lt_OnMouseEnter" MouseLeave="OnMouseLeave"
+                MouseLeftButtonDown="Lt_OnMouseLeftButtonDown" />
+        <Border Name="Rt" Margin="5" Grid.Row="0" Grid.Column="2" Width="5" Height="5" Background="Black"
+                Visibility="Hidden" MouseEnter="Rt_OnMouseEnter" MouseLeave="OnMouseLeave"
+                MouseLeftButtonDown="Rt_OnMouseLeftButtonDown" />
+        <Border Name="Lb" Margin="5" Grid.Row="2" Grid.Column="0" Width="5" Height="5" Background="Black"
+                Visibility="Hidden" MouseEnter="Lb_OnMouseEnter" MouseLeave="OnMouseLeave"
+                MouseLeftButtonDown="Lb_OnMouseLeftButtonDown" />
+        <Border Name="Rb" Margin="5" Grid.Row="2" Grid.Column="2" Width="5" Height="5" Background="Black"
+                Visibility="Hidden" MouseEnter="Rb_OnMouseEnter" MouseLeave="OnMouseLeave"
+                MouseLeftButtonDown="Rb_OnMouseLeftButtonDown" />
+        <Border Name="Mt" Margin="5" Grid.Row="0" Grid.Column="1" Width="20" Height="5" Background="Black"
+                Visibility="Hidden" MouseEnter="Mt_OnMouseEnter" MouseLeave="OnMouseLeave"
+                MouseLeftButtonDown="Mt_OnMouseLeftButtonDown" />
+    </Grid>
+</UserControl>

@@ -3,8 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:elements="clr-namespace:UMLRedactor.Tools.Elements"
-        xmlns:lines="clr-namespace:UMLRedactor.Tools.Lines"
+        xmlns:activityDiagram="clr-namespace:UMLRedactor.Tools.Elements.ActivityDiagram"
         mc:Ignorable="d"
         AllowDrop="True"
         Title="Редактор" Height="600" Width="1000">
@@ -29,8 +28,8 @@
                 <MenuItem Header="Export as PNG" />
             </MenuItem>
             <MenuItem Header="Edit">
-                <MenuItem Header="Undo"/>
-                <MenuItem Header="Redo"/>
+                <MenuItem Header="Undo" />
+                <MenuItem Header="Redo" />
             </MenuItem>
             <MenuItem Header="About" />
         </Menu>
@@ -61,29 +60,11 @@
                     <RowDefinition Height="100" />
                     <RowDefinition Height="100" />
                 </Grid.RowDefinitions>
-                <Button Grid.Row="0" Grid.Column="0" Background="White" BorderThickness="0">
+                <Button Grid.Row="0" Grid.Column="0" Background="Transparent" BorderThickness="0">
                     <Image Source="../Icons/Class_element_icon.png" Height="70" Width="70" />
                 </Button>
-                <Button Grid.Row="0" Grid.Column="1" Background="White" BorderThickness="0">
-                    <Image Source="../Icons/Class_element_icon.png" Height="70" Width="70" />
-                </Button>
-                <Button Grid.Row="1" Grid.Column="0" Background="White" BorderThickness="0">
-                    <Image Source="../Icons/Class_element_icon.png" Height="70" Width="70" />
-                </Button>
-                <Button Grid.Row="1" Grid.Column="1" Background="White" BorderThickness="0">
-                    <Image Source="../Icons/Class_element_icon.png" Height="70" Width="70" />
-                </Button>
-                <Button Grid.Row="2" Grid.Column="0" Background="White" BorderThickness="0">
-                    <Image Source="../Icons/Class_element_icon.png" Height="70" Width="70" />
-                </Button>
-                <Button Grid.Row="2" Grid.Column="1" Background="White" BorderThickness="0">
-                    <Image Source="../Icons/Class_element_icon.png" Height="70" Width="70" />
-                </Button>
-                <Button Grid.Row="3" Grid.Column="0" Background="White" BorderThickness="0">
-                    <Image Source="../Icons/Class_element_icon.png" Height="70" Width="70" />
-                </Button>
-                <Button Grid.Row="3" Grid.Column="1" Background="White" BorderThickness="0">
-                    <Image Source="../Icons/Class_element_icon.png" Height="70" Width="70" />
+                <Button Grid.Row="0" Grid.Column="1" Background="Transparent" BorderThickness="0">
+                    <Image Source="../Icons/NoteLink_icon.png" Height="70" Width="70" />
                 </Button>
             </Grid>
         </ScrollViewer>
@@ -94,7 +75,7 @@
                     MouseMove="DrawCanvas_OnMouseMove"
                     MouseUp="DrawCanvas_OnMouseUp"
                     ScrollViewer.VerticalScrollBarVisibility="Auto" Width="2000" Height="2000">
-                <elements:ClassElement Width="200" Canvas.Left="20" Canvas.Top="20" />
+                <activityDiagram:ActivityInitial Canvas.Left="20" Canvas.Top="20" />
             </Canvas>
         </ScrollViewer>
     </Grid>

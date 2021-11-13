@@ -94,10 +94,5 @@ namespace UMLRedactor.View
                 SelectedElement = null;
             }
         }
-
-        private void ChooseElementButton_OnChecked(object sender, RoutedEventArgs e)
-        {
-            
-        }
     }
 }

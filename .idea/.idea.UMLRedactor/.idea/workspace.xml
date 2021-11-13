@@ -8,11 +8,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3de5b1ee-0cb0-4ba4-83f8-d2361bf6955d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Icons/NoteLink_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Activity.xaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Activity.xaml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/ActivityFinal.xaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/ActivityFinal.xaml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/ActivityInitial.xaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/ActivityInitial.xaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ClassElement.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ClassElement.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/IElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/IElement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Lines/ILine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Lines/ILine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Lines/NoteLink.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Lines/NoteLink.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ClassElement.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ClassDiagram/ClassElement.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ClassElement.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ClassDiagram/ClassElement.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" afterDir="false" />
     </list>
@@ -137,7 +143,8 @@
       <workItem from="1636640752894" duration="3437000" />
       <workItem from="1636790533060" duration="6699000" />
       <workItem from="1636811244253" duration="2000" />
-      <workItem from="1636822555784" duration="5409000" />
+      <workItem from="1636822555784" duration="5718000" />
+      <workItem from="1636831655712" duration="5087000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена иконка">
       <created>1633812452088</created>
@@ -195,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635963141560</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Изменены интерфейсы ILine и IElement, изменен вид элемента class">
+      <created>1636829737015</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1636829737015</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,6 +240,7 @@
     <MESSAGE value="Отказ от MVVM в пользу MVC, а также изменение дизайна" />
     <MESSAGE value="Изменение интерфейса" />
     <MESSAGE value="Добавлен новый пункт меню" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлен новый пункт меню" />
+    <MESSAGE value="Изменены интерфейсы ILine и IElement, изменен вид элемента class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Изменены интерфейсы ILine и IElement, изменен вид элемента class" />
   </component>
 </project>

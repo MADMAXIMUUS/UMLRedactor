@@ -55,7 +55,16 @@
         <Compile Include="Models\DomNode.cs" />
         <Compile Include="Models\DomModel.cs" />
         <Compile Include="Properties\Annotations.cs" />
-        <Compile Include="Tools\Elements\ClassElement.xaml.cs">
+        <Compile Include="Tools\Elements\ActivityDiagram\Activity.xaml.cs">
+          <DependentUpon>Activity.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Tools\Elements\ActivityDiagram\ActivityFinal.xaml.cs">
+          <DependentUpon>ActivityFinal.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Tools\Elements\ActivityDiagram\ActivityInitial.xaml.cs">
+          <DependentUpon>ActivityInitial.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Tools\Elements\ClassDiagram\ClassElement.xaml.cs">
           <DependentUpon>ClassElement.xaml</DependentUpon>
         </Compile>
         <Compile Include="Tools\Elements\IElement.cs" />
@@ -71,7 +80,10 @@
             <DependentUpon>App.xaml</DependentUpon>
             <SubType>Code</SubType>
         </Compile>
-        <Page Include="Tools\Elements\ClassElement.xaml" />
+        <Page Include="Tools\Elements\ActivityDiagram\Activity.xaml" />
+        <Page Include="Tools\Elements\ActivityDiagram\ActivityFinal.xaml" />
+        <Page Include="Tools\Elements\ActivityDiagram\ActivityInitial.xaml" />
+        <Page Include="Tools\Elements\ClassDiagram\ClassElement.xaml" />
         <Page Include="View\MainWindow.xaml">
           <Generator>MSBuild:Compile</Generator>
           <SubType>Designer</SubType>
@@ -104,6 +116,10 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Resources" />
+      <Folder Include="Tools\Elements\UseCaseDiagram" />
+    </ItemGroup>
+    <ItemGroup>
+      <Resource Include="Icons\NoteLink_icon.png" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
