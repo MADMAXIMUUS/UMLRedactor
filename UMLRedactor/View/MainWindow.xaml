@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:uc="clr-namespace:UMLRedactor.Elements"
+        xmlns:elements="clr-namespace:UMLRedactor.Tools.Elements"
         mc:Ignorable="d"
         AllowDrop="True"
         Title="Редактор" Height="600" Width="1000">
@@ -93,7 +93,7 @@
                     MouseMove="DrawCanvas_OnMouseMove"
                     MouseUp="DrawCanvas_OnMouseUp"
                     ScrollViewer.VerticalScrollBarVisibility="Auto" Width="2000" Height="2000">
-                <uc:ClassElement Width="200" Canvas.Left="20" Canvas.Top="20" />
+                <elements:ClassElement Width="200" Canvas.Left="20" Canvas.Top="20" />
             </Canvas>
         </ScrollViewer>
     </Grid>

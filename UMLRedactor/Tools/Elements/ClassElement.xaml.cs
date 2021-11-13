@@ -5,19 +5,21 @@ using System.Windows.Media;
 using UMLRedactor.Additions;
 using UMLRedactor.View;
 
-namespace UMLRedactor.Elements
+namespace UMLRedactor.Tools.Elements
 {
-    public partial class ClassElement
+    public partial class ClassElement: IElement
     {
         //private readonly List<TextBox> _tbs = new List<TextBox>();
         private int _edgeType;
-        public Enums.ElementTypes Type = Enums.ElementTypes.ElementClass;
+
+        public Enums.ElementTypes Type { get; set; }
 
         public ClassElement()
         {
             InitializeComponent();
             MinWidth = 200;
             MinHeight = 150;
+            Type = Enums.ElementTypes.ElementClass;
             //_tbs.Add(Line1);
         }
 

@@ -15,5 +15,10 @@
         {
             ElementClass = 0
         }
+        
+        public enum LineTypes
+        {
+            NoteLink = 0
+        }
     }
 }

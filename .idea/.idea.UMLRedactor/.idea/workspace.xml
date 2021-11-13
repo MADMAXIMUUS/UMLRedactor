@@ -8,9 +8,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3de5b1ee-0cb0-4ba4-83f8-d2361bf6955d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/dictionaries/maxim.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/IElement.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Lines/ILine.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Lines/NoteLink.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Additions/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Additions/Enums.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Elements/ClassElement.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ClassElement.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Elements/ClassElement.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ClassElement.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +38,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9b25e913d31d4b8b83ebde8a2012e613286680/a0/b92468c0/XmlDocument.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ba49a34043c4db0b03b2de95259ddd828088/dc/cfd7ee3b/XDocument.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9b25e913d31d4b8b83ebde8a2012e613286680/b0/e1b6d861/XmlNode.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/98f1e9a344024c929a1382bed95982945fe188/a4/8d837221/Shape.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ba49a34043c4db0b03b2de95259ddd828088/97/56f458ea/XElement.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -127,7 +133,11 @@
       <workItem from="1635600983619" duration="6585000" />
       <workItem from="1635687145052" duration="2845000" />
       <workItem from="1635880079537" duration="2384000" />
-      <workItem from="1635961942126" duration="986000" />
+      <workItem from="1635961942126" duration="1843000" />
+      <workItem from="1636118615172" duration="707000" />
+      <workItem from="1636185846898" duration="5517000" />
+      <workItem from="1636640752894" duration="3437000" />
+      <workItem from="1636790533060" duration="6699000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена иконка">
       <created>1633812452088</created>
@@ -178,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635882459292</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Добавлен новый пункт меню">
+      <created>1635963141560</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1635963141560</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +225,7 @@
     <MESSAGE value="Подготовка к MVVM" />
     <MESSAGE value="Отказ от MVVM в пользу MVC, а также изменение дизайна" />
     <MESSAGE value="Изменение интерфейса" />
-    <option name="LAST_COMMIT_MESSAGE" value="Изменение интерфейса" />
+    <MESSAGE value="Добавлен новый пункт меню" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлен новый пункт меню" />
   </component>
 </project>
