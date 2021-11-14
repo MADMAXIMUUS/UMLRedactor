@@ -1,13 +1,15 @@
-﻿<UserControl x:Class="UMLRedactor.Tools.Elements.ActivityDiagram.Activity"
+﻿<UserControl x:Class="UMLRedactor.Tools.Elements.UseCaseDiagram.Actor"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:UMLRedactor.Tools.Elements"
+             xmlns:local="clr-namespace:UMLRedactor.Tools.Elements.UseCaseDiagram"
              mc:Ignorable="d"
-             Background="Transparent"
-             GotFocus="Activity_OnGotFocus"
-             LostFocus="Activity_OnLostFocus"
+             GotFocus="Actor_OnGotFocus"
+             LostFocus="Actor_OnLostFocus"
+             Background="Red"
+             MinWidth="100"
+             MinHeight="100"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
@@ -20,15 +22,22 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <Border Grid.Column="1" Grid.Row="1" BorderThickness="1" BorderBrush="Black" CornerRadius="30"
-                Background="White" />
-        <TextBox Name="Title" Grid.Column="1" Grid.Row="1" Margin="5" VerticalContentAlignment="Center"
-                 HorizontalContentAlignment="Center" Padding="10,2"
-                 TextWrapping="Wrap"
-                 Background="Transparent"
-                 FontSize="16" BorderThickness="0" BorderBrush="Black">
-            Activity
-        </TextBox>
+        <Grid Grid.Column="1" Grid.Row="1" Margin="5" Name="MainGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Source="../../../Icons/Actor_icon.png" />
+            <TextBox Name="Line1" Grid.Row="1" VerticalContentAlignment="Center"
+                     Padding="5,2"
+                     HorizontalContentAlignment="Center"
+                     Margin="1,0"
+                     Background="Transparent"
+                     Width="Auto"
+                     FontSize="16" MinHeight="30" TextWrapping="Wrap" BorderThickness="0">
+                Actor
+            </TextBox>
+        </Grid>
         <Border Name="Lt" Margin="5" Grid.Row="0" Grid.Column="0" Width="5" Height="5" Background="Black"
                 Visibility="Hidden" MouseEnter="Lt_OnMouseEnter" MouseLeave="OnMouseLeave"
                 MouseLeftButtonDown="Lt_OnMouseLeftButtonDown" />

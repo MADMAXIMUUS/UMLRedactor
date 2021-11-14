@@ -75,7 +75,7 @@
                     MouseMove="DrawCanvas_OnMouseMove"
                     MouseUp="DrawCanvas_OnMouseUp"
                     ScrollViewer.VerticalScrollBarVisibility="Auto" Width="2000" Height="2000">
-                <activityDiagram:ActivityInitial Canvas.Left="20" Canvas.Top="20" />
+                <activityDiagram:Decision/>
             </Canvas>
         </ScrollViewer>
     </Grid>

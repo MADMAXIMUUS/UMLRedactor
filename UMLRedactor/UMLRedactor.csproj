@@ -64,10 +64,19 @@
         <Compile Include="Tools\Elements\ActivityDiagram\ActivityInitial.xaml.cs">
           <DependentUpon>ActivityInitial.xaml</DependentUpon>
         </Compile>
+        <Compile Include="Tools\Elements\ActivityDiagram\Decision.xaml.cs">
+          <DependentUpon>Decision.xaml</DependentUpon>
+        </Compile>
         <Compile Include="Tools\Elements\ClassDiagram\ClassElement.xaml.cs">
           <DependentUpon>ClassElement.xaml</DependentUpon>
         </Compile>
         <Compile Include="Tools\Elements\IElement.cs" />
+        <Compile Include="Tools\Elements\UseCaseDiagram\Actor.xaml.cs">
+          <DependentUpon>Actor.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Tools\Elements\UseCaseDiagram\UseCase.xaml.cs">
+          <DependentUpon>UseCase.xaml</DependentUpon>
+        </Compile>
         <Compile Include="Tools\Lines\ILine.cs" />
         <Compile Include="Tools\Lines\NoteLink.cs" />
         <Compile Include="View\MainWindow.xaml.cs">
@@ -83,7 +92,10 @@
         <Page Include="Tools\Elements\ActivityDiagram\Activity.xaml" />
         <Page Include="Tools\Elements\ActivityDiagram\ActivityFinal.xaml" />
         <Page Include="Tools\Elements\ActivityDiagram\ActivityInitial.xaml" />
+        <Page Include="Tools\Elements\ActivityDiagram\Decision.xaml" />
         <Page Include="Tools\Elements\ClassDiagram\ClassElement.xaml" />
+        <Page Include="Tools\Elements\UseCaseDiagram\Actor.xaml" />
+        <Page Include="Tools\Elements\UseCaseDiagram\UseCase.xaml" />
         <Page Include="View\MainWindow.xaml">
           <Generator>MSBuild:Compile</Generator>
           <SubType>Designer</SubType>
@@ -116,10 +128,12 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Resources" />
-      <Folder Include="Tools\Elements\UseCaseDiagram" />
     </ItemGroup>
     <ItemGroup>
       <Resource Include="Icons\NoteLink_icon.png" />
+    </ItemGroup>
+    <ItemGroup>
+      <Resource Include="Icons\Actor_icon.png" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

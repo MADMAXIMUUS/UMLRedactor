@@ -4,21 +4,21 @@ using System.Windows.Input;
 using UMLRedactor.Additions;
 using UMLRedactor.View;
 
-namespace UMLRedactor.Tools.Elements.ActivityDiagram
+namespace UMLRedactor.Tools.Elements.UseCaseDiagram
 {
-    public partial class Activity : IElement
+    public partial class Actor : IElement
     {
         private int _edgeType;
 
         public int LocalId { get; set; }
         public Enums.ElementTypes Type { get; set; }
 
-        public Activity()
+        public Actor()
         {
             InitializeComponent();
         }
-        
-        private void Activity_OnGotFocus(object sender, RoutedEventArgs e)
+
+        private void Actor_OnGotFocus(object sender, RoutedEventArgs e)
         {
             Lt.Visibility = Visibility.Visible;
             Rt.Visibility = Visibility.Visible;
@@ -27,7 +27,7 @@ namespace UMLRedactor.Tools.Elements.ActivityDiagram
             Mt.Visibility = Visibility.Visible;
         }
 
-        private void Activity_OnLostFocus(object sender, RoutedEventArgs e)
+        private void Actor_OnLostFocus(object sender, RoutedEventArgs e)
         {
             Lt.Visibility = Visibility.Hidden;
             Rt.Visibility = Visibility.Hidden;
@@ -35,7 +35,7 @@ namespace UMLRedactor.Tools.Elements.ActivityDiagram
             Rb.Visibility = Visibility.Hidden;
             Mt.Visibility = Visibility.Hidden;
         }
-        
+
         private void Mt_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Point offset = e.GetPosition(this);
@@ -51,6 +51,7 @@ namespace UMLRedactor.Tools.Elements.ActivityDiagram
                 main.SizingOffsetY = offset.Y;
             }
         }
+
         private void Lt_OnMouseEnter(object sender, MouseEventArgs e)
         {
             Cursor = Cursors.SizeNWSE;
