@@ -8,19 +8,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3de5b1ee-0cb0-4ba4-83f8-d2361bf6955d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/Icons/Actor_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Decision.xaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Decision.xaml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/UseCaseDiagram/Actor.xaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/UseCaseDiagram/Actor.xaml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/UseCaseDiagram/UseCase.xaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/UseCaseDiagram/UseCase.xaml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj.DotSettings.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Additions/AdditionElements/DecisionRhombus.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Activity.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Activity.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Activity.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Activity.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Decision.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Decision.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Decision.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Decision.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/UseCaseDiagram/Actor.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/UseCaseDiagram/Actor.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Lines/NoteLink.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Lines/NoteLink.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +40,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9b25e913d31d4b8b83ebde8a2012e613286680/b0/e1b6d861/XmlNode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/98f1e9a344024c929a1382bed95982945fe188/a4/8d837221/Shape.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ba49a34043c4db0b03b2de95259ddd828088/97/56f458ea/XElement.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/82c99ed2e5824054aad8d9d4d6755403381188/ee/b1c33224/EllipseGeometry.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/82c99ed2e5824054aad8d9d4d6755403381188/47/cf5f1ee1/Brushes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -147,7 +145,12 @@
       <workItem from="1636831655712" duration="5209000" />
       <workItem from="1636877385777" duration="7127000" />
       <workItem from="1636891398941" duration="5041000" />
-      <workItem from="1636896602060" duration="3068000" />
+      <workItem from="1636896602060" duration="3476000" />
+      <workItem from="1637145908657" duration="263000" />
+      <workItem from="1637246016417" duration="1299000" />
+      <workItem from="1637247510692" duration="2118000" />
+      <workItem from="1637249701762" duration="3317000" />
+      <workItem from="1637410058624" duration="5975000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена иконка">
       <created>1633812452088</created>
@@ -219,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636836869079</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Добавлены элементы UML диаграмм">
+      <created>1636899916325</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1636899916326</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,6 +262,7 @@
     <MESSAGE value="Добавлен новый пункт меню" />
     <MESSAGE value="Изменены интерфейсы ILine и IElement, изменен вид элемента class" />
     <MESSAGE value="Добавлены новые элементы UML" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлены новые элементы UML" />
+    <MESSAGE value="Добавлены элементы UML диаграмм" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлены элементы UML диаграмм" />
   </component>
 </project>

@@ -17,17 +17,21 @@ namespace UMLRedactor.Tools.Lines
         public IElement Source { get; set; }
         public IElement Target { get; set; }
         
-        private LineGeometry _line = new LineGeometry();
+        private readonly LineGeometry _line = new LineGeometry();
 
         public NoteLink(Point startPoint, Point endPoint)
         {
             StartPoint = startPoint;
             EndPoint = endPoint;
+            Stroke=Brushes.Black;
+            StrokeThickness = 6;
         }
 
         public NoteLink()
         {
-            
+            Stroke=Brushes.Black;
+            StrokeThickness = 6;
+            StrokeDashArray= DoubleCollection.Parse("3 2");
         }
 
         protected override Geometry DefiningGeometry {

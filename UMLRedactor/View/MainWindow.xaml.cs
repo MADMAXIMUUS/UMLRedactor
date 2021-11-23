@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Globalization;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using UMLRedactor.Additions;
@@ -44,6 +45,7 @@ namespace UMLRedactor.View
                     double newTop = cursorPosition.Y - SizingOffsetY;
                     if (newLeft > 0) Canvas.SetLeft(SelectedElement, newLeft);
                     if (newTop > 0) Canvas.SetTop(SelectedElement, newTop);
+                    SelectedElement.UpdateLayout();
                 }
                 else
                 {
@@ -51,8 +53,10 @@ namespace UMLRedactor.View
                     {
                         double newLeft = cursorPosition.X;
                         double newWidth = SelectedElement.Width + diffX;
-                        if (newLeft > 0 && newWidth > SelectedElement.MinWidth) Canvas.SetLeft(SelectedElement, newLeft);
+                        if (newLeft > 0 && newWidth > SelectedElement.MinWidth)
+                            Canvas.SetLeft(SelectedElement, newLeft);
                         if (newWidth > SelectedElement.MinWidth) SelectedElement.Width = newWidth;
+                        SelectedElement.UpdateLayout();
                     }
 
                     if (BorderEdge == (int)Enums.EdgeTypes.LeftTop || BorderEdge == (int)Enums.EdgeTypes.RightTop)
@@ -61,20 +65,28 @@ namespace UMLRedactor.View
                         double newHeight = SelectedElement.Height + diffY;
                         if (newTop > 0 && newHeight > SelectedElement.MinHeight) Canvas.SetTop(SelectedElement, newTop);
                         if (newHeight > SelectedElement.MinHeight) SelectedElement.Height = newHeight;
+                        SelectedElement.UpdateLayout();
                     }
 
                     if (BorderEdge == (int)Enums.EdgeTypes.RightTop || BorderEdge == (int)Enums.EdgeTypes.RightBottom)
                     {
                         double newWidth = cursorPosition.X + position.X;
                         if (newWidth > SelectedElement.MinWidth) SelectedElement.Width = newWidth;
+                        SelectedElement.UpdateLayout();
                     }
 
                     if (BorderEdge == (int)Enums.EdgeTypes.LeftBottom || BorderEdge == (int)Enums.EdgeTypes.RightBottom)
                     {
                         double newHeight = cursorPosition.Y + position.Y;
                         if (newHeight > SelectedElement.MinHeight) SelectedElement.Height = newHeight;
+                        SelectedElement.UpdateLayout();
                     }
                 }
+
+                ViewActualHeight.Text =
+                    "ActualHeight = " + SelectedElement.ActualHeight.ToString(CultureInfo.CurrentCulture);
+                ViewActualWidth.Text =
+                    "ActualWidth = " + SelectedElement.ActualWidth.ToString(CultureInfo.CurrentCulture);
             }
         }
 

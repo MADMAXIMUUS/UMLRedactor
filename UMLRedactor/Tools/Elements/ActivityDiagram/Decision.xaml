@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:additionElements = "clr-namespace:UMLRedactor.Additions.AdditionElements"
              mc:Ignorable="d"
              GotFocus="Decision_OnGotFocus"
              LostFocus="Decision_OnLostFocus"
@@ -24,16 +25,11 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <TextBox Name="Line1" Grid.Row="0" VerticalContentAlignment="Center" Padding="5,2"
+            <TextBox Name="Title" Grid.Row="0" VerticalContentAlignment="Center" Padding="5,2"
                      HorizontalContentAlignment="Center"
                      Margin="1,0"
                      Background="Transparent"
                      FontSize="16" MinHeight="30" TextWrapping="Wrap" BorderThickness="0,0,0,0" BorderBrush="Black" />
-            <Rectangle Grid.Row="1" StrokeThickness="1" Stroke="Black" Fill="White">
-                <Rectangle.LayoutTransform>
-                    <RotateTransform Angle="45" />
-                </Rectangle.LayoutTransform>
-            </Rectangle>
         </Grid>
         <Border Name="Lt" Margin="5" Grid.Row="0" Grid.Column="0" Width="5" Height="5" Background="Black"
                 Visibility="Hidden" MouseEnter="Lt_OnMouseEnter" MouseLeave="OnMouseLeave"
