@@ -4,6 +4,7 @@ namespace UMLRedactor.Models
 {
     public class DomModel
     {
+        
         DomModel()
         {
             

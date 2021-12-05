@@ -13,6 +13,7 @@ namespace UMLRedactor.Tools.Elements
         private int _edgeType;
 
         public int LocalId { get; set; }
+        public string Header { get; set; }
         public Enums.ElementTypes Type { get; set; }
 
         public ClassElement()
@@ -48,7 +49,7 @@ namespace UMLRedactor.Tools.Elements
 
         private void Mt_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Point offset = e.GetPosition(this);
+            /*Point offset = e.GetPosition(this);
             Canvas canvas = Parent as Canvas;
             ScrollViewer sv = canvas?.Parent as ScrollViewer;
             Grid grid = sv?.Parent as Grid;
@@ -59,7 +60,7 @@ namespace UMLRedactor.Tools.Elements
                 main.SelectedElement = this;
                 main.SizingOffsetX = offset.X;
                 main.SizingOffsetY = offset.Y;
-            }
+            }*/
         }
 
         private void ClassElement_OnGotFocus(object sender, RoutedEventArgs e)
@@ -136,7 +137,7 @@ namespace UMLRedactor.Tools.Elements
 
         private void Setting_Resizing()
         {
-            Canvas canvas = Parent as Canvas;
+            /*Canvas canvas = Parent as Canvas;
             ScrollViewer sv = canvas?.Parent as ScrollViewer;
             Grid grid = sv?.Parent as Grid;
             if (grid?.Parent is MainWindow main)
@@ -144,7 +145,7 @@ namespace UMLRedactor.Tools.Elements
                 main.IsSizing = true;
                 main.BorderEdge = _edgeType;
                 main.SelectedElement = this;
-            }
+            }*/
         }
     }
 }

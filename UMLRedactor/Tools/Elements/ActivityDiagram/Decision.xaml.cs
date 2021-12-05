@@ -1,8 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Shapes;
 using UMLRedactor.Additions;
 using UMLRedactor.View;
 
@@ -15,29 +13,14 @@ namespace UMLRedactor.Tools.Elements.ActivityDiagram
         public Decision()
         {
             InitializeComponent();
-            Polygon rhombus = new Polygon();
-            PointCollection points = new PointCollection()
-            {
-                new Point(MainGrid.ActualWidth / 2, 0),
-                new Point(MainGrid.ActualWidth, MainGrid.RowDefinitions[1].ActualHeight / 2),
-                new Point(MainGrid.ActualWidth / 2, MainGrid.RowDefinitions[1].ActualHeight),
-                new Point(0, MainGrid.RowDefinitions[1].ActualHeight / 2)
-            };
-            rhombus.HorizontalAlignment = HorizontalAlignment.Left;
-            rhombus.VerticalAlignment = VerticalAlignment.Center;
-            rhombus.Stroke = Brushes.Black;
-            rhombus.StrokeThickness = 1;
-            rhombus.Fill = Brushes.White;
-            rhombus.Points = points;
-            MainGrid.Children.Add(rhombus);
-            Grid.SetRow(rhombus, MainGrid.RowDefinitions.Count - 1);
             MinHeight = 200;
             MinWidth = 200;
+            DataContext = this;
         }
 
         private void Mt_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Point offset = e.GetPosition(this);
+            /*Point offset = e.GetPosition(this);
             Canvas canvas = Parent as Canvas;
             ScrollViewer sv = canvas?.Parent as ScrollViewer;
             Grid grid = sv?.Parent as Grid;
@@ -48,7 +31,7 @@ namespace UMLRedactor.Tools.Elements.ActivityDiagram
                 main.SelectedElement = this;
                 main.SizingOffsetX = offset.X;
                 main.SizingOffsetY = offset.Y;
-            }
+            }*/
         }
 
         private void Decision_OnGotFocus(object sender, RoutedEventArgs e)
@@ -125,7 +108,7 @@ namespace UMLRedactor.Tools.Elements.ActivityDiagram
 
         private void Setting_Resizing()
         {
-            Canvas canvas = Parent as Canvas;
+            /*Canvas canvas = Parent as Canvas;
             ScrollViewer sv = canvas?.Parent as ScrollViewer;
             Grid grid = sv?.Parent as Grid;
             if (grid?.Parent is MainWindow main)
@@ -133,10 +116,11 @@ namespace UMLRedactor.Tools.Elements.ActivityDiagram
                 main.IsSizing = true;
                 main.BorderEdge = _edgeType;
                 main.SelectedElement = this;
-            }
+            }*/
         }
 
         public int LocalId { get; set; }
+        public string Header { get; set; }
         public Enums.ElementTypes Type { get; set; }
     }
 }

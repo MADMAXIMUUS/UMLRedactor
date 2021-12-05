@@ -52,7 +52,8 @@
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
         </ApplicationDefinition>
-        <Compile Include="Additions\AdditionElements\DecisionRhombus.cs" />
+        <Compile Include="Controller\Controller.cs" />
+        <Compile Include="Controller\DomParser.cs" />
         <Compile Include="Models\DomNode.cs" />
         <Compile Include="Models\DomModel.cs" />
         <Compile Include="Properties\Annotations.cs" />

@@ -73,8 +73,6 @@
                       VerticalScrollBarVisibility="Auto" AllowDrop="True">
             <Canvas x:Name="DrawCanvas" ScrollViewer.CanContentScroll="True"
                     ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                    MouseMove="DrawCanvas_OnMouseMove"
-                    MouseUp="DrawCanvas_OnMouseUp"
                     ScrollViewer.VerticalScrollBarVisibility="Auto" Width="2000" Height="2000">
                 <Canvas.Background>
                     <DrawingBrush TileMode="Tile" Viewport="0,0,100,100"
@@ -91,9 +89,7 @@
                         </DrawingBrush.Drawing>
                     </DrawingBrush>
                 </Canvas.Background>
-                <activityDiagram:Decision Width="300" Height="300" Canvas.Top="100"/>
-                <TextBlock Name="ViewActualWidth" Width="200" Canvas.Top="0" Canvas.Left="0"/>
-                <TextBlock Name="ViewActualHeight" Width="200" Canvas.Top="40" Canvas.Left="0"/>
+                <activityDiagram:Decision Canvas.Top="100"/>
             </Canvas>
         </ScrollViewer>
     </Grid>

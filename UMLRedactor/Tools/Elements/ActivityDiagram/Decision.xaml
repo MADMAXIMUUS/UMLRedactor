@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:additionElements = "clr-namespace:UMLRedactor.Additions.AdditionElements"
              mc:Ignorable="d"
              GotFocus="Decision_OnGotFocus"
              LostFocus="Decision_OnLostFocus"
@@ -28,8 +27,13 @@
             <TextBox Name="Title" Grid.Row="0" VerticalContentAlignment="Center" Padding="5,2"
                      HorizontalContentAlignment="Center"
                      Margin="1,0"
+                     Text="{Binding Header}"
                      Background="Transparent"
                      FontSize="16" MinHeight="30" TextWrapping="Wrap" BorderThickness="0,0,0,0" BorderBrush="Black" />
+            <Viewbox Grid.Row="1">
+                <Path StrokeThickness="3" Stroke="Black" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                      Stretch="Fill" Fill="White" Data="M50,0 L100,50 L50,100 L0,50 z" />
+            </Viewbox>
         </Grid>
         <Border Name="Lt" Margin="5" Grid.Row="0" Grid.Column="0" Width="5" Height="5" Background="Black"
                 Visibility="Hidden" MouseEnter="Lt_OnMouseEnter" MouseLeave="OnMouseLeave"
