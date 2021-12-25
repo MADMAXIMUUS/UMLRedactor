@@ -1,17 +1,14 @@
-﻿using Microsoft.Win32;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using UMLRedactor.Additions;
-using UMLRedactor.Models;
 using UMLRedactor.View;
 
 namespace UMLRedactor.Controller
 {
     public class Controller
     {
-        private MainWindow _view;
-        private DomModel model;
+        private readonly MainWindow _view;
         private bool _isSizing;
         private int _borderEdge;
         private double _sizingOffsetX;
@@ -21,23 +18,6 @@ namespace UMLRedactor.Controller
         public Controller(MainWindow view)
         {
             _view = view;
-            model = new DomModel();
-        }
-
-        public void OpenFile(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog() 
-            {
-                Title = "Импорт модели",
-                Filter = "Модель (*xml)|*.xml",
-                FileName = "Выберите файл"
-            };
-            if (openFileDialog.ShowDialog() == true)
-            {
-                DomParser parser = new DomParser(openFileDialog.FileName);
-                model = parser.GetModelFromMadFile();
-            }
-
         }
 
         private void ResizeAndTranslate(MouseEventArgs e)

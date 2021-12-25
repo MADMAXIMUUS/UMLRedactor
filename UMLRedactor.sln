@@ -1,8 +1,5 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32014.148
-MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMLRedactor", "UMLRedactor\UMLRedactor.csproj", "{EAC6C0F9-77B4-4399-AED8-376D78D5EB9D}"
 EndProject
 Global
@@ -15,11 +12,5 @@ Global
 		{EAC6C0F9-77B4-4399-AED8-376D78D5EB9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAC6C0F9-77B4-4399-AED8-376D78D5EB9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAC6C0F9-77B4-4399-AED8-376D78D5EB9D}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {B59D2242-7DBE-4461-A611-67EEE2F36BFD}
 	EndGlobalSection
 EndGlobal

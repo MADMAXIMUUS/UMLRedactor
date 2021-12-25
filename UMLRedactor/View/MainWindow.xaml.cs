@@ -23,7 +23,6 @@ namespace UMLRedactor.View
         private void InitFunction()
         {
             DrawCanvas.MouseMove += _controller.OnMouseMove;
-            ButtonOpen.Click += _controller.OpenFile;
         }
     }
 }
