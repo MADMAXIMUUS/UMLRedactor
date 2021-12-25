@@ -22,23 +22,23 @@
         </Grid.ColumnDefinitions>
         <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BorderThickness="0,0,0,1" BorderBrush="Black">
             <MenuItem Header="File">
-                <MenuItem Header="New" />
-                <MenuItem Header="Open" />
-                <MenuItem Header="Save" />
-                <MenuItem Header="Save as.." />
-                <MenuItem Header="Export as PNG" />
+                <MenuItem Name="ButtonNew"  Header="New" />
+                <MenuItem Name="ButtonOpen" Header="Open" />
+                <MenuItem Name="ButtonSave" Header="Save" />
+                <MenuItem Name="ButtonSaveAs" Header="Save as.." />
+                <MenuItem Name="ButtoneEport" Header="Export as PNG" />
             </MenuItem>
             <MenuItem Header="Edit">
-                <MenuItem Header="Undo" />
-                <MenuItem Header="Redo" />
+                <MenuItem Name="ButtonUndo" Header="Undo" />
+                <MenuItem Name="ButtonRedo" Header="Redo" />
             </MenuItem>
-            <MenuItem Header="About" />
+            <MenuItem Name="ButtonAbout" Header="About" />
         </Menu>
         <TreeView x:Name="TreeView" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" Width="200" BorderThickness="1,0,0,0"
                   BorderBrush="Black">
             <TextBlock>Диаграмма</TextBlock>
         </TreeView>
-        <DataGrid Grid.Row="3" Grid.Column="0" Width="222" BorderThickness="0,1,1,0" BorderBrush="Black">
+        <DataGrid Grid.Row="2" Grid.Column="0" BorderThickness="0,1,1,0" BorderBrush="Black" Margin="0,317,0,0" Grid.RowSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Свойства" Width="*" />
                 <DataGridTextColumn Header="Значения" Width="*" />
@@ -89,7 +89,6 @@
                         </DrawingBrush.Drawing>
                     </DrawingBrush>
                 </Canvas.Background>
-                <activityDiagram:Decision Canvas.Top="100"/>
             </Canvas>
         </ScrollViewer>
     </Grid>

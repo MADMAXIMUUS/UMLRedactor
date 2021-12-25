@@ -7,25 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3de5b1ee-0cb0-4ba4-83f8-d2361bf6955d" name="Default Changelist" comment="drgdfgdgfg">
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/Controller/Controller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/Controller/DomParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Additions/AdditionElements/DecisionRhombus.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/DomModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/DomModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Activity.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Activity.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/ActivityFinal.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/ActivityFinal.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/ActivityInitial.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/ActivityInitial.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Decision.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Decision.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Decision.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Decision.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ClassDiagram/ClassElement.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ClassDiagram/ClassElement.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/IElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/IElement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/UseCaseDiagram/Actor.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/UseCaseDiagram/Actor.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/UseCaseDiagram/UseCase.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/UseCaseDiagram/UseCase.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" afterDir="false" />
-    </list>
+    <list default="true" id="3de5b1ee-0cb0-4ba4-83f8-d2361bf6955d" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -164,6 +146,7 @@
       <workItem from="1638355669300" duration="3437000" />
       <workItem from="1638375321740" duration="5043000" />
       <workItem from="1638456374181" duration="1834000" />
+      <workItem from="1638734868586" duration="107000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена иконка">
       <created>1633812452088</created>
@@ -249,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637697760612</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Добавлена заготовка для парсера">
+      <created>1638734897881</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1638734897881</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,6 +274,7 @@
     <MESSAGE value="Добавлены новые элементы UML" />
     <MESSAGE value="Добавлены элементы UML диаграмм" />
     <MESSAGE value="Изменены некоторые элементы" />
-    <option name="LAST_COMMIT_MESSAGE" value="Изменены некоторые элементы" />
+    <MESSAGE value="Добавлена заготовка для парсера" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлена заготовка для парсера" />
   </component>
 </project>
