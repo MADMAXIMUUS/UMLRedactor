@@ -10,18 +10,17 @@ namespace UMLRedactor.Controller
 {
     public class Controller
     {
-        private MainWindow _view;
-        private DomModel model;
+        private DomModel _model;
         private bool _isSizing;
         private int _borderEdge;
         private double _sizingOffsetX;
         private double _sizingOffsetY;
         private UserControl _selectedElement;
 
-        public Controller(MainWindow view)
+        public Controller(DomModel model)
         {
-            _view = view;
-            model = new DomModel();
+            //_view = view;
+            _model = model;
         }
 
         public void OpenFile(object sender, RoutedEventArgs e)
@@ -35,14 +34,14 @@ namespace UMLRedactor.Controller
             if (openFileDialog.ShowDialog() == true)
             {
                 DomParser parser = new DomParser(openFileDialog.FileName);
-                model = parser.GetModelFromMadFile();
+                _model = parser.GetModelFromMadFile();
             }
 
         }
 
         private void ResizeAndTranslate(MouseEventArgs e)
         {
-            if (!_isSizing) return;
+            /*if (!_isSizing) return;
             if (_borderEdge < 0) return;
             if (_selectedElement == null) return;
 
@@ -101,7 +100,7 @@ namespace UMLRedactor.Controller
                         _selectedElement.UpdateLayout();
                     }
                 }
-            }
+            }*/
         }
 
         public void OnMouseMove(object sender, MouseEventArgs e)

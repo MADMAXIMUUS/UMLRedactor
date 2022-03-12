@@ -13,7 +13,8 @@
 
         public enum ElementTypes
         {
-            ElementClass = 0
+            ElementClass = 0,
+            Decision =1
         }
         
         public enum LineTypes

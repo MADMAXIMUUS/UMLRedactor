@@ -1,13 +1,14 @@
-﻿<UserControl x:Class="UMLRedactor.Tools.Elements.ActivityDiagram.Decision"
+﻿<UserControl x:Class="UMLRedactor.Tools.Lines.NoteLink"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             mc:Ignorable="d"
-             GotFocus="Decision_OnGotFocus"
-             LostFocus="Decision_OnLostFocus"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UMLRedactor.Tools.Lines"
+             mc:Ignorable="d" 
              Background="Transparent"
-             d:DesignHeight="250" d:DesignWidth="250">
+             GotFocus="Activity_OnGotFocus"
+             LostFocus="Activity_OnLostFocus"
+             d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -19,22 +20,12 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1" Grid.Row="1" Margin="0,5,0,15" Name="MainGrid">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <TextBox Name="Title" Grid.Row="0" VerticalContentAlignment="Center" Padding="5,2"
-                     HorizontalContentAlignment="Center"
-                     Margin="1,0"
-                     Text="{Binding Header}"
-                     Background="Transparent"
-                     FontSize="16" MinHeight="30" TextWrapping="Wrap" BorderThickness="0,0,0,0" BorderBrush="Black" />
-            <Viewbox Grid.Row="1">
-                <Path StrokeThickness="2" Stroke="Black" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                      Stretch="Fill" Fill="White" Data="M50,0 L100,50 L50,100 L0,50 z" />
-            </Viewbox>
-        </Grid>
+        <Canvas Background="Transparent" Grid.Column="1" Grid.Row="1" Name="MainCanvas">
+            <Line StrokeThickness="6" StrokeDashArray="3 2" X1="0" X2="270" Y1="0" Y2="270" Stroke="Black"/>
+            <TextBlock Canvas.Top="0" Canvas.Left="0" Text="Начало линии" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <TextBlock Canvas.Top="120" Canvas.Left="70" Text="Середина линии" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Canvas.Right="0" Canvas.Bottom="0" Text="Конец линии" FontSize="18" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        </Canvas>
         <Border Name="Lt" Margin="5" Grid.Row="0" Grid.Column="0" Width="5" Height="5" Background="Black"
                 Visibility="Hidden" MouseEnter="Lt_OnMouseEnter" MouseLeave="OnMouseLeave"
                 MouseLeftButtonDown="Lt_OnMouseLeftButtonDown" />

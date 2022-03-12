@@ -82,7 +82,9 @@
       <DependentUpon>UseCase.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tools\Lines\ILine.cs" />
-    <Compile Include="Tools\Lines\NoteLink.cs" />
+    <Compile Include="Tools\Lines\NoteLink.xaml.cs">
+      <DependentUpon>NoteLink.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -100,6 +102,10 @@
     <Page Include="Tools\Elements\ClassDiagram\ClassElement.xaml" />
     <Page Include="Tools\Elements\UseCaseDiagram\Actor.xaml" />
     <Page Include="Tools\Elements\UseCaseDiagram\UseCase.xaml" />
+    <Page Include="Tools\Lines\NoteLink.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

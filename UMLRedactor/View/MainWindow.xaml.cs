@@ -13,10 +13,10 @@ namespace UMLRedactor.View
     {
         private Controller.Controller _controller;
 
-        public MainWindow()
+        public MainWindow(Controller.Controller controller)
         {
             InitializeComponent();
-            _controller = new Controller.Controller(this);
+            _controller = controller;
             InitFunction();
         }
 

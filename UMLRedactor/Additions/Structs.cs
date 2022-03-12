@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace UMLRedactor.Additions
 {
-    public struct Atribute
+    public struct Attribute
     {
         public string AccessModifier { get; set; }
         public string Name { get; set; }
@@ -14,8 +14,8 @@ namespace UMLRedactor.Additions
     {
         public string AccessModifier { get; set; }
         public string Name { get; set; }
-        public string DataType { get; set; }
-        public List<Parametr> parametrs { get; set; }
+        public string DataTypeOfReturnValue { get; set; }
+        public List<Parametr> Parametrs { get; set; }
     }
 
     public struct Parametr
