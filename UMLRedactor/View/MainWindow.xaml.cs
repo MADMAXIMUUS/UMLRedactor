@@ -24,12 +24,7 @@ namespace UMLRedactor.View
         private void InitFunction()
         {
             DrawCanvas.MouseMove += _controller.OnMouseMove;
-            ButtonOpen.Click += _controller.OpenFile;
-        }
-
-        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
+            ButtonFileOpen.Click += _controller.OpenFile;
         }
 
         private void SytemButton_MouseEnter(object sender, MouseEventArgs e)
@@ -43,6 +38,24 @@ namespace UMLRedactor.View
         private void SytemButton_MouseLeave(object sender, MouseEventArgs e)
         {
             (sender as Border).Background = Brushes.WhiteSmoke;
+        }
+
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MainView.WindowState = WindowState.Minimized;
+        }
+
+        private void SystemButtonMaximize_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (MainView.WindowState == WindowState.Normal)
+                MainView.WindowState = WindowState.Maximized;
+            else
+                MainView.WindowState = WindowState.Normal;
+        }
+
+        private void SystemButtonClose_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
