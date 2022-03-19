@@ -15,10 +15,10 @@ namespace UMLRedactor.Additions
         public string AccessModifier { get; set; }
         public string Name { get; set; }
         public string DataTypeOfReturnValue { get; set; }
-        public List<Parametr> Parametrs { get; set; }
+        public List<Parameter> Parameters { get; set; }
     }
 
-    public struct Parametr
+    public struct Parameter
     {
         public string DataType { get; set; }
         public string Name { get; set; }

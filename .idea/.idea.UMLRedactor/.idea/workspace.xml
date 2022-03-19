@@ -8,7 +8,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3de5b1ee-0cb0-4ba4-83f8-d2361bf6955d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Icons/UMLRedactor_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Models/Diagram.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Models/DiagramNode.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeElement.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeLine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Additions/Structs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Additions/Structs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Controller/Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Controller/Controller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/DomModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/Model.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/DomNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj.DotSettings.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" afterDir="false" />
     </list>
@@ -28,6 +39,15 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9b25e913d31d4b8b83ebde8a2012e613286680/b0/e1b6d861/XmlNode.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9b25e913d31d4b8b83ebde8a2012e613286680/a0/b92468c0/XmlDocument.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/82c99ed2e5824054aad8d9d4d6755403381188/ee/b1c33224/EllipseGeometry.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/82c99ed2e5824054aad8d9d4d6755403381188/47/cf5f1ee1/Brushes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/98f1e9a344024c929a1382bed95982945fe188/a4/8d837221/Shape.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ba49a34043c4db0b03b2de95259ddd828088/97/56f458ea/XElement.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ba49a34043c4db0b03b2de95259ddd828088/dc/cfd7ee3b/XDocument.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/UMLRedactor/pictures.resx" />
@@ -36,6 +56,9 @@
       <option value="$PROJECT_DIR$/UMLRedactor/Elements/ClassElement.xaml" />
       <option value="$PROJECT_DIR$/UMLRedactor/Elements/ClassElement.xaml.cs" />
     </changedPaths>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="1zBsLkDv0he9hC0Gfqjqy6gazRz" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -143,6 +166,10 @@
       <workItem from="1638456374181" duration="1834000" />
       <workItem from="1638734868586" duration="107000" />
       <workItem from="1647332311425" duration="1786000" />
+      <workItem from="1647351585228" duration="7965000" />
+      <workItem from="1647373079246" duration="439000" />
+      <workItem from="1647441892400" duration="6924000" />
+      <workItem from="1647454531626" duration="1188000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена иконка">
       <created>1633812452088</created>
@@ -254,7 +281,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

@@ -11,11 +11,6 @@ namespace UMLRedactor.Controller
     public class Controller
     {
         private DomModel _model;
-        private bool _isSizing;
-        private int _borderEdge;
-        private double _sizingOffsetX;
-        private double _sizingOffsetY;
-        private UserControl _selectedElement;
 
         public Controller(DomModel model)
         {
@@ -25,10 +20,10 @@ namespace UMLRedactor.Controller
 
         public void OpenFile(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog() 
+            OpenFileDialog openFileDialog = new OpenFileDialog 
             {
                 Title = "Импорт модели",
-                Filter = "Модель (*xml)|*.xml",
+                Filter = "XMI (*xml)|*.xml",
                 FileName = "Выберите файл"
             };
             if (openFileDialog.ShowDialog() == true)
@@ -101,23 +96,6 @@ namespace UMLRedactor.Controller
                     }
                 }
             }*/
-        }
-
-        public void OnMouseMove(object sender, MouseEventArgs e)
-        {
-            if (_isSizing) ResizeAndTranslate(e);
-        }
-
-        public void OnMouseUp(object sender, MouseButtonEventArgs e)
-        {
-            if (_isSizing)
-            {
-                _isSizing = false;
-                _borderEdge = -1;
-                _sizingOffsetX = 0;
-                _sizingOffsetY = 0;
-                _selectedElement = null;
-            }
         }
     }
 }

@@ -56,8 +56,12 @@
     <Compile Include="Additions\Structs.cs" />
     <Compile Include="Controller\Controller.cs" />
     <Compile Include="Controller\DomParser.cs" />
-    <Compile Include="Models\DomNode.cs" />
-    <Compile Include="Models\DomModel.cs" />
+    <Compile Include="Models\Diagram.cs" />
+    <Compile Include="Models\DiagramNode.cs" />
+    <Compile Include="Models\ModelNodeBase.cs" />
+    <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\ModelNodeElement.cs" />
+    <Compile Include="Models\ModelNodeLine.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Tools\Elements\ActivityDiagram\Activity.xaml.cs">
       <DependentUpon>Activity.xaml</DependentUpon>
@@ -144,6 +148,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\Actor_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\UMLRedactor_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

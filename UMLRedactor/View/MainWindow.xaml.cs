@@ -12,7 +12,7 @@ namespace UMLRedactor.View
     /// </summary>
     public partial class MainWindow
     {
-        private Controller.Controller _controller;
+        private readonly Controller.Controller _controller;
 
         public MainWindow(Controller.Controller controller)
         {
@@ -23,39 +23,43 @@ namespace UMLRedactor.View
 
         private void InitFunction()
         {
-            DrawCanvas.MouseMove += _controller.OnMouseMove;
             ButtonFileOpen.Click += _controller.OpenFile;
         }
 
-        private void SytemButton_MouseEnter(object sender, MouseEventArgs e)
+        private void SystemButton_MouseEnter(object sender, MouseEventArgs e)
         {
-            if ((sender as Border).Name == "SystemButtonClose")
-                (sender as Border).Background = Brushes.Red;
-            else
-                (sender as Border).Background = Brushes.LightBlue;
+            ((Border)sender).Background = ((Border)sender)?.Name == "SystemButtonClose" 
+                ? Brushes.Red 
+                : Brushes.LightBlue;
         }
 
-        private void SytemButton_MouseLeave(object sender, MouseEventArgs e)
+        private void SystemButton_MouseLeave(object sender, MouseEventArgs e)
         {
-            (sender as Border).Background = Brushes.WhiteSmoke;
+            ((Border)sender).Background = Brushes.LightGray;
         }
 
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void SystemButtonTray_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             MainView.WindowState = WindowState.Minimized;
         }
 
         private void SystemButtonMaximize_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (MainView.WindowState == WindowState.Normal)
-                MainView.WindowState = WindowState.Maximized;
-            else
-                MainView.WindowState = WindowState.Normal;
+            MainView.WindowState = MainView.WindowState == WindowState.Normal ? WindowState.Maximized : WindowState.Normal;
         }
 
         private void SystemButtonClose_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void TitleBar_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+            if (e.ClickCount == 2)
+                MainView.WindowState = MainView.WindowState == WindowState.Normal 
+                    ? WindowState.Maximized 
+                    : WindowState.Normal;
         }
     }
 }
