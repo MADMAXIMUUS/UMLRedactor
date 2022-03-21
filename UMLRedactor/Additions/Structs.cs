@@ -5,23 +5,23 @@ namespace UMLRedactor.Additions
 {
     public struct Attribute
     {
-        public string AccessModifier { get; set; }
-        public string Name { get; set; }
-        public string DataType { get; set; }
+        public string AccessModifier;
+        public string Name;
+        public string DataType;
     }
 
     public struct Operation
     {
-        public string AccessModifier { get; set; }
-        public string Name { get; set; }
-        public string DataTypeOfReturnValue { get; set; }
-        public List<Parameter> Parameters { get; set; }
+        public string AccessModifier;
+        public string Name;
+        public string DataTypeOfReturnValue;
+        public List<Parameter> Parameters;
     }
 
     public struct Parameter
     {
-        public string DataType { get; set; }
-        public string Name { get; set; }
-        public string DefaultValue { get; set; }
+        public string DataType;
+        public string Name;
+        public string DefaultValue;
     }
 }

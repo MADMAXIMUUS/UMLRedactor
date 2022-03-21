@@ -1,14 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.Packaging;
 
 namespace UMLRedactor.Models
 {
     public class ModelNodeBase
     {
-        public string Name { get; set; }
-        public string Type { get; set; }
-        public Guid GUID { get; set; }
+        public string Name;
+        public string Type;
+        public Guid Id;
+        public Package Package;
+        public List<ModelNodeBase> ChildNodes;
 
-        public List<ModelNodeBase> ChildNodes { get; set; }
+        public ModelNodeBase() { }
+
+        public ModelNodeBase(
+            string name,
+            string type,
+            Guid id,
+            List<ModelNodeBase> childNodes)
+        {
+            Name = name;
+            Type = type;
+            Id = id;
+            ChildNodes = childNodes;
+        }
     }
 }

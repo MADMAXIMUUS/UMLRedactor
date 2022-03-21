@@ -1,18 +1,17 @@
-﻿using Microsoft.Win32;
+﻿using System;
 using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Forms.VisualStyles;
 using System.Windows.Input;
-using UMLRedactor.Additions;
+using Microsoft.Win32;
 using UMLRedactor.Models;
-using UMLRedactor.View;
 
-namespace UMLRedactor.Controller
+namespace UMLRedactor.Controllers
 {
     public class Controller
     {
-        private DomModel _model;
+        private Model _model;
 
-        public Controller(DomModel model)
+        public Controller(Model model)
         {
             //_view = view;
             _model = model;
@@ -20,7 +19,7 @@ namespace UMLRedactor.Controller
 
         public void OpenFile(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog 
+            OpenFileDialog openFileDialog = new OpenFileDialog
             {
                 Title = "Импорт модели",
                 Filter = "XMI (*xml)|*.xml",
@@ -28,10 +27,13 @@ namespace UMLRedactor.Controller
             };
             if (openFileDialog.ShowDialog() == true)
             {
-                DomParser parser = new DomParser(openFileDialog.FileName);
-                _model = parser.GetModelFromMadFile();
+                ModelReader reader = new ModelReader(openFileDialog.FileName);
+                if (reader.GetModelFromFile(out _model)==-1)
+                {
+                    MessageBox.Show("Версия XMI не соответсвует 1.1!", String.Empty, MessageBoxButton.OK);
+                    _model = new Model();
+                }
             }
-
         }
 
         private void ResizeAndTranslate(MouseEventArgs e)

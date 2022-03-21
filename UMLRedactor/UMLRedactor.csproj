@@ -54,8 +54,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Additions\Structs.cs" />
-    <Compile Include="Controller\Controller.cs" />
-    <Compile Include="Controller\DomParser.cs" />
+    <Compile Include="Controllers\Controller.cs" />
+    <Compile Include="Controllers\DiagramReader.cs" />
+    <Compile Include="Controllers\DiagramWriter.cs" />
+    <Compile Include="Controllers\ModelReader.cs" />
+    <Compile Include="Controllers\ModelWriter.cs" />
     <Compile Include="Models\Diagram.cs" />
     <Compile Include="Models\DiagramNode.cs" />
     <Compile Include="Models\ModelNodeBase.cs" />

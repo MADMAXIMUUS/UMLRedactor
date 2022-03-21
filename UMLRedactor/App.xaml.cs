@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using UMLRedactor.View;
-using UMLRedactor.Controller;
 using UMLRedactor.Models;
 
 namespace UMLRedactor
@@ -13,8 +12,8 @@ namespace UMLRedactor
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            DomModel model = new DomModel();
-            Controller.Controller controller = new Controller.Controller(model);
+            Model model = new Model();
+            Controllers.Controller controller = new Controllers.Controller(model);
             MainWindow mw = new MainWindow(controller);
             mw.Show();
         }

@@ -26,18 +26,18 @@
         <Menu Grid.Row="0" Grid.Column="0" Padding="0,10"
               Grid.ColumnSpan="2" Background="White" BorderThickness="0,0,0,1" BorderBrush="Black">
             <Separator />
-            <MenuItem Header="File" VerticalAlignment="Center">
+            <MenuItem Header="File">
                 <MenuItem Name="ButtonFileNew" Header="New" />
                 <MenuItem Name="ButtonFileOpen" Header="Open" />
                 <MenuItem Name="ButtonFileSave" Header="Save" />
                 <MenuItem Name="ButtonFileSaveAs" Header="Save as.." />
                 <MenuItem Name="ButtonFileExport" Header="Export as PNG" />
             </MenuItem>
-            <MenuItem Header="Edit" VerticalAlignment="Center">
+            <MenuItem Header="Edit">
                 <MenuItem Name="ButtonEditUndo" Header="Undo" />
                 <MenuItem Name="ButtonEditRedo" Header="Redo" />
             </MenuItem>
-            <MenuItem Name="ButtonView" Header="View" VerticalAlignment="Center">
+            <MenuItem Name="ButtonView" Header="View">
                 <MenuItem Name="ButtonViewNew" Header="New" />
                 <MenuItem Name="ButtonViewOpen" Header="Open" />
                 <MenuItem Name="ButtonViewSave" Header="Save" />
@@ -45,7 +45,7 @@
                 <MenuItem Name="ButtonViewPrev" Header="Prev" />
                 <MenuItem Name="ButtonViewClose" Header="Close" />
             </MenuItem>
-            <MenuItem Name="ButtonAbout" Header="About" VerticalAlignment="Center" />
+            <MenuItem Name="ButtonAbout" Header="About"/>
         </Menu>
         <Image Grid.Row="0" Grid.Column="0" Source="../Icons/UMLRedactor_icon.png" Width="20" Height="20"
                Focusable="False" HorizontalAlignment="Left" Margin="8,0" />
@@ -128,7 +128,7 @@
         <Border Grid.Row="3" Grid.Column="1" BorderBrush="Black" BorderThickness="0,1,1,1" />
         <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="0,0,1,0" />
         <ScrollViewer Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Width="220" BorderThickness="0,0,1,0">
-            <Grid x:Name="OptionsGrid" Width="200" Background="White">
+            <Grid x:Name="OptionsGrid" Width="220" Background="White">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -182,9 +182,17 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="30"/>
                             </Grid.RowDefinitions>
-                            <RichTextBox Grid.Column="0"  FontSize="18"/>
-                            <RichTextBox Grid.Column="1"  FontSize="18"/>
-                            <RichTextBox Grid.Column="2"  FontSize="18"/>
+                            <RichTextBox Grid.Column="0"  FontSize="14"  Padding="0,5"/>
+                            <RichTextBox Grid.Column="1"  FontSize="14" Padding="0,5"/>
+                            <RichTextBox Grid.Column="2"  FontSize="14" Padding="0,5"/>
+                            <ComboBox Name="AttributeMod" Grid.Column="2" Foreground="Black" Padding="0,0,0,5" Text="Public" FontSize="14">
+                                <TextBlock Height="30" Text="Public" Padding="0,5" FontSize="14"/>
+                                <TextBlock Height="30" Text="Private" Padding="0,5" FontSize="14"/>
+                                <TextBlock Height="30" Text="Private Protected" Padding="0,5" FontSize="14"/>
+                                <TextBlock Height="30" Text="Protected" Padding="0,5" FontSize="14"/>
+                                <TextBlock Height="30" Text="Internal" Padding="0,5" FontSize="14"/>
+                                <TextBlock Height="30" Text="Protected Internal" Padding="0,5" FontSize="14"/>
+                            </ComboBox>
                         </Grid>
                     </ScrollViewer>
                 </Grid>
@@ -234,10 +242,17 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="30"/>
                             </Grid.RowDefinitions>
-                            <RichTextBox Grid.Column="0"  FontSize="18"/>
-                            <RichTextBox Grid.Column="1"  FontSize="18"/>
-                            <RichTextBox Grid.Column="2"  FontSize="18"/>
-                            <RichTextBox Grid.Column="3"  FontSize="18"/>
+                            <RichTextBox Grid.Column="0"  FontSize="14"/>
+                            <RichTextBox Grid.Column="1"  FontSize="14"/>
+                            <RichTextBox Grid.Column="2"  FontSize="14"/>
+                            <ComboBox Name="OperationMod" Grid.Column="3" Foreground="Black" Padding="0,0,0,5" Text="Public" FontSize="14">
+                                <TextBlock Height="30" Text="Public" Padding="0,5" FontSize="14"/>
+                                <TextBlock Height="30" Text="Private" Padding="0,5" FontSize="14"/>
+                                <TextBlock Height="30" Text="Private Protected" Padding="0,5" FontSize="14"/>
+                                <TextBlock Height="30" Text="Protected" Padding="0,5" FontSize="14"/>
+                                <TextBlock Height="30" Text="Internal" Padding="0,5" FontSize="14"/>
+                                <TextBlock Height="30" Text="Protected Internal" Padding="0,5" FontSize="14"/>
+                            </ComboBox>
                         </Grid>
                     </ScrollViewer>
                 </Grid>

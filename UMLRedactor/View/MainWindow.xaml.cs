@@ -3,7 +3,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using UMLRedactor.Additions;
-using UMLRedactor.Controller;
 
 namespace UMLRedactor.View
 {
@@ -12,9 +11,9 @@ namespace UMLRedactor.View
     /// </summary>
     public partial class MainWindow
     {
-        private readonly Controller.Controller _controller;
+        private readonly Controllers.Controller _controller;
 
-        public MainWindow(Controller.Controller controller)
+        public MainWindow(Controllers.Controller controller)
         {
             InitializeComponent();
             _controller = controller;

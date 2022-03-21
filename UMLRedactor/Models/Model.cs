@@ -5,12 +5,31 @@ using Attribute = UMLRedactor.Additions.Attribute;
 
 namespace UMLRedactor.Models
 {
-    public class DomModel
+    public class Model
     {
-        public string Name { get; set; }
-        public string ProgramName { get; set; }
-        public string ProgramVersion { get; set; }
-        public string Author { get; set; }
-        public ModelNodeBase Root { get; set; }
+        public string Name;
+        public string ProgramName;
+        public string ProgramVersion;
+        public string Author;
+        public ModelNodeBase Root;
+
+        public Model()
+        {
+            Root = new ModelNodeBase();
+        }
+        
+        public Model(
+            string name,
+            string programName,
+            string programVersion,
+            string author,
+            ModelNodeBase root)
+        {
+            Name = name;
+            ProgramName = programName;
+            ProgramVersion = programVersion;
+            Author = author;
+            Root = root;
+        }
     }
 }
