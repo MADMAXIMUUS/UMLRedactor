@@ -8,24 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3de5b1ee-0cb0-4ba4-83f8-d2361bf6955d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/Controllers/DiagramReader.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/Controllers/DiagramWriter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/Controllers/ModelReader.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/Controllers/ModelWriter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/shelf/Uncommitted_changes_before_Update_at_15_03_2022_16_35_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/shelf/Uncommitted_changes_before_Update_at_15_03_2022_16_35__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Additions/Structs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Additions/Structs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/App.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/App.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Controller/Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Controllers/Controller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Controller/DomParser.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/Diagram.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/Diagram.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/DiagramNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/DiagramNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Controllers/ModelReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Controllers/ModelReader.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/Model.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/Model.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeElement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeLine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeLine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +43,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/82c99ed2e5824054aad8d9d4d6755403381188/47/cf5f1ee1/Brushes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/98f1e9a344024c929a1382bed95982945fe188/a4/8d837221/Shape.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ba49a34043c4db0b03b2de95259ddd828088/97/56f458ea/XElement.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/450fc25e323f4fcbac4639cdd838fdf813d388/b3/2f7e1bce/Package.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ba49a34043c4db0b03b2de95259ddd828088/dc/cfd7ee3b/XDocument.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -184,7 +173,8 @@
       <workItem from="1647721277095" duration="3525000" />
       <workItem from="1647780428357" duration="1111000" />
       <workItem from="1647861173664" duration="669000" />
-      <workItem from="1647875274670" duration="4346000" />
+      <workItem from="1647875274670" duration="4519000" />
+      <workItem from="1647962096362" duration="5252000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена иконка">
       <created>1633812452088</created>
@@ -277,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638734897881</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Добавлены классы модели и диаграммы, а также парсер для XMI">
+      <created>1647892128507</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1647892128507</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,6 +309,7 @@
     <MESSAGE value="Добавлены элементы UML диаграмм" />
     <MESSAGE value="Изменены некоторые элементы" />
     <MESSAGE value="Добавлена заготовка для парсера" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлена заготовка для парсера" />
+    <MESSAGE value="Добавлены классы модели и диаграммы, а также парсер для XMI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлены классы модели и диаграммы, а также парсер для XMI" />
   </component>
 </project>

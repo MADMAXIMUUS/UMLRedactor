@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using System.Collections.Generic;
+using System.Xml.Linq;
 using UMLRedactor.Models;
 
 namespace UMLRedactor.Controllers
@@ -16,32 +17,40 @@ namespace UMLRedactor.Controllers
         {
             model = new Model();
             XElement xElementRoot = _xmlDocument.Root;
-            if (xElementRoot.Element("XMI.exporter").Value != "MadUML")
+            if (xElementRoot != null && xElementRoot.Element("XMI.exporter")?.Value != "MadUML")
                 return GetModelFromOtherFile(out model);
 
             return GetModelFromMadFile(out model);
         }
 
-        public int GetModelFromMadFile(out Model model)
+        private int GetModelFromMadFile(out Model model)
         {
             model = new Model();
             XElement xElementRoot = _xmlDocument.Root;
             return 0;
         }
 
-        public int GetModelFromOtherFile(out Model model)
+        private int GetModelFromOtherFile(out Model model)
         {
             model = new Model();
             XElement xElementRoot = _xmlDocument.Root;
-            if (xElementRoot.Attribute("xmi.version").Value == "1.1")
+            if (xElementRoot != null && xElementRoot.Attribute("xmi.version")?.Value == "1.1")
                 return -1;
-            model.ProgramName = xElementRoot.Element("XMI.exporter").Value;
-            model.ProgramVersion = xElementRoot.Element("XMI.exporterVersion").Value;
-            model.Name = xElementRoot.Element("UML:Model").Attribute("name").Value;
-            ModelNodeBase root = new ModelNodeBase
+            if (xElementRoot != null)
             {
-                Name = model.Name
-            };
+                model.ProgramName = xElementRoot.Element("XMI.exporter")?.Value;
+                model.ProgramVersion = xElementRoot.Element("XMI.exporterVersion")?.Value;
+                model.Name = xElementRoot.Element("UML:Model")?.Attribute("name")?.Value;
+            }
+
+            if (xElementRoot != null)
+            {
+                ModelNodeBase root = new ModelNodeBase
+                {
+                    Name = model.Name
+                };
+            }
+
             return 0;
         }
     }

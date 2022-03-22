@@ -9,7 +9,7 @@ namespace UMLRedactor.Models
         public string Name;
         public string Type;
         public Guid Id;
-        public Package Package;
+        public Guid NamespaceId; 
         public List<ModelNodeBase> ChildNodes;
 
         public ModelNodeBase() { }

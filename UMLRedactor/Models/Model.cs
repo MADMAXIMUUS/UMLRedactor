@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UMLRedactor.Additions;
-using Attribute = UMLRedactor.Additions.Attribute;
-
-namespace UMLRedactor.Models
+﻿namespace UMLRedactor.Models
 {
     public class Model
     {
