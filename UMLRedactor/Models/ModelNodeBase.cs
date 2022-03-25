@@ -8,8 +8,8 @@ namespace UMLRedactor.Models
     {
         public string Name;
         public string Type;
-        public Guid Id;
-        public Guid NamespaceId; 
+        public string Id;
+        public string NamespaceId; 
         public List<ModelNodeBase> ChildNodes;
 
         public ModelNodeBase() { }
@@ -17,7 +17,7 @@ namespace UMLRedactor.Models
         public ModelNodeBase(
             string name,
             string type,
-            Guid id)
+            string id)
         {
             Name = name;
             Type = type;

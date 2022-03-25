@@ -20,7 +20,7 @@ namespace UMLRedactor.Models
         public ModelNodeElement(
             string name, 
             string type, 
-            Guid id,
+            string id,
             string stereotype, 
             List<Attribute> attributes, 
             List<Operation> operations) : 

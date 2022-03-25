@@ -5,7 +5,7 @@ namespace UMLRedactor.Models
     public class DiagramNode
     {
         public int X1, X2, Y1, Y2;
-        public Guid Id;
+        public string Id;
         public int Width;
         public int Height;
 
@@ -19,7 +19,7 @@ namespace UMLRedactor.Models
             int x2, 
             int y1, 
             int y2, 
-            Guid id, 
+            string id, 
             int width, 
             int height)
         {

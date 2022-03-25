@@ -6,15 +6,15 @@ namespace UMLRedactor.Models
     public class Diagram
     {
         public string Name;
-        public Guid PackageId;
+        public string PackageId;
         public List<DiagramNode> Elements;
 
         public Diagram()
         {
-            
+            Elements = new List<DiagramNode>();
         }
         
-        public Diagram(string name, Guid packageId)
+        public Diagram(string name, string packageId)
         {
             Name = name;
             PackageId = packageId;

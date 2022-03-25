@@ -36,6 +36,16 @@ namespace UMLRedactor.Controllers
             }
         }
 
+        public void CreateNew(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void Save(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
         private void ResizeAndTranslate(MouseEventArgs e)
         {
             /*if (!_isSizing) return;
@@ -98,6 +108,56 @@ namespace UMLRedactor.Controllers
                     }
                 }
             }*/
+        }
+
+        public void SaveAs(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void Export(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void Redo(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void Undo(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void NewDiagram(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void CloseDiagram(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void NextDiagram(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void PrevDiagram(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void OpenDiagram(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void SaveDiagram(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

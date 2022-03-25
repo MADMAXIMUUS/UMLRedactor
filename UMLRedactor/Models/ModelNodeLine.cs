@@ -5,8 +5,8 @@ namespace UMLRedactor.Models
 {
     public class ModelNodeLine: ModelNodeBase
     {
-        public Guid Source;
-        public Guid Target;
+        public string Source;
+        public string Target;
         public string TextOnLine;
         public string TextSourceOnLine;
         public string TextTargetOnLine;
@@ -19,9 +19,9 @@ namespace UMLRedactor.Models
         public ModelNodeLine(
             string name, 
             string type, 
-            Guid id,
-            Guid source, 
-            Guid target, 
+            string id,
+            string source, 
+            string target, 
             string textOnLine, 
             string textSourceOnLine, 
             string textTargetOnLine) : 

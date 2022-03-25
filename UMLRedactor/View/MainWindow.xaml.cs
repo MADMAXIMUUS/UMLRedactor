@@ -23,6 +23,18 @@ namespace UMLRedactor.View
         private void InitFunction()
         {
             ButtonFileOpen.Click += _controller.OpenFile;
+            ButtonFileNew.Click += _controller.CreateNew;
+            ButtonFileSave.Click += _controller.Save;
+            ButtonFileSaveAs.Click += _controller.SaveAs;
+            ButtonFileExport.Click += _controller.Export;
+            ButtonEditRedo.Click += _controller.Redo;
+            ButtonEditUndo.Click += _controller.Undo;
+            ButtonViewNew.Click += _controller.NewDiagram;
+            ButtonViewClose.Click += _controller.CloseDiagram;
+            ButtonViewNext.Click += _controller.NextDiagram;
+            ButtonViewPrev.Click += _controller.PrevDiagram;
+            ButtonViewOpen.Click += _controller.OpenDiagram;
+            ButtonViewSave.Click += _controller.SaveDiagram;
         }
 
         private void SystemButton_MouseEnter(object sender, MouseEventArgs e)
