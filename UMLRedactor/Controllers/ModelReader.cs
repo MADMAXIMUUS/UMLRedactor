@@ -6,17 +6,17 @@ namespace UMLRedactor.Controllers
 {
     public class ModelReader
     {
-        private static XDocument _xmlDocument { get; set; }
+        private static XDocument XmlDocument { get; set; }
 
         public ModelReader(string path)
         {
-            _xmlDocument = XDocument.Load(path);
+            XmlDocument = XDocument.Load(path);
         }
 
         public int GetModelFromFile(out Model model)
         {
             model = new Model();
-            XElement xElementRoot = _xmlDocument.Root;
+            XElement xElementRoot = XmlDocument.Root;
             if (xElementRoot != null && xElementRoot.Element("XMI.exporter")?.Value != "MadUML")
                 return GetModelFromOtherFile(out model);
 
@@ -26,30 +26,33 @@ namespace UMLRedactor.Controllers
         private int GetModelFromMadFile(out Model model)
         {
             model = new Model();
-            XElement xElementRoot = _xmlDocument.Root;
+            XElement xElementRoot = XmlDocument.Root;
+            if (xElementRoot == null)
+                return -1;
+            model.ProgramName = xElementRoot.Element("XMI.exporter")?.Value;
+            model.ProgramVersion = xElementRoot.Element("XMI.exporterVersion")?.Value;
+            model.Name = xElementRoot.Element("UML:Model")?.Attribute("name")?.Value;
             return 0;
         }
 
         private int GetModelFromOtherFile(out Model model)
         {
             model = new Model();
-            XElement xElementRoot = _xmlDocument.Root;
-            if (xElementRoot != null && xElementRoot.Attribute("xmi.version")?.Value == "1.1")
+            XElement xElementRoot = XmlDocument.Root;
+            if (xElementRoot == null)
                 return -1;
-            if (xElementRoot != null)
-            {
-                model.ProgramName = xElementRoot.Element("XMI.exporter")?.Value;
-                model.ProgramVersion = xElementRoot.Element("XMI.exporterVersion")?.Value;
-                model.Name = xElementRoot.Element("UML:Model")?.Attribute("name")?.Value;
-            }
+            if (xElementRoot.Attribute("xmi.version")?.Value == "1.1")
+                return -1;
 
-            if (xElementRoot != null)
+            model.ProgramName = xElementRoot.Element("XMI.exporter")?.Value;
+            model.ProgramVersion = xElementRoot.Element("XMI.exporterVersion")?.Value;
+            model.Name = xElementRoot.Element("UML:Model")?.Attribute("name")?.Value;
+
+            ModelNodeBase root = new ModelNodeBase
             {
-                ModelNodeBase root = new ModelNodeBase
-                {
-                    Name = model.Name
-                };
-            }
+                Name = model.Name
+            };
+
 
             return 0;
         }

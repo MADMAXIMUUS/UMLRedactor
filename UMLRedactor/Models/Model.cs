@@ -10,7 +10,7 @@
 
         public Model()
         {
-            Root = new ModelNodeBase();
+            
         }
         
         public Model(

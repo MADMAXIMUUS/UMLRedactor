@@ -14,11 +14,11 @@ namespace UMLRedactor.Models
             
         }
         
-        public Diagram(string name, Guid packageId, List<DiagramNode> elements)
+        public Diagram(string name, Guid packageId)
         {
             Name = name;
             PackageId = packageId;
-            Elements = elements;
+            Elements = new List<DiagramNode>();
         }
     }
 }

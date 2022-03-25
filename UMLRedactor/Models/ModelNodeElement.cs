@@ -20,16 +20,15 @@ namespace UMLRedactor.Models
         public ModelNodeElement(
             string name, 
             string type, 
-            Guid id, 
-            List<ModelNodeBase> childNodes,
+            Guid id,
             string stereotype, 
             List<Attribute> attributes, 
             List<Operation> operations) : 
-            base(name,type,id,childNodes)
+            base(name,type,id)
         {
             Stereotype = stereotype;
-            Attributes = attributes;
-            Operations = operations;
+            Attributes = new List<Attribute>();
+            Operations = new List<Operation>();
         }
     }
 }

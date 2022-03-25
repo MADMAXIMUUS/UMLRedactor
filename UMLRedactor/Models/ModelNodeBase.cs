@@ -17,13 +17,12 @@ namespace UMLRedactor.Models
         public ModelNodeBase(
             string name,
             string type,
-            Guid id,
-            List<ModelNodeBase> childNodes)
+            Guid id)
         {
             Name = name;
             Type = type;
             Id = id;
-            ChildNodes = childNodes;
+            ChildNodes = new List<ModelNodeBase>();
         }
     }
 }

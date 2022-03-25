@@ -19,14 +19,13 @@ namespace UMLRedactor.Models
         public ModelNodeLine(
             string name, 
             string type, 
-            Guid id, 
-            List<ModelNodeBase> childNodes,
+            Guid id,
             Guid source, 
             Guid target, 
             string textOnLine, 
             string textSourceOnLine, 
             string textTargetOnLine) : 
-            base(name,type,id,childNodes)
+            base(name,type,id)
         {
             Source = source;
             Target = target;

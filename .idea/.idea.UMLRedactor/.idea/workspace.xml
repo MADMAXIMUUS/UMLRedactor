@@ -8,12 +8,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3de5b1ee-0cb0-4ba4-83f8-d2361bf6955d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/shelf/Uncommitted_changes_before_Update_at_15_03_2022_16_35_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/shelf/Uncommitted_changes_before_Update_at_15_03_2022_16_35__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/Controllers/ModelReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Controllers/ModelReader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/Diagram.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/Diagram.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/Model.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/Model.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeElement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeLine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeLine.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +175,8 @@
       <workItem from="1647780428357" duration="1111000" />
       <workItem from="1647861173664" duration="669000" />
       <workItem from="1647875274670" duration="4519000" />
-      <workItem from="1647962096362" duration="5252000" />
+      <workItem from="1647962096362" duration="5273000" />
+      <workItem from="1648045727790" duration="4658000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена иконка">
       <created>1633812452088</created>
@@ -274,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647892128507</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Добавлены классы модели и диаграммы, а также парсер для XMI">
+      <created>1647981848027</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1647981848027</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
