@@ -58,7 +58,42 @@ namespace UMLRedactor.Controllers
             if (elements != null)
                 foreach (var element in elements)
                 {
-                    
+                    if (GetElementType(element) == "Not element" && GetLineType(element) == "Not line")
+                        continue;
+
+                    if (GetElementType(element) != "Not element" && GetLineType(element) == "Not line")
+                    {
+                        model.Root.ChildNodes.Add(new ModelNodeElement
+                        {
+                            Name = element.Element("Name")?.Value,
+                            Id = element.Element("ID")?.Value,
+                            NamespaceId = element.Element("Namespace")?.Value,
+                            Stereotype = element.Element("Stereotype")?.Value,
+                            Type = GetElementType(element),
+                            Attributes = new List<Attribute>(),
+                            Operations = new List<Operation>(),
+                            ChildNodes = new List<ModelNodeBase>()
+                        });
+                        var classifierFeatures = element.Element("UML:Classifier.feature")?.Elements().ToList();
+                        if (classifierFeatures != null)
+                            foreach (XElement classifierFeature in classifierFeatures)
+                            {
+                                if (classifierFeature.Name.LocalName == "UML:Attribute")
+                                    (model.Root.ChildNodes[model.Root.ChildNodes.Count - 1] as ModelNodeElement)
+                                        ?.Attributes
+                                        .Add(new Attribute()
+                                        {
+                                        });
+                                if (classifierFeature.Name.LocalName == "UML:Operation")
+                                {
+                                    (model.Root.ChildNodes[model.Root.ChildNodes.Count - 1] as ModelNodeElement)
+                                        ?.Operations
+                                        .Add(new Operation()
+                                        {
+                                        });
+                                }
+                            }
+                    }
                 }
 
             return 0;
@@ -95,7 +130,7 @@ namespace UMLRedactor.Controllers
                 case ("UML:Package"):
                     return "Package";
                 default:
-                    return "Class";
+                    return "Not element";
             }
         }
 
@@ -106,7 +141,7 @@ namespace UMLRedactor.Controllers
                 case ("UML:Association"):
                     return "AssociationLink";
                 default:
-                    return "NoteLink";
+                    return "Not link";
             }
         }
 
