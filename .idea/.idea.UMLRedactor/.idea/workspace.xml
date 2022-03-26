@@ -9,15 +9,10 @@
   <component name="ChangeListManager">
     <list default="true" id="3de5b1ee-0cb0-4ba4-83f8-d2361bf6955d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Controllers/Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Controllers/Controller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/App.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/App.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/Controllers/ModelReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Controllers/ModelReader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/Diagram.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/Diagram.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/DiagramNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/DiagramNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeElement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeLine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeLine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj.DotSettings.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +36,14 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a09c4ce1381a425ba956c7d77b4fb2b328168/69/a47c5d4d/XName.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a09c4ce1381a425ba956c7d77b4fb2b328168/b0/66b7e28e/XElement.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9b25e913d31d4b8b83ebde8a2012e613286680/b0/e1b6d861/XmlNode.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9b25e913d31d4b8b83ebde8a2012e613286680/a0/b92468c0/XmlDocument.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/82c99ed2e5824054aad8d9d4d6755403381188/ee/b1c33224/EllipseGeometry.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/82c99ed2e5824054aad8d9d4d6755403381188/47/cf5f1ee1/Brushes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/98f1e9a344024c929a1382bed95982945fe188/a4/8d837221/Shape.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ba49a34043c4db0b03b2de95259ddd828088/97/56f458ea/XElement.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/450fc25e323f4fcbac4639cdd838fdf813d388/b3/2f7e1bce/Package.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ba49a34043c4db0b03b2de95259ddd828088/dc/cfd7ee3b/XDocument.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -176,6 +177,7 @@
       <workItem from="1648045727790" duration="4658000" />
       <workItem from="1648194990741" duration="3485000" />
       <workItem from="1648202673116" duration="4503000" />
+      <workItem from="1648226173645" duration="1571000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена иконка">
       <created>1633812452088</created>

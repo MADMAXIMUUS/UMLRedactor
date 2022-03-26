@@ -11,262 +11,269 @@
         AllowsTransparency="True"
         Title="Редактор" Height="600" Width="1000" WindowStyle="None">
     <Grid>
-        <Border Width="auto" Height="auto" BorderBrush="White" BorderThickness="2"
-                CornerRadius="15" />
-        <Grid Background="WhiteSmoke">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="0.5*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Menu Grid.Row="0" Grid.Column="0" Padding="0,10"
-                  Grid.ColumnSpan="2" Background="WhiteSmoke">
-                <Separator />
-                <MenuItem Header="File">
-                    <MenuItem Name="ButtonFileNew" Header="New" />
-                    <MenuItem Name="ButtonFileOpen" Header="Open" />
-                    <MenuItem Name="ButtonFileSave" Header="Save" />
-                    <MenuItem Name="ButtonFileSaveAs" Header="Save as.." />
-                    <MenuItem Name="ButtonFileExport" Header="Export as PNG" />
-                </MenuItem>
-                <MenuItem Header="Edit">
-                    <MenuItem Name="ButtonEditUndo" Header="Undo" />
-                    <MenuItem Name="ButtonEditRedo" Header="Redo" />
-                </MenuItem>
-                <MenuItem Name="ButtonView" Header="View">
-                    <MenuItem Name="ButtonViewNew" Header="New" />
-                    <MenuItem Name="ButtonViewOpen" Header="Open" />
-                    <MenuItem Name="ButtonViewSave" Header="Save" />
-                    <MenuItem Name="ButtonViewNext" Header="Next" />
-                    <MenuItem Name="ButtonViewPrev" Header="Prev" />
-                    <MenuItem Name="ButtonViewClose" Header="Close" />
-                </MenuItem>
-                <MenuItem Name="ButtonAbout" Header="About" />
-            </Menu>
-            <Image Grid.Row="0" Grid.Column="0" Source="../Icons/UMLRedactor_icon.png" Width="20" Height="20"
-                   Focusable="False" HorizontalAlignment="Left" Margin="8,0" />
-            <StackPanel Grid.Row="0" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Stretch"
-                        Background="WhiteSmoke">
-                <Separator Width="45" Background="Transparent" />
-                <Border x:Name="SystemButtonTray" CornerRadius="15,0,0,15"
-                        MouseLeftButtonDown="SystemButtonTray_MouseLeftButtonDown" MouseEnter="SystemButton_MouseEnter"
-                        MouseLeave="SystemButton_MouseLeave" BorderThickness="0" Height="36" Background="LightGray"
-                        Width="50" VerticalAlignment="Center">
-                    <TextBlock Text="—" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                </Border>
-                <Border x:Name="SystemButtonMaximize" BorderThickness="0" Height="36"
-                        MouseLeftButtonDown="SystemButtonMaximize_MouseLeftButtonDown"
-                        MouseEnter="SystemButton_MouseEnter" MouseLeave="SystemButton_MouseLeave"
-                        Background="LightGray" Width="50" VerticalAlignment="Center">
-                    <TextBlock Text="❐" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                </Border>
-                <Border x:Name="SystemButtonClose" CornerRadius="0,15,15,0"
-                        MouseLeftButtonDown="SystemButtonClose_MouseLeftButtonDown"
-                        MouseEnter="SystemButton_MouseEnter" MouseLeave="SystemButton_MouseLeave"
-                        Background="LightGray" BorderThickness="0" Height="36" Width="50" VerticalAlignment="Center">
-                    <TextBlock Text="X" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                </Border>
-            </StackPanel>
-            <Border Grid.Row="0" Grid.Column="2" BorderBrush="Black" Background="WhiteSmoke" BorderThickness="0"
-                    MouseLeftButtonDown="TitleBar_OnMouseLeftButtonDown">
-                <StackPanel Orientation="Horizontal">
-                    <Separator />
-                    <TextBlock Name="ProjectName" Foreground="DimGray" Focusable="False"
-                               VerticalAlignment="Center" />
+        <Border Width="auto" Height="auto" BorderBrush="WhiteSmoke" Background="WhiteSmoke" BorderThickness="2"
+                CornerRadius="15">
+            <Grid Background="WhiteSmoke" Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="0.5*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Menu Grid.Row="0" Grid.Column="0" Padding="0,0"
+                      Grid.ColumnSpan="2" Background="WhiteSmoke">
+                    <Separator Background="Transparent"/>
+                    <MenuItem Header="File" Height="30">
+                        <MenuItem Name="ButtonFileNew" Header="New" Height="30" Background="WhiteSmoke"/>
+                        <MenuItem Name="ButtonFileOpen" Header="Open" Height="30" Background="WhiteSmoke"/>
+                        <MenuItem Name="ButtonFileSave" Header="Save" Height="30" Background="WhiteSmoke"/>
+                        <MenuItem Name="ButtonFileSaveAs" Header="Save as.." Height="30" Background="WhiteSmoke"/>
+                        <MenuItem Name="ButtonFileExport" Header="Export as PNG" Height="30" Background="WhiteSmoke"/>
+                    </MenuItem>
+                    <MenuItem Header="Edit" Height="30">
+                        <MenuItem Name="ButtonEditUndo" Header="Undo" Height="30" Background="WhiteSmoke"/>
+                        <MenuItem Name="ButtonEditRedo" Header="Redo" Height="30" Background="WhiteSmoke"/>
+                    </MenuItem>
+                    <MenuItem Header="View" Height="30">
+                        <MenuItem Name="ButtonViewNew" Header="New" Height="30" Background="WhiteSmoke"/>
+                        <MenuItem Name="ButtonViewOpen" Header="Open" Height="30" Background="WhiteSmoke"/>
+                        <MenuItem Name="ButtonViewSave" Header="Save" Height="30" Background="WhiteSmoke"/>
+                        <MenuItem Name="ButtonViewNext" Header="Next" Height="30" Background="WhiteSmoke"/>
+                        <MenuItem Name="ButtonViewPrev" Header="Prev" Height="30" Background="WhiteSmoke"/>
+                        <MenuItem Name="ButtonViewClose" Header="Close" Height="30" Background="WhiteSmoke"/>
+                    </MenuItem>
+                    <MenuItem Name="ButtonAbout" Header="About" Height="30"/>
+                </Menu>
+                <Image Grid.Row="0" Grid.Column="0" Source="../Icons/UMLRedactor_icon.png" Width="20" Height="20"
+                       Focusable="False" HorizontalAlignment="Left" Margin="8,0,0,8"/>
+                <StackPanel Grid.Row="0" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Stretch"
+                            Background="WhiteSmoke">
+                    <Separator Width="45" Background="Transparent" />
+                    <Border x:Name="SystemButtonTray" CornerRadius="15,0,0,15"
+                            MouseLeftButtonDown="SystemButtonTray_MouseLeftButtonDown"
+                            MouseEnter="SystemButton_MouseEnter"
+                            MouseLeave="SystemButton_MouseLeave" BorderThickness="0" Height="36" Background="LightGray"
+                            Width="50" VerticalAlignment="Center">
+                        <TextBlock Text="—" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <Border x:Name="SystemButtonMaximize" BorderThickness="0" Height="36"
+                            MouseLeftButtonDown="SystemButtonMaximize_MouseLeftButtonDown"
+                            MouseEnter="SystemButton_MouseEnter" MouseLeave="SystemButton_MouseLeave"
+                            Background="LightGray" Width="50" VerticalAlignment="Center">
+                        <TextBlock Text="❐" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <Border x:Name="SystemButtonClose" CornerRadius="0,15,15,0"
+                            MouseLeftButtonDown="SystemButtonClose_MouseLeftButtonDown"
+                            MouseEnter="SystemButton_MouseEnter" MouseLeave="SystemButton_MouseLeave"
+                            Background="LightGray" BorderThickness="0" Height="36" Width="50"
+                            VerticalAlignment="Center">
+                        <TextBlock Text="X" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
                 </StackPanel>
-            </Border>
-            <TextBlock Grid.Row="1" Background="WhiteSmoke" Height="30" Grid.Column="3" Width="200" Text="Модель"
-                       FontSize="14"
-                       Padding="10,5" />
-            <TreeView x:Name="TreeView" Background="White" Grid.Row="2" Grid.Column="3" Grid.RowSpan="3" Width="200"
-                      BorderThickness="0" BorderBrush="Black">
-            </TreeView>
-            <TextBlock Grid.Row="1" Background="WhiteSmoke" Height="30" Grid.Column="0" Grid.ColumnSpan="2" Width="220"
-                       Text="Элементы" FontSize="14" Padding="10,5" />
-            <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Width="220" BorderThickness="0,0,1,0">
-                <Grid x:Name="ElementsGrid" Width="200" Background="White">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100" />
-                        <ColumnDefinition Width="100" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="100" />
-                    </Grid.RowDefinitions>
-                    <Button Grid.Row="0" Grid.Column="0" Background="Transparent" BorderThickness="0">
-                        <StackPanel Orientation="Vertical">
-                            <Image Source="../Icons/Class_element_icon.png" Height="60" Width="60" />
-                            <Separator Background="Transparent" />
-                            <TextBlock Text="Class" TextAlignment="Center" />
-                        </StackPanel>
-                    </Button>
-                    <Button Grid.Row="0" Grid.Column="1" Background="Transparent" BorderThickness="0">
-                        <StackPanel Orientation="Vertical">
-                            <Image Source="../Icons/NoteLink_icon.png" Height="60" Width="60" />
-                            <Separator Background="Transparent" />
-                            <TextBlock Text="Note Link" TextAlignment="Center" />
-                        </StackPanel>
-                    </Button>
-                </Grid>
-            </ScrollViewer>
-
-            <TextBlock Grid.Row="3" Background="WhiteSmoke" Height="30" Grid.Column="0" Width="110" Text="Значения"
-                       FontSize="14" Padding="10,5" />
-            <Border Grid.Row="3" Grid.Column="0" BorderThickness="0,0,1,0" BorderBrush="DarkGray" />
-            <TextBlock Grid.Row="3" Background="WhiteSmoke" Height="30" Grid.Column="1" Width="110" Text="Свойства"
-                       FontSize="14" Padding="10,5" />
-            <Border Grid.Row="3" Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="DarkGray" />
-            <ScrollViewer Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Width="220" BorderThickness="0,0,1,0">
-                <Grid x:Name="OptionsGrid" Width="220" Background="White">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                </Grid>
-            </ScrollViewer>
-            <ScrollViewer Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" HorizontalScrollBarVisibility="Auto"
-                          VerticalScrollBarVisibility="Auto" AllowDrop="True">
-                <Canvas x:Name="DrawCanvas" ScrollViewer.CanContentScroll="True" Background="White"
-                        ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                        ScrollViewer.VerticalScrollBarVisibility="Auto" Width="2000" Height="2000">
-
-                </Canvas>
-            </ScrollViewer>
-            <TabControl Grid.Row="3" Grid.Column="2" Grid.RowSpan="2" BorderBrush="Black" Background="WhiteSmoke"
-                        BorderThickness="0,0,0,0">
-                <TabItem Margin="1,0,0,0" Header="Атрибуты" Background="WhiteSmoke" Height="30">
-                    <Grid>
+                <Border Grid.Row="0" Grid.Column="2" BorderBrush="Black" Background="WhiteSmoke" BorderThickness="0"
+                        MouseLeftButtonDown="TitleBar_OnMouseLeftButtonDown">
+                    <StackPanel Orientation="Horizontal">
+                        <Separator />
+                        <TextBlock Name="ProjectName" Foreground="DimGray" Focusable="False"
+                                   VerticalAlignment="Center" />
+                    </StackPanel>
+                </Border>
+                <TextBlock Grid.Row="1" Background="WhiteSmoke" Height="30" Grid.Column="3" Width="200" Text="Модель"
+                           FontSize="14"
+                           Padding="10,5" />
+                <TreeView x:Name="TreeView" Background="White" Grid.Row="2" Grid.Column="3" Grid.RowSpan="3"
+                          Width="200"
+                          BorderThickness="0" BorderBrush="Black">
+                </TreeView>
+                <TextBlock Grid.Row="1" Background="WhiteSmoke" Height="30" Grid.Column="0" Grid.ColumnSpan="2"
+                           Width="220"
+                           Text="Элементы" FontSize="14" Padding="10,5" />
+                <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Width="220" BorderThickness="0,0,1,0">
+                    <Grid x:Name="ElementsGrid" Width="200" Background="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="20" />
-                            <RowDefinition Height="*" />
+                            <RowDefinition Height="100" />
                         </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Background="Transparent" BorderThickness="0">
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="../Icons/Class_element_icon.png" Height="60" Width="60" />
+                                <Separator Background="Transparent" />
+                                <TextBlock Text="Class" TextAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Row="0" Grid.Column="1" Background="Transparent" BorderThickness="0">
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="../Icons/NoteLink_icon.png" Height="60" Width="60" />
+                                <Separator Background="Transparent" />
+                                <TextBlock Text="Note Link" TextAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </ScrollViewer>
+
+                <TextBlock Grid.Row="3" Background="WhiteSmoke" Height="30" Grid.Column="0" Width="110" Text="Значения"
+                           FontSize="14" Padding="10,5" />
+                <Border Grid.Row="3" Grid.Column="0" BorderThickness="0,0,1,0" BorderBrush="DarkGray" />
+                <TextBlock Grid.Row="3" Background="WhiteSmoke" Height="30" Grid.Column="1" Width="110" Text="Свойства"
+                           FontSize="14" Padding="10,5" />
+                <Border Grid.Row="3" Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="DarkGray" />
+                <ScrollViewer Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Width="220" BorderThickness="0,0,1,0">
+                    <Grid x:Name="OptionsGrid" Width="220" Background="White">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <Border Grid.Row="0" Grid.Column="0" Background="WhiteSmoke" BorderBrush="DarkGray"
-                                BorderThickness="1,1,1,0">
-                            <TextBlock TextAlignment="Left" HorizontalAlignment="Left" Width="110" Text="Имя"
-                                       FontSize="14"
-                                       Margin="10,0,0,0" />
-                        </Border>
-                        <Border Grid.Row="0" Grid.Column="1" Background="WhiteSmoke" BorderBrush="DarkGray"
-                                BorderThickness="1,1,1,0">
-                            <TextBlock TextAlignment="Left" HorizontalAlignment="Left" Width="110" Text="Тип"
-                                       FontSize="14"
-                                       Margin="10,0,0,0" />
-                        </Border>
-                        <Border Grid.Row="0" Grid.Column="2" Background="WhiteSmoke" BorderBrush="DarkGray"
-                                BorderThickness="1,1,1,0">
-                            <TextBlock TextAlignment="Left" HorizontalAlignment="Left" Width="110" Text="Модификатор"
-                                       FontSize="14"
-                                       Margin="10,0,0,0" />
-                        </Border>
-                        <Separator Grid.Row="0" Grid.Column="3" Width="17" Background="Transparent" />
-                        <ScrollViewer Grid.Row="1" Grid.Column="0" Background="White" Grid.ColumnSpan="4"
-                                      VerticalAlignment="Stretch">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="30" />
-                                </Grid.RowDefinitions>
-                                <RichTextBox Grid.Column="0" FontSize="14" Padding="0,5" />
-                                <RichTextBox Grid.Column="1" FontSize="14" Padding="0,5" />
-                                <RichTextBox Grid.Column="2" FontSize="14" Padding="0,5" />
-                                <ComboBox Name="AttributeMod" Grid.Column="2" Foreground="Black" Padding="0,0,0,5"
-                                          Text="Public" FontSize="14">
-                                    <TextBlock Height="30" Text="Public" Padding="0,5" FontSize="14" />
-                                    <TextBlock Height="30" Text="Private" Padding="0,5" FontSize="14" />
-                                    <TextBlock Height="30" Text="Private Protected" Padding="0,5" FontSize="14" />
-                                    <TextBlock Height="30" Text="Protected" Padding="0,5" FontSize="14" />
-                                    <TextBlock Height="30" Text="Internal" Padding="0,5" FontSize="14" />
-                                    <TextBlock Height="30" Text="Protected Internal" Padding="0,5" FontSize="14" />
-                                </ComboBox>
-                            </Grid>
-                        </ScrollViewer>
                     </Grid>
-                </TabItem>
-                <TabItem Header="Операции" Background="WhiteSmoke" Height="30">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="20" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <Border Grid.Row="0" Grid.Column="0" Background="WhiteSmoke" BorderBrush="DarkGray"
-                                BorderThickness="1,1,1,0">
-                            <TextBlock TextAlignment="Left" HorizontalAlignment="Left" Width="110" Text="Имя"
-                                       FontSize="14"
-                                       Margin="10,0,0,0" />
-                        </Border>
-                        <Border Grid.Row="0" Grid.Column="1" Background="WhiteSmoke" BorderBrush="DarkGray"
-                                BorderThickness="1,1,1,0">
-                            <TextBlock TextAlignment="Left" HorizontalAlignment="Left" Width="110" Text="Параметры"
-                                       FontSize="14"
-                                       Margin="10,0,0,0" />
-                        </Border>
-                        <Border Grid.Row="0" Grid.Column="2" Background="WhiteSmoke" BorderBrush="DarkGray"
-                                BorderThickness="1,1,1,0">
-                            <TextBlock TextAlignment="Left" HorizontalAlignment="Left" Width="110" Text="Тип"
-                                       FontSize="14"
-                                       Margin="10,0,0,0" />
-                        </Border>
-                        <Border Grid.Row="0" Grid.Column="3" Background="WhiteSmoke" BorderBrush="DarkGray"
-                                BorderThickness="1,1,1,0">
-                            <TextBlock TextAlignment="Left" HorizontalAlignment="Left" Width="110" Text="Модификатор"
-                                       FontSize="14"
-                                       Margin="10,0,0,0" />
-                        </Border>
-                        <Separator Grid.Row="0" Grid.Column="4" Width="17" Background="Transparent"
-                                   VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
-                        <ScrollViewer Grid.Row="1" Grid.Column="0" Background="White" Grid.ColumnSpan="5"
-                                      VerticalAlignment="Stretch">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="30" />
-                                </Grid.RowDefinitions>
-                                <RichTextBox Grid.Column="0" FontSize="14" Padding="0,5" />
-                                <RichTextBox Grid.Column="1" FontSize="14" Padding="0,5" />
-                                <RichTextBox Grid.Column="2" FontSize="14" Padding="0,5" />
-                                <ComboBox Name="OperationMod" Grid.Column="3" Foreground="Black" Padding="0,0,0,5"
-                                          Text="Public" FontSize="14">
-                                    <TextBlock Height="30" Text="Public" Padding="0,5" FontSize="14" />
-                                    <TextBlock Height="30" Text="Private" Padding="0,5" FontSize="14" />
-                                    <TextBlock Height="30" Text="Private Protected" Padding="0,5" FontSize="14" />
-                                    <TextBlock Height="30" Text="Protected" Padding="0,5" FontSize="14" />
-                                    <TextBlock Height="30" Text="Internal" Padding="0,5" FontSize="14" />
-                                    <TextBlock Height="30" Text="Protected Internal" Padding="0,5" FontSize="14" />
-                                </ComboBox>
-                            </Grid>
-                        </ScrollViewer>
-                    </Grid>
-                </TabItem>
-            </TabControl>
-        </Grid>
+                </ScrollViewer>
+                <ScrollViewer Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" HorizontalScrollBarVisibility="Auto"
+                              VerticalScrollBarVisibility="Auto" AllowDrop="True">
+                    <Canvas x:Name="DrawCanvas" ScrollViewer.CanContentScroll="True" Background="White"
+                            ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                            ScrollViewer.VerticalScrollBarVisibility="Auto" Width="2000" Height="2000">
+
+                    </Canvas>
+                </ScrollViewer>
+                <TabControl Grid.Row="3" Grid.Column="2" Grid.RowSpan="2" BorderBrush="Black" Background="WhiteSmoke"
+                            BorderThickness="0,0,0,0">
+                    <TabItem Header="Атрибуты" Background="WhiteSmoke" Height="30">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Row="0" Grid.Column="0" Background="WhiteSmoke" BorderBrush="DarkGray"
+                                    BorderThickness="1,1,1,0">
+                                <TextBlock TextAlignment="Left" HorizontalAlignment="Left" Width="110" Text="Имя"
+                                           FontSize="14"
+                                           Margin="10,0,0,0" />
+                            </Border>
+                            <Border Grid.Row="0" Grid.Column="1" Background="WhiteSmoke" BorderBrush="DarkGray"
+                                    BorderThickness="1,1,1,0">
+                                <TextBlock TextAlignment="Left" HorizontalAlignment="Left" Width="110" Text="Тип"
+                                           FontSize="14"
+                                           Margin="10,0,0,0" />
+                            </Border>
+                            <Border Grid.Row="0" Grid.Column="2" Background="WhiteSmoke" BorderBrush="DarkGray"
+                                    BorderThickness="1,1,1,0">
+                                <TextBlock TextAlignment="Left" HorizontalAlignment="Left" Width="110"
+                                           Text="Модификатор"
+                                           FontSize="14"
+                                           Margin="10,0,0,0" />
+                            </Border>
+                            <Separator Grid.Row="0" Grid.Column="3" Width="17" Background="Transparent" />
+                            <ScrollViewer Grid.Row="1" Grid.Column="0" Background="White" Grid.ColumnSpan="4"
+                                          VerticalAlignment="Stretch">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30" />
+                                    </Grid.RowDefinitions>
+                                    <RichTextBox Grid.Column="0" FontSize="14" Padding="0,5" />
+                                    <RichTextBox Grid.Column="1" FontSize="14" Padding="0,5" />
+                                    <RichTextBox Grid.Column="2" FontSize="14" Padding="0,5" />
+                                    <ComboBox Name="AttributeMod" Grid.Column="2" Foreground="Black" Padding="5,0,0,5"
+                                              Text="Public" FontSize="14">
+                                        <TextBlock Height="30" Text="Public" Padding="0,5" FontSize="14" />
+                                        <TextBlock Height="30" Text="Private" Padding="0,5" FontSize="14" />
+                                        <TextBlock Height="30" Text="Private Protected" Padding="0,5" FontSize="14" />
+                                        <TextBlock Height="30" Text="Protected" Padding="0,5" FontSize="14" />
+                                        <TextBlock Height="30" Text="Internal" Padding="0,5" FontSize="14" />
+                                        <TextBlock Height="30" Text="Protected Internal" Padding="0,5" FontSize="14" />
+                                    </ComboBox>
+                                </Grid>
+                            </ScrollViewer>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Операции" Background="WhiteSmoke" Height="30">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Row="0" Grid.Column="0" Background="WhiteSmoke" BorderBrush="DarkGray"
+                                    BorderThickness="1,1,1,0">
+                                <TextBlock TextAlignment="Left" HorizontalAlignment="Left" Width="110" Text="Имя"
+                                           FontSize="14"
+                                           Margin="10,0,0,0" />
+                            </Border>
+                            <Border Grid.Row="0" Grid.Column="1" Background="WhiteSmoke" BorderBrush="DarkGray"
+                                    BorderThickness="1,1,1,0">
+                                <TextBlock TextAlignment="Left" HorizontalAlignment="Left" Width="110" Text="Параметры"
+                                           FontSize="14"
+                                           Margin="10,0,0,0" />
+                            </Border>
+                            <Border Grid.Row="0" Grid.Column="2" Background="WhiteSmoke" BorderBrush="DarkGray"
+                                    BorderThickness="1,1,1,0">
+                                <TextBlock TextAlignment="Left" HorizontalAlignment="Left" Width="110" Text="Тип"
+                                           FontSize="14"
+                                           Margin="10,0,0,0" />
+                            </Border>
+                            <Border Grid.Row="0" Grid.Column="3" Background="WhiteSmoke" BorderBrush="DarkGray"
+                                    BorderThickness="1,1,1,0">
+                                <TextBlock TextAlignment="Left" HorizontalAlignment="Left" Width="110"
+                                           Text="Модификатор"
+                                           FontSize="14"
+                                           Margin="10,0,0,0" />
+                            </Border>
+                            <Separator Grid.Row="0" Grid.Column="4" Width="17" Background="Transparent"
+                                       VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                            <ScrollViewer Grid.Row="1" Grid.Column="0" Background="White" Grid.ColumnSpan="5"
+                                          VerticalAlignment="Stretch">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30" />
+                                    </Grid.RowDefinitions>
+                                    <RichTextBox Grid.Column="0" FontSize="14" Padding="0,5" />
+                                    <RichTextBox Grid.Column="1" FontSize="14" Padding="0,5" />
+                                    <RichTextBox Grid.Column="2" FontSize="14" Padding="0,5" />
+                                    <ComboBox Name="OperationMod" Grid.Column="3" Foreground="Black" Padding="5,0,0,5"
+                                              Text="Public" FontSize="14">
+                                        <TextBlock Height="30" Text="Public" Padding="0,5" FontSize="14" />
+                                        <TextBlock Height="30" Text="Private" Padding="0,5" FontSize="14" />
+                                        <TextBlock Height="30" Text="Private Protected" Padding="0,5" FontSize="14" />
+                                        <TextBlock Height="30" Text="Protected" Padding="0,5" FontSize="14" />
+                                        <TextBlock Height="30" Text="Internal" Padding="0,5" FontSize="14" />
+                                        <TextBlock Height="30" Text="Protected Internal" Padding="0,5" FontSize="14" />
+                                    </ComboBox>
+                                </Grid>
+                            </ScrollViewer>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

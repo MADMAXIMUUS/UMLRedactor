@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using UMLRedactor.Additions;
 using UMLRedactor.Models;
+using Attribute = UMLRedactor.Additions.Attribute;
 
 namespace UMLRedactor.Controllers
 {
@@ -35,17 +37,29 @@ namespace UMLRedactor.Controllers
             model.ProgramVersion = xElementRoot.Element("XMI.exporterVersion")?.Value;
             model.Author = xElementRoot.Element("Author")?.Value;
             model.Name = xElementRoot.Element("UML:Model")?.Attribute("name")?.Value;
-            ModelNodeBase root = new ModelNodeBase
+            model.Root = new ModelNodeBase
             {
-                Name = xElementRoot.Element("UML:Model")?.Element("UML:ModelElement.rootElement").Element("Name")
-                    ?.Value,
+                Name = xElementRoot.Element("UML:Model")?
+                    .Element("UML:ModelElement.rootElement")?
+                    .Element("Name")?
+                    .Value,
                 Type = GetElementType(xElementRoot.Element("UML:Model")?.Element("UML:Class")),
-                Id = xElementRoot.Element("UML:Model")?.Element("UML:ModelElement.rootElement").Element("ID")?.Value,
-                NamespaceId = xElementRoot.Element("UML:Model")?.Element("UML:ModelElement.rootElement")
-                    .Element("Namespace")?.Value,
+                Id = xElementRoot.Element("UML:Model")?
+                    .Element("UML:ModelElement.rootElement")?
+                    .Element("ID")?
+                    .Value,
+                NamespaceId = xElementRoot.Element("UML:Model")?
+                    .Element("UML:ModelElement.rootElement")?
+                    .Element("Namespace")?
+                    .Value,
                 ChildNodes = new List<ModelNodeBase>()
             };
-
+            var elements = xElementRoot.Element("UML:Namespace.ownedElement")?.Elements().ToList();
+            if (elements != null)
+                foreach (var element in elements)
+                {
+                    
+                }
 
             return 0;
         }
@@ -83,6 +97,27 @@ namespace UMLRedactor.Controllers
                 default:
                     return "Class";
             }
+        }
+
+        private string GetLineType(XElement element)
+        {
+            switch (element.Name.LocalName)
+            {
+                case ("UML:Association"):
+                    return "AssociationLink";
+                default:
+                    return "NoteLink";
+            }
+        }
+
+        private Operation GetOperation(XElement element)
+        {
+            return new Operation();
+        }
+
+        private Attribute GetAttribute(XElement element)
+        {
+            return new Attribute();
         }
     }
 }
