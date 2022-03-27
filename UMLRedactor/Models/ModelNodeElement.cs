@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UMLRedactor.Additions;
-using Attribute = UMLRedactor.Additions.Attribute;
 
 namespace UMLRedactor.Models
 {

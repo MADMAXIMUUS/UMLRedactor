@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Forms.VisualStyles;
+﻿using System.Windows;
 using System.Windows.Input;
 using Microsoft.Win32;
 using UMLRedactor.Models;
@@ -13,7 +11,6 @@ namespace UMLRedactor.Controllers
 
         public Controller(Model model)
         {
-            //_view = view;
             _model = model;
         }
 
@@ -28,10 +25,17 @@ namespace UMLRedactor.Controllers
             if (openFileDialog.ShowDialog() == true)
             {
                 ModelReader reader = new ModelReader(openFileDialog.FileName);
-                if (reader.GetModelFromFile(out _model)==-1)
+                switch  (reader.GetModelFromFile(out _model))
                 {
-                    MessageBox.Show("Версия XMI не соответсвует 1.1!", String.Empty, MessageBoxButton.OK);
-                    _model = new Model();
+                    case 0:
+                        MessageBox.Show("Модель импортирована");
+                        break;
+                    case -1:
+                        MessageBox.Show("Версия XMI не соответсвует 1.1!");
+                        break;
+                    default:
+                        MessageBox.Show("Ошибка импортирования");
+                        break;
                 }
             }
         }
@@ -42,6 +46,56 @@ namespace UMLRedactor.Controllers
         }
 
         public void Save(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        
+        public void SaveAs(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void Export(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void Redo(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void Undo(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void NewDiagram(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void CloseDiagram(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void NextDiagram(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void PrevDiagram(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void OpenDiagram(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void SaveDiagram(object sender, RoutedEventArgs e)
         {
             
         }
@@ -110,54 +164,6 @@ namespace UMLRedactor.Controllers
             }*/
         }
 
-        public void SaveAs(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        public void Export(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        public void Redo(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        public void Undo(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        public void NewDiagram(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        public void CloseDiagram(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        public void NextDiagram(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        public void PrevDiagram(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        public void OpenDiagram(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        public void SaveDiagram(object sender, RoutedEventArgs e)
-        {
-            
-        }
+        
     }
 }

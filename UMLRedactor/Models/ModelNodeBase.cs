@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO.Packaging;
+﻿using System.Collections.Generic;
 
 namespace UMLRedactor.Models
 {

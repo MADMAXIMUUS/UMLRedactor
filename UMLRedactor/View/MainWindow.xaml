@@ -121,10 +121,10 @@
                     </Grid>
                 </ScrollViewer>
 
-                <TextBlock Grid.Row="3" Background="WhiteSmoke" Height="30" Grid.Column="0" Width="110" Text="Значения"
+                <TextBlock Grid.Row="3" Background="WhiteSmoke" Height="30" Grid.Column="0" Width="110" Text="Свойства"
                            FontSize="14" Padding="10,5" />
                 <Border Grid.Row="3" Grid.Column="0" BorderThickness="0,0,1,0" BorderBrush="DarkGray" />
-                <TextBlock Grid.Row="3" Background="WhiteSmoke" Height="30" Grid.Column="1" Width="110" Text="Свойства"
+                <TextBlock Grid.Row="3" Background="WhiteSmoke" Height="30" Grid.Column="1" Width="110" Text="Значения"
                            FontSize="14" Padding="10,5" />
                 <Border Grid.Row="3" Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="DarkGray" />
                 <ScrollViewer Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Width="220" BorderThickness="0,0,1,0">
