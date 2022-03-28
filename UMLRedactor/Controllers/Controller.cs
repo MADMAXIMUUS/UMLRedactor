@@ -33,6 +33,9 @@ namespace UMLRedactor.Controllers
                     case -1:
                         MessageBox.Show("Версия XMI не соответсвует 1.1!");
                         break;
+                    case -2:
+                        MessageBox.Show("Ошибка импортирования");
+                        break;
                     default:
                         MessageBox.Show("Ошибка импортирования");
                         break;
