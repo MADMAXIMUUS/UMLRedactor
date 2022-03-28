@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Xaml.Schema;
+using System.Windows;
 using System.Xml.Linq;
 using UMLRedactor.Additions;
 using UMLRedactor.Models;
-using Attribute = UMLRedactor.Additions.Attribute;
 
 namespace UMLRedactor.Controllers
 {
@@ -83,9 +81,9 @@ namespace UMLRedactor.Controllers
                             continue;
 
                         if (GetElementType(element) != "Not element")
-                            model.Root.ChildNodes.Add(GetElement(element));
+                            model.Root.ChildNodes.Add(GetElementFromMad(element));
                         else
-                            model.Root.ChildNodes.Add(GetLine(element));
+                            model.Root.ChildNodes.Add(GetLineFromMad(element));
                     }
             }
 
@@ -98,7 +96,7 @@ namespace UMLRedactor.Controllers
             XElement xElementRoot = XmlDocument.Root;
             if (xElementRoot == null)
                 return -2;
-            if (xElementRoot.Attribute("xmi.version")?.Value == "1.1")
+            if (xElementRoot.FirstAttribute?.Value != "1.1")
                 return -1;
             XElement xElementDocumentationRoot = xElementRoot.Element("XMI.header")?.Element("XMI.documentation");
             if (xElementDocumentationRoot == null)
@@ -156,11 +154,6 @@ namespace UMLRedactor.Controllers
             return 0;
         }
 
-        private ModelNodeBase GetLineFromEa(XElement element)
-        {
-            return new ModelNodeLine();
-        }
-
         private string GetElementType(XElement element)
         {
             switch (element.Name.LocalName)
@@ -169,6 +162,10 @@ namespace UMLRedactor.Controllers
                     return "Class";
                 case "Package":
                     return "Package";
+                case "ActionState":
+                    return "Activity";
+                case "PseudoState":
+                    return "Pseudo";
                 default:
                     return "Not element";
             }
@@ -178,8 +175,12 @@ namespace UMLRedactor.Controllers
         {
             switch (element.Name.LocalName)
             {
-                case ("Association"):
+                case "Association":
                     return "AssociationLink";
+                case "Generalization":
+                    return "GeneralizationLink";
+                case "Transition":
+                    return "TransitionLink";
                 default:
                     return "Not line";
             }
@@ -192,6 +193,8 @@ namespace UMLRedactor.Controllers
                 Name = element.Attribute("name")?.Value,
                 Id = element.Attribute("xmi.id")?.Value,
                 Type = GetElementType(element),
+                Stereotype = element.Element(Uml("ModelElement.stereotype"))?.Element(Uml("Stereotype"))?
+                    .Attribute("name")?.Value,
                 ChildNodes = new List<ModelNodeBase>(),
                 Attributes = new List<Attribute>(),
                 Operations = new List<Operation>()
@@ -211,7 +214,7 @@ namespace UMLRedactor.Controllers
             {
                 foreach (XElement classifier in classifiers)
                 {
-                    if (classifier.Name.LocalName=="Attribute")
+                    if (classifier.Name.LocalName == "Attribute")
                         elem.Attributes.Add(GetAttributeFromEa(classifier));
                     if (classifier.Name.LocalName == "Operation")
                         elem.Operations.Add(GetOperationFromEa(classifier));
@@ -219,43 +222,6 @@ namespace UMLRedactor.Controllers
             }
 
             return elem;
-        }
-
-        private Operation GetOperationFromEa(XElement classifier)
-        {
-            Operation op = new Operation()
-            {
-                Name = classifier.Attribute("name")?.Value,
-                AccessModifier = classifier.Attribute("visibility")?.Value,
-            };
-            List<XElement> taggedValue = classifier.Element(Uml("ModelElement.taggedValue"))?.Elements().ToList();
-            if (taggedValue !=null)
-                foreach (XElement value in taggedValue)
-                {
-                    if (value.Attribute("tag")?.Value!="type")
-                        continue;
-                    op.DataTypeOfReturnValue = value.Attribute("value")?.Value;
-                    break;
-                }
-
-            List<XElement> parameters = classifier.Element(Uml("BehavioralFeature.parameter"))?.Elements().ToList();
-            if (parameters!=null)
-                foreach (XElement parameter in parameters)
-                {
-                    if (parameter.Attribute("kind")?.Value == "return")
-                        continue;
-                    Parameter p = new Parameter()
-                    {
-                        Name = parameter.Attribute("name")?.Value,
-                        DataType = 
-                    }
-                }
-            return op;
-        }
-
-        private Parameter GetParameterFromEa(XElement parameter)
-        {
-            
         }
 
         private Attribute GetAttributeFromEa(XElement classifier)
@@ -266,18 +232,107 @@ namespace UMLRedactor.Controllers
                 AccessModifier = classifier.Attribute("visibility")?.Value
             };
             List<XElement> taggedValue = classifier.Element(Uml("ModelElement.taggedValue"))?.Elements().ToList();
-            if (taggedValue !=null)
+            if (taggedValue != null)
                 foreach (XElement value in taggedValue)
                 {
-                    if (value.Attribute("tag")?.Value!="type")
+                    if (value.Attribute("tag")?.Value != "type")
                         continue;
                     at.DataType = value.Attribute("value")?.Value;
                     break;
                 }
+
             return at;
         }
 
-        private ModelNodeElement GetElement(XElement element)
+        private Operation GetOperationFromEa(XElement classifier)
+        {
+            Operation op = new Operation()
+            {
+                Name = classifier.Attribute("name")?.Value,
+                AccessModifier = classifier.Attribute("visibility")?.Value,
+                Parameters = new List<Parameter>()
+            };
+            List<XElement> taggedValue = classifier.Element(Uml("ModelElement.taggedValue"))?.Elements().ToList();
+            if (taggedValue != null)
+                foreach (XElement value in taggedValue)
+                {
+                    if (value.Attribute("tag")?.Value != "type")
+                        continue;
+                    op.DataTypeOfReturnValue = value.Attribute("value")?.Value;
+                    break;
+                }
+
+            List<XElement> parameters = classifier.Element(Uml("BehavioralFeature.parameter"))?.Elements().ToList();
+            if (parameters != null)
+                foreach (XElement parameter in parameters)
+                {
+                    if (parameter.Attribute("kind")?.Value == "return")
+                        continue;
+                    op.Parameters.Add(GetParameterFromEa(parameter));
+                }
+
+            return op;
+        }
+
+        private Parameter GetParameterFromEa(XElement parameter)
+        {
+            Parameter p = new Parameter
+            {
+                Name = parameter.Attribute("name")?.Value,
+                DefaultValue = parameter.Element(Uml("Parameter.defaultValue"))?
+                    .Element(Uml("Expression"))?
+                    .Attribute("body")?.Value
+            };
+            List<XElement> taggedValue = parameter.Element(Uml("ModelElement.taggedValue"))?.Elements().ToList();
+            if (taggedValue != null)
+                foreach (XElement value in taggedValue)
+                {
+                    if (value.Attribute("tag")?.Value != "type")
+                        continue;
+                    p.DataType = value.Attribute("value")?.Value;
+                }
+
+            return p;
+        }
+
+        private ModelNodeLine GetLineFromEa(XElement element)
+        {
+            ModelNodeLine line = new ModelNodeLine
+            {
+                Name = GetLineType(element),
+                Id = element.Attribute("xmi.id")?.Value,
+                Type = GetLineType(element),
+                TextOnLine = element.Attribute("name")?.Value
+            };
+            List<XElement> ends = element.Element(Uml("Association.connection"))?.Elements().ToList();
+            if (ends != null)
+                foreach (XElement end in ends)
+                {
+                    List<XElement> taggedValue = end.Element(Uml("ModelElement.taggedValue"))?.Elements().ToList();
+                    if (taggedValue!=null)
+                        foreach (XElement value in taggedValue)
+                        {
+                            if (value.Attribute("tag")?.Value != "ea_end")
+                                continue;
+
+                            if (value.Attribute("value")?.Value == "source")
+                            {
+                                line.Source = end.Attribute("type")?.Value;
+                                line.TextSourceOnLine = end.Attribute("name")?.Value;
+                            }
+                            else
+                            {
+                                line.Target = end.Attribute("type")?.Value;
+                                line.TextTargetOnLine = end.Attribute("name")?.Value;
+                            }
+                        }
+                }
+
+            return line;
+        }
+
+
+        private ModelNodeElement GetElementFromMad(XElement element)
         {
             ModelNodeElement elem = new ModelNodeElement
             {
@@ -295,15 +350,15 @@ namespace UMLRedactor.Controllers
                 foreach (XElement classifierFeature in classifierFeatures)
                 {
                     if (classifierFeature.Name.LocalName == "Attribute")
-                        elem.Attributes.Add(GetAttribute(classifierFeature));
+                        elem.Attributes.Add(GetAttributeFromMad(classifierFeature));
                     if (classifierFeature.Name.LocalName == "Operation")
-                        elem.Operations.Add(GetOperation(classifierFeature));
+                        elem.Operations.Add(GetOperationFromMad(classifierFeature));
                 }
 
             return elem;
         }
 
-        private Operation GetOperation(XElement element)
+        private Operation GetOperationFromMad(XElement element)
         {
             Operation op = new Operation
             {
@@ -327,7 +382,7 @@ namespace UMLRedactor.Controllers
             return op;
         }
 
-        private Attribute GetAttribute(XElement element)
+        private Attribute GetAttributeFromMad(XElement element)
         {
             Attribute at = new Attribute()
             {
@@ -338,7 +393,7 @@ namespace UMLRedactor.Controllers
             return at;
         }
 
-        private ModelNodeLine GetLine(XElement element)
+        private ModelNodeLine GetLineFromMad(XElement element)
         {
             ModelNodeLine line = new ModelNodeLine
             {
