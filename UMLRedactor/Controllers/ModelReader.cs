@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 using System.Xml.Linq;
 using UMLRedactor.Additions;
 using UMLRedactor.Models;
@@ -26,7 +25,7 @@ namespace UMLRedactor.Controllers
                     .Element("XMI.documentation")?
                     .Element("XMI.exporter")?
                     .Value != "MadUML")
-                return GetModelFromOtherFile(out model);
+                return GetModelFromEaFile(out model);
 
             return GetModelFromMadFile(out model);
         }
@@ -43,7 +42,6 @@ namespace UMLRedactor.Controllers
             {
                 model.ProgramName = xElementDocumentationRoot.Element("XMI.exporter")?.Value;
                 model.ProgramVersion = xElementDocumentationRoot.Element("XMI.exporterVersion")?.Value;
-                model.Author = xElementDocumentationRoot.Element("Author")?.Value;
                 model.Name = xElementRoot.Element("XMI.content")?.Element(Uml("Model"))?.Attribute("name")?.Value;
             }
 
@@ -63,17 +61,25 @@ namespace UMLRedactor.Controllers
                         .Element(Uml("ModelElement.rootElement"))?
                         .Element("ID")?
                         .Value,
-                    NamespaceId = xContent.Element(Uml("Model"))?
-                        .Element(Uml("Package"))?
-                        .Element(Uml("ModelElement.rootElement"))?
-                        .Element("Namespace")?
-                        .Value,
                     ChildNodes = new List<ModelNodeBase>()
                 };
+                model.Root.Namespace.PackageId = xContent.Element(Uml("Model"))?
+                    .Element(Uml("Package"))?
+                    .Element(Uml("ModelElement.rootElement"))?
+                    .Element("Namespace")?
+                    .Value;
+                model.Root.Namespace.PackageName = xContent.Element(Uml("Model"))?
+                    .Element(Uml("Package"))?
+                    .Element(Uml("ModelElement.rootElement"))?
+                    .Element("name")?
+                    .Value;
+
+
                 List<XElement> elements = xContent.Element(Uml("Model"))?
                     .Element(Uml("Package"))?
                     .Element(Uml("Namespace.ownedElement"))?
                     .Elements().ToList();
+
                 if (elements != null)
                     foreach (var element in elements)
                     {
@@ -90,7 +96,7 @@ namespace UMLRedactor.Controllers
             return 0;
         }
 
-        private int GetModelFromOtherFile(out Model model)
+        private int GetModelFromEaFile(out Model model)
         {
             model = new Model();
             XElement xElementRoot = XmlDocument.Root;
@@ -119,21 +125,6 @@ namespace UMLRedactor.Controllers
                 Id = xModelRoot.Element(Uml("Class"))?.Attribute("xmi.id")?.Value,
                 ChildNodes = new List<ModelNodeBase>()
             };
-
-            List<XElement> taggedValue = xModelRoot.Element(Uml("Package"))?
-                .Element(Uml("ModelElement.taggedValue"))?
-                .Elements()
-                .ToList();
-
-            if (taggedValue == null)
-                return -2;
-
-            foreach (XElement value in taggedValue)
-            {
-                if (value.Attribute("tag")?.Value != "author")
-                    continue;
-                model.Author = value.Attribute("value")?.Value;
-            }
 
             List<XElement> elements = xModelRoot.Element(Uml("Package"))?
                 .Element(Uml("Namespace.ownedElement"))?
@@ -204,9 +195,22 @@ namespace UMLRedactor.Controllers
             if (taggedValue != null)
                 foreach (XElement value in taggedValue)
                 {
-                    if (value.Attribute("tag")?.Value != "package")
-                        continue;
-                    elem.NamespaceId = value.Attribute("value")?.Value;
+                    if (elem.Type == "Package")
+                    {
+                        if (value.Attribute("tag")?.Value == "parent")
+                        {
+                            elem.Namespace.PackageId = value.Attribute("value")?.Value;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (value.Attribute("tag")?.Value == "package")
+                        {
+                            elem.Namespace.PackageId = value.Attribute("value")?.Value;
+                            break;
+                        }
+                    }
                 }
 
             List<XElement> classifiers = element.Element(Uml("Classifier.feature"))?.Elements().ToList();
@@ -220,6 +224,19 @@ namespace UMLRedactor.Controllers
                         elem.Operations.Add(GetOperationFromEa(classifier));
                 }
             }
+
+            List<XElement> children = element.Element(Uml("Namespace.ownedElement"))?.Elements().ToList();
+            if (children != null)
+                foreach (XElement child in children)
+                {
+                    if (GetElementType(child) == "Not element" && GetLineType(child) == "Not line")
+                        continue;
+                    
+                    if (GetElementType(child) != "Not element")
+                        elem.ChildNodes.Add(GetElementFromEa(child));
+                    else
+                        elem.ChildNodes.Add(GetLineFromEa(child));
+                }
 
             return elem;
         }
@@ -235,10 +252,11 @@ namespace UMLRedactor.Controllers
             if (taggedValue != null)
                 foreach (XElement value in taggedValue)
                 {
-                    if (value.Attribute("tag")?.Value != "type")
-                        continue;
-                    at.DataType = value.Attribute("value")?.Value;
-                    break;
+                    if (value.Attribute("tag")?.Value == "type")
+                    {
+                        at.DataType = value.Attribute("value")?.Value;
+                        break;
+                    }
                 }
 
             return at;
@@ -287,9 +305,11 @@ namespace UMLRedactor.Controllers
             if (taggedValue != null)
                 foreach (XElement value in taggedValue)
                 {
-                    if (value.Attribute("tag")?.Value != "type")
-                        continue;
-                    p.DataType = value.Attribute("value")?.Value;
+                    if (value.Attribute("tag")?.Value == "type")
+                    {
+                        p.DataType = value.Attribute("value")?.Value;
+                        break;
+                    }
                 }
 
             return p;
@@ -309,7 +329,7 @@ namespace UMLRedactor.Controllers
                 foreach (XElement end in ends)
                 {
                     List<XElement> taggedValue = end.Element(Uml("ModelElement.taggedValue"))?.Elements().ToList();
-                    if (taggedValue!=null)
+                    if (taggedValue != null)
                         foreach (XElement value in taggedValue)
                         {
                             if (value.Attribute("tag")?.Value != "ea_end")
@@ -331,20 +351,19 @@ namespace UMLRedactor.Controllers
             return line;
         }
 
-
         private ModelNodeElement GetElementFromMad(XElement element)
         {
             ModelNodeElement elem = new ModelNodeElement
             {
                 Name = element.Element("Name")?.Value,
                 Id = element.Element("ID")?.Value,
-                NamespaceId = element.Element("Namespace")?.Value,
                 Stereotype = element.Element("Stereotype")?.Value,
                 Type = GetElementType(element),
                 Attributes = new List<Attribute>(),
                 Operations = new List<Operation>(),
                 ChildNodes = new List<ModelNodeBase>()
             };
+            elem.Namespace.PackageId = element.Element("Namespace")?.Value;
             List<XElement> classifierFeatures = element.Element(Uml("Classifier.feature"))?.Elements().ToList();
             if (classifierFeatures != null)
                 foreach (XElement classifierFeature in classifierFeatures)
@@ -399,7 +418,6 @@ namespace UMLRedactor.Controllers
             {
                 Name = element.Element("Name")?.Value,
                 Id = element.Element("ID")?.Value,
-                NamespaceId = element.Element("Namespace")?.Value,
                 ChildNodes = null,
                 Source = element.Element("Source")?.Value,
                 Target = element.Element("Target")?.Value,
@@ -408,6 +426,7 @@ namespace UMLRedactor.Controllers
                 TextSourceOnLine = element.Element("TextSourceOnLine")?.Value,
                 TextTargetOnLine = element.Element("TextTargetOnLine")?.Value
             };
+            line.Namespace.PackageId = element.Element("Namespace")?.Value;
             return line;
         }
 

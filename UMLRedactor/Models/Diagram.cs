@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UMLRedactor.Additions;
 
 namespace UMLRedactor.Models
 {
     public class Diagram
     {
         public string Name;
-        public string PackageId;
+        public Package Namespace;
         public List<DiagramNode> Elements;
 
         public Diagram()
         {
-            Elements = new List<DiagramNode>();
-        }
-        
-        public Diagram(string name, string packageId)
-        {
-            Name = name;
-            PackageId = packageId;
             Elements = new List<DiagramNode>();
         }
     }

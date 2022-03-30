@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UMLRedactor.Additions;
 
 namespace UMLRedactor.Models
 {
@@ -7,7 +8,7 @@ namespace UMLRedactor.Models
         public string Name;
         public string Type;
         public string Id;
-        public string NamespaceId; 
+        public Package Namespace; 
         public List<ModelNodeBase> ChildNodes;
 
         public ModelNodeBase() { }

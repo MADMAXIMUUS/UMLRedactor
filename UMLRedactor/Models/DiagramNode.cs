@@ -14,22 +14,5 @@ namespace UMLRedactor.Models
             
         }
         
-        public DiagramNode(
-            int x1, 
-            int x2, 
-            int y1, 
-            int y2, 
-            string id, 
-            int width, 
-            int height)
-        {
-            X1 = x1;
-            X2 = x2;
-            Y1 = y1;
-            Y2 = y2;
-            Id = id;
-            Width = width;
-            Height = height;
-        }
     }
 }

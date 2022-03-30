@@ -12,19 +12,6 @@ namespace UMLRedactor.Models
 
         public ModelNodeElement()
         {
-            
-        }
-        
-        public ModelNodeElement(
-            string name, 
-            string type, 
-            string id,
-            string stereotype, 
-            List<Attribute> attributes, 
-            List<Operation> operations) : 
-            base(name,type,id)
-        {
-            Stereotype = stereotype;
             Attributes = new List<Attribute>();
             Operations = new List<Operation>();
         }

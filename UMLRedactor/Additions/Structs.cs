@@ -24,4 +24,10 @@ namespace UMLRedactor.Additions
         public string Name;
         public string DefaultValue;
     }
+
+    public struct Package
+    {
+        public string PackageId;
+        public string PackageName;
+    }
 }
