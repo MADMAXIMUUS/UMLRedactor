@@ -9,14 +9,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3de5b1ee-0cb0-4ba4-83f8-d2361bf6955d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Additions/Structs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Additions/Structs.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/Controllers/ModelReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Controllers/ModelReader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/Diagram.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/Diagram.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/DiagramNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/DiagramNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/Model.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/Model.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeElement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeLine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeLine.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +182,10 @@
       <workItem from="1648226173645" duration="1571000" />
       <workItem from="1648384197969" duration="14815000" />
       <workItem from="1648650035288" duration="6607000" />
-      <workItem from="1648668238966" duration="1933000" />
+      <workItem from="1648668238966" duration="3561000" />
+      <workItem from="1648903977182" duration="377000" />
+      <workItem from="1648904469538" duration="80000" />
+      <workItem from="1649078702932" duration="4987000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена иконка">
       <created>1633812452088</created>
@@ -302,7 +299,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648499747798</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Парсер работает со вложенными элементами">
+      <created>1648670321559</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1648670321559</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,7 +343,8 @@
     <MESSAGE value="Добавлена заготовка для парсера" />
     <MESSAGE value="Добавлены классы модели и диаграммы, а также парсер для XMI" />
     <MESSAGE value="Парсер работает для диаграммы классов из EA" />
-    <option name="LAST_COMMIT_MESSAGE" value="Парсер работает для диаграммы классов из EA" />
+    <MESSAGE value="Парсер работает со вложенными элементами" />
+    <option name="LAST_COMMIT_MESSAGE" value="Парсер работает со вложенными элементами" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -359,19 +364,24 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/UMLRedactor/Controllers/ModelReader.cs</url>
-          <line>144</line>
-          <properties documentPath="D:\MAI\VKR\UMLRedactor\UMLRedactor\Controllers\ModelReader.cs" initialLine="144" containingFunctionPresentation="method 'GetModelFromEaFile'">
+          <line>218</line>
+          <properties documentPath="D:\MAI\VKR\UMLRedactor\UMLRedactor\Controllers\ModelReader.cs" initialLine="175" containingFunctionPresentation="method 'GetModelFromEaFile'">
             <startOffsets>
-              <option value="5823" />
+              <option value="9378" />
             </startOffsets>
             <endOffsets>
-              <option value="5832" />
+              <option value="9387" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="6" />
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Type#UMLRedactor.Models.Model" memberName="Root" />
+      </pinned-members>
+    </pin-to-top-manager>
     <watches-manager>
       <configuration name="DotNetProject">
         <watch expression="xElementRoot" />

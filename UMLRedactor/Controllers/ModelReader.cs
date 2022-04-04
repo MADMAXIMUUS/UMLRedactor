@@ -133,13 +133,87 @@ namespace UMLRedactor.Controllers
                 return -2;
             foreach (XElement element in elements)
             {
-                if (GetElementType(element) == "Not element" && GetLineType(element) == "Not line")
-                    continue;
+                if (element.Name.LocalName == "ActivityModel")
+                {
+                    List<XElement> activityTransition = element.Element(Uml("StateMachine.transitions"))?
+                        .Elements().ToList();
 
-                if (GetElementType(element) != "Not element")
-                    model.Root.ChildNodes.Add(GetElementFromEa(element));
+                    if (activityTransition != null)
+                        foreach (XElement transition in activityTransition)
+                        {
+                            if (GetLineType(transition) == "Not line")
+                                continue;
+
+                            model.Root.ChildNodes.Add(GetLineFromEa(transition));
+                        }
+
+                    List<XElement> activityState = element.Element(Uml("StateMachine.top"))?
+                        .Element(Uml("CompositeState"))?
+                        .Element(Uml("CompositeState.substate"))?
+                        .Elements().ToList();
+
+                    if (activityState != null)
+                        foreach (XElement state in activityState)
+                        {
+                            if (GetElementType(state) == "Not element")
+                                continue;
+
+                            model.Root.ChildNodes.Add(GetElementFromEa(state));
+                        }
+                }
+                else if (element.Element(Uml("Collaboration.interaction")) != null)
+                {
+                    List<XElement> seqElements = element.Element(Uml("Namespace.ownedElement"))?
+                        .Elements().ToList();
+                    if (seqElements != null)
+                        foreach (XElement collaboration in seqElements)
+                        {
+                            ModelNodeElement col = new ModelNodeElement
+                            {
+                                Name = collaboration.Attribute("name")?.Value,
+                                Id = collaboration.Attribute("xmi.id")?.Value,
+                                Type = GetElementType(collaboration),
+                                Namespace = new Package
+                                {
+                                    PackageId = collaboration.Attribute("base")?.Value,
+                                    PackageName = ""
+                                },
+                            };
+
+                            model.Root.ChildNodes.Add(col);
+                        }
+
+                    List<XElement> seqMessages = element.Element(Uml("Collaboration.interaction"))?
+                        .Element(Uml("Interaction"))?
+                        .Element(Uml("Interaction.message"))?
+                        .Elements().ToList();
+                    
+                    if (seqMessages!=null)
+                        foreach (XElement message in seqMessages)
+                        {
+                            ModelNodeLine mes = new ModelNodeLine
+                            {
+                                Name = message.Attribute("name")?.Value,
+                                Id = message.Attribute("xmi.id")?.Value,
+                                Type = GetLineType(message),
+                                Source = message.Attribute("sender")?.Value,
+                                Target = message.Attribute("receiver")?.Value,
+                                TextOnLine = message.Attribute("name")?.Value
+                            };
+                            
+                            model.Root.ChildNodes.Add(mes);
+                        }
+                }
                 else
-                    model.Root.ChildNodes.Add(GetLineFromEa(element));
+                {
+                    if (GetElementType(element) == "Not element" && GetLineType(element) == "Not line")
+                        continue;
+
+                    if (GetElementType(element) != "Not element")
+                        model.Root.ChildNodes.Add(GetElementFromEa(element));
+                    else
+                        model.Root.ChildNodes.Add(GetLineFromEa(element));
+                }
             }
 
             return 0;
@@ -157,6 +231,16 @@ namespace UMLRedactor.Controllers
                     return "Activity";
                 case "PseudoState":
                     return "Pseudo";
+                case "Actor":
+                    return "Actor";
+                case "UseCase":
+                    return "UseCase";
+                case "Message":
+                    return "Message";
+                case "ClassifierRole":
+                    return "SeqObject";
+                case "Comment":
+                    return "Comment";
                 default:
                     return "Not element";
             }
@@ -170,6 +254,8 @@ namespace UMLRedactor.Controllers
                     return "AssociationLink";
                 case "Generalization":
                     return "GeneralizationLink";
+                case "Message":
+                    return "Message";
                 case "Transition":
                     return "TransitionLink";
                 default:
@@ -231,7 +317,7 @@ namespace UMLRedactor.Controllers
                 {
                     if (GetElementType(child) == "Not element" && GetLineType(child) == "Not line")
                         continue;
-                    
+
                     if (GetElementType(child) != "Not element")
                         elem.ChildNodes.Add(GetElementFromEa(child));
                     else
