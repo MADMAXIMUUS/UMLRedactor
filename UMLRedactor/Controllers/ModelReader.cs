@@ -144,7 +144,15 @@ namespace UMLRedactor.Controllers
                             if (GetLineType(transition) == "Not line")
                                 continue;
 
-                            model.Root.ChildNodes.Add(GetLineFromEa(transition));
+                            ModelNodeLine mes = new ModelNodeLine
+                            {
+                                Id = transition.Attribute("xmi.id")?.Value,
+                                Type = GetLineType(transition),
+                                Source = transition.Attribute("source")?.Value,
+                                Target = transition.Attribute("target")?.Value,
+                            };
+
+                            model.Root.ChildNodes.Add(mes);
                         }
 
                     List<XElement> activityState = element.Element(Uml("StateMachine.top"))?
@@ -187,8 +195,8 @@ namespace UMLRedactor.Controllers
                         .Element(Uml("Interaction"))?
                         .Element(Uml("Interaction.message"))?
                         .Elements().ToList();
-                    
-                    if (seqMessages!=null)
+
+                    if (seqMessages != null)
                         foreach (XElement message in seqMessages)
                         {
                             ModelNodeLine mes = new ModelNodeLine
@@ -200,7 +208,7 @@ namespace UMLRedactor.Controllers
                                 Target = message.Attribute("receiver")?.Value,
                                 TextOnLine = message.Attribute("name")?.Value
                             };
-                            
+
                             model.Root.ChildNodes.Add(mes);
                         }
                 }
@@ -286,7 +294,6 @@ namespace UMLRedactor.Controllers
                         if (value.Attribute("tag")?.Value == "parent")
                         {
                             elem.Namespace.PackageId = value.Attribute("value")?.Value;
-                            break;
                         }
                     }
                     else
@@ -294,9 +301,13 @@ namespace UMLRedactor.Controllers
                         if (value.Attribute("tag")?.Value == "package")
                         {
                             elem.Namespace.PackageId = value.Attribute("value")?.Value;
-                            break;
                         }
                     }
+
+                    if (string.IsNullOrEmpty(elem.Stereotype))
+                        elem.Stereotype = value.Attribute("tag")?.Value == "ea_stype"
+                            ? value.Attribute("value")?.Value
+                            : "";
                 }
 
             List<XElement> classifiers = element.Element(Uml("Classifier.feature"))?.Elements().ToList();
