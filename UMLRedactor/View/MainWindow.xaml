@@ -197,8 +197,6 @@
                                         <TextBlock Height="30" Text="Private" Padding="0,5" FontSize="14" />
                                         <TextBlock Height="30" Text="Private Protected" Padding="0,5" FontSize="14" />
                                         <TextBlock Height="30" Text="Protected" Padding="0,5" FontSize="14" />
-                                        <TextBlock Height="30" Text="Internal" Padding="0,5" FontSize="14" />
-                                        <TextBlock Height="30" Text="Protected Internal" Padding="0,5" FontSize="14" />
                                     </ComboBox>
                                 </Grid>
                             </ScrollViewer>
@@ -265,8 +263,6 @@
                                         <TextBlock Height="30" Text="Private" Padding="0,5" FontSize="14" />
                                         <TextBlock Height="30" Text="Private Protected" Padding="0,5" FontSize="14" />
                                         <TextBlock Height="30" Text="Protected" Padding="0,5" FontSize="14" />
-                                        <TextBlock Height="30" Text="Internal" Padding="0,5" FontSize="14" />
-                                        <TextBlock Height="30" Text="Protected Internal" Padding="0,5" FontSize="14" />
                                     </ComboBox>
                                 </Grid>
                             </ScrollViewer>

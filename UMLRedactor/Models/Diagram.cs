@@ -11,6 +11,12 @@ namespace UMLRedactor.Models
 
         public Diagram()
         {
+            Name = "";
+            Namespace = new Package
+            {
+                PackageId = "",
+                PackageName = ""
+            };
             Elements = new List<DiagramNode>();
         }
     }

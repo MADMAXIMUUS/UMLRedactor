@@ -13,6 +13,14 @@ namespace UMLRedactor.Models
 
         public ModelNodeBase()
         {
+            Name = "";
+            Type = "";
+            Id = "";
+            Namespace = new Package
+            {
+                PackageName = "",
+                PackageId = ""
+            };
             ChildNodes = new List<ModelNodeBase>();
         }
     }

@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.IO;
+using System.Windows;
 using System.Windows.Input;
 using Microsoft.Win32;
 using UMLRedactor.Models;
@@ -8,6 +10,8 @@ namespace UMLRedactor.Controllers
     public class Controller
     {
         private Model _model;
+
+        public event EventHandler EndModelRead;
 
         public Controller(Model model)
         {
@@ -25,10 +29,10 @@ namespace UMLRedactor.Controllers
             if (openFileDialog.ShowDialog() == true)
             {
                 ModelReader reader = new ModelReader(openFileDialog.FileName);
-                switch  (reader.GetModelFromFile(out _model))
+                switch (reader.GetModelFromFile(out _model))
                 {
                     case 0:
-                        MessageBox.Show("Модель импортирована");
+                        UpdateTreeView();
                         break;
                     case -1:
                         MessageBox.Show("Версия XMI не соответсвует 1.1!");
@@ -43,65 +47,58 @@ namespace UMLRedactor.Controllers
             }
         }
 
-        public void CreateNew(object sender, RoutedEventArgs e)
+        private void UpdateTreeView()
         {
-            
+            EndModelRead?.Invoke(_model, EventArgs.Empty);
         }
+
+        public void CreateNew(object sender, RoutedEventArgs e) { }
 
         public void Save(object sender, RoutedEventArgs e)
         {
-            
-        }
-        
-        public void SaveAs(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        public void Export(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        public void Redo(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        public void Undo(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        public void NewDiagram(object sender, RoutedEventArgs e)
-        {
-            
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Title = "Экспорт модели",
+                Filter = "XMI (*xml)|*.xml",
+                FileName = "Введите название файла"
+            };
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                ModelWriter writer = new ModelWriter();
+                switch (writer.SaveToXml(_model, Path.GetFullPath(saveFileDialog.SafeFileName)))
+                {
+                    case 0:
+                        break;
+                    case -1:
+                        break;
+                    case -2:
+                        break;
+                    default:
+                        MessageBox.Show("Ошибка импортирования");
+                        break;
+                }
+            }
         }
 
-        public void CloseDiagram(object sender, RoutedEventArgs e)
-        {
-            
-        }
+        public void SaveAs(object sender, RoutedEventArgs e) { }
 
-        public void NextDiagram(object sender, RoutedEventArgs e)
-        {
-            
-        }
+        public void Export(object sender, RoutedEventArgs e) { }
 
-        public void PrevDiagram(object sender, RoutedEventArgs e)
-        {
-            
-        }
+        public void Redo(object sender, RoutedEventArgs e) { }
 
-        public void OpenDiagram(object sender, RoutedEventArgs e)
-        {
-            
-        }
+        public void Undo(object sender, RoutedEventArgs e) { }
 
-        public void SaveDiagram(object sender, RoutedEventArgs e)
-        {
-            
-        }
+        public void NewDiagram(object sender, RoutedEventArgs e) { }
+
+        public void CloseDiagram(object sender, RoutedEventArgs e) { }
+
+        public void NextDiagram(object sender, RoutedEventArgs e) { }
+
+        public void PrevDiagram(object sender, RoutedEventArgs e) { }
+
+        public void OpenDiagram(object sender, RoutedEventArgs e) { }
+
+        public void SaveDiagram(object sender, RoutedEventArgs e) { }
 
         private void ResizeAndTranslate(MouseEventArgs e)
         {
@@ -166,7 +163,5 @@ namespace UMLRedactor.Controllers
                 }
             }*/
         }
-
-        
     }
 }

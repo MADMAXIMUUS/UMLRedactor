@@ -9,7 +9,10 @@
 
         public Model()
         {
-            
+            Name = "";
+            ProgramName = "";
+            ProgramVersion = "";
+            Root = new ModelNodeBase();
         }
     }
 }

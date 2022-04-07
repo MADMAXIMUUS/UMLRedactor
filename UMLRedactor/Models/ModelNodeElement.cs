@@ -12,6 +12,7 @@ namespace UMLRedactor.Models
 
         public ModelNodeElement()
         {
+            Stereotype = "";
             Attributes = new List<Attribute>();
             Operations = new List<Operation>();
         }

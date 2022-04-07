@@ -1,8 +1,13 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using UMLRedactor.Additions;
+using UMLRedactor.Controllers;
+using UMLRedactor.Models;
 
 namespace UMLRedactor.View
 {
@@ -11,9 +16,9 @@ namespace UMLRedactor.View
     /// </summary>
     public partial class MainWindow
     {
-        private readonly Controllers.Controller _controller;
+        private readonly Controller _controller;
 
-        public MainWindow(Controllers.Controller controller)
+        public MainWindow(Controller controller)
         {
             InitializeComponent();
             _controller = controller;
@@ -35,12 +40,132 @@ namespace UMLRedactor.View
             ButtonViewPrev.Click += _controller.PrevDiagram;
             ButtonViewOpen.Click += _controller.OpenDiagram;
             ButtonViewSave.Click += _controller.SaveDiagram;
+            _controller.EndModelRead += DrawTree;
+        }
+
+        private void DrawTree(object sender, EventArgs e)
+        {
+            TreeView.Items.Clear();
+            TreeViewItem root = new TreeViewItem
+            {
+                Header = (sender as Model)?.Root.Namespace.PackageName,
+                Uid = (sender as Model)?.Root.Id,
+                IsExpanded = true
+            };
+            List<ModelNodeBase> rootChildNodes = (sender as Model)?.Root.ChildNodes;
+            if (rootChildNodes != null)
+                foreach (ModelNodeBase child in rootChildNodes)
+                {
+                    if (child.GetType().ToString() != "UMLRedactor.Models.ModelNodeElement")
+                        continue;
+
+                    TreeViewItem item = GetElement(child);
+
+                    List<ModelNodeBase> childChildren = child.ChildNodes;
+                    if (childChildren != null)
+                    {
+                        foreach (ModelNodeBase cc in childChildren)
+                        {
+                            if (cc.GetType().ToString() != "UMLRedactor.Models.ModelNodeElement")
+                                continue;
+                            item.Items.Add(GetElement(cc));
+                        }
+                    }
+
+                    root.Items.Add(item);
+                }
+
+            TreeView.Items.Add(root);
+        }
+
+        private TreeViewItem GetElement(ModelNodeBase element)
+        {
+            TreeViewItem item = new TreeViewItem
+            {
+                Uid = element.Id,
+                IsExpanded = false
+            };
+            if (!string.IsNullOrEmpty((element as ModelNodeElement)?.Stereotype))
+                item.Header = "«" + ((ModelNodeElement)element).Stereotype + "» " + element.Name;
+            else
+                item.Header = element.Name;
+
+            List<Additions.Attribute> attributes = (element as ModelNodeElement)?.Attributes;
+            if (attributes != null)
+            {
+                foreach (Additions.Attribute attribute in attributes)
+                {
+                    string text = attribute.Name + ": " + attribute.DataType;
+                    item.Items.Add(GetTreeViewItem(Guid.NewGuid().ToString(), text, attribute.AccessModifier));
+                }
+            }
+
+            List<Operation> operations = (element as ModelNodeElement)?.Operations;
+            if (operations != null)
+            {
+                foreach (Operation operation in operations)
+                {
+                    string text = operation.Name + "(";
+                    foreach (Parameter pr in operation.Parameters)
+                    {
+                        text += pr.DataType + ", ";
+                    }
+
+                    if (text[text.Length - 2] == ',')
+                    {
+                        text = text.Substring(0, text.Length - 2);
+                        text += ")";
+                    }
+                    else
+                        text += ")";
+
+                    if (operation.DataTypeOfReturnValue != "void")
+                        text += ":" + operation.DataTypeOfReturnValue;
+
+                    item.Items.Add(GetTreeViewItem(Guid.NewGuid().ToString(), text,
+                        operation.AccessModifier));
+                }
+            }
+
+            return item;
+        }
+
+        private TreeViewItem GetTreeViewItem(string uid, string text, string imagePath)
+        {
+            TreeViewItem item = new TreeViewItem
+            {
+                Uid = uid,
+                IsExpanded = false
+            };
+
+            StackPanel stack = new StackPanel
+            {
+                Orientation = Orientation.Horizontal
+            };
+
+            Image image = new Image
+            {
+                Source = new BitmapImage
+                    (new Uri(@"/UMLRedactor;component/Icons/" + imagePath + ".png", UriKind.Relative)),
+                Width = 16,
+                Height = 16
+            };
+            Label lbl = new Label
+            {
+                Content = text
+            };
+
+            stack.Children.Add(image);
+            stack.Children.Add(lbl);
+
+            item.Header = stack;
+            return item;
         }
 
         private void SystemButton_MouseEnter(object sender, MouseEventArgs e)
         {
-            ((Border)sender).Background = ((Border)sender)?.Name == "SystemButtonClose" 
-                ? Brushes.Red 
+            ((Border)sender).Background = ((Border)sender)?.Name == "SystemButtonClose"
+                ? Brushes.Red
                 : Brushes.LightBlue;
         }
 
@@ -56,7 +181,8 @@ namespace UMLRedactor.View
 
         private void SystemButtonMaximize_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            MainView.WindowState = MainView.WindowState == WindowState.Normal ? WindowState.Maximized : WindowState.Normal;
+            MainView.WindowState =
+                MainView.WindowState == WindowState.Normal ? WindowState.Maximized : WindowState.Normal;
         }
 
         private void SystemButtonClose_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -68,8 +194,8 @@ namespace UMLRedactor.View
         {
             DragMove();
             if (e.ClickCount == 2)
-                MainView.WindowState = MainView.WindowState == WindowState.Normal 
-                    ? WindowState.Maximized 
+                MainView.WindowState = MainView.WindowState == WindowState.Normal
+                    ? WindowState.Maximized
                     : WindowState.Normal;
         }
     }

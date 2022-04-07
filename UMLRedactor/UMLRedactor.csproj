@@ -155,5 +155,13 @@
   <ItemGroup>
     <Resource Include="Icons\UMLRedactor_icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Private Protected.png" />
+    <Resource Include="Icons\Private.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\Protected.png" />
+    <Resource Include="Icons\Public.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

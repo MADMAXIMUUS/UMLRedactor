@@ -11,7 +11,10 @@ namespace UMLRedactor.Models
 
         public DiagramNode()
         {
-            
+            X1 = X2 = Y1 = Y2 = 0;
+            Id = "";
+            Width = 0;
+            Height = 0;
         }
         
     }

@@ -10,7 +10,11 @@
 
         public ModelNodeLine()
         {
-            
+            Source = "";
+            Target = "";
+            TextOnLine = "";
+            TextSourceOnLine = "";
+            TextTargetOnLine = "";
         }
     }
 }

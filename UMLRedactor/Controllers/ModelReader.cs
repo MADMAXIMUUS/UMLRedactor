@@ -70,8 +70,7 @@ namespace UMLRedactor.Controllers
                     .Value;
                 model.Root.Namespace.PackageName = xContent.Element(Uml("Model"))?
                     .Element(Uml("Package"))?
-                    .Element(Uml("ModelElement.rootElement"))?
-                    .Element("name")?
+                    .Attribute("name")?
                     .Value;
 
 
@@ -125,6 +124,8 @@ namespace UMLRedactor.Controllers
                 Id = xModelRoot.Element(Uml("Class"))?.Attribute("xmi.id")?.Value,
                 ChildNodes = new List<ModelNodeBase>()
             };
+            model.Root.Namespace.PackageName = xModelRoot.Element(Uml("Package"))?.Attribute("name")?.Value;
+            model.Root.Namespace.PackageId = xModelRoot.Element(Uml("Package"))?.Attribute("xmi.id")?.Value;
 
             List<XElement> elements = xModelRoot.Element(Uml("Package"))?
                 .Element(Uml("Namespace.ownedElement"))?
@@ -259,13 +260,13 @@ namespace UMLRedactor.Controllers
             switch (element.Name.LocalName)
             {
                 case "Association":
-                    return "AssociationLink";
+                    return "Association";
                 case "Generalization":
-                    return "GeneralizationLink";
+                    return "Generalization";
                 case "Message":
                     return "Message";
                 case "Transition":
-                    return "TransitionLink";
+                    return "Transition";
                 default:
                     return "Not line";
             }
@@ -304,7 +305,7 @@ namespace UMLRedactor.Controllers
                         }
                     }
 
-                    if (string.IsNullOrEmpty(elem.Stereotype))
+                    if (string.IsNullOrEmpty(elem.Stereotype) && (elem.Type=="Activity" || elem.Type=="Pseudo"))
                         elem.Stereotype = value.Attribute("tag")?.Value == "ea_stype"
                             ? value.Attribute("value")?.Value
                             : "";
