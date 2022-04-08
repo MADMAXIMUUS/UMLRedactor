@@ -12,6 +12,7 @@ namespace UMLRedactor.Controllers
         private Model _model;
 
         public event EventHandler EndModelRead;
+        public event EventHandler NewModel;
 
         public Controller(Model model)
         {
@@ -52,9 +53,36 @@ namespace UMLRedactor.Controllers
             EndModelRead?.Invoke(_model, EventArgs.Empty);
         }
 
-        public void CreateNew(object sender, RoutedEventArgs e) { }
+        public void NewFile(object sender, RoutedEventArgs e)
+        {
+            if (_model.ProgramName == "")
+                CreateNewModel();
+            else
+            {
+                MessageBoxResult result = MessageBox.Show(
+                    "Вы не сохранили изменения! Сохранить?",
+                    "",
+                    MessageBoxButton.YesNoCancel
+                );
+                if (result == MessageBoxResult.Yes)
+                {
+                    SaveFile(null, null);
+                    CreateNewModel();
+                }
+                else if (result == MessageBoxResult.No)
+                {
+                    _model = new Model();
+                    CreateNewModel();
+                }
+            }
+        }
 
-        public void Save(object sender, RoutedEventArgs e)
+        public void CreateNewModel()
+        {
+            NewModel?.Invoke(_model, EventArgs.Empty);
+        }
+
+        public void SaveFile(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
@@ -65,7 +93,7 @@ namespace UMLRedactor.Controllers
             if (saveFileDialog.ShowDialog() == true)
             {
                 ModelWriter writer = new ModelWriter();
-                switch (writer.SaveToXml(_model, Path.GetFullPath(saveFileDialog.SafeFileName)))
+                switch (writer.SaveToXml(_model, Path.GetFullPath(saveFileDialog.FileName)))
                 {
                     case 0:
                         break;
@@ -80,25 +108,45 @@ namespace UMLRedactor.Controllers
             }
         }
 
-        public void SaveAs(object sender, RoutedEventArgs e) { }
+        public void SaveAs(object sender, RoutedEventArgs e)
+        {
+        }
 
-        public void Export(object sender, RoutedEventArgs e) { }
+        public void Export(object sender, RoutedEventArgs e)
+        {
+        }
 
-        public void Redo(object sender, RoutedEventArgs e) { }
+        public void Redo(object sender, RoutedEventArgs e)
+        {
+        }
 
-        public void Undo(object sender, RoutedEventArgs e) { }
+        public void Undo(object sender, RoutedEventArgs e)
+        {
+        }
 
-        public void NewDiagram(object sender, RoutedEventArgs e) { }
+        public void NewDiagram(object sender, RoutedEventArgs e)
+        {
+        }
 
-        public void CloseDiagram(object sender, RoutedEventArgs e) { }
+        public void CloseDiagram(object sender, RoutedEventArgs e)
+        {
+        }
 
-        public void NextDiagram(object sender, RoutedEventArgs e) { }
+        public void NextDiagram(object sender, RoutedEventArgs e)
+        {
+        }
 
-        public void PrevDiagram(object sender, RoutedEventArgs e) { }
+        public void PrevDiagram(object sender, RoutedEventArgs e)
+        {
+        }
 
-        public void OpenDiagram(object sender, RoutedEventArgs e) { }
+        public void OpenDiagram(object sender, RoutedEventArgs e)
+        {
+        }
 
-        public void SaveDiagram(object sender, RoutedEventArgs e) { }
+        public void SaveDiagram(object sender, RoutedEventArgs e)
+        {
+        }
 
         private void ResizeAndTranslate(MouseEventArgs e)
         {

@@ -28,8 +28,8 @@ namespace UMLRedactor.View
         private void InitFunction()
         {
             ButtonFileOpen.Click += _controller.OpenFile;
-            ButtonFileNew.Click += _controller.CreateNew;
-            ButtonFileSave.Click += _controller.Save;
+            ButtonFileNew.Click += _controller.NewFile;
+            ButtonFileSave.Click += _controller.SaveFile;
             ButtonFileSaveAs.Click += _controller.SaveAs;
             ButtonFileExport.Click += _controller.Export;
             ButtonEditRedo.Click += _controller.Redo;
@@ -41,6 +41,13 @@ namespace UMLRedactor.View
             ButtonViewOpen.Click += _controller.OpenDiagram;
             ButtonViewSave.Click += _controller.SaveDiagram;
             _controller.EndModelRead += DrawTree;
+            _controller.NewModel += RecreateView;
+        }
+
+        private void RecreateView(object sender, EventArgs e)
+        {
+            TreeView.Items.Clear();
+            DrawCanvas.Children.Clear();
         }
 
         private void DrawTree(object sender, EventArgs e)
