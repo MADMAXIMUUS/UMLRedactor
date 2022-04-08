@@ -2,7 +2,21 @@
 <project version="4">
   <component name="UserContentModel">
     <attachedFolders />
-    <explicitIncludes />
+    <explicitIncludes>
+      <Path>UMLRedactor/Icons/Actor_lifecycle_icon.png</Path>
+      <Path>UMLRedactor/Icons/Aggregation_icon.png</Path>
+      <Path>UMLRedactor/Icons/Assotiation_icon.png</Path>
+      <Path>UMLRedactor/Icons/Class_icon.png</Path>
+      <Path>UMLRedactor/Icons/Comment_icon.png</Path>
+      <Path>UMLRedactor/Icons/Composition_iocn.png</Path>
+      <Path>UMLRedactor/Icons/Decision_icon.png</Path>
+      <Path>UMLRedactor/Icons/End_icon.png</Path>
+      <Path>UMLRedactor/Icons/Generalization_icon.png</Path>
+      <Path>UMLRedactor/Icons/Initial_icon.png</Path>
+      <Path>UMLRedactor/Icons/Lifecycle_icon.png</Path>
+      <Path>UMLRedactor/Icons/Message_icon.png</Path>
+      <Path>UMLRedactor/Icons/Usecase_icon.png</Path>
+    </explicitIncludes>
     <explicitExcludes />
   </component>
 </project>

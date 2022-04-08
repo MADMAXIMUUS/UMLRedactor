@@ -7,15 +7,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3de5b1ee-0cb0-4ba4-83f8-d2361bf6955d" name="Default Changelist" comment="Работает сохранение модели в файл">
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/View/EnterDialog.xaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UMLRedactor/View/EnterDialog.xaml.cs" afterDir="false" />
+    <list default="true" id="3de5b1ee-0cb0-4ba4-83f8-d2361bf6955d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Icons/Actor_lifecycle_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Icons/Aggregation_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Icons/Association_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Icons/Class_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Icons/Comment_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Icons/Composition_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Icons/Decision_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Icons/End_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Icons/Generalization_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Icons/Initial_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Icons/Lifecycle_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Icons/Message_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Icons/Usecase_icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Controllers/Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Controllers/Controller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Controllers/ModelWriter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Controllers/ModelWriter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/Model.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/Model.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Icons/Class_element_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Icons/NoteLink_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Icons/NoteLink_icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,6 +204,8 @@
       <workItem from="1649413169034" duration="482000" />
       <workItem from="1649413684908" duration="9956000" />
       <workItem from="1649427308188" duration="12000" />
+      <workItem from="1649456256118" duration="85000" />
+      <workItem from="1649459277187" duration="1181000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена иконка">
       <created>1633812452088</created>
@@ -334,7 +347,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649414906362</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Добавлены обработчики для элементов меню">
+      <created>1649456330556</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1649456330556</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -375,7 +395,8 @@
     <MESSAGE value="Парсер теперь работает со всеми типами диаграммам из технического задания" />
     <MESSAGE value="Исправлена загрузка activity model" />
     <MESSAGE value="Работает сохранение модели в файл" />
-    <option name="LAST_COMMIT_MESSAGE" value="Работает сохранение модели в файл" />
+    <MESSAGE value="Добавлены обработчики для элементов меню" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлены обработчики для элементов меню" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
