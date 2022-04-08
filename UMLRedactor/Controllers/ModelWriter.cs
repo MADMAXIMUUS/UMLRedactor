@@ -9,7 +9,7 @@ namespace UMLRedactor.Controllers
     {
         private static XDocument XmlDocument { get; set; }
 
-        public int SaveToXml(Model model, string path)
+        public void SaveToXml(Model model, string path)
         {
             XmlDocument = new XDocument(new XDeclaration("0.1", "utf-8", ""));
             XElement root = new XElement("XMI",
@@ -59,7 +59,6 @@ namespace UMLRedactor.Controllers
             root.Add(content);
             XmlDocument.Add(root);
             XmlDocument.Save(path);
-            return 0;
         }
 
         private XElement GetElement(ModelNodeElement nodeElement)

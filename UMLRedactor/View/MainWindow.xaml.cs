@@ -194,7 +194,7 @@ namespace UMLRedactor.View
 
         private void SystemButtonClose_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Application.Current.Shutdown();
+            _controller.CloseApplication();
         }
 
         private void TitleBar_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

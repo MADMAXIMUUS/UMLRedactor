@@ -10,8 +10,8 @@
         public Model()
         {
             Name = "";
-            ProgramName = "";
-            ProgramVersion = "";
+            ProgramName = "MadUML";
+            ProgramVersion = "0.5";
             Root = new ModelNodeBase();
         }
     }

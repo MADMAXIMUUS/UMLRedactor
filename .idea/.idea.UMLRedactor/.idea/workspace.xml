@@ -7,10 +7,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3de5b1ee-0cb0-4ba4-83f8-d2361bf6955d" name="Default Changelist" comment="">
+    <list default="true" id="3de5b1ee-0cb0-4ba4-83f8-d2361bf6955d" name="Default Changelist" comment="Работает сохранение модели в файл">
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/View/EnterDialog.xaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/View/EnterDialog.xaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/Controllers/Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Controllers/Controller.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/Controllers/ModelWriter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Controllers/ModelWriter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/Model.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/Model.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,6 +41,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a09c4ce1381a425ba956c7d77b4fb2b328168/b0/66b7e28e/XElement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a09c4ce1381a425ba956c7d77b4fb2b328168/b1/9c1a1008/XDocument.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b04dc0027d9245d59f0781c8c53ad1565fe778/b6/1689686b/Window.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc1d04d811fc4873ab7d8d9d4daddcc9568788/9d/89ba7dda/String.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a09c4ce1381a425ba956c7d77b4fb2b328168/69/a47c5d4d/XName.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UMLRedactor/Models/Model.cs" root0="FORCE_HIGHLIGHTING" />
@@ -186,7 +191,8 @@
       <workItem from="1649358384966" duration="3176000" />
       <workItem from="1649404634540" duration="2918000" />
       <workItem from="1649413169034" duration="482000" />
-      <workItem from="1649413684908" duration="1191000" />
+      <workItem from="1649413684908" duration="9956000" />
+      <workItem from="1649427308188" duration="12000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена иконка">
       <created>1633812452088</created>
@@ -321,7 +327,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649180182412</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Работает сохранение модели в файл">
+      <created>1649414906362</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1649414906362</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -361,7 +374,8 @@
     <MESSAGE value="Парсер работает со вложенными элементами" />
     <MESSAGE value="Парсер теперь работает со всеми типами диаграммам из технического задания" />
     <MESSAGE value="Исправлена загрузка activity model" />
-    <option name="LAST_COMMIT_MESSAGE" value="Исправлена загрузка activity model" />
+    <MESSAGE value="Работает сохранение модели в файл" />
+    <option name="LAST_COMMIT_MESSAGE" value="Работает сохранение модели в файл" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

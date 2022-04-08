@@ -4,12 +4,14 @@ using System.Windows;
 using System.Windows.Input;
 using Microsoft.Win32;
 using UMLRedactor.Models;
+using UMLRedactor.View;
 
 namespace UMLRedactor.Controllers
 {
     public class Controller
     {
         private Model _model;
+        private string _filePath = "";
 
         public event EventHandler EndModelRead;
         public event EventHandler NewModel;
@@ -21,30 +23,37 @@ namespace UMLRedactor.Controllers
 
         public void OpenFile(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog
+            if (_model.Name == "")
             {
-                Title = "Импорт модели",
-                Filter = "XMI (*xml)|*.xml",
-                FileName = "Выберите файл"
-            };
-            if (openFileDialog.ShowDialog() == true)
-            {
-                ModelReader reader = new ModelReader(openFileDialog.FileName);
-                switch (reader.GetModelFromFile(out _model))
+                OpenFileDialog openFileDialog = new OpenFileDialog
                 {
-                    case 0:
-                        UpdateTreeView();
-                        break;
-                    case -1:
-                        MessageBox.Show("Версия XMI не соответсвует 1.1!");
-                        break;
-                    case -2:
-                        MessageBox.Show("Ошибка импортирования");
-                        break;
-                    default:
-                        MessageBox.Show("Ошибка импортирования");
-                        break;
+                    Title = "Импорт модели",
+                    Filter = "XMI (*xml)|*.xml",
+                    FileName = "Выберите файл"
+                };
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    ModelReader reader = new ModelReader(openFileDialog.FileName);
+                    switch (reader.GetModelFromFile(out _model))
+                    {
+                        case 0:
+                            UpdateTreeView();
+                            break;
+                        case -1:
+                            MessageBox.Show("Версия XMI не соответсвует 1.1!");
+                            break;
+                        case -2:
+                            MessageBox.Show("Ошибка импортирования");
+                            break;
+                        default:
+                            MessageBox.Show("Ошибка импортирования");
+                            break;
+                    }
                 }
+            }
+            else
+            {
+                SaveFile(null, null);
             }
         }
 
@@ -55,34 +64,61 @@ namespace UMLRedactor.Controllers
 
         public void NewFile(object sender, RoutedEventArgs e)
         {
-            if (_model.ProgramName == "")
+            if (_model.Name == "")
+            {
+                AskName();
                 CreateNewModel();
+                UpdateTreeView();
+            }
             else
             {
                 MessageBoxResult result = MessageBox.Show(
                     "Вы не сохранили изменения! Сохранить?",
-                    "",
+                    "Внимание!",
                     MessageBoxButton.YesNoCancel
                 );
                 if (result == MessageBoxResult.Yes)
                 {
                     SaveFile(null, null);
+                    AskName();
                     CreateNewModel();
                 }
                 else if (result == MessageBoxResult.No)
                 {
                     _model = new Model();
+                    AskName();
                     CreateNewModel();
                 }
             }
         }
 
-        public void CreateNewModel()
+        private void AskName()
+        {
+            EnterDialog dialog = new EnterDialog("Введите название модели", "Название");
+            dialog.ShowDialog();
+            _model = new Model();
+            _model.Root.Namespace.PackageName=dialog.EnteredName.Text;
+        }
+
+        private void CreateNewModel()
         {
             NewModel?.Invoke(_model, EventArgs.Empty);
         }
 
         public void SaveFile(object sender, RoutedEventArgs e)
+        {
+            if (_filePath == "")
+            {
+                ModelWriter writer = new ModelWriter();
+                writer.SaveToXml(_model, Path.GetFullPath(_filePath));
+            }
+            else
+            {
+                SaveAs(null, null);
+            }
+        }
+
+        public void SaveAs(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
@@ -92,24 +128,11 @@ namespace UMLRedactor.Controllers
             };
             if (saveFileDialog.ShowDialog() == true)
             {
+                if (saveFileDialog.FileName != "Введите название файла")
+                    _filePath = Path.GetFullPath(saveFileDialog.FileName);
                 ModelWriter writer = new ModelWriter();
-                switch (writer.SaveToXml(_model, Path.GetFullPath(saveFileDialog.FileName)))
-                {
-                    case 0:
-                        break;
-                    case -1:
-                        break;
-                    case -2:
-                        break;
-                    default:
-                        MessageBox.Show("Ошибка импортирования");
-                        break;
-                }
+                writer.SaveToXml(_model, Path.GetFullPath(saveFileDialog.FileName));
             }
-        }
-
-        public void SaveAs(object sender, RoutedEventArgs e)
-        {
         }
 
         public void Export(object sender, RoutedEventArgs e)
@@ -210,6 +233,29 @@ namespace UMLRedactor.Controllers
                     }
                 }
             }*/
+        }
+
+        public void CloseApplication()
+        {
+            if (_model.Name == "")
+                Application.Current.Shutdown();
+            else
+            {
+                MessageBoxResult result = MessageBox.Show(
+                    "Вы не сохранили изменения! Сохранить?",
+                    "Внимание!",
+                    MessageBoxButton.YesNoCancel
+                );
+                if (result == MessageBoxResult.Yes)
+                {
+                    SaveFile(null, null);
+                    Application.Current.Shutdown();
+                }
+                else if (result == MessageBoxResult.No)
+                {
+                    Application.Current.Shutdown();
+                }
+            }
         }
     }
 }
