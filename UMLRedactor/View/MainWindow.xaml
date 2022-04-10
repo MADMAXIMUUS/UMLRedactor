@@ -109,6 +109,8 @@
                             <RowDefinition Height="100" />
                             <RowDefinition Height="100" />
                             <RowDefinition Height="100" />
+                            <RowDefinition Height="100" />
+                            <RowDefinition Height="100" />
                         </Grid.RowDefinitions>
                         <Button Grid.Row="0" Grid.Column="0" Background="Transparent" BorderThickness="0">
                             <StackPanel Orientation="Vertical">
@@ -119,98 +121,118 @@
                         </Button>
                         <Button Grid.Row="0" Grid.Column="1" Background="Transparent" BorderThickness="0">
                             <StackPanel Orientation="Vertical">
+                                <Image Source="../Icons/Activity_icon.png" Height="60" Width="60" />
+                                <Separator Background="Transparent" />
+                                <TextBlock Text="Activity" TextAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Row="1" Grid.Column="0" Background="Transparent" BorderThickness="0">
+                            <StackPanel Orientation="Vertical">
                                 <Image Source="../Icons/Comment_icon.png" Height="60" Width="60" />
                                 <Separator Background="Transparent" />
                                 <TextBlock Text="Comment" TextAlignment="Center" />
                             </StackPanel>
                         </Button>
-                        <Button Grid.Row="1" Grid.Column="0" Background="Transparent" BorderThickness="0">
+                        <Button Grid.Row="1" Grid.Column="1" Background="Transparent" BorderThickness="0">
                             <StackPanel Orientation="Vertical">
                                 <Image Source="../Icons/Lifecycle_icon.png" Height="60" Width="60" />
                                 <Separator Background="Transparent" />
                                 <TextBlock Text="Lifecycle" TextAlignment="Center" />
                             </StackPanel>
                         </Button>
-                        <Button Grid.Row="1" Grid.Column="1" Background="Transparent" BorderThickness="0">
+                        <Button Grid.Row="2" Grid.Column="0" Background="Transparent" BorderThickness="0">
                             <StackPanel Orientation="Vertical">
                                 <Image Source="../Icons/Actor_lifecycle_icon.png" Height="60" Width="60" />
                                 <Separator Background="Transparent" />
                                 <TextBlock Text="Actor Lifecycle" TextAlignment="Center" />
                             </StackPanel>
                         </Button>
-                        <Button Grid.Row="2" Grid.Column="0" Background="Transparent" BorderThickness="0">
+                        <Button Grid.Row="2" Grid.Column="1" Background="Transparent" BorderThickness="0">
                             <StackPanel Orientation="Vertical">
                                 <Image Source="../Icons/Decision_icon.png" Height="60" Width="60" />
                                 <Separator Background="Transparent" />
                                 <TextBlock Text="Decision" TextAlignment="Center" />
                             </StackPanel>
                         </Button>
-                        <Button Grid.Row="2" Grid.Column="1" Background="Transparent" BorderThickness="0">
+                        <Button Grid.Row="3" Grid.Column="0" Background="Transparent" BorderThickness="0">
                             <StackPanel Orientation="Vertical">
                                 <Image Source="../Icons/Initial_icon.png" Height="60" Width="60" />
                                 <Separator Background="Transparent" />
                                 <TextBlock Text="Initial" TextAlignment="Center" />
                             </StackPanel>
                         </Button>
-                        <Button Grid.Row="3" Grid.Column="0" Background="Transparent" BorderThickness="0">
+                        <Button Grid.Row="3" Grid.Column="1" Background="Transparent" BorderThickness="0">
                             <StackPanel Orientation="Vertical">
                                 <Image Source="../Icons/End_icon.png" Height="60" Width="60" />
                                 <Separator Background="Transparent" />
                                 <TextBlock Text="End" TextAlignment="Center" />
                             </StackPanel>
                         </Button>
-                        <Button Grid.Row="3" Grid.Column="1" Background="Transparent" BorderThickness="0">
+                        <Button Grid.Row="4" Grid.Column="0" Background="Transparent" BorderThickness="0">
                             <StackPanel Orientation="Vertical">
                                 <Image Source="../Icons/Usecase_icon.png" Height="60" Width="60" />
                                 <Separator Background="Transparent" />
                                 <TextBlock Text="Use Case" TextAlignment="Center" />
                             </StackPanel>
                         </Button>
-                        <Button Grid.Row="4" Grid.Column="0" Background="Transparent" BorderThickness="0">
+                        <Button Grid.Row="4" Grid.Column="1" Background="Transparent" BorderThickness="0">
                             <StackPanel Orientation="Vertical">
                                 <Image Source="../Icons/NoteLink_icon.png" Height="60" Width="60" />
                                 <Separator Background="Transparent" />
                                 <TextBlock Text="Note Link" TextAlignment="Center" />
                             </StackPanel>
                         </Button>
-                        <Button Grid.Row="4" Grid.Column="1" Background="Transparent" BorderThickness="0">
+                        <Button Grid.Row="5" Grid.Column="0" Background="Transparent" BorderThickness="0">
                             <StackPanel Orientation="Vertical">
                                 <Image Source="../Icons/Association_icon.png" Height="60" Width="60" />
                                 <Separator Background="Transparent" />
                                 <TextBlock Text="Association Link" TextAlignment="Center" />
                             </StackPanel>
                         </Button>
-                        <Button Grid.Row="5" Grid.Column="0" Background="Transparent" BorderThickness="0">
+                        <Button Grid.Row="5" Grid.Column="1" Background="Transparent" BorderThickness="0">
                             <StackPanel Orientation="Vertical">
                                 <Image Source="../Icons/Aggregation_icon.png" Height="60" Width="60" />
                                 <Separator Background="Transparent" />
                                 <TextBlock Text="Aggregation Link" TextAlignment="Center" />
                             </StackPanel>
                         </Button>
-                        <Button Grid.Row="5" Grid.Column="1" Background="Transparent" BorderThickness="0">
+                        <Button Grid.Row="6" Grid.Column="0" Background="Transparent" BorderThickness="0">
                             <StackPanel Orientation="Vertical">
                                 <Image Source="../Icons/Composition_icon.png" Height="60" Width="60" />
                                 <Separator Background="Transparent" />
                                 <TextBlock Text="Composition Link" TextAlignment="Center" />
                             </StackPanel>
                         </Button>
-                        <Button Grid.Row="6" Grid.Column="0" Background="Transparent" BorderThickness="0">
+                        <Button Grid.Row="6" Grid.Column="1" Background="Transparent" BorderThickness="0">
                             <StackPanel Orientation="Vertical">
                                 <Image Source="../Icons/Generalization_icon.png" Height="60" Width="60" />
                                 <Separator Background="Transparent" />
                                 <TextBlock Text="Generalization Link" TextAlignment="Center" />
                             </StackPanel>
                         </Button>
-                        <Button Grid.Row="6" Grid.Column="1" Background="Transparent" BorderThickness="0">
+                        <Button Grid.Row="7" Grid.Column="0" Background="Transparent" BorderThickness="0">
                             <StackPanel Orientation="Vertical">
                                 <Image Source="../Icons/Message_icon.png" Height="60" Width="60" />
                                 <Separator Background="Transparent" />
                                 <TextBlock Text="Message" TextAlignment="Center" />
                             </StackPanel>
                         </Button>
+                        <Button Grid.Row="7" Grid.Column="1" Background="Transparent" BorderThickness="0">
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="../Icons/Use_icon.png" Height="60" Width="60" />
+                                <Separator Background="Transparent" />
+                                <TextBlock Text="Use" TextAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Row="8" Grid.Column="0" Background="Transparent" BorderThickness="0">
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="../Icons/Controw_flow_icon.png" Height="60" Width="60" />
+                                <Separator Background="Transparent" />
+                                <TextBlock Text="Control flow" TextAlignment="Center" />
+                            </StackPanel>
+                        </Button>
                     </Grid>
                 </ScrollViewer>
-
                 <TextBlock Grid.Row="3" Background="WhiteSmoke" Height="30" Grid.Column="0" Width="110" Text="Свойства"
                            FontSize="14" Padding="10,5" />
                 <Border Grid.Row="3" Grid.Column="0" BorderThickness="0,0,1,0" BorderBrush="DarkGray" />
