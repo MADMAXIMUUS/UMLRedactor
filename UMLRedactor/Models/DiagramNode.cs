@@ -1,18 +1,18 @@
-﻿using System;
-
-namespace UMLRedactor.Models
+﻿namespace UMLRedactor.Models
 {
     public class DiagramNode
     {
-        public int X1, X2, Y1, Y2;
+        public double X1, X2, Y1, Y2;
         public string Id;
-        public int Width;
-        public int Height;
+        public string ModelElementId;
+        public double Width;
+        public double Height;
 
         public DiagramNode()
         {
             X1 = X2 = Y1 = Y2 = 0;
             Id = "";
+            ModelElementId = "";
             Width = 0;
             Height = 0;
         }

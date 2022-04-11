@@ -8,6 +8,7 @@ using System.Windows.Media.Imaging;
 using UMLRedactor.Additions;
 using UMLRedactor.Controllers;
 using UMLRedactor.Models;
+using UMLRedactor.Tools.Elements.ClassDiagram;
 
 namespace UMLRedactor.View
 {
@@ -40,8 +41,42 @@ namespace UMLRedactor.View
             ButtonViewPrev.Click += _controller.PrevDiagram;
             ButtonViewOpen.Click += _controller.OpenDiagram;
             ButtonViewSave.Click += _controller.SaveDiagram;
+            Class.Click += _controller.CreateElement;
+            Activity.Click += _controller.CreateElement;
+            Note.Click += _controller.CreateElement;
+            Decision.Click += _controller.CreateElement;
+            UseCase.Click += _controller.CreateElement;
+            Aggregation.Click += _controller.CreateElement;
+            Association.Click += _controller.CreateElement;
+            Generalization.Click += _controller.CreateElement;
+            Composition.Click += _controller.CreateElement;
+            End.Click += _controller.CreateElement;
+            Initial.Click += _controller.CreateElement;
+            Lifecycle.Click += _controller.CreateElement;
+            ActorLifecycle.Click += _controller.CreateElement;
+            Message.Click += _controller.CreateElement;
+            Use.Click += _controller.CreateElement;
+            ControlFlow.Click += _controller.CreateElement;
             _controller.EndModelRead += DrawTree;
             _controller.NewModel += RecreateView;
+            _controller.NewModel += RecreateView;
+            _controller.UpdateDiagram += UpdateCanvas;
+        }
+
+        private void UpdateCanvas(object sender, EventArgs eventArgs)
+        {
+            DrawCanvas.Children.Clear();
+            foreach (DiagramNode element in _controller.CurrentDiagram.Elements)
+            {
+                ClassElement classElement = new ClassElement
+                {
+                    Width = element.Width,
+                    Height = element.Height
+                };
+                Canvas.SetLeft(classElement, element.X1);
+                Canvas.SetTop(classElement, element.Y1);
+                DrawCanvas.Children.Add(classElement);
+            }
         }
 
         private void RecreateView(object sender, EventArgs e)
@@ -205,5 +240,7 @@ namespace UMLRedactor.View
                     ? WindowState.Maximized
                     : WindowState.Normal;
         }
+
+        
     }
 }

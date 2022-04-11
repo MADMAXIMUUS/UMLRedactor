@@ -184,7 +184,7 @@
     <Resource Include="Icons\Class_icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\Comment_icon.png">
+    <Resource Include="Icons\Note_icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\Composition_icon.png">

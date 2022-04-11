@@ -29,37 +29,38 @@
                 </Grid.ColumnDefinitions>
                 <Menu Grid.Row="0" Grid.Column="0" Padding="0,0"
                       Grid.ColumnSpan="2" Background="WhiteSmoke">
-                    <Separator Background="Transparent"/>
+                    <Separator Background="Transparent" />
                     <MenuItem Header="File" Height="30">
-                        <MenuItem Name="ButtonFileNew" Header="New" Height="30" Background="WhiteSmoke"/>
-                        <MenuItem Name="ButtonFileOpen" Header="Open" Height="30" Background="WhiteSmoke"/>
-                        <MenuItem Name="ButtonFileSave" Header="Save" Height="30" Background="WhiteSmoke"/>
-                        <MenuItem Name="ButtonFileSaveAs" Header="Save as.." Height="30" Background="WhiteSmoke"/>
-                        <MenuItem Name="ButtonFileExport" Header="Export as PNG" Height="30" Background="WhiteSmoke"/>
+                        <MenuItem Name="ButtonFileNew" Header="New" Height="30" Background="WhiteSmoke" />
+                        <MenuItem Name="ButtonFileOpen" Header="Open" Height="30" Background="WhiteSmoke" />
+                        <MenuItem Name="ButtonFileSave" Header="Save" Height="30" Background="WhiteSmoke" />
+                        <MenuItem Name="ButtonFileSaveAs" Header="Save as.." Height="30" Background="WhiteSmoke" />
+                        <MenuItem Name="ButtonFileExport" Header="Export as PNG" Height="30" Background="WhiteSmoke" />
                     </MenuItem>
                     <MenuItem Header="Edit" Height="30">
-                        <MenuItem Name="ButtonEditUndo" Header="Undo" Height="30" Background="WhiteSmoke"/>
-                        <MenuItem Name="ButtonEditRedo" Header="Redo" Height="30" Background="WhiteSmoke"/>
+                        <MenuItem Name="ButtonEditUndo" Header="Undo" Height="30" Background="WhiteSmoke" />
+                        <MenuItem Name="ButtonEditRedo" Header="Redo" Height="30" Background="WhiteSmoke" />
                     </MenuItem>
                     <MenuItem Header="View" Height="30">
-                        <MenuItem Name="ButtonViewNew" Header="New" Height="30" Background="WhiteSmoke"/>
-                        <MenuItem Name="ButtonViewOpen" Header="Open" Height="30" Background="WhiteSmoke"/>
-                        <MenuItem Name="ButtonViewSave" Header="Save" Height="30" Background="WhiteSmoke"/>
-                        <MenuItem Name="ButtonViewNext" Header="Next" Height="30" Background="WhiteSmoke"/>
-                        <MenuItem Name="ButtonViewPrev" Header="Prev" Height="30" Background="WhiteSmoke"/>
-                        <MenuItem Name="ButtonViewClose" Header="Close" Height="30" Background="WhiteSmoke"/>
+                        <MenuItem Name="ButtonViewNew" Header="New" Height="30" Background="WhiteSmoke" />
+                        <MenuItem Name="ButtonViewOpen" Header="Open" Height="30" Background="WhiteSmoke" />
+                        <MenuItem Name="ButtonViewSave" Header="Save" Height="30" Background="WhiteSmoke" />
+                        <MenuItem Name="ButtonViewNext" Header="Next" Height="30" Background="WhiteSmoke" />
+                        <MenuItem Name="ButtonViewPrev" Header="Prev" Height="30" Background="WhiteSmoke" />
+                        <MenuItem Name="ButtonViewClose" Header="Close" Height="30" Background="WhiteSmoke" />
                     </MenuItem>
-                    <MenuItem Name="ButtonAbout" Header="About" Height="30"/>
+                    <MenuItem Name="ButtonAbout" Header="About" Height="30" />
                 </Menu>
                 <Image Grid.Row="0" Grid.Column="0" Source="../Icons/UMLRedactor_icon.png" Width="20" Height="20"
-                       Focusable="False" HorizontalAlignment="Left" Margin="8,0,0,8"/>
+                       Focusable="False" HorizontalAlignment="Left" Margin="8,0,0,8" />
                 <StackPanel Grid.Row="0" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Stretch"
                             Background="WhiteSmoke">
                     <Separator Width="45" Background="Transparent" />
                     <Border x:Name="SystemButtonTray" CornerRadius="15,0,0,15"
                             MouseLeftButtonDown="SystemButtonTray_MouseLeftButtonDown"
                             MouseEnter="SystemButton_MouseEnter"
-                            MouseLeave="SystemButton_MouseLeave" BorderThickness="0" Height="36" Background="LightGray"
+                            MouseLeave="SystemButton_MouseLeave" BorderThickness="0" Height="36"
+                            Background="LightGray"
                             Width="50" VerticalAlignment="Center">
                         <TextBlock Text="—" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
@@ -98,138 +99,125 @@
                 <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Width="220" BorderThickness="0,0,1,0">
                     <Grid x:Name="ElementsGrid" Width="200" Background="White">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100" />
-                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="50" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="100" />
-                            <RowDefinition Height="100" />
-                            <RowDefinition Height="100" />
-                            <RowDefinition Height="100" />
-                            <RowDefinition Height="100" />
-                            <RowDefinition Height="100" />
-                            <RowDefinition Height="100" />
-                            <RowDefinition Height="100" />
-                            <RowDefinition Height="100" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
                         </Grid.RowDefinitions>
-                        <Button Grid.Row="0" Grid.Column="0" Background="Transparent" BorderThickness="0">
-                            <StackPanel Orientation="Vertical">
-                                <Image Source="../Icons/Class_icon.png" Height="60" Width="60" />
-                                <Separator Background="Transparent" />
-                                <TextBlock Text="Class" TextAlignment="Center" />
-                            </StackPanel>
+                        <Button Name="Class" Grid.Row="0" Grid.Column="0" Background="Transparent" BorderThickness="0">
+                            <Button.ToolTip>
+                                <ToolTip>Class</ToolTip>
+                            </Button.ToolTip>
+                            <Image Source="../Icons/Class_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Grid.Row="0" Grid.Column="1" Background="Transparent" BorderThickness="0">
-                            <StackPanel Orientation="Vertical">
-                                <Image Source="../Icons/Activity_icon.png" Height="60" Width="60" />
-                                <Separator Background="Transparent" />
-                                <TextBlock Text="Activity" TextAlignment="Center" />
-                            </StackPanel>
+                        <Button Name="Activity" Grid.Row="0" Grid.Column="1" Background="Transparent" BorderThickness="0">
+                            <Button.ToolTip>
+                                <ToolTip>Activity</ToolTip>
+                            </Button.ToolTip>
+                            <Image Source="../Icons/Activity_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Grid.Row="1" Grid.Column="0" Background="Transparent" BorderThickness="0">
-                            <StackPanel Orientation="Vertical">
-                                <Image Source="../Icons/Comment_icon.png" Height="60" Width="60" />
-                                <Separator Background="Transparent" />
-                                <TextBlock Text="Comment" TextAlignment="Center" />
-                            </StackPanel>
+                        <Button Name="Note" Grid.Row="0" Grid.Column="2" Background="Transparent" BorderThickness="0">
+                            <Button.ToolTip>
+                                <ToolTip>Note</ToolTip>
+                            </Button.ToolTip>
+                            <Image Source="../Icons/Note_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Grid.Row="1" Grid.Column="1" Background="Transparent" BorderThickness="0">
-                            <StackPanel Orientation="Vertical">
-                                <Image Source="../Icons/Lifecycle_icon.png" Height="60" Width="60" />
-                                <Separator Background="Transparent" />
-                                <TextBlock Text="Lifecycle" TextAlignment="Center" />
-                            </StackPanel>
+                        <Button Name="Lifecycle" Grid.Row="0" Grid.Column="3" Background="Transparent" BorderThickness="0">
+                            <Button.ToolTip>
+                                <ToolTip>Lifecycle</ToolTip>
+                            </Button.ToolTip>
+                            <Image Source="../Icons/Lifecycle_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Grid.Row="2" Grid.Column="0" Background="Transparent" BorderThickness="0">
-                            <StackPanel Orientation="Vertical">
-                                <Image Source="../Icons/Actor_lifecycle_icon.png" Height="60" Width="60" />
-                                <Separator Background="Transparent" />
-                                <TextBlock Text="Actor Lifecycle" TextAlignment="Center" />
-                            </StackPanel>
+                        <Button Name="ActorLifecycle" Grid.Row="1" Grid.Column="0" Background="Transparent" BorderThickness="0">
+                            <Button.ToolTip>
+                                <ToolTip>Actor Lifecycle</ToolTip>
+                            </Button.ToolTip>
+                            <Image Source="../Icons/Actor_lifecycle_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Grid.Row="2" Grid.Column="1" Background="Transparent" BorderThickness="0">
-                            <StackPanel Orientation="Vertical">
-                                <Image Source="../Icons/Decision_icon.png" Height="60" Width="60" />
-                                <Separator Background="Transparent" />
-                                <TextBlock Text="Decision" TextAlignment="Center" />
-                            </StackPanel>
+                        <Button Name="Decision" Grid.Row="1" Grid.Column="1" Background="Transparent" BorderThickness="0">
+                            <Button.ToolTip>
+                                <ToolTip>Decision</ToolTip>
+                            </Button.ToolTip>
+                            <Image Source="../Icons/Decision_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Grid.Row="3" Grid.Column="0" Background="Transparent" BorderThickness="0">
-                            <StackPanel Orientation="Vertical">
-                                <Image Source="../Icons/Initial_icon.png" Height="60" Width="60" />
-                                <Separator Background="Transparent" />
-                                <TextBlock Text="Initial" TextAlignment="Center" />
-                            </StackPanel>
+                        <Button Name="Initial" Grid.Row="1" Grid.Column="2" Background="Transparent" BorderThickness="0">
+                            <Button.ToolTip>
+                                <ToolTip>Initial</ToolTip>
+                            </Button.ToolTip>
+                            <Image Source="../Icons/Initial_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Grid.Row="3" Grid.Column="1" Background="Transparent" BorderThickness="0">
-                            <StackPanel Orientation="Vertical">
-                                <Image Source="../Icons/End_icon.png" Height="60" Width="60" />
-                                <Separator Background="Transparent" />
-                                <TextBlock Text="End" TextAlignment="Center" />
-                            </StackPanel>
+                        <Button Name="End" Grid.Row="1" Grid.Column="3" Background="Transparent" BorderThickness="0">
+                            <Button.ToolTip>
+                                <ToolTip>End</ToolTip>
+                            </Button.ToolTip>
+                            <Image Source="../Icons/End_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Grid.Row="4" Grid.Column="0" Background="Transparent" BorderThickness="0">
-                            <StackPanel Orientation="Vertical">
-                                <Image Source="../Icons/Usecase_icon.png" Height="60" Width="60" />
-                                <Separator Background="Transparent" />
-                                <TextBlock Text="Use Case" TextAlignment="Center" />
-                            </StackPanel>
+                        <Button Name="ActorButton" Grid.Row="2" Grid.Column="0" Background="Transparent" BorderThickness="0">
+                            <Button.ToolTip>
+                                <ToolTip>Actor</ToolTip>
+                            </Button.ToolTip>
+                            <Image Source="../Icons/Actor_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Grid.Row="4" Grid.Column="1" Background="Transparent" BorderThickness="0">
-                            <StackPanel Orientation="Vertical">
-                                <Image Source="../Icons/NoteLink_icon.png" Height="60" Width="60" />
-                                <Separator Background="Transparent" />
-                                <TextBlock Text="Note Link" TextAlignment="Center" />
-                            </StackPanel>
+                        <Button Name="UseCase" Grid.Row="2" Grid.Column="1" Background="Transparent" BorderThickness="0">
+                            <Button.ToolTip>
+                                <ToolTip>Use Case</ToolTip>
+                            </Button.ToolTip>
+                            <Image Source="../Icons/Usecase_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Grid.Row="5" Grid.Column="0" Background="Transparent" BorderThickness="0">
-                            <StackPanel Orientation="Vertical">
-                                <Image Source="../Icons/Association_icon.png" Height="60" Width="60" />
-                                <Separator Background="Transparent" />
-                                <TextBlock Text="Association Link" TextAlignment="Center" />
-                            </StackPanel>
+                        <Button Grid.Row="2" Grid.Column="2" Background="Transparent" BorderThickness="0">
+                            <Button.ToolTip>
+                                <ToolTip>Note Link</ToolTip>
+                            </Button.ToolTip>
+                            <Image Source="../Icons/NoteLink_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Grid.Row="5" Grid.Column="1" Background="Transparent" BorderThickness="0">
-                            <StackPanel Orientation="Vertical">
-                                <Image Source="../Icons/Aggregation_icon.png" Height="60" Width="60" />
-                                <Separator Background="Transparent" />
-                                <TextBlock Text="Aggregation Link" TextAlignment="Center" />
-                            </StackPanel>
+                        <Button Name="Association" Grid.Row="2" Grid.Column="3" Background="Transparent" BorderThickness="0">
+                            <Button.ToolTip>
+                                <ToolTip>Association Link</ToolTip>
+                            </Button.ToolTip>
+                            <Image Source="../Icons/Association_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Grid.Row="6" Grid.Column="0" Background="Transparent" BorderThickness="0">
-                            <StackPanel Orientation="Vertical">
-                                <Image Source="../Icons/Composition_icon.png" Height="60" Width="60" />
-                                <Separator Background="Transparent" />
-                                <TextBlock Text="Composition Link" TextAlignment="Center" />
-                            </StackPanel>
+                        <Button Name="Aggregation" Grid.Row="3" Grid.Column="0" Background="Transparent" BorderThickness="0">
+                            <Button.ToolTip>
+                                <ToolTip>Aggregation Link</ToolTip>
+                            </Button.ToolTip>
+                            <Image Source="../Icons/Aggregation_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Grid.Row="6" Grid.Column="1" Background="Transparent" BorderThickness="0">
-                            <StackPanel Orientation="Vertical">
-                                <Image Source="../Icons/Generalization_icon.png" Height="60" Width="60" />
-                                <Separator Background="Transparent" />
-                                <TextBlock Text="Generalization Link" TextAlignment="Center" />
-                            </StackPanel>
+                        <Button Name="Composition" Grid.Row="3" Grid.Column="1" Background="Transparent" BorderThickness="0">
+                            <Button.ToolTip>
+                                <ToolTip>Composition Link</ToolTip>
+                            </Button.ToolTip>
+                            <Image Source="../Icons/Composition_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Grid.Row="7" Grid.Column="0" Background="Transparent" BorderThickness="0">
-                            <StackPanel Orientation="Vertical">
-                                <Image Source="../Icons/Message_icon.png" Height="60" Width="60" />
-                                <Separator Background="Transparent" />
-                                <TextBlock Text="Message" TextAlignment="Center" />
-                            </StackPanel>
+                        <Button Name="Generalization" Grid.Row="3" Grid.Column="2" Background="Transparent" BorderThickness="0">
+                            <Button.ToolTip>
+                                <ToolTip>Generalization Link</ToolTip>
+                            </Button.ToolTip>
+                            <Image Source="../Icons/Generalization_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Grid.Row="7" Grid.Column="1" Background="Transparent" BorderThickness="0">
-                            <StackPanel Orientation="Vertical">
-                                <Image Source="../Icons/Use_icon.png" Height="60" Width="60" />
-                                <Separator Background="Transparent" />
-                                <TextBlock Text="Use" TextAlignment="Center" />
-                            </StackPanel>
+                        <Button Name="Message" Grid.Row="3" Grid.Column="3" Background="Transparent" BorderThickness="0">
+                            <Button.ToolTip>
+                                <ToolTip>Message</ToolTip>
+                            </Button.ToolTip>
+                            <Image Source="../Icons/Message_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Grid.Row="8" Grid.Column="0" Background="Transparent" BorderThickness="0">
-                            <StackPanel Orientation="Vertical">
-                                <Image Source="../Icons/Controw_flow_icon.png" Height="60" Width="60" />
-                                <Separator Background="Transparent" />
-                                <TextBlock Text="Control flow" TextAlignment="Center" />
-                            </StackPanel>
+                        <Button Name="Use" Grid.Row="4" Grid.Column="0" Background="Transparent" BorderThickness="0">
+                            <Button.ToolTip>
+                                <ToolTip>Use</ToolTip>
+                            </Button.ToolTip>
+                            <Image Source="../Icons/Use_icon.png" Height="40" Width="40" />
+                        </Button>
+                        <Button Name="ControlFlow" Grid.Row="4" Grid.Column="1" Background="Transparent" BorderThickness="0">
+                            <Button.ToolTip>
+                                <ToolTip>Control Flow</ToolTip>
+                            </Button.ToolTip>
+                            <Image Source="../Icons/Controw_flow_icon.png" Height="40" Width="40" />
                         </Button>
                     </Grid>
                 </ScrollViewer>

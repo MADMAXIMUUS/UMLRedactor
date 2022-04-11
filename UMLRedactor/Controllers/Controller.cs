@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Microsoft.Win32;
 using UMLRedactor.Models;
+using UMLRedactor.Tools.Elements.ClassDiagram;
 using UMLRedactor.View;
 
 namespace UMLRedactor.Controllers
@@ -11,14 +14,21 @@ namespace UMLRedactor.Controllers
     public class Controller
     {
         private Model _model;
-        private string _filePath = "";
-
+        private List<Diagram> _diagrams;
+        public Diagram CurrentDiagram;
+        private string _filePath = ""; //AppDomain.CurrentDomain.BaseDirectory+"\\Saves";
+        private Random rand = new Random();
+        
         public event EventHandler EndModelRead;
         public event EventHandler NewModel;
+
+        public event EventHandler UpdateDiagram;
 
         public Controller(Model model)
         {
             _model = model;
+            CurrentDiagram = new Diagram();
+            _diagrams = new List<Diagram>();
         }
 
         public void OpenFile(object sender, RoutedEventArgs e)
@@ -134,6 +144,25 @@ namespace UMLRedactor.Controllers
                 writer.SaveToXml(_model, Path.GetFullPath(saveFileDialog.FileName));
             }
         }
+        
+        public void CreateElement(object sender, RoutedEventArgs e)
+        {
+            DiagramNode node = new DiagramNode
+            {
+                Id = Guid.NewGuid().ToString()
+            };
+            switch ((sender as Button)?.Name)
+            {
+                case "Class":
+                    node.Width = 200;
+                    node.Height = 150;
+                    node.X1 = rand.NextDouble()*500;
+                    node.Y1 = rand.NextDouble()*500;
+                    CurrentDiagram.Elements.Add(node);
+                    UpdateDiagram?.Invoke(CurrentDiagram, EventArgs.Empty);
+                    break;
+            }
+        }
 
         public void Export(object sender, RoutedEventArgs e)
         {
@@ -171,9 +200,9 @@ namespace UMLRedactor.Controllers
         {
         }
 
-        private void ResizeAndTranslate(MouseEventArgs e)
+        /*private void ResizeAndTranslate(MouseEventArgs e)
         {
-            /*if (!_isSizing) return;
+            if (!_isSizing) return;
             if (_borderEdge < 0) return;
             if (_selectedElement == null) return;
 
@@ -232,8 +261,8 @@ namespace UMLRedactor.Controllers
                         _selectedElement.UpdateLayout();
                     }
                 }
-            }*/
-        }
+            }
+        }*/
 
         public void CloseApplication()
         {
