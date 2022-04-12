@@ -1,9 +1,40 @@
 ﻿<Application x:Class="UMLRedactor.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:UMLRedactor"
+             xmlns:additions="clr-namespace:UMLRedactor.Additions"
              Startup="Application_Startup">
     <Application.Resources>
-        
+        <ControlTemplate x:Key="MoveThumbTemplate" TargetType="{x:Type additions:MoveThumb}">
+            <Rectangle Fill="Transparent"/>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ResizeDecoratorTemplate" TargetType="{x:Type Control}">
+            <Grid>
+                <additions:ResizeThumb Height="3" Cursor="SizeNS" Margin="0 -4 0 0"
+                               VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
+                <additions:ResizeThumb Width="3" Cursor="SizeWE" Margin="-4 0 0 0"
+                               VerticalAlignment="Stretch" HorizontalAlignment="Left"/>
+                <additions:ResizeThumb Width="3" Cursor="SizeWE" Margin="0 0 -4 0"
+                               VerticalAlignment="Stretch" HorizontalAlignment="Right"/>
+                <additions:ResizeThumb Height="3" Cursor="SizeNS" Margin="0 0 0 -4"
+                               VerticalAlignment="Bottom" HorizontalAlignment="Stretch"/>
+                <additions:ResizeThumb Width="7" Height="7" Cursor="SizeNWSE" Margin="-6 -6 0 0"
+                               VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <additions:ResizeThumb Width="7" Height="7" Cursor="SizeNESW" Margin="0 -6 -6 0"
+                               VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                <additions:ResizeThumb Width="7" Height="7" Cursor="SizeNESW" Margin="-6 0 0 -6"
+                               VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                <additions:ResizeThumb Width="7" Height="7" Cursor="SizeNWSE" Margin="0 0 -6 -6"
+                               VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            </Grid>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="DesignerItemTemplate" TargetType="ContentControl">
+            <Grid DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+                <additions:MoveThumb Template="{StaticResource MoveThumbTemplate}" Cursor="SizeAll"/>
+                <Control Template="{StaticResource ResizeDecoratorTemplate}"/>
+                <ContentPresenter Content="{TemplateBinding ContentControl.Content}"/>
+            </Grid>
+        </ControlTemplate>
     </Application.Resources>
 </Application>

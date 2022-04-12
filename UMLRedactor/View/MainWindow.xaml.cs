@@ -68,14 +68,20 @@ namespace UMLRedactor.View
             DrawCanvas.Children.Clear();
             foreach (DiagramNode element in _controller.CurrentDiagram.Elements)
             {
-                ClassElement classElement = new ClassElement
+                ModelNodeBase modelElement = (sender as Model)?.GetNode(element.ModelElementId);
+                switch (modelElement?.Type)
                 {
-                    Width = element.Width,
-                    Height = element.Height
-                };
-                Canvas.SetLeft(classElement, element.X1);
-                Canvas.SetTop(classElement, element.Y1);
-                DrawCanvas.Children.Add(classElement);
+                    case "Class":
+                        ClassElement classElement = new ClassElement(modelElement)
+                        {
+                            Width = element.Width,
+                            Height = element.Height
+                        };
+                        Canvas.SetLeft(classElement, element.X1);
+                        Canvas.SetTop(classElement, element.Y1);
+                        DrawCanvas.Children.Add(classElement);
+                        break;
+                }
             }
         }
 
@@ -88,12 +94,13 @@ namespace UMLRedactor.View
         private void DrawTree(object sender, EventArgs e)
         {
             TreeView.Items.Clear();
-            TreeViewItem root = new TreeViewItem
-            {
-                Header = (sender as Model)?.Root.Namespace.PackageName,
-                Uid = (sender as Model)?.Root.Id,
-                IsExpanded = true
-            };
+            TreeViewItem root = GetTreeViewItem(
+                (sender as Model)?.Root.Id,
+                (sender as Model)?.Root.Namespace.PackageName,
+                "Public");
+
+            root.IsExpanded = true;
+
             List<ModelNodeBase> rootChildNodes = (sender as Model)?.Root.ChildNodes;
             if (rootChildNodes != null)
                 foreach (ModelNodeBase child in rootChildNodes)
@@ -122,29 +129,24 @@ namespace UMLRedactor.View
 
         private TreeViewItem GetElement(ModelNodeBase element)
         {
-            TreeViewItem item = new TreeViewItem
-            {
-                Uid = element.Id,
-                IsExpanded = false
-            };
+            TreeViewItem item;
             if (!string.IsNullOrEmpty((element as ModelNodeElement)?.Stereotype))
-                item.Header = "«" + ((ModelNodeElement)element).Stereotype + "» " + element.Name;
+                item = GetTreeViewItem(element.Id,
+                    "«" + ((ModelNodeElement)element).Stereotype + "» " + element.Name,
+                    "Public");
             else
-                item.Header = element.Name;
+                item = GetTreeViewItem(element.Id, element.Name, "Public");
 
             List<Additions.Attribute> attributes = (element as ModelNodeElement)?.Attributes;
             if (attributes != null)
-            {
                 foreach (Additions.Attribute attribute in attributes)
                 {
                     string text = attribute.Name + ": " + attribute.DataType;
                     item.Items.Add(GetTreeViewItem(Guid.NewGuid().ToString(), text, attribute.AccessModifier));
                 }
-            }
 
             List<Operation> operations = (element as ModelNodeElement)?.Operations;
             if (operations != null)
-            {
                 foreach (Operation operation in operations)
                 {
                     string text = operation.Name + "(";
@@ -167,7 +169,6 @@ namespace UMLRedactor.View
                     item.Items.Add(GetTreeViewItem(Guid.NewGuid().ToString(), text,
                         operation.AccessModifier));
                 }
-            }
 
             return item;
         }
@@ -240,7 +241,5 @@ namespace UMLRedactor.View
                     ? WindowState.Maximized
                     : WindowState.Normal;
         }
-
-        
     }
 }

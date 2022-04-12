@@ -53,6 +53,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Additions\MoveThumb.cs" />
+    <Compile Include="Additions\ResizeThumb.cs" />
     <Compile Include="Additions\Structs.cs" />
     <Compile Include="Controllers\Controller.cs" />
     <Compile Include="Controllers\DiagramReader.cs" />
@@ -105,6 +107,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="View\MyMessageBox.xaml.cs">
+      <DependentUpon>MyMessageBox.xaml</DependentUpon>
+    </Compile>
     <Page Include="Tools\Elements\ActivityDiagram\Activity.xaml" />
     <Page Include="Tools\Elements\ActivityDiagram\ActivityFinal.xaml" />
     <Page Include="Tools\Elements\ActivityDiagram\ActivityInitial.xaml" />
@@ -121,6 +126,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\MyMessageBox.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -145,6 +151,7 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Resources" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>

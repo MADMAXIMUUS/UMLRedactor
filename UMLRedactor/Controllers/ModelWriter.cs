@@ -35,7 +35,6 @@ namespace UMLRedactor.Controllers
                 new XAttribute("name", model.Root.Namespace.PackageName),
                 new XAttribute("xmi.id", model.Root.Namespace.PackageId)
             );
-            xModel.Add(xPackage);
             XElement rootElement = new XElement(Uml("ModelElement.rootElement"),
                 new XElement("Namespace", model.Root.Namespace.PackageId),
                 new XElement("ID", model.Root.Id),

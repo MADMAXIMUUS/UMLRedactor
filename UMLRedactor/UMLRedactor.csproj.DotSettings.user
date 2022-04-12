@@ -1,7 +1,12 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=ICONS_005CACTOR_005FICON/@EntryIndexedValue">Icons\Actor_icon</s:String>
+	
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/MappedPaths/=ICONS_005CACTOR_005FICON/@EntryIndexedValue"></s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/MappedPaths/=ICONS_005CNOTELINK_005FICON_002EICO/@EntryIndexedValue"></s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/MappedPaths/=THEMESFOLDER/@EntryIndexedValue"></s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/MappedPaths/=TOOLS_005CELEMENTS_005CCLASSDIAGRAM_005CRESOURCES_005CDESIGNERITEM_002EXAML/@EntryIndexedValue"></s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/MappedPaths/=TOOLS_005CELEMENTS_005CCLASSDIAGRAM_005CRESOURCES_005CRESIZEROTATECHROME_002EXAML/@EntryIndexedValue"></s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=ICONS_005CACTOR_005FICON/@EntryIndexedValue">Icons\Actor_icon</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=ICONS_005CNOTELINK_005FICON_002EICO/@EntryIndexedValue">Icons\NoteLink_icon.ico</s:String>
-	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=THEMESFOLDER/@EntryIndexedValue">ThemesFolder</s:String></wpf:ResourceDictionary>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=THEMESFOLDER/@EntryIndexedValue">ThemesFolder</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=TOOLS_005CELEMENTS_005CCLASSDIAGRAM_005CRESOURCES_005CDESIGNERITEM_002EXAML/@EntryIndexedValue">Tools\Elements\ClassDiagram\Resources\DesignerItem.xaml</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=TOOLS_005CELEMENTS_005CCLASSDIAGRAM_005CRESOURCES_005CRESIZEROTATECHROME_002EXAML/@EntryIndexedValue">Tools\Elements\ClassDiagram\Resources\ResizeRotateChrome.xaml</s:String></wpf:ResourceDictionary>

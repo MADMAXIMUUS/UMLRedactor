@@ -7,17 +7,29 @@ namespace UMLRedactor.Models
     {
         public string Name;
         public Package Namespace;
-        public List<DiagramNode> Elements;
+        public readonly List<DiagramNode> Elements;
 
         public Diagram()
         {
-            Name = "";
+            Name = "MadDiagram";
             Namespace = new Package
             {
                 PackageId = "",
                 PackageName = ""
             };
             Elements = new List<DiagramNode>();
+        }
+
+        public void UpdateElementPosition(double newX, double newY, string elementId)
+        {
+            foreach (DiagramNode element in Elements)
+            {
+                if (element.ModelElementId == elementId)
+                {
+                    element.X1 = newX;
+                    element.Y1 = newY;
+                }
+            }
         }
     }
 }

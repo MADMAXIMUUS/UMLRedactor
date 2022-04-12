@@ -1,4 +1,4 @@
-﻿<Window x:Class="UMLRedactor.View.EnterDialog"
+﻿<Window x:Class="UMLRedactor.View.MyMessageBox"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -10,7 +10,7 @@
         SizeToContent="WidthAndHeight"
         ResizeMode="NoResize"
         AllowsTransparency="True"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
         WindowStyle="None">
     <Grid>
         <Border Width="auto" Height="auto" BorderBrush="WhiteSmoke" Background="WhiteSmoke" BorderThickness="2"
@@ -19,7 +19,6 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="30" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -48,15 +47,32 @@
                     </StackPanel>
                 </Border>
                 <TextBlock Name="Title" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" FontSize="16" />
-                <TextBox Name="EnteredName" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" FontSize="14" Width="400" Padding="0,5" />
-                <Border Grid.Row="3" Grid.Column="2" x:Name="ButtonOk" CornerRadius="15" Margin="0,10,0,0"
-                        MouseLeftButtonDown="ButtonOk_Click"
-                        MouseEnter="SystemButton_MouseEnter" MouseLeave="SystemButton_MouseLeave"
-                        Background="LightGray" BorderThickness="0"
-                        VerticalAlignment="Center" HorizontalAlignment="Stretch">
-                    <TextBlock Text="Принять" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"
-                               Margin="8" />
-                </Border>
+                <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
+                    <Border x:Name="ButtonOk" CornerRadius="15" Margin="0,10,0,0" Width="80" Height="30"
+                            MouseLeftButtonDown="SystemButtonClose_MouseLeftButtonDown"
+                            MouseEnter="SystemButton_MouseEnter" MouseLeave="SystemButton_MouseLeave"
+                            Background="LightGray" BorderThickness="0"
+                            VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <TextBlock Text="Yes" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   Margin="8" />
+                    </Border>
+                    <Border x:Name="ButtonYes" CornerRadius="15" Margin="0,10,0,0" Width="80" Height="30"
+                            MouseLeftButtonDown="ButtonYes_OnMouseLeftButtonDown"
+                            MouseEnter="SystemButton_MouseEnter" MouseLeave="SystemButton_MouseLeave"
+                            Background="LightGray" BorderThickness="0"
+                            VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <TextBlock Text="No" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   Margin="8" />
+                    </Border>
+                    <Border x:Name="ButtonNo" CornerRadius="15" Margin="0,10,0,0" Width="80" Height="30"
+                            MouseLeftButtonDown="SystemButtonClose_MouseLeftButtonDown"
+                            MouseEnter="SystemButton_MouseEnter" MouseLeave="SystemButton_MouseLeave"
+                            Background="LightGray" BorderThickness="0"
+                            VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <TextBlock Text="Cancel" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   Margin="8" />
+                    </Border>
+                </StackPanel>
             </Grid>
         </Border>
     </Grid>

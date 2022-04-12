@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using Microsoft.Win32;
+using UMLRedactor.Additions;
 using UMLRedactor.Models;
-using UMLRedactor.Tools.Elements.ClassDiagram;
 using UMLRedactor.View;
 
 namespace UMLRedactor.Controllers
@@ -16,9 +15,12 @@ namespace UMLRedactor.Controllers
         private Model _model;
         private List<Diagram> _diagrams;
         public Diagram CurrentDiagram;
-        private string _filePath = ""; //AppDomain.CurrentDomain.BaseDirectory+"\\Saves";
-        private Random rand = new Random();
-        
+        private int _currentDiagramIndex;
+        private string _filePath = "";
+        private readonly Random _rand;
+        public UIElement SelectedElement;
+        private readonly Dictionary<string, int> _elementsCounter;
+
         public event EventHandler EndModelRead;
         public event EventHandler NewModel;
 
@@ -28,42 +30,44 @@ namespace UMLRedactor.Controllers
         {
             _model = model;
             CurrentDiagram = new Diagram();
-            _diagrams = new List<Diagram>();
+            _elementsCounter = new Dictionary<string, int>();
+            _currentDiagramIndex = 0;
+            _rand = new Random();
+            _diagrams = new List<Diagram> { CurrentDiagram };
+            UpdateTreeView();
+        }
+
+        private void UpdateSelectedElement(object sender, RoutedEventArgs e)
+        {
+            SelectedElement = (UIElement)sender;
         }
 
         public void OpenFile(object sender, RoutedEventArgs e)
         {
-            if (_model.Name == "")
+            OpenFileDialog openFileDialog = new OpenFileDialog
             {
-                OpenFileDialog openFileDialog = new OpenFileDialog
+                Title = "Импорт модели",
+                Filter = "XMI (*xml)|*.xml",
+                FileName = "Выберите файл"
+            };
+            if (openFileDialog.ShowDialog() == true)
+            {
+                ModelReader reader = new ModelReader(openFileDialog.FileName);
+                switch (reader.GetModelFromFile(out _model))
                 {
-                    Title = "Импорт модели",
-                    Filter = "XMI (*xml)|*.xml",
-                    FileName = "Выберите файл"
-                };
-                if (openFileDialog.ShowDialog() == true)
-                {
-                    ModelReader reader = new ModelReader(openFileDialog.FileName);
-                    switch (reader.GetModelFromFile(out _model))
-                    {
-                        case 0:
-                            UpdateTreeView();
-                            break;
-                        case -1:
-                            MessageBox.Show("Версия XMI не соответсвует 1.1!");
-                            break;
-                        case -2:
-                            MessageBox.Show("Ошибка импортирования");
-                            break;
-                        default:
-                            MessageBox.Show("Ошибка импортирования");
-                            break;
-                    }
+                    case 0:
+                        UpdateTreeView();
+                        break;
+                    case -1:
+                        MessageBox.Show("Версия XMI не соответсвует 1.1!", "Ошибка");
+                        break;
+                    case -2:
+                        MessageBox.Show("Ошибка импортирования", "Ошибка");
+                        break;
+                    default:
+                        MessageBox.Show("Ошибка импортирования", "Ошибка");
+                        break;
                 }
-            }
-            else
-            {
-                SaveFile(null, null);
             }
         }
 
@@ -83,7 +87,7 @@ namespace UMLRedactor.Controllers
             else
             {
                 MessageBoxResult result = MessageBox.Show(
-                    "Вы не сохранили изменения! Сохранить?",
+                    "Несохраненные изменения будут утерены! Сохранить?",
                     "Внимание!",
                     MessageBoxButton.YesNoCancel
                 );
@@ -107,7 +111,7 @@ namespace UMLRedactor.Controllers
             EnterDialog dialog = new EnterDialog("Введите название модели", "Название");
             dialog.ShowDialog();
             _model = new Model();
-            _model.Root.Namespace.PackageName=dialog.EnteredName.Text;
+            _model.Root.Namespace.PackageName = dialog.EnteredName.Text;
         }
 
         private void CreateNewModel()
@@ -117,7 +121,7 @@ namespace UMLRedactor.Controllers
 
         public void SaveFile(object sender, RoutedEventArgs e)
         {
-            if (_filePath == "")
+            if (_filePath != "")
             {
                 ModelWriter writer = new ModelWriter();
                 writer.SaveToXml(_model, Path.GetFullPath(_filePath));
@@ -134,7 +138,7 @@ namespace UMLRedactor.Controllers
             {
                 Title = "Экспорт модели",
                 Filter = "XMI (*xml)|*.xml",
-                FileName = "Введите название файла"
+                FileName = _model.Name
             };
             if (saveFileDialog.ShowDialog() == true)
             {
@@ -144,7 +148,7 @@ namespace UMLRedactor.Controllers
                 writer.SaveToXml(_model, Path.GetFullPath(saveFileDialog.FileName));
             }
         }
-        
+
         public void CreateElement(object sender, RoutedEventArgs e)
         {
             DiagramNode node = new DiagramNode
@@ -154,51 +158,53 @@ namespace UMLRedactor.Controllers
             switch ((sender as Button)?.Name)
             {
                 case "Class":
+                    int counter = 1;
+                    if (_elementsCounter.ContainsKey("Class"))
+                        counter = _elementsCounter["Class"];
+                    else
+                        _elementsCounter["Class"] = counter;
+                    ModelNodeElement classElement = new ModelNodeElement
+                    {
+                        Name = "Class" + counter,
+                        Id = Guid.NewGuid().ToString(),
+                        Type = "Class",
+                        Namespace = new Package
+                        {
+                            PackageId = _model.Root.Id,
+                            PackageName = _model.Root.Name
+                        }
+                    };
+                    _elementsCounter["Class"] += 1;
+                    _model.AddElement(classElement.Namespace.PackageId, classElement);
                     node.Width = 200;
                     node.Height = 150;
-                    node.X1 = rand.NextDouble()*500;
-                    node.Y1 = rand.NextDouble()*500;
+                    node.X1 = _rand.NextDouble() * 300;
+                    node.Y1 = _rand.NextDouble() * 300;
+                    node.ModelElementId = classElement.Id;
                     CurrentDiagram.Elements.Add(node);
-                    UpdateDiagram?.Invoke(CurrentDiagram, EventArgs.Empty);
+                    UpdateDiagram?.Invoke(_model, EventArgs.Empty);
+                    UpdateTreeView();
                     break;
             }
         }
 
-        public void Export(object sender, RoutedEventArgs e)
-        {
-        }
+        public void Export(object sender, RoutedEventArgs e) { }
 
-        public void Redo(object sender, RoutedEventArgs e)
-        {
-        }
+        public void Redo(object sender, RoutedEventArgs e) { }
 
-        public void Undo(object sender, RoutedEventArgs e)
-        {
-        }
+        public void Undo(object sender, RoutedEventArgs e) { }
 
-        public void NewDiagram(object sender, RoutedEventArgs e)
-        {
-        }
+        public void NewDiagram(object sender, RoutedEventArgs e) { }
 
-        public void CloseDiagram(object sender, RoutedEventArgs e)
-        {
-        }
+        public void CloseDiagram(object sender, RoutedEventArgs e) { }
 
-        public void NextDiagram(object sender, RoutedEventArgs e)
-        {
-        }
+        public void NextDiagram(object sender, RoutedEventArgs e) { }
 
-        public void PrevDiagram(object sender, RoutedEventArgs e)
-        {
-        }
+        public void PrevDiagram(object sender, RoutedEventArgs e) { }
 
-        public void OpenDiagram(object sender, RoutedEventArgs e)
-        {
-        }
+        public void OpenDiagram(object sender, RoutedEventArgs e) { }
 
-        public void SaveDiagram(object sender, RoutedEventArgs e)
-        {
-        }
+        public void SaveDiagram(object sender, RoutedEventArgs e) { }
 
         /*private void ResizeAndTranslate(MouseEventArgs e)
         {
@@ -271,7 +277,7 @@ namespace UMLRedactor.Controllers
             else
             {
                 MessageBoxResult result = MessageBox.Show(
-                    "Вы не сохранили изменения! Сохранить?",
+                    "Несохраненные изменения будут утерены! Сохранить?",
                     "Внимание!",
                     MessageBoxButton.YesNoCancel
                 );
