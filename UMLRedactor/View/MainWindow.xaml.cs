@@ -9,6 +9,7 @@ using UMLRedactor.Additions;
 using UMLRedactor.Controllers;
 using UMLRedactor.Models;
 using UMLRedactor.Tools.Elements.ClassDiagram;
+using Attribute = UMLRedactor.Additions.Attribute;
 
 namespace UMLRedactor.View
 {
@@ -63,6 +64,241 @@ namespace UMLRedactor.View
             _controller.NewModel += RecreateView;
             _controller.ElementCreated += UpdateCanvas;
             _controller.ElementCreated += DrawTree;
+            _controller.TreeViewItemSelected += ShowProperties;
+            _controller.TreeViewItemSelected += ShowAttributesAndOperations;
+        }
+
+        private void ShowAttributesAndOperations(object sender, EventArgs e)
+        {
+            if (sender is ModelNodeElement element)
+            {
+                List<Attribute> attributes = element.Attributes;
+                if (attributes != null && attributes.Count>0)
+                {
+                    AttributesGrid.Children.Clear();
+                    AttributesGrid.RowDefinitions.Clear();
+                    foreach (Attribute attribute in attributes)
+                    {
+                        CreateAttribute(attribute);
+                    }
+                }
+                else
+                {
+                    AttributesGrid.Children.Clear();
+                    AttributesGrid.RowDefinitions.Clear();
+                    CreateAttribute(new Attribute());
+                }
+                List<Operation> operations = element.Operations;
+                if (operations != null && operations.Count>0)
+                {
+                    OperationsGrid.Children.Clear();
+                    OperationsGrid.RowDefinitions.Clear();
+                    foreach (Operation operation in operations)
+                    {
+                        CreateOperation(operation);
+                    }
+                }
+                else
+                {
+                    OperationsGrid.Children.Clear();
+                    OperationsGrid.RowDefinitions.Clear();
+                    CreateOperation(new Operation());
+                }
+            }
+        }
+
+        private void CreateAttribute(Attribute attribute)
+        {
+            RowDefinition rd = new RowDefinition
+            {
+                Height = new GridLength(30)
+            };
+            AttributesGrid.RowDefinitions.Add(rd);
+            TextBox attributeName = new TextBox
+            {
+                Text = attribute.Name,
+                FontSize = 14,
+                Padding = new Thickness(0, 5, 0, 5),
+                Foreground = Brushes.Black,
+            };
+            Grid.SetColumn(attributeName, 0);
+            Grid.SetRow(attributeName, AttributesGrid.RowDefinitions.Count - 1);
+            TextBox attributeType = new TextBox
+            {
+                Text = attribute.DataType,
+                FontSize = 14,
+                Padding = new Thickness(0, 5, 0, 5),
+                Foreground = Brushes.Black,
+            };
+            Grid.SetColumn(attributeType, 1);
+            Grid.SetRow(attributeType, AttributesGrid.RowDefinitions.Count - 1);
+            ComboBox attributeAccess = CreateComboBox(attribute.AccessModifier);
+            Grid.SetColumn(attributeAccess, 2);
+            Grid.SetRow(attributeAccess, AttributesGrid.RowDefinitions.Count - 1);
+            AttributesGrid.Children.Add(attributeName);
+            AttributesGrid.Children.Add(attributeType);
+            AttributesGrid.Children.Add(attributeAccess);
+        }
+
+        private ComboBox CreateComboBox(string accessModifier)
+        {
+            ComboBox comboBox = new ComboBox
+            {
+                Padding = new Thickness(5, 0, 0, 5),
+            };
+            TextBlock publicTb = new TextBlock
+            {
+                Height = 30,
+                Text = "Public",
+                Padding = new Thickness(0, 5, 0, 5),
+                FontSize = 14
+            };
+            comboBox.Items.Add(publicTb);
+            TextBlock privateTb = new TextBlock
+            {
+                Height = 30,
+                Text = "Private",
+                Padding = new Thickness(0, 5, 0, 5),
+                FontSize = 14
+            };
+            comboBox.Items.Add(privateTb);
+            TextBlock privateProtectedTb = new TextBlock
+            {
+                Height = 30,
+                Text = "Private Protected",
+                Padding = new Thickness(0, 5, 0, 5),
+                FontSize = 14
+            };
+            comboBox.Items.Add(privateProtectedTb);
+            TextBlock protectedTb = new TextBlock
+            {
+                Height = 30,
+                Text = "Protected",
+                Padding = new Thickness(0, 5, 0, 5),
+                FontSize = 14
+            };
+            comboBox.Items.Add(protectedTb);
+            if (accessModifier == "Public" || accessModifier == "public")
+                comboBox.SelectedIndex = 0;
+            else if (accessModifier == "Private" || accessModifier == "private")
+                comboBox.SelectedIndex = 1;
+            else if (accessModifier == "Private Protected")
+                comboBox.SelectedIndex = 2;
+            else if (accessModifier == "Protected" || accessModifier == "protected")
+                comboBox.SelectedIndex = 3;
+            return comboBox;
+        }
+
+        private void CreateOperation(Operation operation)
+        {
+            RowDefinition rd = new RowDefinition
+            {
+                Height = new GridLength(30)
+            };
+            OperationsGrid.RowDefinitions.Add(rd);
+            TextBox operationName = new TextBox
+            {
+                Text = operation.Name,
+                FontSize = 14,
+                Padding = new Thickness(0, 5, 0, 5),
+                Foreground = Brushes.Black,
+            };
+            Grid.SetColumn(operationName, 0);
+            Grid.SetRow(operationName, OperationsGrid.RowDefinitions.Count - 1);
+            string parameterText="";
+            if (operation.Parameters!=null)
+                foreach (Parameter parameter in operation.Parameters)
+                    parameterText += parameter.Name + ":" + parameter.DataType + ", ";
+            TextBox operationParameter = new TextBox
+            {
+                Text = parameterText,
+                FontSize = 14,
+                Padding = new Thickness(0, 5, 0, 5),
+                Foreground = Brushes.Black,
+            };
+            Grid.SetColumn(operationParameter, 1);
+            Grid.SetRow(operationParameter, OperationsGrid.RowDefinitions.Count - 1);
+            TextBox operationType = new TextBox
+            {
+                Text = operation.DataTypeOfReturnValue,
+                FontSize = 14,
+                Padding = new Thickness(0, 5, 0, 5),
+                Foreground = Brushes.Black,
+            };
+            Grid.SetColumn(operationType, 2);
+            Grid.SetRow(operationType, OperationsGrid.RowDefinitions.Count - 1);
+            ComboBox attributeAccess = CreateComboBox(operation.AccessModifier);
+            Grid.SetColumn(attributeAccess, 3);
+            Grid.SetRow(attributeAccess, OperationsGrid.RowDefinitions.Count - 1);
+            OperationsGrid.Children.Add(operationName);
+            OperationsGrid.Children.Add(operationParameter);
+            OperationsGrid.Children.Add(operationType);
+            OperationsGrid.Children.Add(attributeAccess);
+        }
+
+        private void ShowProperties(object sender, EventArgs e)
+        {
+            OptionsGrid.Children.Clear();
+            OptionsGrid.RowDefinitions.Clear();
+            if (sender is ModelNodeElement element)
+            {
+                CreateProperty("Name", element.Name);
+                CreateProperty("ID", element.Id);
+                CreateProperty("Type", element.Type);
+                CreateProperty("Stereotype", element.Stereotype);
+            }
+            else if (sender is ModelNodeLine line)
+            {
+                
+            }
+        }
+
+        private void CreateProperty(string propertyName, string propertyValue)
+        {
+            RowDefinition rd = new RowDefinition
+            {
+                Height = GridLength.Auto
+            };
+            OptionsGrid.RowDefinitions.Add(rd);
+            TextBlock propertyNameTb = new TextBlock
+            {
+                Text = propertyName,
+                Height = 30,
+                FontSize = 16,
+                Foreground = Brushes.Black
+            };
+            Border borderName = new Border
+            {
+                BorderBrush = Brushes.DarkGray,
+                BorderThickness = new Thickness(0, 0, 1, 1)
+            };
+            Grid.SetColumn(borderName, 0);
+            Grid.SetRow(propertyNameTb, OptionsGrid.RowDefinitions.Count - 1);
+            Grid.SetRow(borderName, OptionsGrid.RowDefinitions.Count - 1);
+            Grid.SetColumn(propertyNameTb, 0);
+            TextBox propertyValueTb = new TextBox
+            {
+                Text = propertyValue,
+                Height = 30,
+                Padding = new Thickness(0, 0, 20, 0),
+                FontSize = 16,
+                BorderThickness = new Thickness(0),
+                VerticalContentAlignment = VerticalAlignment.Center,
+                Foreground = Brushes.Black,
+            };
+            Border borderValue = new Border
+            {
+                BorderBrush = Brushes.DarkGray,
+                BorderThickness = new Thickness(1, 0, 0, 1)
+            };
+            Grid.SetColumn(borderValue, 1);
+            Grid.SetColumn(propertyValueTb, 1);
+            Grid.SetRow(propertyValueTb, OptionsGrid.RowDefinitions.Count - 1);
+            Grid.SetRow(borderValue, OptionsGrid.RowDefinitions.Count - 1);
+            OptionsGrid.Children.Add(propertyNameTb);
+            OptionsGrid.Children.Add(borderName);
+            OptionsGrid.Children.Add(propertyValueTb);
+            OptionsGrid.Children.Add(borderValue);
         }
 
         private void InitialDiagram(object sender, EventArgs e)
@@ -168,9 +404,9 @@ namespace UMLRedactor.View
             else
                 item = GetTreeViewItem(element.Id, element.Name, "Public");
 
-            List<Additions.Attribute> attributes = (element as ModelNodeElement)?.Attributes;
+            List<Attribute> attributes = (element as ModelNodeElement)?.Attributes;
             if (attributes != null)
-                foreach (Additions.Attribute attribute in attributes)
+                foreach (Attribute attribute in attributes)
                 {
                     string text = attribute.Name + ": " + attribute.DataType;
                     item.Items.Add(GetTreeViewItem(Guid.NewGuid().ToString(), text, attribute.AccessModifier));
@@ -201,6 +437,7 @@ namespace UMLRedactor.View
                         operation.AccessModifier));
                 }
 
+            item.Selected += _controller.treeItem_Selected;
             return item;
         }
 

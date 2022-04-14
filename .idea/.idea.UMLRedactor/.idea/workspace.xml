@@ -11,7 +11,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/Controllers/Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Controllers/Controller.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ClassDiagram/ClassElement.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ClassDiagram/ClassElement.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ClassDiagram/ClassElement.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ClassDiagram/ClassElement.xaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs" afterDir="false" />
     </list>
@@ -220,7 +219,7 @@
       <workItem from="1649773421503" duration="14718000" />
       <workItem from="1649866215870" duration="5939000" />
       <workItem from="1649947162603" duration="6543000" />
-      <workItem from="1649957945268" duration="1692000" />
+      <workItem from="1649957945268" duration="10757000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена иконка">
       <created>1633812452088</created>
@@ -376,7 +375,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649789803992</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="При открытии файла с моделью, появляется автоматическая диаграмма">
+      <created>1649960612709</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1649960612709</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -419,9 +425,27 @@
     <MESSAGE value="Работает сохранение модели в файл" />
     <MESSAGE value="Добавлены обработчики для элементов меню" />
     <MESSAGE value="Работает перенос и изменение размера элемента" />
-    <option name="LAST_COMMIT_MESSAGE" value="Работает перенос и изменение размера элемента" />
+    <MESSAGE value="При открытии файла с моделью, появляется автоматическая диаграмма" />
+    <option name="LAST_COMMIT_MESSAGE" value="При открытии файла с моделью, появляется автоматическая диаграмма" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/UMLRedactor/View/MainWindow.xaml.cs</url>
+          <line>90</line>
+          <properties documentPath="D:\MAI\VKR\UMLRedactor\UMLRedactor\View\MainWindow.xaml.cs" initialLine="90" containingFunctionPresentation="method 'ShowAttributesAndOperations'">
+            <startOffsets>
+              <option value="3771" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3819" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Type#UMLRedactor.Models.Model" memberName="Root" />

@@ -253,7 +253,7 @@
                                 <RowDefinition Height="20" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
+                                                           <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
@@ -281,7 +281,7 @@
                             <Separator Grid.Row="0" Grid.Column="3" Width="17" Background="Transparent" />
                             <ScrollViewer Grid.Row="1" Grid.Column="0" Background="White" Grid.ColumnSpan="4"
                                           VerticalAlignment="Stretch">
-                                <Grid>
+                                <Grid Name="AttributesGrid">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="*" />
@@ -292,9 +292,8 @@
                                     </Grid.RowDefinitions>
                                     <RichTextBox Grid.Column="0" FontSize="14" Padding="0,5" />
                                     <RichTextBox Grid.Column="1" FontSize="14" Padding="0,5" />
-                                    <RichTextBox Grid.Column="2" FontSize="14" Padding="0,5" />
                                     <ComboBox Name="AttributeMod" Grid.Column="2" Foreground="Black" Padding="5,0,0,5"
-                                              Text="Public" FontSize="14">
+                                              SelectedIndex="0" FontSize="14">
                                         <TextBlock Height="30" Text="Public" Padding="0,5" FontSize="14" />
                                         <TextBlock Height="30" Text="Private" Padding="0,5" FontSize="14" />
                                         <TextBlock Height="30" Text="Private Protected" Padding="0,5" FontSize="14" />
@@ -346,7 +345,7 @@
                                        VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
                             <ScrollViewer Grid.Row="1" Grid.Column="0" Background="White" Grid.ColumnSpan="5"
                                           VerticalAlignment="Stretch">
-                                <Grid>
+                                <Grid Name="OperationsGrid">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="*" />
@@ -360,7 +359,7 @@
                                     <RichTextBox Grid.Column="1" FontSize="14" Padding="0,5" />
                                     <RichTextBox Grid.Column="2" FontSize="14" Padding="0,5" />
                                     <ComboBox Name="OperationMod" Grid.Column="3" Foreground="Black" Padding="5,0,0,5"
-                                              Text="Public" FontSize="14">
+                                              SelectedIndex="0" FontSize="14">
                                         <TextBlock Height="30" Text="Public" Padding="0,5" FontSize="14" />
                                         <TextBlock Height="30" Text="Private" Padding="0,5" FontSize="14" />
                                         <TextBlock Height="30" Text="Private Protected" Padding="0,5" FontSize="14" />

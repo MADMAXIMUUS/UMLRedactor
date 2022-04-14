@@ -25,6 +25,8 @@ namespace UMLRedactor.Controllers
         public event EventHandler NewModel;
         public event EventHandler ElementCreated;
 
+        public event EventHandler TreeViewItemSelected;
+
         public Controller(Model model)
         {
             _model = model;
@@ -34,6 +36,13 @@ namespace UMLRedactor.Controllers
             _rand = new Random();
             _diagrams = new List<Diagram> { CurrentDiagram };
             InitialView();
+        }
+
+        public void treeItem_Selected(object sender, RoutedEventArgs e)
+        {
+            TreeViewItem item = sender as TreeViewItem;
+            if (item != null) 
+                TreeViewItemSelected.Invoke(_model.GetNode(item.Uid.ToString()), EventArgs.Empty);
         }
 
         public void OpenFile(object sender, RoutedEventArgs e)
