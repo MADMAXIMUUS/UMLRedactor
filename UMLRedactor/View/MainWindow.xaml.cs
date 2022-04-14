@@ -58,9 +58,40 @@ namespace UMLRedactor.View
             Use.Click += _controller.CreateElement;
             ControlFlow.Click += _controller.CreateElement;
             _controller.EndModelRead += DrawTree;
+            _controller.EndModelRead += InitialDiagram;
             _controller.NewModel += RecreateView;
             _controller.NewModel += RecreateView;
-            _controller.UpdateDiagram += UpdateCanvas;
+            _controller.ElementCreated += UpdateCanvas;
+            _controller.ElementCreated += DrawTree;
+        }
+
+        private void InitialDiagram(object sender, EventArgs e)
+        {
+            DrawCanvas.Children.Clear();
+            Random random = new Random();
+            List<ModelNodeBase> rootChildNodes = (sender as Model)?.Root.ChildNodes;
+            if (rootChildNodes != null)
+                foreach (ModelNodeBase element in rootChildNodes)
+                {
+                    switch (element.Type)
+                    {
+                        case "Class":
+                            ClassElement classElement = new ClassElement(element);
+                            DiagramNode node = new DiagramNode
+                            {
+                                ModelElementId = element.Id,
+                                X1 = random.NextDouble() * 300,
+                                Y1 = random.NextDouble() * 300
+                            };
+                            Canvas.SetLeft(classElement, node.X1);
+                            Canvas.SetTop(classElement, node.Y1);
+                            node.Height = classElement.Height;
+                            node.Width = classElement.Width;
+                            _controller.CurrentDiagram.Elements.Add(node);
+                            DrawCanvas.Children.Add(classElement);
+                            break;
+                    }
+                }
         }
 
         private void UpdateCanvas(object sender, EventArgs eventArgs)

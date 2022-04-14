@@ -18,13 +18,12 @@ namespace UMLRedactor.Controllers
         private int _currentDiagramIndex;
         private string _filePath = "";
         private readonly Random _rand;
-        public UIElement SelectedElement;
+        public ModelNodeBase SelectedElement;
         private readonly Dictionary<string, int> _elementsCounter;
 
         public event EventHandler EndModelRead;
         public event EventHandler NewModel;
-
-        public event EventHandler UpdateDiagram;
+        public event EventHandler ElementCreated;
 
         public Controller(Model model)
         {
@@ -34,12 +33,7 @@ namespace UMLRedactor.Controllers
             _currentDiagramIndex = 0;
             _rand = new Random();
             _diagrams = new List<Diagram> { CurrentDiagram };
-            UpdateTreeView();
-        }
-
-        private void UpdateSelectedElement(object sender, RoutedEventArgs e)
-        {
-            SelectedElement = (UIElement)sender;
+            InitialView();
         }
 
         public void OpenFile(object sender, RoutedEventArgs e)
@@ -56,7 +50,7 @@ namespace UMLRedactor.Controllers
                 switch (reader.GetModelFromFile(out _model))
                 {
                     case 0:
-                        UpdateTreeView();
+                        InitialView();
                         break;
                     case -1:
                         MessageBox.Show("Версия XMI не соответсвует 1.1!", "Ошибка");
@@ -71,9 +65,14 @@ namespace UMLRedactor.Controllers
             }
         }
 
-        private void UpdateTreeView()
+        private void InitialView()
         {
             EndModelRead?.Invoke(_model, EventArgs.Empty);
+        }
+
+        private void UpdateView()
+        {
+            ElementCreated?.Invoke(_model, EventArgs.Empty);
         }
 
         public void NewFile(object sender, RoutedEventArgs e)
@@ -82,7 +81,7 @@ namespace UMLRedactor.Controllers
             {
                 AskName();
                 CreateNewModel();
-                UpdateTreeView();
+                InitialView();
             }
             else
             {
@@ -182,11 +181,12 @@ namespace UMLRedactor.Controllers
                     node.Y1 = _rand.NextDouble() * 300;
                     node.ModelElementId = classElement.Id;
                     CurrentDiagram.Elements.Add(node);
-                    UpdateDiagram?.Invoke(_model, EventArgs.Empty);
-                    UpdateTreeView();
+                    UpdateView();
                     break;
             }
         }
+        
+        
 
         public void Export(object sender, RoutedEventArgs e) { }
 
@@ -205,70 +205,6 @@ namespace UMLRedactor.Controllers
         public void OpenDiagram(object sender, RoutedEventArgs e) { }
 
         public void SaveDiagram(object sender, RoutedEventArgs e) { }
-
-        /*private void ResizeAndTranslate(MouseEventArgs e)
-        {
-            if (!_isSizing) return;
-            if (_borderEdge < 0) return;
-            if (_selectedElement == null) return;
-
-            if (e.LeftButton != MouseButtonState.Pressed)
-            {
-                _isSizing = false;
-            }
-            else
-            {
-                Point cursorPosition = e.GetPosition(_view.DrawCanvas);
-                Point position = new Point(Canvas.GetLeft(_selectedElement), Canvas.GetTop(_selectedElement));
-                double diffX = position.X - cursorPosition.X;
-                double diffY = position.Y - cursorPosition.Y;
-                if (_borderEdge == (int)Enums.EdgeTypes.MiddleTop)
-                {
-                    double newLeft = cursorPosition.X - _sizingOffsetX;
-                    double newTop = cursorPosition.Y - _sizingOffsetY;
-                    if (newLeft > 0) Canvas.SetLeft(_selectedElement, newLeft);
-                    if (newTop > 0) Canvas.SetTop(_selectedElement, newTop);
-                    _selectedElement.UpdateLayout();
-                }
-                else
-                {
-                    if (_borderEdge == (int)Enums.EdgeTypes.LeftTop || _borderEdge == (int)Enums.EdgeTypes.LeftBottom)
-                    {
-                        double newLeft = cursorPosition.X;
-                        double newWidth = _selectedElement.Width + diffX;
-                        if (newLeft > 0 && newWidth > _selectedElement.MinWidth)
-                            Canvas.SetLeft(_selectedElement, newLeft);
-                        if (newWidth > _selectedElement.MinWidth) _selectedElement.Width = newWidth;
-                        _selectedElement.UpdateLayout();
-                    }
-
-                    if (_borderEdge == (int)Enums.EdgeTypes.LeftTop || _borderEdge == (int)Enums.EdgeTypes.RightTop)
-                    {
-                        double newTop = cursorPosition.Y;
-                        double newHeight = _selectedElement.Height + diffY;
-                        if (newTop > 0 && newHeight > _selectedElement.MinHeight)
-                            Canvas.SetTop(_selectedElement, newTop);
-                        if (newHeight > _selectedElement.MinHeight) _selectedElement.Height = newHeight;
-                        _selectedElement.UpdateLayout();
-                    }
-
-                    if (_borderEdge == (int)Enums.EdgeTypes.RightTop || _borderEdge == (int)Enums.EdgeTypes.RightBottom)
-                    {
-                        double newWidth = cursorPosition.X + position.X;
-                        if (newWidth > _selectedElement.MinWidth) _selectedElement.Width = newWidth;
-                        _selectedElement.UpdateLayout();
-                    }
-
-                    if (_borderEdge == (int)Enums.EdgeTypes.LeftBottom ||
-                        _borderEdge == (int)Enums.EdgeTypes.RightBottom)
-                    {
-                        double newHeight = cursorPosition.Y + position.Y;
-                        if (newHeight > _selectedElement.MinHeight) _selectedElement.Height = newHeight;
-                        _selectedElement.UpdateLayout();
-                    }
-                }
-            }
-        }*/
 
         public void CloseApplication()
         {
