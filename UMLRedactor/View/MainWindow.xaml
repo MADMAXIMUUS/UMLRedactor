@@ -9,7 +9,7 @@
         Name="MainView"
         ResizeMode="NoResize"
         AllowsTransparency="True"
-        Title="Редактор" Height="600" Width="1000" WindowStyle="None">
+        Title="Редактор" Height="800" Width="1200" WindowStyle="None">
     <Grid>
         <Border Width="auto" Height="auto" BorderBrush="WhiteSmoke" Background="WhiteSmoke" BorderThickness="2"
                 CornerRadius="15">
@@ -292,7 +292,7 @@
                                     </Grid.RowDefinitions>
                                     <RichTextBox Grid.Column="0" FontSize="14" Padding="0,5" />
                                     <RichTextBox Grid.Column="1" FontSize="14" Padding="0,5" />
-                                    <ComboBox Name="AttributeMod" Grid.Column="2" Foreground="Black" Padding="5,0,0,5"
+                                    <ComboBox Grid.Column="2" Foreground="Black" Padding="5,0,0,5"
                                               SelectedIndex="0" FontSize="14">
                                         <TextBlock Height="30" Text="Public" Padding="0,5" FontSize="14" />
                                         <TextBlock Height="30" Text="Private" Padding="0,5" FontSize="14" />
@@ -358,7 +358,7 @@
                                     <RichTextBox Grid.Column="0" FontSize="14" Padding="0,5" />
                                     <RichTextBox Grid.Column="1" FontSize="14" Padding="0,5" />
                                     <RichTextBox Grid.Column="2" FontSize="14" Padding="0,5" />
-                                    <ComboBox Name="OperationMod" Grid.Column="3" Foreground="Black" Padding="5,0,0,5"
+                                    <ComboBox Grid.Column="3" Foreground="Black" Padding="5,0,0,5"
                                               SelectedIndex="0" FontSize="14">
                                         <TextBlock Height="30" Text="Public" Padding="0,5" FontSize="14" />
                                         <TextBlock Height="30" Text="Private" Padding="0,5" FontSize="14" />

@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using Microsoft.Win32;
+using System.Windows.Forms;
+using System.Windows.Input;
 using UMLRedactor.Additions;
 using UMLRedactor.Models;
 using UMLRedactor.View;
+using Application = System.Windows.Application;
+using Button = System.Windows.Controls.Button;
+using KeyEventArgs = System.Windows.Input.KeyEventArgs;
+using MessageBox = System.Windows.MessageBox;
+using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
+using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
+using TextBox = System.Windows.Forms.TextBox;
 
 namespace UMLRedactor.Controllers
 {
@@ -236,6 +244,16 @@ namespace UMLRedactor.Controllers
                     Application.Current.Shutdown();
                 }
             }
+        }
+
+        public void Attribute_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        public void Attribute_ComboBoxSelected(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }

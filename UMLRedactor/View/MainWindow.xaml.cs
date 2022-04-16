@@ -119,8 +119,9 @@ namespace UMLRedactor.View
                 Text = attribute.Name,
                 FontSize = 14,
                 Padding = new Thickness(0, 5, 0, 5),
-                Foreground = Brushes.Black,
+                Foreground = Brushes.Black
             };
+            attributeName.KeyDown += _controller.Attribute_OnKeyDown;
             Grid.SetColumn(attributeName, 0);
             Grid.SetRow(attributeName, AttributesGrid.RowDefinitions.Count - 1);
             TextBox attributeType = new TextBox
@@ -130,9 +131,11 @@ namespace UMLRedactor.View
                 Padding = new Thickness(0, 5, 0, 5),
                 Foreground = Brushes.Black,
             };
+            attributeType.KeyDown += _controller.Attribute_OnKeyDown;
             Grid.SetColumn(attributeType, 1);
             Grid.SetRow(attributeType, AttributesGrid.RowDefinitions.Count - 1);
             ComboBox attributeAccess = CreateComboBox(attribute.AccessModifier);
+            attributeAccess.SelectionChanged += _controller.Attribute_ComboBoxSelected;
             Grid.SetColumn(attributeAccess, 2);
             Grid.SetRow(attributeAccess, AttributesGrid.RowDefinitions.Count - 1);
             AttributesGrid.Children.Add(attributeName);
@@ -242,18 +245,22 @@ namespace UMLRedactor.View
             OptionsGrid.RowDefinitions.Clear();
             if (sender is ModelNodeElement element)
             {
-                CreateProperty("Name", element.Name);
-                CreateProperty("ID", element.Id);
-                CreateProperty("Type", element.Type);
-                CreateProperty("Stereotype", element.Stereotype);
+                CreateProperty("Name", element.Name, true);
+                CreateProperty("ID", element.Id, false);
+                CreateProperty("Type", element.Type, true);
+                CreateProperty("Stereotype", element.Stereotype, true);
             }
             else if (sender is ModelNodeLine line)
             {
-                
+                CreateProperty("Source", line.Source, false);
+                CreateProperty("Target", line.Target, false);
+                CreateProperty("Text", line.TextOnLine, true);
+                CreateProperty("Text Source", line.TextSourceOnLine, true);
+                CreateProperty("Text Target", line.TextTargetOnLine, true);
             }
         }
 
-        private void CreateProperty(string propertyName, string propertyValue)
+        private void CreateProperty(string propertyName, string propertyValue, bool isEditable)
         {
             RowDefinition rd = new RowDefinition
             {
@@ -265,6 +272,7 @@ namespace UMLRedactor.View
                 Text = propertyName,
                 Height = 30,
                 FontSize = 16,
+                Padding = new Thickness(5,0,0,0),
                 Foreground = Brushes.Black
             };
             Border borderName = new Border
@@ -280,6 +288,7 @@ namespace UMLRedactor.View
             {
                 Text = propertyValue,
                 Height = 30,
+                IsEnabled = isEditable,
                 Padding = new Thickness(0, 0, 20, 0),
                 FontSize = 16,
                 BorderThickness = new Thickness(0),

@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Forms;
 using System.Windows.Media;
 using UMLRedactor.Additions;
 using UMLRedactor.Models;
+using Application = System.Windows.Application;
 
 namespace UMLRedactor.Tools.Elements.ClassDiagram
 {

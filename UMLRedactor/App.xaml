@@ -30,7 +30,7 @@
         </ControlTemplate>
 
         <ControlTemplate x:Key="DesignerItemTemplate" TargetType="ContentControl">
-            <Grid DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+            <Grid Name="TemplateGrid" DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}">
                 <additions:MoveThumb Template="{StaticResource MoveThumbTemplate}" Cursor="SizeAll"/>
                 <Control Template="{StaticResource ResizeDecoratorTemplate}"/>
                 <ContentPresenter Content="{TemplateBinding ContentControl.Content}"/>
