@@ -1,27 +1,29 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Forms;
 using System.Windows.Media;
 using UMLRedactor.Additions;
 using UMLRedactor.Models;
-using Application = System.Windows.Application;
 
 namespace UMLRedactor.Tools.Elements.ClassDiagram
 {
     public partial class ClassElement : IElement
     {
         public ModelNodeElement Element;
-        
+
         public ClassElement(ModelNodeBase modelNodeBase)
         {
             InitializeComponent();
-            Element = modelNodeBase as ModelNodeElement; 
+            Element = modelNodeBase as ModelNodeElement;
             Title.Text = modelNodeBase.Name;
             MinWidth = 200;
             MinHeight = 150;
-
+            
+            if (Element != null && !string.IsNullOrEmpty(Element.Stereotype))
+            {
+                Stereotype.Text = "<<" + Element.Stereotype + ">>";
+                Stereotype.Visibility = Visibility.Visible;
+            }
             List<Attribute> attributes = (modelNodeBase as ModelNodeElement)?.Attributes;
             if (attributes != null)
                 foreach (Attribute attribute in attributes)
@@ -31,9 +33,6 @@ namespace UMLRedactor.Tools.Elements.ClassDiagram
             if (operations != null)
                 foreach (Operation operation in operations)
                     CreateOperation(operation);
-
-            Height = Height;
-            Width = Width;
         }
 
         private void CreateAttribute(Attribute attribute)
@@ -101,6 +100,11 @@ namespace UMLRedactor.Tools.Elements.ClassDiagram
             text += "): " + operation.DataTypeOfReturnValue;
             textOperation.Text = text;
             OperationPanel.Children.Add(border);
+        }
+
+        public ModelNodeElement GetModelElement()
+        {
+            return Element;
         }
     }
 }

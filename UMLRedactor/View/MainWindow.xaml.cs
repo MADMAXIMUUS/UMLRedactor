@@ -66,6 +66,9 @@ namespace UMLRedactor.View
             _controller.ElementCreated += DrawTree;
             _controller.TreeViewItemSelected += ShowProperties;
             _controller.TreeViewItemSelected += ShowAttributesAndOperations;
+            _controller.DiagramElementSelected += ShowProperties;
+            _controller.DiagramElementSelected += ShowAttributesAndOperations;
+            _controller.AttributeChanged += UpdateCanvas;
         }
 
         private void ShowAttributesAndOperations(object sender, EventArgs e)
@@ -73,7 +76,7 @@ namespace UMLRedactor.View
             if (sender is ModelNodeElement element)
             {
                 List<Attribute> attributes = element.Attributes;
-                if (attributes != null && attributes.Count>0)
+                if (attributes != null && attributes.Count > 0)
                 {
                     AttributesGrid.Children.Clear();
                     AttributesGrid.RowDefinitions.Clear();
@@ -88,8 +91,9 @@ namespace UMLRedactor.View
                     AttributesGrid.RowDefinitions.Clear();
                     CreateAttribute(new Attribute());
                 }
+
                 List<Operation> operations = element.Operations;
-                if (operations != null && operations.Count>0)
+                if (operations != null && operations.Count > 0)
                 {
                     OperationsGrid.Children.Clear();
                     OperationsGrid.RowDefinitions.Clear();
@@ -135,7 +139,7 @@ namespace UMLRedactor.View
             Grid.SetColumn(attributeType, 1);
             Grid.SetRow(attributeType, AttributesGrid.RowDefinitions.Count - 1);
             ComboBox attributeAccess = CreateComboBox(attribute.AccessModifier);
-            attributeAccess.SelectionChanged += _controller.Attribute_ComboBoxSelected;
+            attributeAccess.DropDownClosed += _controller.Attribute_ComboBoxSelected;
             Grid.SetColumn(attributeAccess, 2);
             Grid.SetRow(attributeAccess, AttributesGrid.RowDefinitions.Count - 1);
             AttributesGrid.Children.Add(attributeName);
@@ -206,12 +210,23 @@ namespace UMLRedactor.View
                 Padding = new Thickness(0, 5, 0, 5),
                 Foreground = Brushes.Black,
             };
+            operationName.KeyDown += _controller.Operation_OnKeyDown;
             Grid.SetColumn(operationName, 0);
             Grid.SetRow(operationName, OperationsGrid.RowDefinitions.Count - 1);
-            string parameterText="";
-            if (operation.Parameters!=null)
+            string parameterText = "";
+            if (operation.Parameters != null)
+            {
                 foreach (Parameter parameter in operation.Parameters)
-                    parameterText += parameter.Name + ":" + parameter.DataType + ", ";
+                {
+                    parameterText += parameter.Name + ":" + parameter.DataType;
+                    if (!string.IsNullOrEmpty(parameter.DefaultValue))
+                        parameterText += "=" + parameter.DefaultValue;
+                    parameterText += ", ";
+                }
+
+                parameterText = parameterText.Substring(0, parameterText.Length - 2);
+            }
+
             TextBox operationParameter = new TextBox
             {
                 Text = parameterText,
@@ -219,6 +234,7 @@ namespace UMLRedactor.View
                 Padding = new Thickness(0, 5, 0, 5),
                 Foreground = Brushes.Black,
             };
+            operationParameter.KeyDown += _controller.Operation_OnKeyDown;
             Grid.SetColumn(operationParameter, 1);
             Grid.SetRow(operationParameter, OperationsGrid.RowDefinitions.Count - 1);
             TextBox operationType = new TextBox
@@ -228,6 +244,7 @@ namespace UMLRedactor.View
                 Padding = new Thickness(0, 5, 0, 5),
                 Foreground = Brushes.Black,
             };
+            operationType.KeyDown += _controller.Operation_OnKeyDown;
             Grid.SetColumn(operationType, 2);
             Grid.SetRow(operationType, OperationsGrid.RowDefinitions.Count - 1);
             ComboBox attributeAccess = CreateComboBox(operation.AccessModifier);
@@ -272,7 +289,7 @@ namespace UMLRedactor.View
                 Text = propertyName,
                 Height = 30,
                 FontSize = 16,
-                Padding = new Thickness(5,0,0,0),
+                Padding = new Thickness(5, 0, 0, 0),
                 Foreground = Brushes.Black
             };
             Border borderName = new Border
@@ -322,16 +339,20 @@ namespace UMLRedactor.View
                     {
                         case "Class":
                             ClassElement classElement = new ClassElement(element);
+                            classElement.MouseLeftButtonDown += _controller.UpdateSelectedElement;
+                            classElement.LayoutUpdated += _controller.UpdateSelectedElementSizeAndPosition;
                             DiagramNode node = new DiagramNode
                             {
                                 ModelElementId = element.Id,
-                                X1 = random.NextDouble() * 300,
-                                Y1 = random.NextDouble() * 300
+                                X1 = random.NextDouble() * 400,
+                                Y1 = random.NextDouble() * 400
                             };
                             Canvas.SetLeft(classElement, node.X1);
                             Canvas.SetTop(classElement, node.Y1);
                             node.Height = classElement.Height;
                             node.Width = classElement.Width;
+                            _controller.SelectedDiagramElement = classElement;
+                            _controller.SelectedModelElement = classElement.Element;
                             _controller.CurrentDiagram.Elements.Add(node);
                             DrawCanvas.Children.Add(classElement);
                             break;
@@ -353,8 +374,12 @@ namespace UMLRedactor.View
                             Width = element.Width,
                             Height = element.Height
                         };
+                        classElement.MouseLeftButtonDown += _controller.UpdateSelectedElement;
+                        classElement.LayoutUpdated += _controller.UpdateSelectedElementSizeAndPosition;
                         Canvas.SetLeft(classElement, element.X1);
                         Canvas.SetTop(classElement, element.Y1);
+                        _controller.SelectedDiagramElement = classElement;
+                        _controller.SelectedModelElement = classElement.Element;
                         DrawCanvas.Children.Add(classElement);
                         break;
                 }

@@ -31,5 +31,17 @@ namespace UMLRedactor.Models
                 }
             }
         }
+
+        public void UpdateElementSize(double newWidth, double newHeight, string elementId)
+        {
+            foreach (DiagramNode element in Elements)
+            {
+                if (element.ModelElementId == elementId)
+                {
+                    element.Width = newWidth;
+                    element.Height = newHeight;
+                }
+            }
+        }
     }
 }

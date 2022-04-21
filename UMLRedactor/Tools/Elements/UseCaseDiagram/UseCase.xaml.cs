@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using UMLRedactor.Additions;
+using UMLRedactor.Models;
 using UMLRedactor.View;
 
 namespace UMLRedactor.Tools.Elements.UseCaseDiagram
@@ -117,6 +118,11 @@ namespace UMLRedactor.Tools.Elements.UseCaseDiagram
                 main.BorderEdge = _edgeType;
                 main.SelectedElement = this;
             }*/
+        }
+
+        public ModelNodeElement GetModelElement()
+        {
+            return new ModelNodeElement();
         }
     }
 }

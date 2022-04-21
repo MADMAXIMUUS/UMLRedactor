@@ -1,8 +1,7 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using UMLRedactor.Additions;
-using UMLRedactor.View;
+using UMLRedactor.Models;
 
 namespace UMLRedactor.Tools.Elements.ActivityDiagram
 {
@@ -122,5 +121,9 @@ namespace UMLRedactor.Tools.Elements.ActivityDiagram
         public int LocalId { get; set; }
         public string Header { get; set; }
         public Enums.ElementTypes Type { get; set; }
+        public ModelNodeElement GetModelElement()
+        {
+            return new ModelNodeElement();
+        }
     }
 }

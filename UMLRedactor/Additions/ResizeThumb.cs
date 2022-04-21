@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using UMLRedactor.Controllers;
 
 namespace UMLRedactor.Additions
 {
@@ -14,8 +15,10 @@ namespace UMLRedactor.Additions
 
         private void ResizeThumb_DragDelta(object sender, DragDeltaEventArgs e)
         {
-            if (DataContext is Control designerItem)
+            if (DataContext is UserControl designerItem)
             {
+                designerItem.Height = designerItem.ActualHeight;
+                designerItem.Width = designerItem.ActualWidth;
                 double deltaVertical, deltaHorizontal;
 
                 switch (VerticalAlignment)

@@ -35,6 +35,8 @@
                 <Control Template="{StaticResource ResizeDecoratorTemplate}"/>
                 <ContentPresenter Content="{TemplateBinding ContentControl.Content}"/>
             </Grid>
+            
         </ControlTemplate>
+        
     </Application.Resources>
 </Application>

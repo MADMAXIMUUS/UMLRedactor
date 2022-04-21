@@ -6,8 +6,7 @@
              mc:Ignorable="d"
              Background="Transparent"
              Name="Main"
-             Height="Auto"
-             Width="Auto"
+             Width="Auto" Height="Auto"
              d:DesignHeight="250" d:DesignWidth="250"
              Template="{StaticResource DesignerItemTemplate}">
 
@@ -19,8 +18,17 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Border Grid.Row="0" BorderThickness="0,0,0,2" BorderBrush="Black">
+            <TextBlock Grid.Row="0"
+                       HorizontalAlignment="Center"
+                       Name="Stereotype"
+                       Height="12"
+                       FontSize="10"
+                       Visibility="Collapsed"
+                       Foreground="DimGray"
+                       Background="Transparent" />
+            <Border Grid.Row="1" BorderThickness="0,0,0,2" BorderBrush="Black">
                 <TextBlock Name="Title"
                            HorizontalAlignment="Center" Padding="10,2"
                            MinHeight="15"
@@ -29,10 +37,10 @@
                            Margin="1,0"
                            FontSize="12" />
             </Border>
-            <Border Grid.Row="1" BorderThickness="0,0,0,1" BorderBrush="Black" Margin="6,0">
+            <Border Grid.Row="2" BorderThickness="0,0,0,1" BorderBrush="Black" Margin="6,0">
                 <StackPanel Name="AttributePanel" />
             </Border>
-            <Border Grid.Row="2" BorderThickness="0,0,0,1" BorderBrush="Black" Margin="6,0">
+            <Border Grid.Row="3" BorderThickness="0,0,0,1" BorderBrush="Black" Margin="6,0">
                 <StackPanel Name="OperationPanel" />
             </Border>
         </Grid>

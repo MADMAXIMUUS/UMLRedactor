@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using UMLRedactor.Additions;
+using Attribute = UMLRedactor.Additions.Attribute;
 
 namespace UMLRedactor.Models
 {
@@ -38,6 +40,58 @@ namespace UMLRedactor.Models
                     CheckNodeId(parentId, node, element);
         }
 
+        public void UpdateAttributes(string id, List<Attribute> attributes)
+        {
+            foreach (ModelNodeBase node in Root.ChildNodes)
+            {
+                if (node.Id == id)
+                    ((ModelNodeElement)node).Attributes = attributes;
+                else
+                {
+                    UpdateAttributeChild(id, node.ChildNodes, attributes);
+                }
+            }
+        }
+
+        private void UpdateAttributeChild(string id, List<ModelNodeBase> parent, List<Attribute> attributes)
+        {
+            foreach (ModelNodeBase node in parent)
+            {
+                if (node.Id == id)
+                    ((ModelNodeElement)node).Attributes = attributes;
+                else
+                {
+                    UpdateAttributeChild(id, node.ChildNodes, attributes);
+                }
+            }
+        }
+        
+        public void UpdateOperation(string id, List<Operation> operations)
+        {
+            foreach (ModelNodeBase node in Root.ChildNodes)
+            {
+                if (node.Id == id)
+                    ((ModelNodeElement)node).Operations = operations;
+                else
+                {
+                    UpdateOperationChild(id, node.ChildNodes, operations);
+                }
+            }
+        }
+        
+        private void UpdateOperationChild(string id, List<ModelNodeBase> parent, List<Operation> operations)
+        {
+            foreach (ModelNodeBase node in parent)
+            {
+                if (node.Id == id)
+                    ((ModelNodeElement)node).Operations = operations;
+                else
+                {
+                    UpdateOperationChild(id, node.ChildNodes, operations);
+                }
+            }
+        }
+
         private void CheckNodeId(string id, ModelNodeBase node, ModelNodeBase element)
         {
             if (node.Id == id)
@@ -46,7 +100,7 @@ namespace UMLRedactor.Models
                 foreach (ModelNodeBase child in node.ChildNodes)
                     CheckNodeId(id, child, element);
         }
-
+        
         public ModelNodeBase GetNode(string id)
         {
             foreach (ModelNodeBase node in Root.ChildNodes)
