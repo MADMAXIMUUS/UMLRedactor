@@ -5,17 +5,11 @@ namespace UMLRedactor.Controllers
 {
     public class DiagramReader
     {
-        private static XDocument XmlDocument { get; set; }
+        private static XDocument _xmlDocument;
 
         public DiagramReader(string path)
         {
-            XmlDocument = XDocument.Load(path);
+            _xmlDocument = XDocument.Load(path);
         }
-
-        public int SaveToXml(Model model)
-        {
-            return 0;
-        }
-        
     }
 }

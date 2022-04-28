@@ -8,17 +8,17 @@ namespace UMLRedactor.Controllers
 {
     public class ModelReader
     {
-        private static XDocument XmlDocument { get; set; }
+        private static XDocument _xmlDocument;
 
         public ModelReader(string path)
         {
-            XmlDocument = XDocument.Load(path);
+            _xmlDocument = XDocument.Load(path);
         }
 
         public int GetModelFromFile(out Model model)
         {
             model = new Model();
-            XElement xElementRoot = XmlDocument.Root;
+            XElement xElementRoot = _xmlDocument.Root;
             if (xElementRoot == null)
                 return -1;
             if (xElementRoot.Element("XMI.header")?
@@ -33,7 +33,7 @@ namespace UMLRedactor.Controllers
         private int GetModelFromMadFile(out Model model)
         {
             model = new Model();
-            XElement xElementRoot = XmlDocument.Root;
+            XElement xElementRoot = _xmlDocument.Root;
 
             if (xElementRoot == null)
                 return -2;
@@ -80,16 +80,18 @@ namespace UMLRedactor.Controllers
                     .Elements().ToList();
 
                 if (elements != null)
+                {
+                    int elementIndex = 0;
                     foreach (var element in elements)
                     {
                         if (GetElementType(element) == "Not element" && GetLineType(element) == "Not line")
                             continue;
-
                         if (GetElementType(element) != "Not element")
-                            model.Root.ChildNodes.Add(GetElementFromMad(element));
+                            model.Root.ChildNodes.Insert(elementIndex++, GetElementFromMad(element));
                         else
                             model.Root.ChildNodes.Add(GetLineFromMad(element));
                     }
+                }
             }
 
             return 0;
@@ -98,7 +100,7 @@ namespace UMLRedactor.Controllers
         private int GetModelFromEaFile(out Model model)
         {
             model = new Model();
-            XElement xElementRoot = XmlDocument.Root;
+            XElement xElementRoot = _xmlDocument.Root;
             if (xElementRoot == null)
                 return -2;
             if (xElementRoot.FirstAttribute?.Value != "1.1")
@@ -132,6 +134,8 @@ namespace UMLRedactor.Controllers
                 .Elements().ToList();
             if (elements == null)
                 return -2;
+
+            int elementIndex = 0;
             foreach (XElement element in elements)
             {
                 if (element.Name.LocalName == "ActivityModel")
@@ -162,13 +166,15 @@ namespace UMLRedactor.Controllers
                         .Elements().ToList();
 
                     if (activityState != null)
+                    {
                         foreach (XElement state in activityState)
                         {
                             if (GetElementType(state) == "Not element")
                                 continue;
 
-                            model.Root.ChildNodes.Add(GetElementFromEa(state));
+                            model.Root.ChildNodes.Insert(elementIndex++, GetElementFromEa(state));
                         }
+                    }
                 }
                 else if (element.Element(Uml("Collaboration.interaction")) != null)
                 {
@@ -189,7 +195,14 @@ namespace UMLRedactor.Controllers
                                 },
                             };
 
-                            model.Root.ChildNodes.Add(col);
+                            List<XElement> taggedValue =
+                                collaboration.Element(Uml("ModelElement.taggedValue")).Elements().ToList();
+                            foreach (XElement value in taggedValue)
+                            {
+                                if (value.Attribute("tag").Value == "ea_Stype")
+                                    if (value.Attribute("value").Value == "Sequence")
+                                        model.Root.ChildNodes.Add(col);
+                            }
                         }
 
                     List<XElement> seqMessages = element.Element(Uml("Collaboration.interaction"))?
@@ -217,9 +230,8 @@ namespace UMLRedactor.Controllers
                 {
                     if (GetElementType(element) == "Not element" && GetLineType(element) == "Not line")
                         continue;
-
                     if (GetElementType(element) != "Not element")
-                        model.Root.ChildNodes.Add(GetElementFromEa(element));
+                        model.Root.ChildNodes.Insert(elementIndex++, GetElementFromEa(element));
                     else
                         model.Root.ChildNodes.Add(GetLineFromEa(element));
                 }
@@ -305,7 +317,7 @@ namespace UMLRedactor.Controllers
                         }
                     }
 
-                    if (string.IsNullOrEmpty(elem.Stereotype) && (elem.Type=="Activity" || elem.Type=="Pseudo"))
+                    if (string.IsNullOrEmpty(elem.Stereotype) && (elem.Type == "Activity" || elem.Type == "Pseudo"))
                         elem.Stereotype = value.Attribute("tag")?.Value == "ea_stype"
                             ? value.Attribute("value")?.Value
                             : "";
@@ -325,16 +337,19 @@ namespace UMLRedactor.Controllers
 
             List<XElement> children = element.Element(Uml("Namespace.ownedElement"))?.Elements().ToList();
             if (children != null)
+            {
+                int elementIndex = 0;
                 foreach (XElement child in children)
                 {
                     if (GetElementType(child) == "Not element" && GetLineType(child) == "Not line")
                         continue;
 
                     if (GetElementType(child) != "Not element")
-                        elem.ChildNodes.Add(GetElementFromEa(child));
+                        elem.ChildNodes.Insert(elementIndex++, GetElementFromEa(child));
                     else
                         elem.ChildNodes.Add(GetLineFromEa(child));
                 }
+            }
 
             return elem;
         }
@@ -471,6 +486,22 @@ namespace UMLRedactor.Controllers
                     if (classifierFeature.Name.LocalName == "Operation")
                         elem.Operations.Add(GetOperationFromMad(classifierFeature));
                 }
+
+            List<XElement> children = element.Element(Uml("Namespace.ownedElement"))?.Elements().ToList();
+            if (children != null)
+            {
+                int elementIndex = 0;
+                foreach (XElement child in children)
+                {
+                    if (GetElementType(child) == "Not element" && GetLineType(child) == "Not line")
+                        continue;
+
+                    if (GetElementType(child) != "Not element")
+                        elem.ChildNodes.Insert(elementIndex++, GetElementFromMad(child));
+                    else
+                        elem.ChildNodes.Add(GetLineFromEa(child));
+                }
+            }
 
             return elem;
         }

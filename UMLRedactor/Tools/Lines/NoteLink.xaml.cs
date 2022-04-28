@@ -8,6 +8,7 @@ namespace UMLRedactor.Tools.Lines
     /// </summary>
     public partial class NoteLink : UserControl, ILine
     {
+        private ModelNodeLine line;
         public NoteLink()
         {
             InitializeComponent();
@@ -15,7 +16,7 @@ namespace UMLRedactor.Tools.Lines
 
         public ModelNodeLine GetModelElement()
         {
-            return new ModelNodeLine();
+            return line;
         }
     }
 }

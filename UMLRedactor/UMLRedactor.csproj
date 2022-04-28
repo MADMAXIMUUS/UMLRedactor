@@ -90,6 +90,9 @@
     <Compile Include="Tools\Elements\UseCaseDiagram\UseCase.xaml.cs">
       <DependentUpon>UseCase.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tools\Lines\AssociationLink.xaml.cs">
+      <DependentUpon>AssociationLink.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tools\Lines\ILine.cs" />
     <Compile Include="Tools\Lines\NoteLink.xaml.cs">
       <DependentUpon>NoteLink.xaml</DependentUpon>
@@ -117,6 +120,7 @@
     <Page Include="Tools\Elements\ClassDiagram\ClassElement.xaml" />
     <Page Include="Tools\Elements\UseCaseDiagram\Actor.xaml" />
     <Page Include="Tools\Elements\UseCaseDiagram\UseCase.xaml" />
+    <Page Include="Tools\Lines\AssociationLink.xaml" />
     <Page Include="Tools\Lines\NoteLink.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

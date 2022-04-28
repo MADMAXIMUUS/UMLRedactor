@@ -61,7 +61,6 @@ namespace UMLRedactor.View
             _controller.EndModelRead += DrawTree;
             _controller.EndModelRead += InitialDiagram;
             _controller.NewModel += RecreateView;
-            _controller.NewModel += RecreateView;
             _controller.ElementCreated += UpdateCanvas;
             _controller.ElementCreated += DrawTree;
             _controller.TreeViewItemSelected += ShowProperties;
@@ -69,6 +68,7 @@ namespace UMLRedactor.View
             _controller.DiagramElementSelected += ShowProperties;
             _controller.DiagramElementSelected += ShowAttributesAndOperations;
             _controller.AttributeChanged += UpdateCanvas;
+            _controller.OperationChanged += UpdateCanvas;
         }
 
         private void ShowAttributesAndOperations(object sender, EventArgs e)
@@ -247,13 +247,14 @@ namespace UMLRedactor.View
             operationType.KeyDown += _controller.Operation_OnKeyDown;
             Grid.SetColumn(operationType, 2);
             Grid.SetRow(operationType, OperationsGrid.RowDefinitions.Count - 1);
-            ComboBox attributeAccess = CreateComboBox(operation.AccessModifier);
-            Grid.SetColumn(attributeAccess, 3);
-            Grid.SetRow(attributeAccess, OperationsGrid.RowDefinitions.Count - 1);
+            ComboBox operationAccess = CreateComboBox(operation.AccessModifier);
+            operationAccess.DropDownClosed += _controller.Operation_ComboBoxSelected;
+            Grid.SetColumn(operationAccess, 3);
+            Grid.SetRow(operationAccess, OperationsGrid.RowDefinitions.Count - 1);
             OperationsGrid.Children.Add(operationName);
             OperationsGrid.Children.Add(operationParameter);
             OperationsGrid.Children.Add(operationType);
-            OperationsGrid.Children.Add(attributeAccess);
+            OperationsGrid.Children.Add(operationAccess);
         }
 
         private void ShowProperties(object sender, EventArgs e)
@@ -338,7 +339,7 @@ namespace UMLRedactor.View
                     switch (element.Type)
                     {
                         case "Class":
-                            ClassElement classElement = new ClassElement(element);
+                            ClassElement classElement = new ClassElement(element as ModelNodeElement);
                             classElement.MouseLeftButtonDown += _controller.UpdateSelectedElement;
                             classElement.LayoutUpdated += _controller.UpdateSelectedElementSizeAndPosition;
                             DiagramNode node = new DiagramNode
@@ -349,8 +350,8 @@ namespace UMLRedactor.View
                             };
                             Canvas.SetLeft(classElement, node.X1);
                             Canvas.SetTop(classElement, node.Y1);
-                            node.Height = classElement.Height;
-                            node.Width = classElement.Width;
+                            node.Height = classElement.ActualHeight;
+                            node.Width = classElement.ActualWidth;
                             _controller.SelectedDiagramElement = classElement;
                             _controller.SelectedModelElement = classElement.Element;
                             _controller.CurrentDiagram.Elements.Add(node);
@@ -369,7 +370,7 @@ namespace UMLRedactor.View
                 switch (modelElement?.Type)
                 {
                     case "Class":
-                        ClassElement classElement = new ClassElement(modelElement)
+                        ClassElement classElement = new ClassElement(modelElement as ModelNodeElement)
                         {
                             Width = element.Width,
                             Height = element.Height
@@ -390,6 +391,11 @@ namespace UMLRedactor.View
         {
             TreeView.Items.Clear();
             DrawCanvas.Children.Clear();
+        }
+
+        private void NewDiagram(object sender, EventArgs e)
+        {
+            
         }
 
         private void DrawTree(object sender, EventArgs e)

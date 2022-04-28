@@ -9,12 +9,12 @@ namespace UMLRedactor.Tools.Elements.ClassDiagram
 {
     public partial class ClassElement : IElement
     {
-        public ModelNodeElement Element;
+        public readonly ModelNodeElement Element;
 
-        public ClassElement(ModelNodeBase modelNodeBase)
+        public ClassElement(ModelNodeElement modelNodeBase)
         {
             InitializeComponent();
-            Element = modelNodeBase as ModelNodeElement;
+            Element = modelNodeBase;
             Title.Text = modelNodeBase.Name;
             MinWidth = 200;
             MinHeight = 150;
@@ -24,12 +24,12 @@ namespace UMLRedactor.Tools.Elements.ClassDiagram
                 Stereotype.Text = "<<" + Element.Stereotype + ">>";
                 Stereotype.Visibility = Visibility.Visible;
             }
-            List<Attribute> attributes = (modelNodeBase as ModelNodeElement)?.Attributes;
+            List<Attribute> attributes = Element?.Attributes;
             if (attributes != null)
                 foreach (Attribute attribute in attributes)
                     CreateAttribute(attribute);
 
-            List<Operation> operations = (modelNodeBase as ModelNodeElement)?.Operations;
+            List<Operation> operations = Element?.Operations;
             if (operations != null)
                 foreach (Operation operation in operations)
                     CreateOperation(operation);

@@ -20,6 +20,16 @@ namespace UMLRedactor.Models
             Elements = new List<DiagramNode>();
         }
 
+        public DiagramNode GetElement(string modelElementId)
+        {
+            foreach (DiagramNode node in Elements)
+            {
+                if (node.ModelElementId == modelElementId)
+                    return node;
+            }
+            return new DiagramNode();
+        }
+
         public void UpdateElementPosition(double newX, double newY, string elementId)
         {
             foreach (DiagramNode element in Elements)

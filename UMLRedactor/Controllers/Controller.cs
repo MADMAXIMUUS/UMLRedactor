@@ -18,10 +18,13 @@ namespace UMLRedactor.Controllers
     public class Controller
     {
         private Model _model;
-        private List<Diagram> _diagrams;
+        private readonly List<Diagram> _diagrams;
         public Diagram CurrentDiagram;
+        private readonly List<Diagram> _previewsDiagrams;
         private int _currentDiagramIndex;
-        private string _filePath = "";
+        private int _previewsDiagramIndex;
+        private string _modelFilePath = "";
+        private string _currentDiagramFilePath = "";
         private readonly Random _rand;
         public ModelNodeBase SelectedModelElement;
         public UIElement SelectedDiagramElement;
@@ -29,10 +32,12 @@ namespace UMLRedactor.Controllers
 
         public event EventHandler EndModelRead;
         public event EventHandler NewModel;
+        public event EventHandler NewDiagramCreated;
         public event EventHandler ElementCreated;
         public event EventHandler TreeViewItemSelected;
         public event EventHandler DiagramElementSelected;
         public event EventHandler AttributeChanged;
+        public event EventHandler OperationChanged;
 
         public Controller(Model model)
         {
@@ -40,8 +45,10 @@ namespace UMLRedactor.Controllers
             CurrentDiagram = new Diagram();
             _elementsCounter = new Dictionary<string, int>();
             _currentDiagramIndex = 0;
+            _previewsDiagramIndex = 0;
             _rand = new Random();
-            _diagrams = new List<Diagram> { CurrentDiagram };
+            _diagrams = new List<Diagram>();
+            _previewsDiagrams = new List<Diagram>(10);
             InitialView();
         }
 
@@ -80,24 +87,31 @@ namespace UMLRedactor.Controllers
             ElementCreated?.Invoke(_model, EventArgs.Empty);
         }
 
-        private void AskName()
+        private string AskName(string title)
         {
-            EnterDialog dialog = new EnterDialog("Введите название модели", "Название");
+            EnterDialog dialog = new EnterDialog(title, "Название");
             dialog.ShowDialog();
-            _model = new Model();
-            _model.Root.Namespace.PackageName = dialog.EnteredName.Text;
+            return dialog.EnteredName.Text;
         }
 
         private void CreateNewModel()
         {
+            _modelFilePath = "";
             NewModel?.Invoke(_model, EventArgs.Empty);
+        }
+
+        private void CreateNewDiagram()
+        {
+            _currentDiagramFilePath = "";
+            NewDiagramCreated?.Invoke(null, EventArgs.Empty);
         }
 
         public void NewFile(object sender, RoutedEventArgs e)
         {
             if (_model.Name == "")
             {
-                AskName();
+                _model = new Model();
+                _model.Root.Namespace.PackageName = AskName("Введите название модели");
                 CreateNewModel();
                 InitialView();
             }
@@ -111,13 +125,14 @@ namespace UMLRedactor.Controllers
                 if (result == MessageBoxResult.Yes)
                 {
                     SaveFile(null, null);
-                    AskName();
+                    _model = new Model();
+                    _model.Root.Namespace.PackageName = AskName("Введите название модели");
                     CreateNewModel();
                 }
                 else if (result == MessageBoxResult.No)
                 {
                     _model = new Model();
-                    AskName();
+                    _model.Root.Namespace.PackageName = AskName("Введите название модели");
                     CreateNewModel();
                 }
             }
@@ -154,10 +169,10 @@ namespace UMLRedactor.Controllers
 
         public void SaveFile(object sender, RoutedEventArgs e)
         {
-            if (_filePath != "")
+            if (_modelFilePath != "")
             {
                 ModelWriter writer = new ModelWriter();
-                writer.SaveToXml(_model, Path.GetFullPath(_filePath));
+                writer.SaveToXml(_model, Path.GetFullPath(_modelFilePath));
             }
             else
             {
@@ -171,14 +186,20 @@ namespace UMLRedactor.Controllers
             {
                 Title = "Экспорт модели",
                 Filter = "XMI (*xml)|*.xml",
-                FileName = _model.Name
+                FileName = "Введите название файла"
             };
             if (saveFileDialog.ShowDialog() == true)
             {
                 if (saveFileDialog.FileName != "Введите название файла")
-                    _filePath = Path.GetFullPath(saveFileDialog.FileName);
-                ModelWriter writer = new ModelWriter();
-                writer.SaveToXml(_model, Path.GetFullPath(saveFileDialog.FileName));
+                {
+                    _modelFilePath = Path.GetFullPath(saveFileDialog.FileName);
+                    ModelWriter writer = new ModelWriter();
+                    writer.SaveToXml(_model, Path.GetFullPath(saveFileDialog.FileName));
+                }
+                else
+                {
+                    MessageBox.Show("Некорректное имя файла");
+                }
             }
         }
 
@@ -226,7 +247,37 @@ namespace UMLRedactor.Controllers
 
         public void Undo(object sender, RoutedEventArgs e) { }
 
-        public void NewDiagram(object sender, RoutedEventArgs e) { }
+        public void NewDiagram(object sender, RoutedEventArgs e)
+        {
+            if (CurrentDiagram.Name == "")
+            {
+                CurrentDiagram = new Diagram
+                {
+                    Name = AskName("Введите название диаграммы")
+                };
+                _diagrams.Add(CurrentDiagram);
+                _currentDiagramIndex = _diagrams.Count - 1;
+                CreateNewDiagram();
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show(
+                    "Несохраненные изменения будут утерены! Сохранить?",
+                    "Внимание!",
+                    MessageBoxButton.YesNoCancel
+                );
+                if (result == MessageBoxResult.Yes)
+                {
+                    SaveDiagram(null, null);
+                    CreateNewDiagram();
+                }
+                else if (result == MessageBoxResult.No)
+                {
+                    CurrentDiagram = new Diagram();
+                    CreateNewDiagram();
+                }
+            }
+        }
 
         public void CloseDiagram(object sender, RoutedEventArgs e) { }
 
@@ -236,7 +287,36 @@ namespace UMLRedactor.Controllers
 
         public void OpenDiagram(object sender, RoutedEventArgs e) { }
 
-        public void SaveDiagram(object sender, RoutedEventArgs e) { }
+        public void SaveDiagram(object sender, RoutedEventArgs e)
+        {
+            if (_currentDiagramFilePath != "")
+            {
+                DiagramWriter diagramWriter = new DiagramWriter();
+                diagramWriter.SaveToXml(CurrentDiagram, _currentDiagramFilePath, _modelFilePath);
+            }
+            else
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog
+                {
+                    Title = "Экспорт диаграммы",
+                    Filter = "XMI (*xml)|*.xml",
+                    FileName = "Введите название файла"
+                };
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    if (saveFileDialog.FileName != "Введите название файла")
+                    {
+                        _currentDiagramFilePath = Path.GetFullPath(saveFileDialog.FileName);
+                        DiagramWriter writer = new DiagramWriter();
+                        writer.SaveToXml(CurrentDiagram, Path.GetFullPath(saveFileDialog.FileName), _modelFilePath);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Некорректное имя файла");
+                    }
+                }
+            }
+        }
 
         public void CloseApplication()
         {
@@ -317,7 +397,7 @@ namespace UMLRedactor.Controllers
                             AccessModifier = (gr.Children[i + 3] as ComboBox)?.Text,
                             Parameters = new List<Parameter>()
                         };
-                        string[] parameters = (gr.Children[i + 1] as TextBox)?.Text.Split(new char[] { ',', ' ' },
+                        string[] parameters = (gr.Children[i + 1] as TextBox)?.Text.Split(new[] { ',', ' ' },
                             StringSplitOptions.RemoveEmptyEntries);
                         if (parameters != null)
                             foreach (string parameterChild in parameters)
@@ -332,7 +412,7 @@ namespace UMLRedactor.Controllers
                                     parameter.DataType = parameterChild.Substring(
                                         parameterChild.IndexOf(":", StringComparison.Ordinal) + 1,
                                         parameterChild.IndexOf("=", StringComparison.Ordinal) -
-                                        parameterChild.IndexOf(":", StringComparison.Ordinal)-1);
+                                        parameterChild.IndexOf(":", StringComparison.Ordinal) - 1);
                                     parameter.DefaultValue = parameterChild
                                         .Substring(parameterChild.IndexOf("=", StringComparison.Ordinal) + 1);
                                 }
@@ -347,10 +427,54 @@ namespace UMLRedactor.Controllers
                     }
 
                 _model.UpdateOperation(SelectedModelElement.Id, operations);
-                AttributeChanged?.Invoke(_model, null);
+                OperationChanged?.Invoke(_model, null);
             }
         }
 
-        public void Operation_ComboBoxSelected(object sender, EventArgs eventArgs) { }
+        public void Operation_ComboBoxSelected(object sender, EventArgs eventArgs)
+        {
+            List<Operation> operations = new List<Operation>();
+            if ((sender as TextBox)?.Parent is Grid gr)
+                for (int i = 0; i < gr.Children.Count; i += 4)
+                {
+                    Operation operation = new Operation
+                    {
+                        Name = (gr.Children[i] as TextBox)?.Text,
+                        DataTypeOfReturnValue = (gr.Children[i + 2] as TextBox)?.Text,
+                        AccessModifier = (gr.Children[i + 3] as ComboBox)?.Text,
+                        Parameters = new List<Parameter>()
+                    };
+                    string[] parameters = (gr.Children[i + 1] as TextBox)?.Text.Split(new[] { ',', ' ' },
+                        StringSplitOptions.RemoveEmptyEntries);
+                    if (parameters != null)
+                        foreach (string parameterChild in parameters)
+                        {
+                            Parameter parameter = new Parameter
+                            {
+                                Name = parameterChild.Substring(0,
+                                    parameterChild.IndexOf(":", StringComparison.Ordinal))
+                            };
+                            if (parameterChild.IndexOf("=", StringComparison.Ordinal) > 0)
+                            {
+                                parameter.DataType = parameterChild.Substring(
+                                    parameterChild.IndexOf(":", StringComparison.Ordinal) + 1,
+                                    parameterChild.IndexOf("=", StringComparison.Ordinal) -
+                                    parameterChild.IndexOf(":", StringComparison.Ordinal) - 1);
+                                parameter.DefaultValue = parameterChild
+                                    .Substring(parameterChild.IndexOf("=", StringComparison.Ordinal) + 1);
+                            }
+                            else
+                                parameter.DataType = parameterChild.Substring(
+                                    parameterChild.IndexOf(":", StringComparison.Ordinal) + 1);
+
+                            operation.Parameters.Add(parameter);
+                        }
+
+                    operations.Add(operation);
+                }
+
+            _model.UpdateOperation(SelectedModelElement.Id, operations);
+            OperationChanged?.Invoke(_model, null);
+        }
     }
 }

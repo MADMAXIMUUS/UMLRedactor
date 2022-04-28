@@ -7,11 +7,11 @@ namespace UMLRedactor.Controllers
 {
     public class ModelWriter
     {
-        private static XDocument XmlDocument { get; set; }
+        private static XDocument _xmlDocument;
 
         public void SaveToXml(Model model, string path)
         {
-            XmlDocument = new XDocument(new XDeclaration("0.1", "utf-8", ""));
+            _xmlDocument = new XDocument(new XDeclaration("0.1", "utf-8", ""));
             XElement root = new XElement("XMI",
                 new XAttribute("xmi.version", "1.1"),
                 new XAttribute(XNamespace.Xmlns + "UML", "omg.org/UML1.3")
@@ -56,8 +56,8 @@ namespace UMLRedactor.Controllers
             xModel.Add(xPackage);
             content.Add(xModel);
             root.Add(content);
-            XmlDocument.Add(root);
-            XmlDocument.Save(path);
+            _xmlDocument.Add(root);
+            _xmlDocument.Save(path);
         }
 
         private XElement GetElement(ModelNodeElement nodeElement)
