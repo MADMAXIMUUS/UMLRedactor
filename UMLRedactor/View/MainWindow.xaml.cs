@@ -9,6 +9,7 @@ using UMLRedactor.Additions;
 using UMLRedactor.Controllers;
 using UMLRedactor.Models;
 using UMLRedactor.Tools.Elements.ClassDiagram;
+using UMLRedactor.Tools.Lines;
 using Attribute = UMLRedactor.Additions.Attribute;
 
 namespace UMLRedactor.View
@@ -357,6 +358,34 @@ namespace UMLRedactor.View
                             _controller.CurrentDiagram.Elements.Add(node);
                             DrawCanvas.Children.Add(classElement);
                             break;
+                        case "Association":
+                            DiagramNode elementSource =
+                                _controller.CurrentDiagram.GetElement((element as ModelNodeLine)?.Source);
+                            DiagramNode elementTarget =
+                                _controller.CurrentDiagram.GetElement((element as ModelNodeLine)?.Target);
+                            DiagramNode node2 = new DiagramNode
+                            {
+                                ModelElementId = element.Id,
+                                X1 = elementSource.X1 + elementSource.Width,
+                                Y1 = elementSource.Y1 + elementSource.Height / 2,
+                                X2 = elementTarget.X1,
+                                Y2 = elementTarget.Y1 + elementTarget.Height / 2
+                            };
+                            AssociationLink link = new AssociationLink(
+                                element as ModelNodeLine,
+                                new Point(elementSource.X1, elementSource.Y1),
+                                new Point(elementTarget.X1, elementTarget.Y2)
+                            )
+                            {
+                                Height = Math.Abs(elementSource.Y1 + elementSource.Height / 2 - elementTarget.Y1 +
+                                                  elementTarget.Height / 2),
+                                Width = Math.Abs(elementSource.X1 + elementSource.Width - elementTarget.X1)
+                            };
+                            Canvas.SetLeft(link, node2.X1);
+                            Canvas.SetTop(link, node2.Y1);
+                            _controller.CurrentDiagram.Elements.Add(node2);
+                            DrawCanvas.Children.Add(link);
+                            break;
                     }
                 }
         }
@@ -393,10 +422,7 @@ namespace UMLRedactor.View
             DrawCanvas.Children.Clear();
         }
 
-        private void NewDiagram(object sender, EventArgs e)
-        {
-            
-        }
+        private void NewDiagram(object sender, EventArgs e) { }
 
         private void DrawTree(object sender, EventArgs e)
         {

@@ -7,14 +7,7 @@
              Background="Transparent"
              Width="Auto" Height="Auto"
              d:DesignHeight="300" d:DesignWidth="300"
-             Loaded="AssociationLink_OnLoaded"
-             Template="{StaticResource DesignerItemTemplate}">
-    <Canvas Background="Red" Name="MainCanvas">
-        <!--<TextBlock Canvas.Top="0" Canvas.Left="0" Visibility="Collapsed" FontSize="18" VerticalAlignment="Top"
-                   HorizontalAlignment="Left" />
-        <TextBlock Canvas.Top="120" Canvas.Left="70" Visibility="Collapsed" FontSize="18" HorizontalAlignment="Center"
-                   VerticalAlignment="Center" />
-        <TextBlock Canvas.Right="0" Canvas.Bottom="0" Visibility="Collapsed" FontSize="18" HorizontalAlignment="Right"
-                   VerticalAlignment="Bottom" />-->
+             Loaded="AssociationLink_OnLoaded">
+    <Canvas Background="Transparent" Name="MainCanvas">
     </Canvas>
 </UserControl>
