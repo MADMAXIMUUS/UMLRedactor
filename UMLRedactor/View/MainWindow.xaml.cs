@@ -5,9 +5,11 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 using UMLRedactor.Additions;
 using UMLRedactor.Controllers;
 using UMLRedactor.Models;
+using UMLRedactor.Tools.Elements.ActivityDiagram;
 using UMLRedactor.Tools.Elements.ClassDiagram;
 using UMLRedactor.Tools.Lines;
 using Attribute = UMLRedactor.Additions.Attribute;
@@ -50,8 +52,11 @@ namespace UMLRedactor.View
             UseCase.Click += _controller.CreateElement;
             Aggregation.Click += _controller.CreateElement;
             Association.Click += _controller.CreateElement;
+            Association.Click += ShowUnselectedButton;
             Generalization.Click += _controller.CreateElement;
+            Generalization.Click += ShowUnselectedButton;
             Composition.Click += _controller.CreateElement;
+            Composition.Click += ShowUnselectedButton;
             End.Click += _controller.CreateElement;
             Initial.Click += _controller.CreateElement;
             Lifecycle.Click += _controller.CreateElement;
@@ -70,6 +75,13 @@ namespace UMLRedactor.View
             _controller.DiagramElementSelected += ShowAttributesAndOperations;
             _controller.AttributeChanged += UpdateCanvas;
             _controller.OperationChanged += UpdateCanvas;
+        }
+
+        private void ShowUnselectedButton(object sender, EventArgs e)
+        {
+            UnselectedLine.Visibility = Visibility.Visible;
+            UnselectedLine.MouseLeftButtonDown += _controller.UnselectedLine;
+            UnselectedLine.MouseLeftButtonDown += (o, args) => { UnselectedLine.Visibility = Visibility.Collapsed; };
         }
 
         private void ShowAttributesAndOperations(object sender, EventArgs e)
@@ -358,34 +370,6 @@ namespace UMLRedactor.View
                             _controller.CurrentDiagram.Elements.Add(node);
                             DrawCanvas.Children.Add(classElement);
                             break;
-                        case "Association":
-                            DiagramNode elementSource =
-                                _controller.CurrentDiagram.GetElement((element as ModelNodeLine)?.Source);
-                            DiagramNode elementTarget =
-                                _controller.CurrentDiagram.GetElement((element as ModelNodeLine)?.Target);
-                            DiagramNode node2 = new DiagramNode
-                            {
-                                ModelElementId = element.Id,
-                                X1 = elementSource.X1 + elementSource.Width,
-                                Y1 = elementSource.Y1 + elementSource.Height / 2,
-                                X2 = elementTarget.X1,
-                                Y2 = elementTarget.Y1 + elementTarget.Height / 2
-                            };
-                            AssociationLink link = new AssociationLink(
-                                element as ModelNodeLine,
-                                new Point(elementSource.X1, elementSource.Y1),
-                                new Point(elementTarget.X1, elementTarget.Y2)
-                            )
-                            {
-                                Height = Math.Abs(elementSource.Y1 + elementSource.Height / 2 - elementTarget.Y1 +
-                                                  elementTarget.Height / 2),
-                                Width = Math.Abs(elementSource.X1 + elementSource.Width - elementTarget.X1)
-                            };
-                            Canvas.SetLeft(link, node2.X1);
-                            Canvas.SetTop(link, node2.Y1);
-                            _controller.CurrentDiagram.Elements.Add(node2);
-                            DrawCanvas.Children.Add(link);
-                            break;
                     }
                 }
         }
@@ -409,8 +393,34 @@ namespace UMLRedactor.View
                         Canvas.SetLeft(classElement, element.X1);
                         Canvas.SetTop(classElement, element.Y1);
                         _controller.SelectedDiagramElement = classElement;
-                        _controller.SelectedModelElement = classElement.Element;
+                        _controller.SelectedModelElement = classElement.GetModelElement();
                         DrawCanvas.Children.Add(classElement);
+                        break;
+                    case "Activity":
+                        Activity activity = new Activity(modelElement as ModelNodeElement)
+                        {
+                            Width = element.Width,
+                            Height = element.Height
+                        };
+                        activity.MouseLeftButtonDown += _controller.UpdateSelectedElement;
+                        activity.LayoutUpdated += _controller.UpdateSelectedElementSizeAndPosition;
+                        Canvas.SetLeft(activity, element.X1);
+                        Canvas.SetTop(activity, element.Y1);
+                        _controller.SelectedDiagramElement = activity;
+                        _controller.SelectedModelElement = activity.GetModelElement();
+                        DrawCanvas.Children.Add(activity);
+                        break;
+                    case "Association":
+                        Association association = new Association(modelElement as ModelNodeLine)
+                        {
+                            X1 = element.X1,
+                            Y1 = element.Y1,
+                            X2 = element.X2,
+                            Y2 = element.Y2
+                        };
+                        Canvas.SetLeft(association, 0);
+                        Canvas.SetTop(association, 0);
+                        DrawCanvas.Children.Insert(0, association);
                         break;
                 }
             }

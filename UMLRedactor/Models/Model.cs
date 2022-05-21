@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UMLRedactor.Additions;
+using UMLRedactor.Tools.Lines;
 using Attribute = UMLRedactor.Additions.Attribute;
 
 namespace UMLRedactor.Models
@@ -40,6 +41,8 @@ namespace UMLRedactor.Models
                     CheckNodeId(parentId, node, element);
         }
 
+        public void RemoveElement(string id) { }
+
         public void UpdateAttributes(string id, List<Attribute> attributes)
         {
             foreach (ModelNodeBase node in Root.ChildNodes)
@@ -65,7 +68,7 @@ namespace UMLRedactor.Models
                 }
             }
         }
-        
+
         public void UpdateOperation(string id, List<Operation> operations)
         {
             foreach (ModelNodeBase node in Root.ChildNodes)
@@ -78,7 +81,7 @@ namespace UMLRedactor.Models
                 }
             }
         }
-        
+
         private void UpdateOperationChild(string id, List<ModelNodeBase> parent, List<Operation> operations)
         {
             foreach (ModelNodeBase node in parent)
@@ -92,6 +95,21 @@ namespace UMLRedactor.Models
             }
         }
 
+        public List<ModelNodeLine> GetConnection(string id)
+        {
+            List<ModelNodeLine> connections = new List<ModelNodeLine>();
+            foreach (ModelNodeBase node in Root.ChildNodes)
+            {
+                if (node is ModelNodeLine line)
+                    if (line.Source == id)
+                        connections.Add(line);
+                /*foreach (ModelNodeBase child in node.ChildNodes)
+                */
+            }
+
+            return connections;
+        }
+
         private void CheckNodeId(string id, ModelNodeBase node, ModelNodeBase element)
         {
             if (node.Id == id)
@@ -100,7 +118,8 @@ namespace UMLRedactor.Models
                 foreach (ModelNodeBase child in node.ChildNodes)
                     CheckNodeId(id, child, element);
         }
-        
+
+
         public ModelNodeBase GetNode(string id)
         {
             foreach (ModelNodeBase node in Root.ChildNodes)

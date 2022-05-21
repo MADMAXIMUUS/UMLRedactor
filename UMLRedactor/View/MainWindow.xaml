@@ -13,7 +13,7 @@
     <Grid>
         <Border Width="auto" Height="auto" BorderBrush="WhiteSmoke" Background="WhiteSmoke" BorderThickness="2"
                 CornerRadius="15">
-            <Grid Background="WhiteSmoke" Margin="5">
+            <Grid Background="WhiteSmoke" Margin="5" Name="MainGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -119,7 +119,8 @@
                             </Button.ToolTip>
                             <Image Source="../Icons/Class_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Name="Activity" Grid.Row="0" Grid.Column="1" Background="Transparent" BorderThickness="0">
+                        <Button Name="Activity" Grid.Row="0" Grid.Column="1" Background="Transparent"
+                                BorderThickness="0">
                             <Button.ToolTip>
                                 <ToolTip>Activity</ToolTip>
                             </Button.ToolTip>
@@ -131,25 +132,29 @@
                             </Button.ToolTip>
                             <Image Source="../Icons/Note_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Name="Lifecycle" Grid.Row="0" Grid.Column="3" Background="Transparent" BorderThickness="0">
+                        <Button Name="Lifecycle" Grid.Row="0" Grid.Column="3" Background="Transparent"
+                                BorderThickness="0">
                             <Button.ToolTip>
                                 <ToolTip>Lifecycle</ToolTip>
                             </Button.ToolTip>
                             <Image Source="../Icons/Lifecycle_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Name="ActorLifecycle" Grid.Row="1" Grid.Column="0" Background="Transparent" BorderThickness="0">
+                        <Button Name="ActorLifecycle" Grid.Row="1" Grid.Column="0" Background="Transparent"
+                                BorderThickness="0">
                             <Button.ToolTip>
                                 <ToolTip>Actor Lifecycle</ToolTip>
                             </Button.ToolTip>
                             <Image Source="../Icons/Actor_lifecycle_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Name="Decision" Grid.Row="1" Grid.Column="1" Background="Transparent" BorderThickness="0">
+                        <Button Name="Decision" Grid.Row="1" Grid.Column="1" Background="Transparent"
+                                BorderThickness="0">
                             <Button.ToolTip>
                                 <ToolTip>Decision</ToolTip>
                             </Button.ToolTip>
                             <Image Source="../Icons/Decision_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Name="Initial" Grid.Row="1" Grid.Column="2" Background="Transparent" BorderThickness="0">
+                        <Button Name="Initial" Grid.Row="1" Grid.Column="2" Background="Transparent"
+                                BorderThickness="0">
                             <Button.ToolTip>
                                 <ToolTip>Initial</ToolTip>
                             </Button.ToolTip>
@@ -161,13 +166,15 @@
                             </Button.ToolTip>
                             <Image Source="../Icons/End_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Name="ActorButton" Grid.Row="2" Grid.Column="0" Background="Transparent" BorderThickness="0">
+                        <Button Name="ActorButton" Grid.Row="2" Grid.Column="0" Background="Transparent"
+                                BorderThickness="0">
                             <Button.ToolTip>
                                 <ToolTip>Actor</ToolTip>
                             </Button.ToolTip>
                             <Image Source="../Icons/Actor_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Name="UseCase" Grid.Row="2" Grid.Column="1" Background="Transparent" BorderThickness="0">
+                        <Button Name="UseCase" Grid.Row="2" Grid.Column="1" Background="Transparent"
+                                BorderThickness="0">
                             <Button.ToolTip>
                                 <ToolTip>Use Case</ToolTip>
                             </Button.ToolTip>
@@ -179,31 +186,36 @@
                             </Button.ToolTip>
                             <Image Source="../Icons/NoteLink_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Name="Association" Grid.Row="2" Grid.Column="3" Background="Transparent" BorderThickness="0">
+                        <Button Name="Association" Grid.Row="2" Grid.Column="3" Background="Transparent"
+                                BorderThickness="0">
                             <Button.ToolTip>
                                 <ToolTip>Association Link</ToolTip>
                             </Button.ToolTip>
                             <Image Source="../Icons/Association_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Name="Aggregation" Grid.Row="3" Grid.Column="0" Background="Transparent" BorderThickness="0">
+                        <Button Name="Aggregation" Grid.Row="3" Grid.Column="0" Background="Transparent"
+                                BorderThickness="0">
                             <Button.ToolTip>
                                 <ToolTip>Aggregation Link</ToolTip>
                             </Button.ToolTip>
                             <Image Source="../Icons/Aggregation_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Name="Composition" Grid.Row="3" Grid.Column="1" Background="Transparent" BorderThickness="0">
+                        <Button Name="Composition" Grid.Row="3" Grid.Column="1" Background="Transparent"
+                                BorderThickness="0">
                             <Button.ToolTip>
                                 <ToolTip>Composition Link</ToolTip>
                             </Button.ToolTip>
                             <Image Source="../Icons/Composition_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Name="Generalization" Grid.Row="3" Grid.Column="2" Background="Transparent" BorderThickness="0">
+                        <Button Name="Generalization" Grid.Row="3" Grid.Column="2" Background="Transparent"
+                                BorderThickness="0">
                             <Button.ToolTip>
                                 <ToolTip>Generalization Link</ToolTip>
                             </Button.ToolTip>
                             <Image Source="../Icons/Generalization_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Name="Message" Grid.Row="3" Grid.Column="3" Background="Transparent" BorderThickness="0">
+                        <Button Name="Message" Grid.Row="3" Grid.Column="3" Background="Transparent"
+                                BorderThickness="0">
                             <Button.ToolTip>
                                 <ToolTip>Message</ToolTip>
                             </Button.ToolTip>
@@ -215,7 +227,8 @@
                             </Button.ToolTip>
                             <Image Source="../Icons/Use_icon.png" Height="40" Width="40" />
                         </Button>
-                        <Button Name="ControlFlow" Grid.Row="4" Grid.Column="1" Background="Transparent" BorderThickness="0">
+                        <Button Name="ControlFlow" Grid.Row="4" Grid.Column="1" Background="Transparent"
+                                BorderThickness="0">
                             <Button.ToolTip>
                                 <ToolTip>Control Flow</ToolTip>
                             </Button.ToolTip>
@@ -229,7 +242,8 @@
                 <TextBlock Grid.Row="3" Background="WhiteSmoke" Height="30" Grid.Column="1" Width="110" Text="Значения"
                            FontSize="14" Padding="10,5" />
                 <Border Grid.Row="3" Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="DarkGray" />
-                <ScrollViewer Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="3" Width="220" BorderThickness="0,0,1,0">
+                <ScrollViewer Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="3" Width="220"
+                              BorderThickness="0,0,1,0">
                     <Grid x:Name="OptionsGrid" Width="220" Background="White">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -244,6 +258,10 @@
                             ScrollViewer.VerticalScrollBarVisibility="Auto" Width="2000" Height="2000">
                     </Canvas>
                 </ScrollViewer>
+                <Border Name="UnselectedLine" Grid.Row="1" Grid.Column="2" Visibility="Collapsed"
+                        BorderBrush="Transparent" Background="LightGray" Width="20" Height="20" CornerRadius="5">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">X</TextBlock>
+                </Border>
                 <TabControl Grid.Row="5" Grid.Column="2" Grid.RowSpan="2" BorderBrush="Black" Background="WhiteSmoke"
                             BorderThickness="0,0,0,0">
                     <TabItem Header="Атрибуты" Background="WhiteSmoke" Height="30">
@@ -252,7 +270,7 @@
                                 <RowDefinition Height="20" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                                                           <Grid.ColumnDefinitions>
+                            <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />

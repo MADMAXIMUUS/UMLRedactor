@@ -37,12 +37,16 @@ namespace UMLRedactor.Controllers
 
             if (xElementRoot == null)
                 return -2;
-            XElement xElementDocumentationRoot = xElementRoot.Element("XMI.header")?.Element("XMI.documentation");
+            XElement xElementDocumentationRoot = xElementRoot
+                .Element("XMI.header")?.Element("XMI.documentation");
             if (xElementDocumentationRoot != null)
             {
-                model.ProgramName = xElementDocumentationRoot.Element("XMI.exporter")?.Value;
-                model.ProgramVersion = xElementDocumentationRoot.Element("XMI.exporterVersion")?.Value;
-                model.Name = xElementRoot.Element("XMI.content")?.Element(Uml("Model"))?.Attribute("name")?.Value;
+                model.ProgramName = xElementDocumentationRoot
+                    .Element("XMI.exporter")?.Value;
+                model.ProgramVersion = xElementDocumentationRoot
+                    .Element("XMI.exporterVersion")?.Value;
+                model.Name = xElementRoot.Element("XMI.content")?
+                    .Element(Uml("Model"))?.Attribute("name")?.Value;
             }
 
             XElement xContent = xElementRoot.Element("XMI.content");
@@ -477,7 +481,8 @@ namespace UMLRedactor.Controllers
                 ChildNodes = new List<ModelNodeBase>()
             };
             elem.Namespace.PackageId = element.Element("Namespace")?.Value;
-            List<XElement> classifierFeatures = element.Element(Uml("Classifier.feature"))?.Elements().ToList();
+            List<XElement> classifierFeatures = element
+                .Element(Uml("Classifier.feature"))?.Elements().ToList();
             if (classifierFeatures != null)
                 foreach (XElement classifierFeature in classifierFeatures)
                 {
@@ -487,7 +492,9 @@ namespace UMLRedactor.Controllers
                         elem.Operations.Add(GetOperationFromMad(classifierFeature));
                 }
 
-            List<XElement> children = element.Element(Uml("Namespace.ownedElement"))?.Elements().ToList();
+            List<XElement> children = element
+                .Element(Uml("Namespace.ownedElement"))?
+                .Elements().ToList();
             if (children != null)
             {
                 int elementIndex = 0;

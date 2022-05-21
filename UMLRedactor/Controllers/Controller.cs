@@ -8,7 +8,6 @@ using Microsoft.Win32;
 using UMLRedactor.Additions;
 using UMLRedactor.Models;
 using UMLRedactor.Tools.Elements;
-using UMLRedactor.Tools.Elements.ClassDiagram;
 using UMLRedactor.Tools.Lines;
 using UMLRedactor.View;
 using Attribute = UMLRedactor.Additions.Attribute;
@@ -26,6 +25,10 @@ namespace UMLRedactor.Controllers
         private string _modelFilePath = "";
         private string _currentDiagramFilePath = "";
         private readonly Random _rand;
+        private bool _isDrawLine;
+        private string _lineType;
+        private ModelNodeElement _selectedSource;
+        private ModelNodeElement _selectedTarget;
         public ModelNodeBase SelectedModelElement;
         public UIElement SelectedDiagramElement;
         private readonly Dictionary<string, int> _elementsCounter;
@@ -38,6 +41,7 @@ namespace UMLRedactor.Controllers
         public event EventHandler DiagramElementSelected;
         public event EventHandler AttributeChanged;
         public event EventHandler OperationChanged;
+        public event EventHandler SourceAndTargetSelected;
 
         public Controller(Model model)
         {
@@ -49,23 +53,47 @@ namespace UMLRedactor.Controllers
             _rand = new Random();
             _diagrams = new List<Diagram>();
             _previewsDiagrams = new List<Diagram>(10);
+            _selectedSource = null;
+            _selectedTarget = null;
+            SourceAndTargetSelected += CreateLine;
             InitialView();
         }
 
         public void treeItem_Selected(object sender, RoutedEventArgs e)
         {
             if (sender is TreeViewItem item)
-                TreeViewItemSelected?.Invoke(_model.GetNode(item.Uid), EventArgs.Empty);
+                TreeViewItemSelected?.Invoke
+                (
+                    _model.GetNode(item.Uid),
+                    EventArgs.Empty
+                );
         }
 
         public void UpdateSelectedElement(object sender, MouseEventArgs e)
         {
             if (sender is IElement element)
-                SelectedModelElement = element.GetModelElement();
+            {
+                if (_isDrawLine)
+                {
+                    if (_selectedSource == null)
+                        _selectedSource = element.GetModelElement();
+                    else
+                    {
+                        _selectedTarget = element.GetModelElement();
+                        SourceAndTargetSelected?.Invoke(null, null);
+                    }
+                }
+                else
+                    SelectedModelElement = element.GetModelElement();
+            }
             else if (sender is ILine line)
                 SelectedModelElement = line.GetModelElement();
-            SelectedDiagramElement = sender as UIElement;
-            DiagramElementSelected?.Invoke(SelectedModelElement, EventArgs.Empty);
+
+            if (!_isDrawLine)
+            {
+                SelectedDiagramElement = sender as UIElement;
+                DiagramElementSelected?.Invoke(SelectedModelElement, EventArgs.Empty);
+            }
         }
 
         public void UpdateSelectedElementSizeAndPosition(object sender, EventArgs eventArgs)
@@ -73,8 +101,22 @@ namespace UMLRedactor.Controllers
             double x = Canvas.GetLeft(SelectedDiagramElement);
             double y = Canvas.GetTop(SelectedDiagramElement);
             CurrentDiagram.UpdateElementPosition(x, y, SelectedModelElement.Id);
-            CurrentDiagram.UpdateElementSize(((ClassElement)SelectedDiagramElement).ActualWidth,
-                ((ClassElement)SelectedDiagramElement).ActualHeight, SelectedModelElement.Id);
+            CurrentDiagram.UpdateElementSize(((UserControl)SelectedDiagramElement).ActualWidth,
+                ((UserControl)SelectedDiagramElement).ActualHeight, SelectedModelElement.Id);
+            UpdateLinePosition(x, y);
+        }
+
+        private void UpdateLinePosition(double x, double y)
+        {
+            /*List<ModelNodeLine> connections = _model.GetConnection(SelectedModelElement.Id);
+            foreach (ModelNodeLine connection in connections)
+            {
+                DiagramNode node = CurrentDiagram.GetElement(connection.Id);
+                if (connection.Source == SelectedModelElement.Id)
+                    CurrentDiagram.UpdateLinePosition(x, y, node.X2, node.Y2, node.Id);
+                else
+                    CurrentDiagram.UpdateLinePosition(node.X1, node.Y1, x, y, node.Id);
+            }*/
         }
 
         private void InitialView()
@@ -209,17 +251,19 @@ namespace UMLRedactor.Controllers
             {
                 Id = Guid.NewGuid().ToString()
             };
+            _isDrawLine = false;
+            _lineType = "";
             switch ((sender as Button)?.Name)
             {
                 case "Class":
-                    int counter = 1;
+                    int counterClass = 1;
                     if (_elementsCounter.ContainsKey("Class"))
-                        counter = _elementsCounter["Class"];
+                        counterClass = _elementsCounter["Class"];
                     else
-                        _elementsCounter["Class"] = counter;
+                        _elementsCounter["Class"] = counterClass;
                     ModelNodeElement classElement = new ModelNodeElement
                     {
-                        Name = "Class" + counter,
+                        Name = "Class" + counterClass,
                         Id = Guid.NewGuid().ToString(),
                         Type = "Class",
                         Namespace = new Package
@@ -238,7 +282,73 @@ namespace UMLRedactor.Controllers
                     CurrentDiagram.Elements.Add(node);
                     UpdateView();
                     break;
+                case "Activity":
+                    int counterActivity = 1;
+                    if (_elementsCounter.ContainsKey("Activity"))
+                        counterActivity = _elementsCounter["Activity"];
+                    else
+                        _elementsCounter["Activity"] = counterActivity;
+                    ModelNodeElement activityElement = new ModelNodeElement
+                    {
+                        Name = "Activity" + counterActivity,
+                        Id = Guid.NewGuid().ToString(),
+                        Type = "Activity",
+                        Namespace = new Package
+                        {
+                            PackageId = _model.Root.Id,
+                            PackageName = _model.Root.Name
+                        }
+                    };
+                    _elementsCounter["Activity"] += 1;
+                    _model.AddElement(activityElement.Namespace.PackageId, activityElement);
+                    node.Width = 150;
+                    node.Height = 100;
+                    node.X1 = _rand.NextDouble() * 400;
+                    node.Y1 = _rand.NextDouble() * 400;
+                    node.ModelElementId = activityElement.Id;
+                    CurrentDiagram.Elements.Add(node);
+                    UpdateView();
+                    break;
+                case "Association":
+                    _isDrawLine = true;
+                    _lineType = "Association";
+                    break;
             }
+        }
+
+        public void UnselectedLine(object sender, RoutedEventArgs routedEventArgs)
+        {
+            _isDrawLine = false;
+            _lineType = "";
+        }
+
+        private void CreateLine(object sender, EventArgs eventArgs)
+        {
+            DiagramNode node = new DiagramNode
+            {
+                Id = Guid.NewGuid().ToString()
+            };
+            ModelNodeLine line = new ModelNodeLine()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = _lineType,
+                Source = _selectedSource.Id,
+                Target = _selectedTarget.Id,
+                Namespace = _selectedSource.Namespace,
+                Type = _lineType
+            };
+            _model.AddElement(line.Namespace.PackageId, line);
+            DiagramNode source = CurrentDiagram.GetElement(_selectedSource.Id);
+            DiagramNode target = CurrentDiagram.GetElement(_selectedTarget.Id);
+            node.X1 = source.X1 + source.Width / 2;
+            node.Y1 = source.Y1 + source.Height / 2;
+            node.X2 = target.X1 + target.Width / 2;
+            node.Y2 = target.Y1 + target.Height / 2;
+            node.ModelElementId = line.Id;
+            CurrentDiagram.Elements.Add(node);
+            _selectedSource = null;
+            _selectedTarget = null;
+            UpdateView();
         }
 
         public void Export(object sender, RoutedEventArgs e) { }

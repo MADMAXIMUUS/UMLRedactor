@@ -42,6 +42,20 @@ namespace UMLRedactor.Models
             }
         }
 
+        public void UpdateLinePosition(double newX1, double newY1, double newX2, double newY2, string elementId)
+        {
+            foreach (DiagramNode element in Elements)
+            {
+                if (element.ModelElementId == elementId)
+                {
+                    element.X1 = newX1;
+                    element.Y1 = newY1;
+                    element.X2 = newX2;
+                    element.Y2 = newY2;
+                }
+            }
+        }
+
         public void UpdateElementSize(double newWidth, double newHeight, string elementId)
         {
             foreach (DiagramNode element in Elements)
