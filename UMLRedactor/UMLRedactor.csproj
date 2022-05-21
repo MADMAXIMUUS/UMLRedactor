@@ -53,6 +53,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Additions\MoveLineEventArgs.cs" />
     <Compile Include="Additions\MoveThumb.cs" />
     <Compile Include="Additions\ResizeThumb.cs" />
     <Compile Include="Additions\Structs.cs" />

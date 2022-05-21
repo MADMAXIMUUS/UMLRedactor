@@ -5,7 +5,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using UMLRedactor.Additions;
 using UMLRedactor.Controllers;
 using UMLRedactor.Models;
@@ -418,9 +417,10 @@ namespace UMLRedactor.View
                             X2 = element.X2,
                             Y2 = element.Y2
                         };
+                        _controller.ElementMoveOrResized += association.MoveLine;
                         Canvas.SetLeft(association, 0);
                         Canvas.SetTop(association, 0);
-                        DrawCanvas.Children.Insert(0, association);
+                        DrawCanvas.Children.Add(association);
                         break;
                 }
             }

@@ -42,6 +42,7 @@ namespace UMLRedactor.Controllers
         public event EventHandler AttributeChanged;
         public event EventHandler OperationChanged;
         public event EventHandler SourceAndTargetSelected;
+        public event EventHandler<MoveLineEventArgs> ElementMoveOrResized;
 
         public Controller(Model model)
         {
@@ -100,6 +101,9 @@ namespace UMLRedactor.Controllers
         {
             double x = Canvas.GetLeft(SelectedDiagramElement);
             double y = Canvas.GetTop(SelectedDiagramElement);
+            ElementMoveOrResized?.Invoke(SelectedModelElement,
+                new MoveLineEventArgs(x, y, ((UserControl)SelectedDiagramElement).ActualWidth,
+                    ((UserControl)SelectedDiagramElement).ActualHeight));
             CurrentDiagram.UpdateElementPosition(x, y, SelectedModelElement.Id);
             CurrentDiagram.UpdateElementSize(((UserControl)SelectedDiagramElement).ActualWidth,
                 ((UserControl)SelectedDiagramElement).ActualHeight, SelectedModelElement.Id);
@@ -108,15 +112,18 @@ namespace UMLRedactor.Controllers
 
         private void UpdateLinePosition(double x, double y)
         {
-            /*List<ModelNodeLine> connections = _model.GetConnection(SelectedModelElement.Id);
+            List<ModelNodeLine> connections = _model.GetConnection(SelectedModelElement.Id);
             foreach (ModelNodeLine connection in connections)
             {
                 DiagramNode node = CurrentDiagram.GetElement(connection.Id);
                 if (connection.Source == SelectedModelElement.Id)
-                    CurrentDiagram.UpdateLinePosition(x, y, node.X2, node.Y2, node.Id);
+                    CurrentDiagram.UpdateLinePosition(x + ((UserControl)SelectedDiagramElement).ActualWidth / 2,
+                        y + ((UserControl)SelectedDiagramElement).ActualHeight / 2, node.X2, node.Y2, connection.Id);
                 else
-                    CurrentDiagram.UpdateLinePosition(node.X1, node.Y1, x, y, node.Id);
-            }*/
+                    CurrentDiagram.UpdateLinePosition(node.X1, node.Y1,
+                        x + ((UserControl)SelectedDiagramElement).ActualWidth / 2,
+                        y + ((UserControl)SelectedDiagramElement).ActualHeight / 2, connection.Id);
+            }
         }
 
         private void InitialView()

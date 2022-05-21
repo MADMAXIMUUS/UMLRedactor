@@ -101,7 +101,7 @@ namespace UMLRedactor.Models
             foreach (ModelNodeBase node in Root.ChildNodes)
             {
                 if (node is ModelNodeLine line)
-                    if (line.Source == id)
+                    if (line.Source == id || line.Target == id)
                         connections.Add(line);
                 /*foreach (ModelNodeBase child in node.ChildNodes)
                 */
