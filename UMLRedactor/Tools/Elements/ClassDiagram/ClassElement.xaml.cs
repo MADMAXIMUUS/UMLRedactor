@@ -1,24 +1,30 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using UMLRedactor.Additions;
+using UMLRedactor.Annotations;
 using UMLRedactor.Models;
+using Attribute = UMLRedactor.Additions.Attribute;
 
 namespace UMLRedactor.Tools.Elements.ClassDiagram
 {
-    public partial class ClassElement : IElement
+    public partial class ClassElement : IElement, INotifyPropertyChanged
     {
         public readonly ModelNodeElement Element;
+        public Point Position; 
 
         public ClassElement(ModelNodeElement modelNodeBase)
         {
             InitializeComponent();
+            LayoutUpdated += OnLayoutUpdated;
             Element = modelNodeBase;
             Title.Text = modelNodeBase.Name;
             MinWidth = 200;
             MinHeight = 150;
-            
             if (Element != null && !string.IsNullOrEmpty(Element.Stereotype))
             {
                 Stereotype.Text = "<<" + Element.Stereotype + ">>";
@@ -33,6 +39,11 @@ namespace UMLRedactor.Tools.Elements.ClassDiagram
             if (operations != null)
                 foreach (Operation operation in operations)
                     CreateOperation(operation);
+        }
+        
+        void OnLayoutUpdated(object sender, EventArgs e)
+        {
+            Position = new Point(Canvas.GetLeft(this), Canvas.GetTop(this));
         }
 
         private void CreateAttribute(Attribute attribute)
@@ -105,6 +116,14 @@ namespace UMLRedactor.Tools.Elements.ClassDiagram
         public ModelNodeElement GetModelElement()
         {
             return Element;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPositionChanged([CallerMemberName] string position = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(position));
         }
     }
 }
