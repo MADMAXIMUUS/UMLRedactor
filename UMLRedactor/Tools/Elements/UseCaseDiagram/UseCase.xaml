@@ -3,45 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:UMLRedactor.Tools.Elements.UseCaseDiagram"
              mc:Ignorable="d"
              Background="Transparent"
-             GotFocus="UseCase_OnGotFocus"
-             LostFocus="UseCase_OnLostFocus"
+             Template="{StaticResource DesignerItemTemplate}"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-        <Ellipse Grid.Column="1" Grid.Row="1" StrokeThickness="1" Stroke="Black" Fill="White" />
-        <TextBox Name="Title" Grid.Column="1" Grid.Row="1" Margin="5" VerticalContentAlignment="Center"
+        <Ellipse StrokeThickness="1" Stroke="Black" Fill="White" />
+        <TextBox Name="Title" Margin="5" VerticalContentAlignment="Center"
                  HorizontalContentAlignment="Center" Padding="10,2"
                  TextWrapping="Wrap"
                  Background="Transparent"
                  FontSize="16" BorderThickness="0" BorderBrush="Black">
             Use Case
         </TextBox>
-        <Border Name="Lt" Margin="5" Grid.Row="0" Grid.Column="0" Width="5" Height="5" Background="Black"
-                Visibility="Hidden" MouseEnter="Lt_OnMouseEnter" MouseLeave="OnMouseLeave"
-                MouseLeftButtonDown="Lt_OnMouseLeftButtonDown" />
-        <Border Name="Rt" Margin="5" Grid.Row="0" Grid.Column="2" Width="5" Height="5" Background="Black"
-                Visibility="Hidden" MouseEnter="Rt_OnMouseEnter" MouseLeave="OnMouseLeave"
-                MouseLeftButtonDown="Rt_OnMouseLeftButtonDown" />
-        <Border Name="Lb" Margin="5" Grid.Row="2" Grid.Column="0" Width="5" Height="5" Background="Black"
-                Visibility="Hidden" MouseEnter="Lb_OnMouseEnter" MouseLeave="OnMouseLeave"
-                MouseLeftButtonDown="Lb_OnMouseLeftButtonDown" />
-        <Border Name="Rb" Margin="5" Grid.Row="2" Grid.Column="2" Width="5" Height="5" Background="Black"
-                Visibility="Hidden" MouseEnter="Rb_OnMouseEnter" MouseLeave="OnMouseLeave"
-                MouseLeftButtonDown="Rb_OnMouseLeftButtonDown" />
-        <Border Name="Mt" Margin="5" Grid.Row="0" Grid.Column="1" Width="20" Height="5" Background="Black"
-                Visibility="Hidden" MouseEnter="Mt_OnMouseEnter" MouseLeave="OnMouseLeave"
-                MouseLeftButtonDown="Mt_OnMouseLeftButtonDown" />
     </Grid>
 </UserControl>

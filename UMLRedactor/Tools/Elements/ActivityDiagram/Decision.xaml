@@ -4,51 +4,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
-             GotFocus="Decision_OnGotFocus"
-             LostFocus="Decision_OnLostFocus"
+             Template="{StaticResource DesignerItemTemplate}"
              Background="Transparent"
              d:DesignHeight="250" d:DesignWidth="250">
-    <Grid>
+    <Grid Grid.Column="1" Grid.Row="1" Margin="0,5,0,15" Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1" Grid.Row="1" Margin="0,5,0,15" Name="MainGrid">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <TextBox Name="Title" Grid.Row="0" VerticalContentAlignment="Center" Padding="5,2"
-                     HorizontalContentAlignment="Center"
-                     Margin="1,0"
-                     Text="{Binding Header}"
-                     Background="Transparent"
-                     FontSize="16" MinHeight="30" TextWrapping="Wrap" BorderThickness="0,0,0,0" BorderBrush="Black" />
-            <Viewbox Grid.Row="1">
-                <Path StrokeThickness="2" Stroke="Black" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                      Stretch="Fill" Fill="White" Data="M50,0 L100,50 L50,100 L0,50 z" />
-            </Viewbox>
-        </Grid>
-        <Border Name="Lt" Margin="5" Grid.Row="0" Grid.Column="0" Width="5" Height="5" Background="Black"
-                Visibility="Hidden" MouseEnter="Lt_OnMouseEnter" MouseLeave="OnMouseLeave"
-                MouseLeftButtonDown="Lt_OnMouseLeftButtonDown" />
-        <Border Name="Rt" Margin="5" Grid.Row="0" Grid.Column="2" Width="5" Height="5" Background="Black"
-                Visibility="Hidden" MouseEnter="Rt_OnMouseEnter" MouseLeave="OnMouseLeave"
-                MouseLeftButtonDown="Rt_OnMouseLeftButtonDown" />
-        <Border Name="Lb" Margin="5" Grid.Row="2" Grid.Column="0" Width="5" Height="5" Background="Black"
-                Visibility="Hidden" MouseEnter="Lb_OnMouseEnter" MouseLeave="OnMouseLeave"
-                MouseLeftButtonDown="Lb_OnMouseLeftButtonDown" />
-        <Border Name="Rb" Margin="5" Grid.Row="2" Grid.Column="2" Width="5" Height="5" Background="Black"
-                Visibility="Hidden" MouseEnter="Rb_OnMouseEnter" MouseLeave="OnMouseLeave"
-                MouseLeftButtonDown="Rb_OnMouseLeftButtonDown" />
-        <Border Name="Mt" Margin="5" Grid.Row="0" Grid.Column="1" Width="20" Height="5" Background="Black"
-                Visibility="Hidden" MouseEnter="Mt_OnMouseEnter" MouseLeave="OnMouseLeave"
-                MouseLeftButtonDown="Mt_OnMouseLeftButtonDown" />
+        <TextBox Name="Title" Grid.Row="0" VerticalContentAlignment="Center" Padding="5,2"
+                 HorizontalContentAlignment="Center"
+                 Margin="1,0"
+                 Text="{Binding Header}"
+                 Background="Transparent"
+                 FontSize="16" MinHeight="30" TextWrapping="Wrap" BorderThickness="0,0,0,0" BorderBrush="Black" />
+        <Viewbox Grid.Row="1">
+            <Path StrokeThickness="2" Stroke="Black" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                  Stretch="Fill" Fill="White" Data="M50,0 L100,50 L50,100 L0,50 z" />
+        </Viewbox>
     </Grid>
 </UserControl>
