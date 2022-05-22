@@ -41,6 +41,7 @@ namespace UMLRedactor.Controllers
         public event EventHandler DiagramElementSelected;
         public event EventHandler AttributeChanged;
         public event EventHandler OperationChanged;
+        public event EventHandler PropertyChanged;
         public event EventHandler SourceAndTargetSelected;
         public event EventHandler<MoveLineEventArgs> ElementMoveOrResized;
 
@@ -68,6 +69,18 @@ namespace UMLRedactor.Controllers
                     _model.GetNode(item.Uid),
                     EventArgs.Empty
                 );
+        }
+
+        public void DeleteElementAndLinks(object sender, EventArgs eventArgs)
+        {
+            List<ModelNodeLine> lines = _model.GetConnection(sender as string);
+            foreach (ModelNodeLine line in lines)
+            {
+                CurrentDiagram.RemoveNode(line.Id);
+            }
+            CurrentDiagram.RemoveNode(sender as string);
+            _model.RemoveElement(sender as string);
+            UpdateView();
         }
 
         public void UpdateSelectedElement(object sender, MouseEventArgs e)
@@ -514,7 +527,8 @@ namespace UMLRedactor.Controllers
                             AccessModifier = (gr.Children[i + 3] as ComboBox)?.Text,
                             Parameters = new List<Parameter>()
                         };
-                        string[] parameters = (gr.Children[i + 1] as TextBox)?.Text.Split(new[] { ',', ' ' },
+                        string[] parameters = (gr.Children[i + 1] as TextBox)?.
+                            Text.Split(new[] { ',', ' ' },
                             StringSplitOptions.RemoveEmptyEntries);
                         if (parameters != null)
                             foreach (string parameterChild in parameters)
@@ -531,11 +545,13 @@ namespace UMLRedactor.Controllers
                                         parameterChild.IndexOf("=", StringComparison.Ordinal) -
                                         parameterChild.IndexOf(":", StringComparison.Ordinal) - 1);
                                     parameter.DefaultValue = parameterChild
-                                        .Substring(parameterChild.IndexOf("=", StringComparison.Ordinal) + 1);
+                                        .Substring(parameterChild.IndexOf("=", 
+                                            StringComparison.Ordinal) + 1);
                                 }
                                 else
                                     parameter.DataType = parameterChild.Substring(
-                                        parameterChild.IndexOf(":", StringComparison.Ordinal) + 1);
+                                        parameterChild.IndexOf(":", 
+                                            StringComparison.Ordinal) + 1);
 
                                 operation.Parameters.Add(parameter);
                             }
@@ -551,7 +567,7 @@ namespace UMLRedactor.Controllers
         public void Operation_ComboBoxSelected(object sender, EventArgs eventArgs)
         {
             List<Operation> operations = new List<Operation>();
-            if ((sender as TextBox)?.Parent is Grid gr)
+            if ((sender as ComboBox)?.Parent is Grid gr)
                 for (int i = 0; i < gr.Children.Count; i += 4)
                 {
                     Operation operation = new Operation
@@ -561,7 +577,8 @@ namespace UMLRedactor.Controllers
                         AccessModifier = (gr.Children[i + 3] as ComboBox)?.Text,
                         Parameters = new List<Parameter>()
                     };
-                    string[] parameters = (gr.Children[i + 1] as TextBox)?.Text.Split(new[] { ',', ' ' },
+                    string[] parameters = (gr.Children[i + 1] as TextBox)?
+                        .Text.Split(new[] { ',', ' ' },
                         StringSplitOptions.RemoveEmptyEntries);
                     if (parameters != null)
                         foreach (string parameterChild in parameters)
@@ -569,16 +586,22 @@ namespace UMLRedactor.Controllers
                             Parameter parameter = new Parameter
                             {
                                 Name = parameterChild.Substring(0,
-                                    parameterChild.IndexOf(":", StringComparison.Ordinal))
+                                    parameterChild.IndexOf(":", 
+                                        StringComparison.Ordinal))
                             };
-                            if (parameterChild.IndexOf("=", StringComparison.Ordinal) > 0)
+                            if (parameterChild.IndexOf("=", 
+                                    StringComparison.Ordinal) > 0)
                             {
                                 parameter.DataType = parameterChild.Substring(
-                                    parameterChild.IndexOf(":", StringComparison.Ordinal) + 1,
-                                    parameterChild.IndexOf("=", StringComparison.Ordinal) -
-                                    parameterChild.IndexOf(":", StringComparison.Ordinal) - 1);
+                                    parameterChild.IndexOf(":", 
+                                        StringComparison.Ordinal) + 1,
+                                    parameterChild.IndexOf("=", 
+                                        StringComparison.Ordinal) -
+                                    parameterChild.IndexOf(":", 
+                                        StringComparison.Ordinal) - 1);
                                 parameter.DefaultValue = parameterChild
-                                    .Substring(parameterChild.IndexOf("=", StringComparison.Ordinal) + 1);
+                                    .Substring(parameterChild.IndexOf("=", 
+                                        StringComparison.Ordinal) + 1);
                             }
                             else
                                 parameter.DataType = parameterChild.Substring(
@@ -592,6 +615,23 @@ namespace UMLRedactor.Controllers
 
             _model.UpdateOperation(SelectedModelElement.Id, operations);
             OperationChanged?.Invoke(_model, null);
+        }
+
+        public void Property_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Dictionary<string,string> properties = new Dictionary<string, string>();
+                if ((sender as TextBox)?.Parent is Grid gr)
+                    for (int i = 0; i < gr.Children.Count; i += 4)
+                    {
+                        properties[(gr.Children[i] as TextBlock)?.Text ?? string.Empty] = 
+                            (gr.Children[i + 2] as TextBox)?.Text;
+                    }
+
+                _model.UpdateProperty(SelectedModelElement.Id, properties);
+                PropertyChanged?.Invoke(_model, null);
+            }
         }
     }
 }

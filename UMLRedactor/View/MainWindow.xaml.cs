@@ -74,6 +74,7 @@ namespace UMLRedactor.View
             _controller.DiagramElementSelected += ShowAttributesAndOperations;
             _controller.AttributeChanged += UpdateCanvas;
             _controller.OperationChanged += UpdateCanvas;
+            _controller.PropertyChanged += UpdateCanvas;
         }
 
         private void ShowUnselectedButton(object sender, EventArgs e)
@@ -96,6 +97,8 @@ namespace UMLRedactor.View
                     {
                         CreateAttribute(attribute);
                     }
+
+                    CreateAttribute(new Attribute());
                 }
                 else
                 {
@@ -113,6 +116,8 @@ namespace UMLRedactor.View
                     {
                         CreateOperation(operation);
                     }
+
+                    CreateOperation(new Operation());
                 }
                 else
                 {
@@ -277,7 +282,7 @@ namespace UMLRedactor.View
             {
                 CreateProperty("Name", element.Name, true);
                 CreateProperty("ID", element.Id, false);
-                CreateProperty("Type", element.Type, true);
+                CreateProperty("Type", element.Type, false);
                 CreateProperty("Stereotype", element.Stereotype, true);
             }
             else if (sender is ModelNodeLine line)
@@ -325,6 +330,7 @@ namespace UMLRedactor.View
                 VerticalContentAlignment = VerticalAlignment.Center,
                 Foreground = Brushes.Black,
             };
+            propertyValueTb.KeyDown += _controller.Property_OnKeyDown;
             Border borderValue = new Border
             {
                 BorderBrush = Brushes.DarkGray,
@@ -354,20 +360,46 @@ namespace UMLRedactor.View
                             ClassElement classElement = new ClassElement(element as ModelNodeElement);
                             classElement.MouseLeftButtonDown += _controller.UpdateSelectedElement;
                             classElement.LayoutUpdated += _controller.UpdateSelectedElementSizeAndPosition;
-                            DiagramNode node = new DiagramNode
+                            DiagramNode nodeC = new DiagramNode
                             {
                                 ModelElementId = element.Id,
                                 X1 = random.NextDouble() * 400,
                                 Y1 = random.NextDouble() * 400
                             };
-                            Canvas.SetLeft(classElement, node.X1);
-                            Canvas.SetTop(classElement, node.Y1);
-                            node.Height = classElement.ActualHeight;
-                            node.Width = classElement.ActualWidth;
+                            Canvas.SetLeft(classElement, nodeC.X1);
+                            Canvas.SetTop(classElement, nodeC.Y1);
+                            nodeC.Height = classElement.ActualHeight;
+                            nodeC.Width = classElement.ActualWidth;
                             _controller.SelectedDiagramElement = classElement;
-                            _controller.SelectedModelElement = classElement.Element;
-                            _controller.CurrentDiagram.Elements.Add(node);
+                            _controller.SelectedModelElement = classElement.GetModelElement();
+                            _controller.CurrentDiagram.Elements.Add(nodeC);
                             DrawCanvas.Children.Add(classElement);
+                            break;
+                        case "Association":
+                            DiagramNode start =
+                                _controller.CurrentDiagram.GetElement((element as ModelNodeLine)?.Source);
+                            DiagramNode end =
+                                _controller.CurrentDiagram.GetElement((element as ModelNodeLine)?.Target);
+                            DiagramNode nodeA = new DiagramNode
+                            {
+                                ModelElementId = element.Id,
+                                X1 = start.X1 + start.Width / 2,
+                                Y1 = start.Y1 + start.Height / 2,
+                                X2 = end.X1 + end.Width / 2,
+                                Y2 = end.Y1 + end.Height / 2
+                            };
+                            Association association = new Association(element as ModelNodeLine)
+                            {
+                                X1 = nodeA.X1,
+                                Y1 = nodeA.Y1,
+                                X2 = nodeA.X2,
+                                Y2 = nodeA.Y2
+                            };
+                            _controller.CurrentDiagram.Elements.Add(nodeA);
+                            _controller.ElementMoveOrResized += association.MoveLine;
+                            Canvas.SetLeft(association, 0);
+                            Canvas.SetTop(association, 0);
+                            DrawCanvas.Children.Insert(0, association);
                             break;
                     }
                 }
@@ -393,6 +425,7 @@ namespace UMLRedactor.View
                         Canvas.SetTop(classElement, element.Y1);
                         _controller.SelectedDiagramElement = classElement;
                         _controller.SelectedModelElement = classElement.GetModelElement();
+                        classElement.RemovedElement += _controller.DeleteElementAndLinks;
                         DrawCanvas.Children.Add(classElement);
                         break;
                     case "Activity":
@@ -420,7 +453,7 @@ namespace UMLRedactor.View
                         _controller.ElementMoveOrResized += association.MoveLine;
                         Canvas.SetLeft(association, 0);
                         Canvas.SetTop(association, 0);
-                        DrawCanvas.Children.Add(association);
+                        DrawCanvas.Children.Insert(0, association);
                         break;
                 }
             }

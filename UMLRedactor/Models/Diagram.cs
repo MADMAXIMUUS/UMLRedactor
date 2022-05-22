@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UMLRedactor.Additions;
 
 namespace UMLRedactor.Models
@@ -18,6 +19,14 @@ namespace UMLRedactor.Models
                 PackageName = ""
             };
             Elements = new List<DiagramNode>();
+        }
+
+        public void RemoveNode(string id)
+        {
+            foreach (var node in Elements.Where(x=>x.Id==id).ToList())
+            {
+                    Elements.Remove(node);
+            }
         }
 
         public DiagramNode GetElement(string modelElementId)

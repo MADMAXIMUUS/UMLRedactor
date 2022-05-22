@@ -11,6 +11,13 @@ namespace UMLRedactor.Tools.Lines
         private readonly LineGeometry _lineGeometry;
         private readonly ModelNodeLine _modelNodeLine;
 
+        
+        public static readonly DependencyProperty X1Property =
+            DependencyProperty.Register("X1",
+                typeof(double), typeof(Association),
+                new FrameworkPropertyMetadata(0.0,
+                    FrameworkPropertyMetadataOptions.AffectsMeasure));
+        
         public double X1
         {
             set => SetValue(X1Property, value);
@@ -42,13 +49,7 @@ namespace UMLRedactor.Tools.Lines
             Stroke = Brushes.Black;
             StrokeThickness = 6;
         }
-        
-        public static readonly DependencyProperty X1Property =
-            DependencyProperty.Register("X1",
-                typeof(double), typeof(Association),
-                new FrameworkPropertyMetadata(0.0,
-                    FrameworkPropertyMetadataOptions.AffectsMeasure));
-        
+
         public static readonly DependencyProperty Y1Property =
             DependencyProperty.Register("Y1",
                 typeof(double), typeof(Association),

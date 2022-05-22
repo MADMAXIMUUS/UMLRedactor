@@ -124,5 +124,10 @@ namespace UMLRedactor.Tools.Elements.ActivityDiagram
         {
             return new ModelNodeElement();
         }
+
+        public void AddContextMenu()
+        {
+            
+        }
     }
 }

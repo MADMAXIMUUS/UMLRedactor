@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UMLRedactor.Additions;
 using UMLRedactor.Tools.Lines;
 using Attribute = UMLRedactor.Additions.Attribute;
@@ -41,7 +42,19 @@ namespace UMLRedactor.Models
                     CheckNodeId(parentId, node, element);
         }
 
-        public void RemoveElement(string id) { }
+        public void RemoveElement(string id)
+        {
+            foreach (var node in Root.ChildNodes.Where(x => x.Id == id).ToList())
+            {
+                Root.ChildNodes.Remove(node);
+                foreach (var node1 in Root.ChildNodes
+                             .Where(x => x is ModelNodeLine line && 
+                                         (line.Source == id || line.Target == id)).ToList())
+                {
+                    Root.ChildNodes.Remove(node1);
+                }
+            }
+        }
 
         public void UpdateAttributes(string id, List<Attribute> attributes)
         {
@@ -91,6 +104,44 @@ namespace UMLRedactor.Models
                 else
                 {
                     UpdateOperationChild(id, node.ChildNodes, operations);
+                }
+            }
+        }
+
+        public void UpdateProperty(string id, Dictionary<string,string> properties)
+        {
+            foreach (ModelNodeBase node in Root.ChildNodes)
+            {
+                if (node.Id == id)
+                {
+                    node.Name = properties["Name"];
+                    node.Id = properties["ID"];
+                    node.Type = properties["Type"];
+                    if (node is ModelNodeElement element) 
+                        element.Stereotype = properties["Stereotype"];
+                }
+                else
+                {
+                    UpdatePropertyChild(id, node.ChildNodes, properties);
+                }
+            }
+        }
+        
+        private void UpdatePropertyChild(string id, List<ModelNodeBase> parent, Dictionary<string,string> properties)
+        {
+            foreach (ModelNodeBase node in parent)
+            {
+                if (node.Id == id)
+                {
+                    node.Name = properties["Name"];
+                    node.Id = properties["ID"];
+                    node.Type = properties["Type"];
+                    if (node is ModelNodeElement element) 
+                        element.Stereotype = properties["Stereotype"];
+                }
+                else
+                {
+                    UpdatePropertyChild(id, node.ChildNodes, properties);
                 }
             }
         }

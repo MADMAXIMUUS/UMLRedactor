@@ -1,33 +1,38 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using UMLRedactor.Additions;
 using UMLRedactor.Models;
+using Attribute = UMLRedactor.Additions.Attribute;
 
 namespace UMLRedactor.Tools.Elements.ClassDiagram
 {
     public partial class ClassElement : IElement
     {
-        public readonly ModelNodeElement Element;
+        private readonly ModelNodeElement _element;
+        public event EventHandler RemovedElement;
         public ClassElement(ModelNodeElement modelNodeBase)
         {
             InitializeComponent();
-            Element = modelNodeBase;
+            AddContextMenu();
+            _element = modelNodeBase;
             Title.Text = modelNodeBase.Name;
             MinWidth = 200;
             MinHeight = 150;
-            if (Element != null && !string.IsNullOrEmpty(Element.Stereotype))
+            if (_element != null && !string.IsNullOrEmpty(_element.Stereotype))
             {
-                Stereotype.Text = "<<" + Element.Stereotype + ">>";
+                Stereotype.Text = "<<" + _element.Stereotype + ">>";
                 Stereotype.Visibility = Visibility.Visible;
             }
-            List<Attribute> attributes = Element?.Attributes;
+
+            List<Attribute> attributes = _element?.Attributes;
             if (attributes != null)
                 foreach (Attribute attribute in attributes)
                     CreateAttribute(attribute);
 
-            List<Operation> operations = Element?.Operations;
+            List<Operation> operations = _element?.Operations;
             if (operations != null)
                 foreach (Operation operation in operations)
                     CreateOperation(operation);
@@ -36,11 +41,16 @@ namespace UMLRedactor.Tools.Elements.ClassDiagram
         private void CreateAttribute(Attribute attribute)
         {
             string text = "";
-            if (attribute.AccessModifier == "Public" || attribute.AccessModifier == "public")
+            if (attribute.Name=="")
+                return;
+            if (attribute.AccessModifier == "Public" || 
+                attribute.AccessModifier == "public")
                 text += "+ ";
-            else if (attribute.AccessModifier == "Protected" || attribute.AccessModifier == "protected")
+            else if (attribute.AccessModifier == "Protected" || 
+                     attribute.AccessModifier == "protected")
                 text += "# ";
-            else if (attribute.AccessModifier == "Private" || attribute.AccessModifier == "private")
+            else if (attribute.AccessModifier == "Private" || 
+                     attribute.AccessModifier == "private")
                 text += "- ";
             else
                 text += "";
@@ -65,6 +75,8 @@ namespace UMLRedactor.Tools.Elements.ClassDiagram
         private void CreateOperation(Operation operation)
         {
             string text = "";
+            if (operation.Name=="")
+                return;
             if (operation.AccessModifier == "Public" || operation.AccessModifier == "public")
                 text += "+ ";
             else if (operation.AccessModifier == "Protected" || operation.AccessModifier == "protected")
@@ -102,7 +114,21 @@ namespace UMLRedactor.Tools.Elements.ClassDiagram
 
         public ModelNodeElement GetModelElement()
         {
-            return Element;
+            return _element;
+        }
+
+        public void AddContextMenu()
+        {
+            ContextMenu contextMenu = new ContextMenu();
+            MenuItem removeElement = new MenuItem { Header = "Remove" };
+            removeElement.Click += RemoveElement;
+            contextMenu.Items.Add(removeElement);
+            ContextMenu = contextMenu;
+        }
+
+        private void RemoveElement(object sender, RoutedEventArgs routedEventArgs)
+        {
+            RemovedElement?.Invoke(_element.Id, EventArgs.Empty);
         }
     }
 }

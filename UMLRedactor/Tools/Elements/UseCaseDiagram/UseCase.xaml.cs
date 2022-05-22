@@ -124,5 +124,10 @@ namespace UMLRedactor.Tools.Elements.UseCaseDiagram
         {
             return new ModelNodeElement();
         }
+
+        public void AddContextMenu()
+        {
+            
+        }
     }
 }
