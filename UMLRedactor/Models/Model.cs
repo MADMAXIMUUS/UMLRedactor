@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UMLRedactor.Additions;
-using UMLRedactor.Tools.Lines;
 using Attribute = UMLRedactor.Additions.Attribute;
 
 namespace UMLRedactor.Models

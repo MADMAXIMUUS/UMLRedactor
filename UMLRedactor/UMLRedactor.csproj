@@ -100,8 +100,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Additions\Enums.cs" />
-    <Compile Include="Additions\UsefulFunction.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -139,6 +137,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="All.cd" />
+    <None Include="Model.cd" />
+    <None Include="Diagram.cd" />
+    <None Include="ModelReader.cd" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\UMLRedactor_icon.ico">
@@ -146,7 +148,6 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>

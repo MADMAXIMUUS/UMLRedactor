@@ -36,12 +36,6 @@ namespace UMLRedactor.Tools.Lines
             get => (double)GetValue(X2Property);
         }
 
-        public double Y2
-        {
-            set => SetValue(Y2Property, value);
-            get => (double)GetValue(Y2Property);
-        }
-
         public Association(ModelNodeLine line)
         {
             _lineGeometry = new LineGeometry();
@@ -61,6 +55,12 @@ namespace UMLRedactor.Tools.Lines
                 typeof(double), typeof(Association),
                 new FrameworkPropertyMetadata(0.0,
                     FrameworkPropertyMetadataOptions.AffectsMeasure));
+        
+        public double Y2
+        {
+            set => SetValue(Y2Property, value);
+            get => (double)GetValue(Y2Property);
+        }
         
         public static readonly DependencyProperty Y2Property =
             DependencyProperty.Register("Y2",

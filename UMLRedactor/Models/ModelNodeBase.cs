@@ -8,7 +8,7 @@ namespace UMLRedactor.Models
         public string Name;
         public string Type;
         public string Id;
-        public Package Namespace; 
+        public Package Namespace;
         public List<ModelNodeBase> ChildNodes;
 
         public ModelNodeBase()

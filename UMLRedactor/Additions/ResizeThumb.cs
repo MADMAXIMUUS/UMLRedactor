@@ -24,12 +24,15 @@ namespace UMLRedactor.Additions
                 switch (VerticalAlignment)
                 {
                     case VerticalAlignment.Bottom:
-                        deltaVertical = Math.Min(-e.VerticalChange, designerItem.ActualHeight - designerItem.MinHeight);
+                        deltaVertical = Math.Min(-e.VerticalChange, 
+                            designerItem.ActualHeight - designerItem.MinHeight);
                         designerItem.Height -= deltaVertical;
                         break;
                     case VerticalAlignment.Top:
-                        deltaVertical = Math.Min(e.VerticalChange, designerItem.ActualHeight - designerItem.MinHeight);
-                        Canvas.SetTop(designerItem, Canvas.GetTop(designerItem) + deltaVertical);
+                        deltaVertical = Math.Min(e.VerticalChange, 
+                            designerItem.ActualHeight - designerItem.MinHeight);
+                        Canvas.SetTop(designerItem, 
+                            Canvas.GetTop(designerItem) + deltaVertical);
                         designerItem.Height -= deltaVertical;
                         break;
                 }
@@ -37,12 +40,15 @@ namespace UMLRedactor.Additions
                 switch (HorizontalAlignment)
                 {
                     case HorizontalAlignment.Left:
-                        deltaHorizontal = Math.Min(e.HorizontalChange, designerItem.ActualWidth - designerItem.MinWidth);
-                        Canvas.SetLeft(designerItem, Canvas.GetLeft(designerItem) + deltaHorizontal);
+                        deltaHorizontal = Math.Min(e.HorizontalChange, 
+                            designerItem.ActualWidth - designerItem.MinWidth);
+                        Canvas.SetLeft(designerItem, 
+                            Canvas.GetLeft(designerItem) + deltaHorizontal);
                         designerItem.Width -= deltaHorizontal;
                         break;
                     case HorizontalAlignment.Right:
-                        deltaHorizontal = Math.Min(-e.HorizontalChange, designerItem.ActualWidth - designerItem.MinWidth);
+                        deltaHorizontal = Math.Min(-e.HorizontalChange,
+                            designerItem.ActualWidth - designerItem.MinWidth);
                         designerItem.Width -= deltaHorizontal;
                         break;
                 }
@@ -52,3 +58,8 @@ namespace UMLRedactor.Additions
         }
     }
 }
+
+
+
+
+

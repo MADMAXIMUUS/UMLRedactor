@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="UMLRedactor.Models.ModelNodeLine">
+    <Position X="17.25" Y="21.25" Width="2" />
+    <InheritanceLine Type="UMLRedactor.Models.ModelNodeBase" ManuallyRouted="true">
+      <Path>
+        <Point X="22.375" Y="9.632" />
+        <Point X="22.375" Y="17.75" />
+        <Point X="22.722" Y="17.75" />
+        <Point X="22.722" Y="20.875" />
+        <Point X="18.25" Y="20.875" />
+        <Point X="18.25" Y="21.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAgAAAAAAAAQAACAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Models\ModelNodeLine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UMLRedactor.Additions.MoveLineEventArgs">
+    <Position X="0.5" Y="6.75" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABgBAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Additions\MoveLineEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UMLRedactor.Additions.MoveThumb">
+    <Position X="1.25" Y="4.75" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Additions\MoveThumb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UMLRedactor.Additions.ResizeThumb">
+    <Position X="4.5" Y="0.5" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Additions\ResizeThumb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UMLRedactor.Controllers.Controller">
+    <Position X="0.5" Y="17.25" Width="5.25" />
+    <AssociationLine Name="_selectedSource" Type="UMLRedactor.Models.ModelNodeElement" ManuallyRouted="true">
+      <Path>
+        <Point X="5.75" Y="20.127" />
+        <Point X="6.5" Y="20.127" />
+        <Point X="6.5" Y="22.25" />
+        <Point X="8.76" Y="22.25" Type="JumpStart" />
+        <Point X="8.927" Y="22.25" Type="JumpEnd" />
+        <Point X="9.167" Y="22.25" Type="JumpStart" />
+        <Point X="9.333" Y="22.25" Type="JumpEnd" />
+        <Point X="15.964" Y="22.25" />
+        <Point X="15.964" Y="15.997" />
+        <Point X="17.948" Y="15.997" Type="JumpStart" />
+        <Point X="18.115" Y="15.997" Type="JumpEnd" />
+        <Point X="18.625" Y="15.997" />
+        <Point X="18.625" Y="15.184" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="_selectedTarget" Type="UMLRedactor.Models.ModelNodeElement" ManuallyRouted="true">
+      <Path>
+        <Point X="5.75" Y="18.657" />
+        <Point X="7.356" Y="18.657" />
+        <Point X="7.356" Y="21.604" />
+        <Point X="8.76" Y="21.604" Type="JumpStart" />
+        <Point X="8.927" Y="21.604" Type="JumpEnd" />
+        <Point X="9.167" Y="21.604" Type="JumpStart" />
+        <Point X="9.333" Y="21.604" Type="JumpEnd" />
+        <Point X="15.881" Y="21.604" Type="JumpStart" />
+        <Point X="16.048" Y="21.604" Type="JumpEnd" />
+        <Point X="16.25" Y="21.604" />
+        <Point X="16.25" Y="16.468" />
+        <Point X="18.031" Y="16.468" />
+        <Point X="18.031" Y="15.184" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="SelectedModelElement" Type="UMLRedactor.Models.ModelNodeBase" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="28.188" />
+        <Point X="11.613" Y="28.188" />
+        <Point X="11.613" Y="29.893" />
+        <Point X="23.517" Y="29.893" />
+        <Point X="23.517" Y="9.632" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>EAAAkQCAIEgAjyAIYwCABKQtyBYDEGABBFkAAIAIQAw=</HashCode>
+      <FileName>Controllers\Controller.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="CurrentDiagram" />
+      <Field Name="_selectedSource" />
+      <Field Name="_selectedTarget" />
+      <Field Name="SelectedModelElement" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="_diagrams" />
+      <Field Name="_previewsDiagrams" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="UMLRedactor.Controllers.DiagramReader">
+    <Position X="11.5" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\DiagramReader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UMLRedactor.Controllers.DiagramWriter">
+    <Position X="10" Y="19.5" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\DiagramWriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UMLRedactor.Controllers.ModelReader">
+    <Position X="4" Y="12.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAwBFAAAAAAGBCAACAAAAAAAAAAEAAQAAACAAAI=</HashCode>
+      <FileName>Controllers\ModelReader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UMLRedactor.Controllers.ModelWriter">
+    <Position X="4.25" Y="9.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>QAEAAAABAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAIAAA=</HashCode>
+      <FileName>Controllers\ModelWriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UMLRedactor.Models.Diagram">
+    <Position X="6.75" Y="22.5" Width="6.5" />
+    <AssociationLine Name="Elements" Type="UMLRedactor.Models.DiagramNode" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="9.25" Y="22.5" />
+        <Point X="9.25" Y="7.451" />
+        <Point X="8.927" Y="7.451" Type="JumpStart" />
+        <Point X="8.76" Y="7.451" Type="JumpEnd" />
+        <Point X="8" Y="7.451" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.603" Y="-2.209" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAQEAAAAQAAQAAAAAIAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Models\Diagram.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="Namespace" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="Elements" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="UMLRedactor.Models.DiagramNode">
+    <Position X="6" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAABAAAAAAAAAADAEAAAIBBAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DiagramNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UMLRedactor.Models.Model">
+    <Position X="9.5" Y="11.5" Width="6.75" />
+    <TypeIdentifier>
+      <HashCode>AAAQgAAAAAABADAAAACAAQQAEAICAAEAAAEBABAAAAA=</HashCode>
+      <FileName>Models\Model.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="Root" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="UMLRedactor.Models.ModelNodeBase">
+    <Position X="21" Y="7.5" Width="2.75" />
+    <AssociationLine Name="ChildNodes" Type="UMLRedactor.Models.ModelNodeBase" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="21.5" Y="9.632" />
+        <Point X="21.5" Y="9.941" />
+        <Point X="21.534" Y="9.941" />
+        <Point X="21.534" Y="10.568" />
+        <Point X="22.292" Y="10.568" Type="JumpStart" />
+        <Point X="22.458" Y="10.568" Type="JumpEnd" />
+        <Point X="23.188" Y="10.568" />
+        <Point X="23.188" Y="9.632" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.926" Y="1.04" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAIAAAAQCAAAAAAAA=</HashCode>
+      <FileName>Models\ModelNodeBase.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="ChildNodes" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="UMLRedactor.Models.ModelNodeElement">
+    <Position X="17.5" Y="13.5" Width="2.25" />
+    <InheritanceLine Type="UMLRedactor.Models.ModelNodeBase" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="22.375" Y="9.632" />
+        <Point X="22.375" Y="11.218" />
+        <Point X="21.356" Y="11.218" />
+        <Point X="21.356" Y="14.438" />
+        <Point X="19.75" Y="14.438" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="Operations" Type="UMLRedactor.Additions.Operation" ManuallyRouted="true">
+      <Path>
+        <Point X="19.047" Y="13.5" />
+        <Point X="19.047" Y="12.509" />
+        <Point X="18.655" Y="12.509" Type="JumpStart" />
+        <Point X="18.489" Y="12.509" Type="JumpEnd" />
+        <Point X="18.458" Y="12.509" Type="JumpStart" />
+        <Point X="18.292" Y="12.509" Type="JumpEnd" />
+        <Point X="18.18" Y="12.509" Type="JumpStart" />
+        <Point X="18.014" Y="12.509" Type="JumpEnd" />
+        <Point X="17.631" Y="12.509" />
+        <Point X="17.631" Y="11.25" />
+        <Point X="15.115" Y="11.25" Type="JumpStart" />
+        <Point X="14.948" Y="11.25" Type="JumpEnd" />
+        <Point X="9.333" Y="11.25" Type="JumpStart" />
+        <Point X="9.167" Y="11.25" Type="JumpEnd" />
+        <Point X="8.927" Y="11.25" Type="JumpStart" />
+        <Point X="8.76" Y="11.25" Type="JumpEnd" />
+        <Point X="8.5" Y="11.25" />
+        <Point X="8.5" Y="12.25" />
+        <Point X="3.375" Y="12.25" />
+        <Point X="3.375" Y="12.994" />
+        <Point X="3" Y="12.994" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAQAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ModelNodeElement.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="Attributes" />
+      <Field Name="Operations" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="UMLRedactor.Tools.Elements.ActivityDiagram.Activity" BaseTypeListCollapsed="true">
+    <Position X="13" Y="5.5" Width="3" />
+    <AssociationLine Name="_modelNodeElement" Type="UMLRedactor.Models.ModelNodeElement">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.121" Y="2.342" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAQAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Tools\Elements\ActivityDiagram\Activity.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_modelNodeElement" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UMLRedactor.Tools.Elements.ActivityDiagram.ActivityFinal" BaseTypeListCollapsed="true">
+    <Position X="1" Y="1" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Tools\Elements\ActivityDiagram\ActivityFinal.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UMLRedactor.Tools.Elements.ActivityDiagram.ActivityInitial" BaseTypeListCollapsed="true">
+    <Position X="15.25" Y="0.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Tools\Elements\ActivityDiagram\ActivityInitial.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UMLRedactor.Tools.Elements.ActivityDiagram.Decision" BaseTypeListCollapsed="true">
+    <Position X="18.5" Y="3.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Tools\Elements\ActivityDiagram\Decision.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UMLRedactor.Tools.Elements.ClassDiagram.ClassElement" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="1" Width="4.75" />
+    <AssociationLine Name="_element" Type="UMLRedactor.Models.ModelNodeElement" ManuallyRouted="true">
+      <Path>
+        <Point X="14.5" Y="3.413" />
+        <Point X="17.193" Y="3.413" />
+        <Point X="17.193" Y="10.171" />
+        <Point X="18.014" Y="10.171" Type="JumpStart" />
+        <Point X="18.18" Y="10.171" Type="JumpEnd" />
+        <Point X="18.375" Y="10.171" />
+        <Point X="18.375" Y="13.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.344" Y="3.463" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAACAAAAAAAAAAAAAACAAAAAAEAAAACCBA=</HashCode>
+      <FileName>Tools\Elements\ClassDiagram\ClassElement.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_element" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UMLRedactor.Tools.Elements.UseCaseDiagram.Actor" BaseTypeListCollapsed="true">
+    <Position X="19.5" Y="1.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Tools\Elements\UseCaseDiagram\Actor.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UMLRedactor.Tools.Elements.UseCaseDiagram.UseCase" BaseTypeListCollapsed="true">
+    <Position X="5" Y="2.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Tools\Elements\UseCaseDiagram\UseCase.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UMLRedactor.Tools.Lines.Association" BaseTypeListCollapsed="true">
+    <Position X="23" Y="1.25" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQCAQCIAADAAEABIABAAAAAQAAAAIAAAA=</HashCode>
+      <FileName>Tools\Lines\Association.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_modelNodeLine" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UMLRedactor.View.EnterDialog" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="18" Width="5.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACCAACAQAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\EnterDialog.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UMLRedactor.View.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="13.75" Y="24.25" Width="6" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAECCECAAQQIAAAmIMAAAABAEAICRA=</HashCode>
+      <FileName>View\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_controller" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UMLRedactor.View.MyMessageBox" BaseTypeListCollapsed="true">
+    <Position X="10" Y="16.25" Width="5.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACGAAAAQAAIAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\MyMessageBox.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Struct Name="UMLRedactor.Additions.Attribute">
+    <Position X="10.25" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAIAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Additions\Structs.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="UMLRedactor.Additions.Operation">
+    <Position X="0.5" Y="12.25" Width="2.5" />
+    <AssociationLine Name="Parameters" Type="UMLRedactor.Additions.Parameter">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-2.506" Y="0.11" Height="0.182" Width="2.435" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAQAAAAACAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Additions\Structs.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="Parameters" />
+    </ShowAsCollectionAssociation>
+  </Struct>
+  <Struct Name="UMLRedactor.Additions.Parameter">
+    <Position X="0.75" Y="15" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAQAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Additions\Structs.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="UMLRedactor.Additions.Package">
+    <Position X="10.25" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Additions\Structs.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="UMLRedactor.Tools.Elements.IElement">
+    <Position X="1.25" Y="3" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Tools\Elements\IElement.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UMLRedactor.Tools.Lines.ILine">
+    <Position X="0.75" Y="10.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Tools\Lines\ILine.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -8,17 +8,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3de5b1ee-0cb0-4ba4-83f8-d2361bf6955d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.vs/UMLRedactor/FileContentIndex/0596564a-1354-470a-a655-fef2c63f7aaa.vsidx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vs/UMLRedactor/FileContentIndex/2d08b4de-6ddf-4e2e-9bf6-cae344326abc.vsidx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vs/UMLRedactor/FileContentIndex/42291dfb-984f-4ea9-833d-30a31e32646e.vsidx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vs/UMLRedactor/FileContentIndex/6af7490c-0291-47f2-aec8-db68cc6ba19a.vsidx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/All.cd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Diagram.cd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/Model.cd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UMLRedactor/ModelReader.cd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UMLRedactor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/ActivityFinal.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/ActivityFinal.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/ActivityFinal.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/ActivityFinal.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/ActivityInitial.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/ActivityInitial.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/ActivityInitial.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/ActivityInitial.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Decision.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Decision.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Decision.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/ActivityDiagram/Decision.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/UseCaseDiagram/Actor.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/UseCaseDiagram/Actor.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/UseCaseDiagram/Actor.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/UseCaseDiagram/Actor.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/UseCaseDiagram/UseCase.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/UseCaseDiagram/UseCase.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/UseCaseDiagram/UseCase.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Elements/UseCaseDiagram/UseCase.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/UMLRedactor/FileContentIndex/8c390c95-6377-46dc-8f79-0598e69733dc.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Additions/MoveThumb.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Additions/MoveThumb.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Additions/ResizeThumb.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Additions/ResizeThumb.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/Model.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/Model.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Models/ModelNodeBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/Tools/Lines/Association.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/Tools/Lines/Association.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UMLRedactor/UMLRedactor.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,6 +136,8 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -300,6 +307,10 @@
       <workItem from="1653164456660" duration="9075000" />
       <workItem from="1653216058946" duration="1280000" />
       <workItem from="1653217691882" duration="3558000" />
+      <workItem from="1653230769032" duration="2999000" />
+      <workItem from="1653339109232" duration="863000" />
+      <workItem from="1653346744956" duration="146000" />
+      <workItem from="1654181451450" duration="20000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена иконка">
       <created>1633812452088</created>
@@ -490,7 +501,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653141943453</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Все работает">
+      <created>1653223604126</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1653223604126</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -512,7 +530,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Обновлена иконка и добавлен новый элемент для тестов" />
     <MESSAGE value="Добавлена возможность перемещения объекта" />
     <MESSAGE value="Добавлено перемещение и изменение размеров элемента" />
     <MESSAGE value="Подготовка к MVVM" />
@@ -537,7 +554,8 @@
     <MESSAGE value="Работает сохранение диаграммы" />
     <MESSAGE value="Добавлены линии" />
     <MESSAGE value="Линии двигаются" />
-    <option name="LAST_COMMIT_MESSAGE" value="Линии двигаются" />
+    <MESSAGE value="Все работает" />
+    <option name="LAST_COMMIT_MESSAGE" value="Все работает" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
